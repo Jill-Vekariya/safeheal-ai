@@ -1,0 +1,39 @@
+name: safeheal-ai
+x-common: &common
+  build: .
+  image: safeheal-ai:day1
+  init: true
+  read_only: true
+  tmpfs: [/tmp]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  mem_limit: 256m
+  cpus: 0.5
+  healthcheck:
+    test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=4)"]
+    interval: 5s
+    timeout: 5s
+    retries: 6
+    start_period: 10s
+services:
+  payment:
+    <<: *common
+    environment:
+      SERVICE_ROLE: payment
+  order:
+    <<: *common
+    environment:
+      SERVICE_ROLE: order
+      DOWNSTREAM_URL: http://payment:8000
+    depends_on:
+      payment:
+        condition: service_healthy
+  gateway:
+    <<: *common
+    environment:
+      SERVICE_ROLE: gateway
+      DOWNSTREAM_URL: http://order:8000
+    ports: ["127.0.0.1:18080:8000"]
+    depends_on:
+      order:
+        condition: service_healthy

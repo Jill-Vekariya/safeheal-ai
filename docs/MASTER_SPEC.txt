@@ -1,0 +1,590 @@
+# MASTER PROMPT: BUILD SAFEHEAL AI — A GEORGIA TECH–LEVEL AI RESEARCH & ENGINEERING PROJECT IN 10 DAYS
+
+## 1. YOUR ROLE
+
+Act as my **Principal AI Research Engineer, Distributed Systems Architect, Kubernetes Engineer, Senior Software Developer, Research Mentor, Technical Project Manager, and GitHub Development Partner**.
+
+Your responsibility is to help me design, implement, test, evaluate, document, and complete an advanced project named:
+
+**SafeHeal AI — A Trustworthy Self-Healing Distributed Systems Platform Powered by AI Agents**
+
+Treat this as a serious portfolio and research project intended to strengthen my application to the **Georgia Institute of Technology's on-campus MS in Computer Science, with a specialization in Artificial Intelligence, for Fall 2028**.
+
+My academic profile:
+- Degree: BTech, expected completion July 2028.
+- Current CGPA: 8.75/10.
+- Research experience: Ongoing.
+- Existing projects: Completed software and AI projects.
+- Main objective: Demonstrate strong AI knowledge, research ability, distributed systems fundamentals, software engineering, experimental evaluation, and independent technical problem-solving.
+
+**I want an actual working GitHub project, not just explanations, pseudocode, architecture diagrams, or planning documents.**
+
+Take the role of an implementation partner while teaching me the reasoning behind important engineering decisions.
+
+## 2. PROJECT VISION
+
+Develop an intelligent platform that:
+
+1. Continuously monitors a distributed microservices application.
+2. Detects service degradation, crashes, latency spikes, and other incidents.
+3. Collects relevant metrics, logs, traces, and Kubernetes events.
+4. Uses an AI agent to investigate incidents and propose evidence-supported root causes.
+5. Compares AI-based diagnosis with deterministic approaches.
+6. Recommends safe, predefined recovery actions.
+7. Executes approved recovery actions through a tightly constrained Kubernetes interface.
+8. Verifies whether the affected services have recovered.
+9. Records incidents, decisions, actions, and results.
+10. Evaluates the platform through repeatable experiments.
+
+The architecture should demonstrate practical engineering depth without unnecessary complexity.
+
+## 3. CENTRAL AI RESEARCH QUESTION
+
+Investigate:
+
+**Can an evidence-grounded LLM agent improve the accuracy of incident diagnosis and the effectiveness of safe recovery in distributed systems compared with deterministic rule-based approaches?**
+
+Implement and evaluate three approaches:
+
+**Baseline A — Native Kubernetes Recovery**
+- Use ordinary Kubernetes restart, reconciliation, and health-check mechanisms.
+- Measure what Kubernetes can and cannot recover automatically.
+
+**Baseline B — Rule-Based Incident Controller**
+- Use metrics and predefined rules to identify incidents.
+- Recommend or perform explicitly permitted recovery actions.
+
+**Proposed Approach C — AI-Assisted Diagnosis and Recovery**
+- Analyze relevant telemetry.
+- Generate structured root-cause hypotheses.
+- Provide evidence for diagnostic conclusions.
+- Propose actions selected from predefined runbooks.
+- Pass all actions through an independent safety policy controller.
+- Evaluate whether AI adds measurable value.
+
+Use comparable failure scenarios, measurement definitions, and trial procedures.
+
+Never invent experimental results or describe improvements that have not actually been measured.
+
+## 4. RECOMMENDED TECHNOLOGY STACK
+
+Choose a manageable stack and explain any major deviations.
+
+- Language: Python 3.11+
+- Backend APIs: FastAPI
+- Microservices: Python/FastAPI
+- Containerization: Docker and Docker Compose
+- Orchestration: Kubernetes using kind
+- Metrics: Prometheus
+- Visualization: Grafana
+- Application logs: Structured JSON logging, optionally Loki
+- Distributed tracing: OpenTelemetry, with Tempo if feasible
+- AI reasoning: An LLM with structured outputs and bounded tool interfaces
+- Incident database: SQLite for the MVP or PostgreSQL if justified
+- Testing: pytest
+- Fault injection: Controlled local scripts or Kubernetes test jobs
+- CI/CD: GitHub Actions
+- Documentation: Markdown, Mermaid, and a research-style technical report
+- Version control: GitHub
+
+Prioritize an operational system over adding technologies only to make the stack look sophisticated.
+
+## 5. HIGH-LEVEL ARCHITECTURE
+
+Design this end-to-end workflow:
+
+Microservices
+→ Telemetry Collection
+→ Incident Detection
+→ Evidence Aggregation
+→ AI Diagnosis Agent
+→ Independent Policy/Safety Controller
+→ Recovery Executor
+→ Post-Recovery Verification
+→ Incident History and Experiment Metrics
+
+Build a small application containing:
+- API Gateway
+- Order Service
+- Payment Service
+- Inventory Service, if time permits
+
+Include realistic service dependencies, health endpoints, metrics endpoints, structured logging, and trace correlation.
+
+Separate the control plane from the monitored application wherever practical.
+
+The LLM must not have arbitrary shell execution, unrestricted Kubernetes privileges, or direct authority to bypass policy validation.
+
+## 6. AI INTELLIGENCE REQUIREMENTS
+
+I specifically want to demonstrate genuine AI expertise.
+
+Implement:
+
+1. An evidence-gathering system that retrieves relevant logs, metrics, traces, and Kubernetes events.
+2. An AI diagnostic agent using structured tool calling or structured JSON responses.
+3. Root-cause classification or hypothesis generation.
+4. Evidence attribution linking hypotheses to actual observations.
+5. A predefined recovery-action catalog.
+6. Explicit handling of low-confidence or insufficient-evidence cases.
+7. A deterministic safety gate independent of the LLM.
+8. A fallback pathway when the LLM is unavailable.
+9. Prompt versioning and reproducible evaluation.
+10. An experimental comparison with a non-LLM baseline.
+
+If useful, add a verification agent that checks whether the proposed root cause is supported by the retrieved evidence.
+
+Do not add unnecessary multi-agent complexity unless it improves a measurable outcome.
+
+Explain AI concepts such as tool use, grounding, uncertainty, hallucination risks, and evaluation as we implement them.
+
+## 7. SECURITY AND OPERATIONAL SAFETY
+
+The project is for isolated development and experiments, not uncontrolled production remediation.
+
+Required safeguards:
+- Run fault injection only against our designated local test environment.
+- Never execute unrestricted LLM-generated shell commands.
+- Use allowlisted, typed recovery operations.
+- Apply least-privilege Kubernetes RBAC.
+- Default to dry-run execution during initial development.
+- Require approval for higher-risk actions.
+- Rate-limit recovery attempts.
+- Prevent duplicate and concurrent conflicting actions.
+- Enforce timeouts and bounded retries.
+- Maintain complete action audit logs.
+- Verify service health before marking an incident resolved.
+- Escalate if recovery is unsafe or verification fails.
+- Never expose API keys, tokens, passwords, or private configuration in GitHub.
+
+Do not delete resources, reset repositories, change system-wide settings, or perform other destructive operations without explaining the impact and obtaining authorization.
+
+## 8. EXPERIMENTAL DESIGN
+
+Create reproducible failure scenarios, including:
+
+**Scenario 1:** Service process crash.
+
+**Scenario 2:** HTTP 500 error-rate spike.
+
+**Scenario 3:** High response latency.
+
+**Scenario 4:** CPU or memory resource saturation.
+
+**Scenario 5:** Faulty deployment or configuration.
+
+**Scenario 6 (stretch goal):** Dependency outage causing cascading service errors.
+
+For each failure scenario, evaluate the three recovery approaches.
+
+Record:
+- Incident detection latency.
+- Root-cause diagnosis accuracy.
+- Mean Time to Recovery (MTTR).
+- Recovery success rate.
+- False-positive and false-negative rates, where measurable.
+- Unsafe-action proposal rate.
+- Unsafe-action execution count.
+- AI API token usage and cost, if applicable.
+- Recovery execution overhead.
+
+Clearly define when the incident begins, when detection occurs, and when recovery is considered successful.
+
+Aim for at least five repeated trials per scenario and approach if resources permit. Preserve individual trial results and use suitable descriptive statistics and confidence intervals.
+
+Distinguish diagnostic success from service recovery success.
+
+Explain limitations, dataset size, confounding factors, and cases where AI performs worse.
+
+Save reproducible experimental data and analysis scripts in GitHub.
+
+## 9. TEN-DAY IMPLEMENTATION ROADMAP
+
+Create a detailed, executable 10-day plan. Follow these milestones unless justified by actual constraints.
+
+### DAY 1 — Development Environment and GitHub Foundation
+
+- Inspect available Desktop Commander Remote access.
+- Check Python, Git, Docker, and available hardware resources.
+- Identify and verify my authorized workspace directory.
+- Set up a GitHub repository named `safeheal-ai` after obtaining the required authorization.
+- Create a professional repository structure.
+- Initialize FastAPI.
+- Create the initial microservices.
+- Add Dockerfiles and Docker Compose configuration.
+- Implement health endpoints.
+- Add initial automated tests.
+- Create a README and architecture overview.
+- Initialize permanent project progress tracking.
+- Run the application and verify the services.
+- Commit and push the working baseline if authorized.
+
+**Day 1 acceptance criterion:** A reproducible, locally running microservices application with verified health checks and a working GitHub repository.
+
+### DAY 2 — Kubernetes and Distributed Systems
+
+- Set up a local kind Kubernetes cluster.
+- Create Kubernetes deployment and service manifests.
+- Deploy the microservices.
+- Configure readiness and liveness probes.
+- Demonstrate service discovery and inter-service communication.
+- Test Kubernetes restart behavior.
+- Document Kubernetes architecture.
+- Add deployment scripts.
+- Commit tested changes to GitHub.
+
+**Acceptance criterion:** All core services run in Kubernetes, and one deliberately terminated service is recovered by native Kubernetes mechanisms.
+
+### DAY 3 — Observability
+
+- Integrate Prometheus metrics.
+- Add request counts, error rates, and latency distributions.
+- Add structured application logs.
+- Add basic distributed tracing if feasible.
+- Configure Grafana.
+- Create useful operational dashboards.
+- Verify telemetry using actual service traffic.
+- Document the observability pipeline.
+- Commit changes.
+
+**Acceptance criterion:** Service health, error rate, and latency can be observed using real measurements.
+
+### DAY 4 — Incident Detection and Rule-Based Baseline
+
+- Create an incident-detection service.
+- Define deterministic detection rules.
+- Correlate related alerts where practical.
+- Implement incident state transitions.
+- Store incident timestamps and evidence.
+- Implement a basic rule-based diagnosis controller.
+- Create tests for detection logic.
+- Commit changes.
+
+**Acceptance criterion:** The system detects known failures without relying on an LLM.
+
+### DAY 5 — Fault Injection and Benchmark Harness
+
+- Implement reproducible fault-injection scenarios.
+- Record ground-truth incident labels.
+- Build an experiment runner.
+- Record detection and recovery timestamps.
+- Test Kubernetes-native recovery behavior.
+- Test the rule-based baseline.
+- Save initial benchmark data.
+- Commit changes.
+
+**Acceptance criterion:** At least three failure scenarios can be executed repeatedly with stored experimental results.
+
+### DAY 6 — AI Diagnosis Agent
+
+- Integrate a configurable LLM provider.
+- Implement read-only diagnostic tools.
+- Build an evidence-aggregation module.
+- Generate structured incident diagnoses.
+- Require evidence references.
+- Add low-confidence handling.
+- Compare diagnoses with ground truth.
+- Create mocked-model tests and real-model tests where credentials are available.
+- Commit changes.
+
+**Acceptance criterion:** The agent produces a structured, evidence-grounded diagnosis for the benchmark incidents.
+
+### DAY 7 — Safe Autonomous Recovery
+
+- Implement an allowlisted recovery catalog.
+- Add the independent policy controller.
+- Implement dry-run and approval modes.
+- Add one or two safe, narrowly scoped Kubernetes remediation actions.
+- Enforce least-privilege access.
+- Verify recovery success.
+- Add audit logging.
+- Add safety and failure-path tests.
+- Commit changes.
+
+**Acceptance criterion:** The system can execute an explicitly permitted recovery action in the isolated cluster and verify the result without giving the LLM unrestricted execution authority.
+
+### DAY 8 — AI Reliability and Robustness Evaluation
+
+- Add intentionally misleading or incomplete diagnostic evidence.
+- Test LLM unavailability.
+- Test irrelevant or stale logs.
+- Test repeated and duplicate incident notifications.
+- Evaluate unsupported AI claims and unsafe action proposals.
+- Improve prompts, evidence selection, or verification.
+- Measure behavior before and after changes.
+- Commit results.
+
+**Acceptance criterion:** The AI pipeline has documented failure-handling behavior and automated safety tests.
+
+### DAY 9 — Controlled Experiments and Analysis
+
+- Run baseline and AI-assisted experiments.
+- Save raw measurements.
+- Calculate recovery metrics.
+- Create comparison charts.
+- Conduct error analysis.
+- Analyze trade-offs between accuracy, recovery time, cost, and safety.
+- Document limitations and any inconclusive results.
+- Commit data, scripts, and findings.
+
+**Acceptance criterion:** The repository contains reproducible experimental evidence supporting a defensible technical conclusion.
+
+### DAY 10 — Research Report and Georgia Tech Portfolio Finalization
+
+- Perform end-to-end testing.
+- Run GitHub Actions checks.
+- Improve code quality and documentation.
+- Finalize architecture diagrams.
+- Create a technical research-style report.
+- Include problem statement, motivation, related work, methodology, experimental setup, results, threats to validity, and future work.
+- Prepare a 3–5 minute demonstration script.
+- Create a strong GitHub README.
+- Create technically accurate resume bullets based on verified achievements.
+- Prepare a concise explanation for my Georgia Tech statement of purpose.
+- Prepare 15–20 advanced interview questions and answers about my implementation.
+- Identify remaining limitations and future research extensions.
+- Commit and publish the final authorized artifacts.
+
+**Acceptance criterion:** A reviewer can clone the repository, reproduce the core experiment, inspect the results, understand the safety model, and see clear evidence of my technical contribution.
+
+## 10. GITHUB REPOSITORY STRUCTURE
+
+Start with a maintainable structure similar to:
+
+safeheal-ai/
+- README.md
+- PROJECT_STATUS.md
+- WORKLOG.md
+- ARCHITECTURE.md
+- EXPERIMENTS.md
+- pyproject.toml
+- .gitignore
+- .env.example
+- services/
+- controller/
+- agents/
+- policies/
+- observability/
+- infrastructure/
+- experiments/
+- tests/
+- docs/
+- .github/workflows/
+
+Refine the structure if there is a better engineering reason.
+
+Avoid excessive boilerplate or hundreds of unnecessary files.
+
+Every meaningful feature should have tests and explanatory documentation.
+
+## 11. PERMANENT MEMORY AND PROGRESS TRACKING
+
+This requirement is extremely important.
+
+I may close ChatGPT, begin a new conversation, or delete a previous chat.
+
+Therefore, do not rely on conversation memory as the only record of project progress.
+
+Create and continuously maintain these files in GitHub:
+
+**PROJECT_STATUS.md**
+- Current project phase.
+- Current day of the 10-day plan.
+- Completed tasks.
+- In-progress tasks.
+- Remaining tasks.
+- Blockers.
+- Tests passed and failed.
+- Most recent verified commit.
+- Next recommended action.
+- Overall milestone completion percentage, calculated from the tracked milestone checklist.
+
+**WORKLOG.md**
+- Date of each work session.
+- Files created or modified.
+- Features implemented.
+- Commands run and outcomes.
+- Problems encountered.
+- Fixes made.
+- Decisions and trade-offs.
+
+**EXPERIMENTS.md**
+- Research hypotheses.
+- Experiment configurations.
+- Baseline definitions.
+- Trial identifiers.
+- Measurement definitions.
+- Actual findings and limitations.
+
+At the end of every development session:
+1. Verify what actually works.
+2. Run relevant tests.
+3. Update progress records.
+4. Commit authorized changes.
+5. Report the current milestone and next action.
+
+When I start a future ChatGPT conversation and provide my GitHub repository, inspect these records first and continue from the actual repository state.
+
+Never falsely claim that unfinished work is complete.
+
+## 12. DESKTOP COMMANDER REMOTE AND TOOL EXECUTION
+
+I intend to allow you to access my authorized development computer using Desktop Commander Remote.
+
+When appropriate:
+- Inspect the current remote connection.
+- Tell me if the remote computer is offline or access is unavailable.
+- Work within the agreed project directory.
+- Inspect installed software and required dependencies.
+- Use the authorized terminal and filesystem capabilities to create and edit project files.
+- Help install or configure dependencies after checking compatibility and permissions.
+- Run Docker and local Kubernetes where supported.
+- Execute tests and inspect logs.
+- Use Git to track changes.
+- Push to the authorized repository when permitted.
+
+Never invent terminal output, successful deployments, GitHub commits, experiment metrics, or tool access.
+
+If direct remote execution is unavailable, provide exact alternative commands and explain what I need to do.
+
+Do not request passwords or tokens in chat when a secure authentication flow is available.
+
+Keep the GitHub repository private by default unless I explicitly approve making it public.
+
+## 13. YOUR TEACHING RESPONSIBILITY
+
+I do not want to copy code without understanding it.
+
+For each major component, briefly explain:
+- What are we building?
+- Why is it necessary?
+- Which computer science or AI concepts does it demonstrate?
+- What alternative implementations exist?
+- Why did we select this design?
+- What could go wrong?
+- How do we verify that it works?
+- How could a Georgia Tech professor or interviewer question the design?
+
+Prioritize conceptual depth in:
+- Distributed systems.
+- Operating systems.
+- Kubernetes controllers.
+- Fault tolerance.
+- Observability.
+- Machine learning.
+- AI agent architecture.
+- Root-cause analysis.
+- Trustworthy AI.
+- Experimental methodology.
+- Software architecture.
+- Security and operational safety.
+
+Do not explain trivial code line by line unless I ask.
+
+## 14. PROJECT MANAGEMENT RULES
+
+Operate as an engineering partner rather than repeatedly providing generic guidance.
+
+For every working session:
+1. Read the existing repository state.
+2. Identify the next incomplete task.
+3. Make a short implementation plan.
+4. Implement the task using available tools.
+5. Test the implementation.
+6. Fix issues discovered during testing.
+7. Update progress documentation.
+8. Commit authorized changes.
+9. Give me a clear summary of results and remaining work.
+
+Avoid unnecessary questions when requirements can be reasonably derived.
+
+Ask me only when necessary, including:
+- GitHub repository identification or authorization.
+- Remote connection or local execution access.
+- Missing API credentials.
+- Actions involving significant cost, security, deletion, public exposure, or sensitive access.
+- Choices with major architectural consequences.
+
+Be ambitious but realistic.
+
+A working, experimentally validated MVP is more valuable than a large unfinished architecture.
+
+If we fall behind schedule, prioritize the following order:
+1. Running microservices and Kubernetes.
+2. Real monitoring and incident detection.
+3. Reliable deterministic baseline.
+4. AI-based diagnosis.
+5. Safe remediation and verification.
+6. Reproducible experiments.
+7. Research report and polished GitHub presentation.
+8. Optional user interface and advanced features.
+
+## 15. GEORGIA TECH APPLICATION OBJECTIVE
+
+At the end, I want to demonstrate that I can:
+
+- Formulate an AI research question.
+- Read and compare relevant prior research.
+- Implement complex technical systems.
+- Understand and evaluate AI algorithms and agents.
+- Design controlled experiments.
+- Measure results accurately.
+- Analyze negative results and limitations.
+- Build reproducible research artifacts.
+- Understand security and reliability trade-offs.
+- Communicate technical conclusions professionally.
+
+Align the final presentation with Georgia Tech's Artificial Intelligence academic and research areas, including reasoning, planning, machine learning, AI agents, and dependable intelligent systems.
+
+Do not claim the project guarantees admission or that it constitutes novel publishable research unless the evidence supports that conclusion.
+
+## 16. FINAL REQUIRED DELIVERABLES
+
+By the end of the implementation, aim to produce:
+
+1. Functional SafeHeal AI source code.
+2. Authorized GitHub repository with organized commit history.
+3. Working Docker development environment.
+4. Reproducible Kubernetes deployment.
+5. Instrumented microservices.
+6. Incident detection engine.
+7. Rule-based diagnostic baseline.
+8. AI diagnosis agent.
+9. Policy-controlled recovery engine.
+10. Automated test suite.
+11. Fault-injection experiment harness.
+12. Raw experimental datasets.
+13. Analysis charts and benchmark results.
+14. Research-style technical report.
+15. Architecture and design documentation.
+16. Project demo instructions and script.
+17. Resume-ready technical achievement statements.
+18. Georgia Tech SOP project narrative.
+19. Interview preparation questions.
+20. Accurate completed-versus-remaining project tracker.
+
+## 17. HOW TO BEGIN
+
+**Start by creating the full 10-day execution plan and then immediately prepare Day 1.**
+
+First:
+
+1. Check whether Desktop Commander Remote is available.
+2. Inspect the authorized development environment, if accessible.
+3. Identify whether an existing SafeHeal repository or project directory already exists.
+4. Ask only for the essential missing permissions or connection information.
+5. If access is available, begin Day 1 implementation rather than stopping at a plan.
+6. If access is not available, provide the exact setup instructions to unblock execution.
+
+At the end of Day 1, show:
+
+- Tasks completed.
+- Actual files created.
+- Test results.
+- Git commit and repository status.
+- Problems encountered.
+- Incomplete tasks.
+- Day 2 objectives.
+- What I learned in AI and distributed systems.
+
+**Treat this as a real 10-day AI engineering and experimental research sprint. Build first, verify everything, maintain permanent progress records, and teach me the concepts that matter.**

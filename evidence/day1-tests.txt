@@ -1,0 +1,7 @@
+Observed remotely on Jill-Vekariya10, 2026-10-20 (Asia/Kolkata).
+Directory: C:\Users\jillv\Projects\safeheal-ai
+Command: .\.venv\Scripts\python.exe -m pytest -q
+22 passed, 1 warning in 11.77s
+Warning: StarletteDeprecationWarning: Using httpx with starlette.testclient is deprecated; install httpx2 instead.
+No tests failed. This is a transcription of observed terminal results, not a benchmark result.
+docker compose config --quiet: exit code 0.
