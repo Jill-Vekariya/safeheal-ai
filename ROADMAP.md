@@ -25,4 +25,4 @@ At session start: read PROJECT_STATUS.md, WORKLOG.md, actual git state and test 
 
 ## Deferred dependencies and choices
 
-Confirm repository creation/push permission; install kind in Day 2 with scoped setup; select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.
+Private repository baseline is authorized and complete; install kind in Day 2 with scoped setup; select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.

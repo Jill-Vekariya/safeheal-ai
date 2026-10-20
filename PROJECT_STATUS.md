@@ -1,6 +1,6 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-20, Asia/Kolkata. **Version:** 1. **Phase:** Day 1, working local baseline; GitHub foundation pending.
+**Snapshot:** 2026-10-20, Asia/Kolkata. **Version:** 2. **Phase:** DAY 1 COMPLETE. Next: Day 2 Kubernetes.
 
 ## Read this first in a new chat
 
@@ -10,12 +10,12 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 
 ## Progress at this snapshot
 
-- Day 1 checklist: **11 of 13 tasks complete (84.6%)**.
-- Full daily acceptance gates: **0 of 10 complete (0%)** because Day 1 also requires a verified pushed GitHub baseline. This is a strict gate count, not an estimate of effort already spent.
+- Day 1 checklist: **13 of 13 tasks complete (100%)**.
+- Full daily acceptance gates: **1 of 10 complete (10%)**; Day 1 now has a verified private GitHub baseline and passing CI. This is a strict gate count, not an estimate of effort already spent.
 - Day 1 application runs successfully. **The whole project is NOT complete.**
 - No AI integration, Kubernetes deployment, automatic recovery or research experiments have been completed.
-- Latest verified Git commit: **none**. Git was initialized on branch `main`; no commit or remote exists yet.
-- GitHub URL: **not created**. Proposed private repository: `Jill-Vekariya/safeheal-ai`. Read-only lookup found no accessible repository under that name.
+- Verified implementation commit: `9b75e000492162de9528bb18a5ffbc7219875262` on `main`, matching the remote. This status is maintained in a subsequent documentation commit; inspect `git log -1` and `git ls-remote origin refs/heads/main` for the latest documentation SHA.
+- GitHub URL: https://github.com/Jill-Vekariya/safeheal-ai — **private**, verified through GitHub CLI. Origin: `https://github.com/Jill-Vekariya/safeheal-ai.git`.
 
 ## Current environment and artifacts
 
@@ -29,11 +29,11 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 | Docker engine / Compose | 29.8.2 / v5.5.1 |
 | Hardware | 12 logical processors, approximately 16 GiB RAM |
 | GitHub CLI | Authenticated account `Jill-Vekariya` |
-| Git author | `git config --get user.name` and `user.email` returned no configured values |
+| Git author | Repo-local `Jill-Vekariya`, `195921415+Jill-Vekariya@users.noreply.github.com`, based on authenticated GitHub login/ID |
 | kind | Not found on PATH; Day 2 prerequisite |
 | Local API docs | `http://127.0.0.1:18080/docs` on the development computer |
 | Container state | gateway, order and payment running and healthy at verification time; recheck later |
-| Archive | `SafeHeal_AI_Day1.zip`; includes source, documentation, lockfile, evidence and this status |
+| Source backup | Current source/status in the private GitHub repository; earlier `SafeHeal_AI_Day1.zip` is a pre-publication snapshot with older status |
 
 ## Day 1 checklist
 
@@ -47,9 +47,9 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 8. [x] Run automated tests: 22 passed, 0 failed, 1 dependency deprecation warning.
 9. [x] Build/start containers and verify live health/readiness and end-to-end order flow.
 10. [x] Create README, architecture, 10-day roadmap, experiment protocol, worklog and portable status.
-11. [x] Initialize local Git branch `main` and add a CI workflow file (workflow not executed on GitHub).
-12. [ ] Confirm Git author identity and create/verify the initial source commit.
-13. [ ] Obtain explicit authorization to create private GitHub repository, push baseline, verify remote commit and CI.
+11. [x] Initialize local Git branch `main`, add CI and verify successful GitHub Actions execution.
+12. [x] Configure repository-local GitHub identity and create/verify initial source commit.
+13. [x] User instructed completion after the authorization request; create private GitHub repository, push baseline and verify visibility, remote SHA and passing CI.
 
 ## Verified tests and actual results
 
@@ -62,6 +62,16 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 - `docker compose ps`: all three service containers healthy. Only gateway exposed, bound to `127.0.0.1:18080`.
 - Tests cover liveness independence, validation, simulated payments, dependency errors/timeouts, malformed responses, receipt mismatch, readiness and correlation propagation. These are engineering checks, not research benchmark trials.
 
+## GitHub verification
+
+- Authenticated account: Jill-Vekariya, account ID 195921415.
+- Private repository created and initial branch pushed successfully.
+- Local implementation SHA and `refs/heads/main` matched: `9b75e000492162de9528bb18a5ffbc7219875262`.
+- GitHub Actions run **39399733684**: **completed / success** on Ubuntu/Python 3.12; dependency installation, package installation and pytest steps all passed.
+- Run URL: https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39399733684
+- Day 1 blockers: **none**. Existing non-failing Starlette deprecation warning remains a maintenance item.
+- Docker services were rechecked after publication and remained healthy.
+
 ## Implemented design
 
 Gateway -> order -> payment over HTTP, with one shared application factory selected by SERVICE_ROLE. Each container runs as non-root with dropped capabilities and a read-only root filesystem. Payment creates synthetic receipts only. No external money movement or API credentials are used.
@@ -70,24 +80,25 @@ All items have a synthetic fixed price of 1000 cents. Order/payment records are 
 
 ## Exact next action
 
-Ask the user to authorize creation/push of **private** `Jill-Vekariya/safeheal-ai` and confirm the Git commit identity (GitHub profile name and verified GitHub noreply email is an option; retrieve it through authenticated GitHub access rather than inventing an address). This authorization is specifically required by sections 9, 11, 12 and 14 of the supplied master specification.
+**Continue with Day 2: Kubernetes. Day 1 is complete.**
 
-After authorization:
+1. Reconnect to the development computer; inspect PROJECT_STATUS.md, WORKLOG.md, `git status`, current HEAD and remote before making changes. Do not reset or overwrite newer work.
+2. Recheck Docker health, resources and availability of kind/kubectl. kind was missing from PATH at the initial inspection.
+3. Prepare a scoped kind installation and a dedicated local `safeheal-dev` cluster; avoid system-wide changes without the required authorization.
+4. Add namespace, deployments/services, liveness/readiness probes and reproducible deployment scripts. Use the already tested application image.
+5. Verify gateway -> order -> payment communication inside Kubernetes. Explain scheduling, service discovery and probes.
+6. In the designated isolated environment, demonstrate a controlled process failure and native Kubernetes recovery, preserving commands, timestamps and observations.
+7. Update the status/worklog, run relevant checks, commit and push authorized changes, and deliver a new portable status file.
 
-1. Reconnect to the listed computer and read the actual folder, this file, WORKLOG.md and `git status`.
-2. Configure author identity **only in this repository**, using confirmed details.
-3. Review/stage source, docs and evidence; exclude `.venv`, local secrets and bootstrap transfer JSON.
-4. Commit the verified Day 1 baseline; record its SHA. Create the private repository and push using authenticated GitHub CLI; verify visibility, remote SHA and CI.
-5. Update this status and worklog, supply an updated status download, and mark the Day 1 gate complete only when its acceptance evidence exists.
-6. Begin Day 2: verify/install kind as authorized, create a designated local test cluster, deploy services with liveness/readiness probes, and test native recovery under controlled conditions.
+GitHub creation and private baseline push were authorized by the user's follow-up instruction to finish Day 1 after the explicit authorization request. No further permission is needed to repeat those already authorized baseline actions. Keep the repository private. Public publishing, destructive changes and significant paid calls still require the appropriate authorization.
 
-Do not ask for passwords or tokens in chat. Use existing authenticated tools or secure connection flows. If the computer is offline, say so and use the archive for inspection; do not claim remote execution.
+Do not ask for passwords or tokens in chat. If the computer is offline, report it and use the authorized repository for inspection; never claim remote execution that did not occur.
 
 ## Remaining 10-day roadmap / acceptance gates
 
 | Gate | Status | Required outcome |
 |---|---|---|
-| Day 1: foundation | In progress | Tested running microservices AND working private GitHub baseline |
+| Day 1: foundation | COMPLETE | Tested running microservices AND working private GitHub baseline |
 | Day 2: Kubernetes | Not started | kind cluster, deployments/services/probes, service discovery and observed native crash recovery |
 | Day 3: observability | Not started | Real Prometheus error/latency/request metrics, JSON logs, Grafana; tracing if feasible |
 | Day 4: deterministic detector | Not started | Rules, incident lifecycle, timestamps/evidence, SQLite and rule diagnosis with tests |

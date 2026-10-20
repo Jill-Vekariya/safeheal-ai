@@ -10,3 +10,4 @@ build/
 dist/
 *.log
 bootstrap-*.json
+evidence/compose-build.txt

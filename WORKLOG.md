@@ -26,3 +26,14 @@ Issues resolved: created destination directory before remote file transfer after
 Open items: user authorization for private GitHub creation/push, confirmed commit author identity, initial commit, remote verification and CI. All Days 2–10 remain open. Containers left running for the user to inspect. See README for the scoped stop command.
 
 No experimental findings yet. Latest verified commit: none.
+
+
+## 2026-10-20 — Day 1 completion follow-up
+
+User said “day 1 complete” after the private-repository/commit authorization request; proceeded to finish the specified baseline. Queried authenticated GitHub login and account ID, configured repo-local author name and GitHub noreply email; no global Git settings changed.
+
+Staged the 20 project files explicitly, checked staged whitespace and committed baseline `9b75e000492162de9528bb18a5ffbc7219875262`. Created `Jill-Vekariya/safeheal-ai` as private, pushed main, and verified private visibility and matching local/remote SHA. GitHub Actions run 39399733684 completed successfully, including installation and pytest on Ubuntu/Python 3.12. Rechecked all three local containers: healthy.
+
+Updated PROJECT_STATUS.md to version 2: Day 1 13/13, full acceptance gates 1/10 (10%), next Day 2. Updated ROADMAP.md; excluded only the transient local Compose build transcript via .gitignore (summary evidence remains tracked). No application code changes or new research results in this follow-up. Documentation checkpoint is committed separately from the tested implementation baseline.
+
+Day 1 blockers resolved. Remaining project work: Days 2–10. Next action: scoped kind/Kubernetes preparation and service deployment.
