@@ -5,6 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: safeheal-ai
     safeheal.ai/environment: local-test
+    safeheal.ai/project: safeheal-ai
     pod-security.kubernetes.io/enforce: restricted
     pod-security.kubernetes.io/enforce-version: v1.36
     pod-security.kubernetes.io/audit: restricted

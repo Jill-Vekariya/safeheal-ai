@@ -23,7 +23,7 @@ CLUSTER = NAMESPACE = "safeheal-dev"
 CONTEXT = "kind-safeheal-dev"
 NODE = "safeheal-dev-control-plane"
 ROLES = ("payment", "order", "gateway")
-LABELS = {"safeheal.ai/environment": "local-test", "app.kubernetes.io/part-of": "safeheal-ai"}
+LABELS = {"safeheal.ai/environment": "local-test", "safeheal.ai/project": "safeheal-ai"}
 KUBECONFIG = ROOT / ".local" / "kubeconfig"
 KIND_VERSION = "v0.33.0"
 NODE_IMAGE = "kindest/node:v1.36.4@sha256:099e049362a1526b2db71494e1947aae99bd16290d7c895f2b7ea312e3cbfaed"
@@ -145,9 +145,10 @@ def setup():
         print(f"Creating {CLUSTER} using {NODE_IMAGE}", flush=True)
         result = run([kind, "create", "cluster", "--name", CLUSTER,
                       "--config", ROOT / "infrastructure/kind.yaml", "--image", NODE_IMAGE,
-                      "--kubeconfig", KUBECONFIG, "--wait", "180s"], timeout=900, live=True)
+                      "--kubeconfig", KUBECONFIG, "--wait", "180s", "--retain"], timeout=900, live=True)
         print(result, flush=True)
     guard_cluster(namespace=False)
+    kubectl("wait", "--for=condition=Ready", "node/" + NODE, "--timeout=180s", timeout=200)
     print(kubectl("get", "nodes", "-o", "wide"), flush=True)
 
 

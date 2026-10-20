@@ -6,4 +6,4 @@ nodes:
   - role: control-plane
     labels:
       safeheal.ai/environment: local-test
-      app.kubernetes.io/part-of: safeheal-ai
+      safeheal.ai/project: safeheal-ai
