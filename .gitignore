@@ -11,3 +11,7 @@ dist/
 *.log
 bootstrap-*.json
 evidence/compose-build.txt
+
+# Local Kubernetes credentials and downloaded tools
+.local/
+.tools/

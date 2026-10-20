@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  namespace: safeheal-dev
+  labels:
+    app.kubernetes.io/name: payment
+    app.kubernetes.io/part-of: safeheal-ai
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 180
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: payment
+      app.kubernetes.io/part-of: safeheal-ai
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: payment
+        app.kubernetes.io/part-of: safeheal-ai
+    spec:
+      serviceAccountName: safeheal-workload
+      automountServiceAccountToken: false
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 15
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: payment
+          image: safeheal-ai:day2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+          env:
+            - name: SERVICE_ROLE
+              value: payment
+            - name: PYTHONDONTWRITEBYTECODE
+              value: "1"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            periodSeconds: 5
+            timeoutSeconds: 4
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: Memory
+            sizeLimit: 16Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+  namespace: safeheal-dev
+  labels:
+    app.kubernetes.io/name: payment
+    app.kubernetes.io/part-of: safeheal-ai
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: payment
+    app.kubernetes.io/part-of: safeheal-ai
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http

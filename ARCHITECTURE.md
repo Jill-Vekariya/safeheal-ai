@@ -1,6 +1,6 @@
 # Architecture
 
-## Implemented Day 1 data plane
+## Implemented application data plane
 
 The gateway forwards validated orders to the order service. The order service creates an order ID, calculates a fixed synthetic price, calls payment and verifies the returned receipt. The payment service issues a simulated receipt. Each runs in its own container using the same app factory selected with SERVICE_ROLE.
 
@@ -16,4 +16,21 @@ The control plane will be separate from the monitored application. No model will
 
 Compose proves the application baseline before Kubernetes adds orchestration complexity. A shared service factory reduces boilerplate; services remain independently deployed. Recursive readiness is suitable for this small dependency chain but can amplify probes in a larger graph, where cached/local readiness decisions should be evaluated.
 
-Day 1 is not fault injection, an incident detector, an AI agent or an automatic recovery platform. Those are separate acceptance gates.
+Day 2 adds a dedicated kind cluster, Kubernetes Deployments/Services/probes, and a guarded native container recovery demonstration. An incident detector, AI agent and policy-controlled executor remain separate acceptance gates.
+
+
+## Kubernetes orchestration
+
+Each service has one Deployment and a ClusterIP Service in `safeheal-dev`.
+CoreDNS provides service names; the kubelet manages container lifecycle and probes.
+Deployment/ReplicaSet controllers maintain Pod count, while the kubelet restarts
+containers within existing Pods under `restartPolicy: Always`.
+
+The single kind node shares control-plane and application workloads on the developer
+machine. It demonstrates real process and HTTP boundaries but not node-level high
+availability. Each workload has resource requests/limits, a non-root user, dropped
+capabilities, read-only root filesystem, bounded temporary storage and no API token.
+No network policy enforcement or public ingress is configured.
+
+[Day 2 architecture, diagram, deployment and recovery runbook](docs/KUBERNETES.md)
+contains the full implementation, exact commands and limitations.

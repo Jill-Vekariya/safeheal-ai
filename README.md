@@ -2,7 +2,7 @@
 
 An isolated research testbed for evidence-grounded AI diagnosis and policy-controlled recovery of distributed services.
 
-**Current scope:** Day 1 synthetic application foundation. AI diagnosis, Kubernetes recovery and benchmark results are not implemented yet. See PROJECT_STATUS.md for verified progress.
+**Current scope:** Synthetic gateway/order/payment application with a scoped kind deployment and native Kubernetes recovery demonstration. See PROJECT_STATUS.md for verified acceptance results. AI diagnosis and controlled benchmark comparisons remain future work.
 
 ## Run on Windows
 
@@ -25,6 +25,30 @@ API: http://127.0.0.1:18080/docs. Gateway liveness: `/healthz`; full dependency 
 `POST /orders` accepts `{"item_id":"demo","quantity":2}`. The synthetic catalogue charges 1000 cents per item and creates a simulated payment receipt. No real payment, persistence or production authentication is provided. Requests create fresh IDs; POSTs are not retried because idempotency has not been implemented.
 
 For logs: `docker compose logs --tail 100`. To stop only this project's containers without deleting them: `docker compose stop`.
+
+## Run in Kubernetes (Day 2)
+
+From the same project directory:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/k8s.py install-kind
+.\.venv\Scripts\python.exe scripts/k8s.py setup
+.\.venv\Scripts\python.exe scripts/k8s.py deploy
+.\.venv\Scripts\python.exe scripts/k8s.py verify
+.\.venv\Scripts\python.exe scripts/k8s.py recovery
+.\.venv\Scripts\python.exe scripts/k8s.py recovery --execute
+```
+
+The last command deliberately stops the isolated payment container and verifies
+native recovery. Omit `--execute` for a dry run. It does not delete a Pod or perform
+a manual restart. Evidence is saved in `evidence/day2/`. Use
+`python scripts/k8s.py port-forward` to reach the Kubernetes gateway at
+http://127.0.0.1:18081/docs; the Compose gateway stays on 18080.
+
+See [Kubernetes architecture and runbook](docs/KUBERNETES.md) for prerequisites,
+probe semantics, safeguards, troubleshooting, limitations, and interview concepts.
+The scripts always use a project-local kubeconfig and the dedicated `safeheal-dev`
+cluster/namespace. Applications have no Kubernetes API token or RoleBinding.
 
 ## Design and learning
 
