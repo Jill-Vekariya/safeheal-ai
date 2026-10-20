@@ -37,3 +37,24 @@ Staged the 20 project files explicitly, checked staged whitespace and committed 
 Updated PROJECT_STATUS.md to version 2: Day 1 13/13, full acceptance gates 1/10 (10%), next Day 2. Updated ROADMAP.md; excluded only the transient local Compose build transcript via .gitignore (summary evidence remains tracked). No application code changes or new research results in this follow-up. Documentation checkpoint is committed separately from the tested implementation baseline.
 
 Day 1 blockers resolved. Remaining project work: Days 2–10. Next action: scoped kind/Kubernetes preparation and service deployment.
+
+## 2026-10-20 to 2026-10-21 — Day 2 Kubernetes completion
+
+The user authorized Day 2 implementation, native recovery testing, documentation, tested commits and a completion status file, using Desktop Commander. Reused the canonical Windows checkout and left unrelated Docker projects intact. Installed checksum-verified kind v0.33.0 into `.tools`, used kubectl v1.36.1, and created the single-node `safeheal-dev` cluster with pinned Kubernetes v1.36.4 image. All cluster commands use `.local/kubeconfig` and context `kind-safeheal-dev`; the default kubeconfig was not changed.
+
+Added kind config and Kustomize manifests for namespace, token-free ServiceAccount, three Deployments and three ClusterIP Services. Added startup/readiness/liveness probes, resource requests/limits, non-root restricted security settings and an in-memory temporary directory. Added `scripts/k8s.py`, `scripts/in_cluster_check.py`, 18 safety tests, the Kubernetes architecture/runbook, README/architecture updates and a GitHub Actions live-kind job. `.tools` and `.local` are excluded from Git and Docker builds.
+
+Initial kind bootstrap failed because our config used the reserved `app.kubernetes.io/part-of` label in kubelet node-registration flags. The diagnostic journal showed the rejected label. Corrected node ownership labels to `safeheal.ai/*`, retained failed bootstrap diagnostics and streamed build/load progress. Recreated only the verified empty failed kind node created during this task. Corrected setup reached Ready and deploy built/loaded `safeheal-ai:sha256-34edfc9c74355d5b`; all Deployments became 1/1 Ready. No application change was required.
+
+Committed/pushed implementation `cf769a7aa9c523afef129cdad3f9ff966f1fc9b5`; its kind CI failed at the label issue. Fix `43abb2318280ff455ad9ab56e9359af9f5531eed` passed run 39470648959, including unit tests and Linux kind deployment, discovery and native recovery. Private visibility and matching remote SHA were rechecked. A tool credit interruption and later offline computer delayed local acceptance verification; resumed after the user reported the device online. Existing deployed services were healthy, so no cluster recreation was needed on reconnection.
+
+Final Windows checks on 2026-10-21 local time (UTC records dated 2026-10-20):
+
+- Unit/safety suite: **40 passed, 1 existing dependency warning in 16.06 s**, exit 0; saved `evidence/day2/tests.txt`.
+- Discovery/HTTP check: **PASS**, exit 0. Short names and FQDNs matched ClusterIPs, all health/readiness checks passed, an order returned HTTP 201 / 2000 cents / confirmed, and matching POST logs existed in all three services. Raw record: `evidence/day2/verification-20261020T223105-a896d6.json`.
+- Recovery dry run: passed target checks without injecting a fault.
+- Executed trial `day2-native-d15965119813`: stopped exactly the validated payment CRI container. Exit 137 was observed; kubelet replaced the container inside the same Pod UID. Restart count rose 0 -> 1; gateway/order UIDs and restart counts stayed unchanged.
+- Payment first observed Ready after 6.391 s. Three following DNS/health/readiness/order checks passed with two-second gaps. End-to-final-check interval 13.844 s includes API/CLI/poll/check overhead and is not benchmark MTTR. Raw record: `evidence/day2/recovery-20261020T223144-4257ee.json`.
+- Saved implementation CI metadata in `evidence/day2/implementation-ci.json`.
+
+Updated PROJECT_STATUS.md to version 3, Day 2 9/9 and full gates 2/10 (20%); updated ROADMAP.md and EXPERIMENTS.md. Evidence and completion documentation are committed separately from the tested implementation. The cluster and existing Compose stack remain running for inspection. Day 2 has no blockers; next is Day 3 observability. This proves a native container restart, not liveness-failure thresholds, Pod replacement, high availability or AI effectiveness.

@@ -1,5 +1,12 @@
 # Day 2: Kubernetes and distributed systems
 
+Day 2 acceptance passed on the Windows development computer on 2026-10-21 local
+time and in Linux GitHub Actions run 39470648959. All three services were Ready;
+DNS, HTTP and correlated logs passed. A deliberate payment-container stop produced
+exit 137 and a native restart in the same Pod (restart count 0 -> 1), followed by
+three successful orders. Raw evidence is under `evidence/day2/`; see
+`EXPERIMENTS.md` for measurement limits and `PROJECT_STATUS.md` for the handoff.
+
 ## Run the local cluster
 
 Prerequisites: Python 3.11+, Git, Docker running Linux containers, and a compatible
@@ -157,6 +164,11 @@ enforcement. It is an isolated local lab, not production security hardening.
 
 - Missing Docker/Linux engine: start Docker Desktop and select Linux containers.
 - Checksum mismatch: stop; inspect the expected release and downloaded tool.
+- Kubelet rejects node labels during bootstrap: use private `safeheal.ai/*` labels
+  in kind node-registration configuration. Application labels such as
+  `app.kubernetes.io/part-of` remain valid on workloads; kubelet restricts reserved
+  label namespaces when registering a node. This caused the first setup failures
+  and was corrected before the successful local and CI deployments.
 - Image pull/load failure: inspect Docker connectivity and disk space; do not reset
   unrelated Docker projects. The script preserves an existing cluster on failure.
 - Unready application: inspect Pod events and logs; confirm service labels, DNS,

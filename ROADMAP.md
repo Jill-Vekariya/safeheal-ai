@@ -2,6 +2,8 @@
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
+**Verified progress: Days 1 and 2 complete, 2/10 gates (20%), as of 2026-10-21 Asia/Kolkata. Next: Day 3 observability.** Day 2 evidence is in `evidence/day2/`; see PROJECT_STATUS.md for actual results.
+
 | Day | Implementation tasks | Acceptance evidence |
 |---|---|---|
 | 1 | Inspect environment; create gateway/order/payment; health/readiness; Dockerfile/Compose; tests; documentation/progress; private GitHub baseline | Running three-service stack; health and order smoke pass; tests pass; authorized private repository and verified pushed commit |
@@ -25,4 +27,4 @@ At session start: read PROJECT_STATUS.md, WORKLOG.md, actual git state and test 
 
 ## Deferred dependencies and choices
 
-Private repository baseline is authorized and complete; install kind in Day 2 with scoped setup; select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.
+Private repository baseline and scoped kind setup are complete. Reuse the existing `safeheal-dev` cluster after checking its current state. Select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.
