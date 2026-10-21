@@ -1,12 +1,12 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-21, Asia/Kolkata; evidence timestamps are UTC. **Version:** 5.2. **Phase:** DAY 4 COMPLETE - deterministic detector. Next: Day 5 fault benchmark.
+**Snapshot:** 2026-10-21, Asia/Kolkata; evidence timestamps are UTC. **Version:** 5.3. **Phase:** DAY 4 COMPLETE - deterministic detector. Next: Day 5 fault benchmark.
 
 ## Current Day 4 delivery checkpoint
 
 Day 4 delivery is tracked in [pull request #1](https://github.com/Jill-Vekariya/safeheal-ai/pull/1). The reviewed implementation is `87e2ec25e9264fe0d48b3e5fae97c39762dc03e4`; both jobs passed [CI run 39640164313](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39640164313). Windows and Linux suites passed 120 tests. The PR runs the full suite again, including the real Kubernetes/Prometheus fault acceptance; use the PR's current checks and merge record for its final integration status.
 
-The user requested completion of the GitHub compare/pull-request step. PR #1 preserves the canonical history and evidence. The repository remains private. The source changes in this publication checkpoint are documentation only; detector behavior and thresholds are unchanged. Earlier statements about a pending branch publication or blocked direct main push below describe historical checkpoints and do not override the current PR record.
+The user requested reliable successful GitHub checks. An earlier PR run (39646024404) failed after native recovery when the first HTTP probe received connection refused despite Pod Ready. The original failed log, run metadata, and raw recovery JSON are retained under evidence/day4. The recovery harness now uses a bounded 90-second GET-only Service-readiness wait, followed by the unchanged identity assertions and three unretried end-to-end order checks. The CRI stop remains one-shot; detector behavior and thresholds are unchanged. Windows verification: **128 passed**, one existing dependency warning, in evidence/day4/windows-readiness-tests.txt. PR #1 reruns the full Linux/Kubernetes suite; check its latest commit and results before claiming final CI success. The repository remains private. Earlier publication/merge notes below are historical checkpoints.
 
 Full acceptance gates remain **4/10 (40%)**. Days 5-10 are incomplete. Next: controlled fault benchmark, not additional Day 4 implementation. Recheck remote main, the latest Actions run and the local checkout before starting the next day.
 

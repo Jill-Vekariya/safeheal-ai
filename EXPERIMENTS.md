@@ -141,3 +141,8 @@ Changed only harness readiness: require eligible current telemetry and no active
 ## Day 4 publication checkpoint - 2026-10-21
 
 GitHub PR #1 tracks integration of the completed deterministic detector and retained engineering evidence: https://github.com/Jill-Vekariya/safeheal-ai/pull/1. The implementation at 87e2ec25e9264fe0d48b3e5fae97c39762dc03e4 passed both jobs in CI run 39640164313. The publication documentation does not change rules, thresholds, fault behavior, or experimental outcomes. No additional local trial or benchmark was conducted; previous failed attempts remain intact. Final PR/main CI state is available from GitHub. Controlled research benchmarks remain Day 5 work.
+
+
+## Native recovery verification settling - 2026-10-21
+
+PR run 39646024404 remains a failed engineering acceptance: post-restart HTTP Service access was refused after Pod Ready. Original JSON, log and run metadata are retained. The developer harness now records bounded GET-only readiness attempts before the unchanged three end-to-end order checks; failed final checks still fail the trial, with no POST or fault retry. This corrects readiness verification, not production recovery, detector thresholds, or a benchmark outcome. Eight regression cases bring Windows tests to 128 passing. Fresh Linux/Kubernetes correction CI is verified after publication through PR #1. No new controlled-trial dataset or model call was produced.

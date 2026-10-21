@@ -204,3 +204,12 @@ kill grace keeps the intended fault unchanged. The host subprocess remains bound
 A timed-out stop is an ambiguous execution outcome and fails acceptance; the script never retries
 that injection automatically. Raw errors remain in evidence. See WORKLOG.md for the retained
 39588507641 CI deadline failure and subsequent correction checks.
+
+
+## HTTP readiness after a native restart
+
+Pod Ready conditions alone do not establish that Service routing has converged. PR run 39646024404 reached the original post-recovery HTTP check after the payment restart, then failed with connection refused. The original failed JSON and log are retained under evidence/day4/ci-failure-39646024404* and ci-failure-recovery-20261021T174308-4dbb2d.json.
+
+After Kubernetes readiness, the developer recovery harness now waits at most 90 seconds for actual DNS, healthz, and readyz checks through the Service addresses. This settling phase uses GET requests only and saves every failed attempt. Individual subprocesses are bounded by the remaining deadline (at most 30 seconds each). A persistent outage still fails acceptance.
+
+After the read-only settling phase, the harness rechecks Pod/container identities and requires the existing three successful end-to-end order checks. Those POST requests are not retried. The scoped CRI stop is still executed once; no fault retry, detector threshold change, or skipped acceptance step is introduced. This wait is part of developer verification, not automatic remediation or a controlled benchmark result.

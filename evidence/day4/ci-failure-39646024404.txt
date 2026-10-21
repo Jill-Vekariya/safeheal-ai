@@ -1,0 +1,94 @@
+kubernetes	Check dry-run then native container recovery	∩╗┐2026-10-21T17:43:07.2957202Z ##[group]Run python scripts/k8s.py recovery
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.2957682Z ^[[36;1mpython scripts/k8s.py recovery^[[0m
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.2958098Z ^[[36;1mpython scripts/k8s.py recovery --execute^[[0m
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3016881Z shell: /usr/bin/bash -e {0}
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3017106Z env:
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3017392Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3017760Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3018121Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3018435Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3018738Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3019041Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:07.3019298Z ##[endgroup]
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0296184Z {
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0305482Z   "dry_run": true,
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0315425Z   "target": {
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0335437Z     "pod": "payment-6b5b598dcd-579sj",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0346398Z     "uid": "6e70ac5f-13dd-4dae-a9d7-a6f3f3f32d72",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0365394Z     "node": "safeheal-dev-control-plane",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0365795Z     "container": "payment",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0366489Z     "container_id": "containerd://1be11e0da530db04afa8dd1a9420ab016895dfdcc1d89683e9cef32f092b3c09",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0367481Z     "image_id": "docker.io/library/import-2026-10-21@sha256:b98513e6a2a4028c1342c5de228584a49286c49194d4c1c936098b25d344b896",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0368166Z     "restart_count": 0,
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0368457Z     "ready": true,
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0368722Z     "state": {
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0368971Z       "running": {
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0369245Z         "startedAt": "2026-10-21T17:42:57Z"
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0369594Z       }
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0369811Z     },
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0370464Z     "last_state": {}
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0370731Z   },
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0370945Z   "command": [
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0371185Z     "docker",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0371404Z     "exec",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0371665Z     "safeheal-dev-control-plane",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0371987Z     "crictl",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0372231Z     "--timeout=30s",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0372481Z     "stop",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0372703Z     "--timeout",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0372941Z     "0",
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0373321Z     "1be11e0da530db04afa8dd1a9420ab016895dfdcc1d89683e9cef32f092b3c09"
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0373796Z   ],
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0374247Z   "impact": "One payment container stops; kubelet restarts it. Brief order failures possible."
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:08.0374764Z }
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9828503Z Evidence: evidence/day2/recovery-20261021T174308-4dbb2d.json
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9832422Z ERROR: Command failed (1): kubectl --kubeconfig /home/runner/work/safeheal-ai/safeheal-ai/.local/kubeconfig --context kind-safeheal-dev --request-timeout=30s -n safeheal-dev exec -i gateway-d654775-tk679 -c gateway -- env CHECK_REQUEST_ID=day2-native-0c48be191f98-after-0 python -
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9833906Z
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9834137Z Traceback (most recent call last):
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9842460Z   File "/usr/local/lib/python3.12/urllib/request.py", line 1357, in do_open
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9843412Z     h.request(req.get_method(), req.selector, req.data, headers,
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9844090Z   File "/usr/local/lib/python3.12/http/client.py", line 1386, in request
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9844708Z     self._send_request(method, url, body, headers, encode_chunked)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9845598Z   File "/usr/local/lib/python3.12/http/client.py", line 1432, in _send_request
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9846212Z     self.endheaders(body, encode_chunked=encode_chunked)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9846807Z   File "/usr/local/lib/python3.12/http/client.py", line 1381, in endheaders
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9847415Z     self._send_output(message_body, encode_chunked=encode_chunked)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9848062Z   File "/usr/local/lib/python3.12/http/client.py", line 1141, in _send_output
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9848950Z     self.send(msg)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9849404Z   File "/usr/local/lib/python3.12/http/client.py", line 1085, in send
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9849943Z     self.connect()
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9850385Z   File "/usr/local/lib/python3.12/http/client.py", line 1051, in connect
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9850928Z     self.sock = self._create_connection(
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9851356Z                 ^^^^^^^^^^^^^^^^^^^^^^^^
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9851951Z   File "/usr/local/lib/python3.12/socket.py", line 865, in create_connection
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9852553Z     raise exceptions[0]
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9853134Z   File "/usr/local/lib/python3.12/socket.py", line 850, in create_connection
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9853720Z     sock.connect(sa)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9854161Z ConnectionRefusedError: [Errno 111] Connection refused
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9854570Z
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9855594Z During handling of the above exception, another exception occurred:
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9856098Z
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9856315Z Traceback (most recent call last):
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9856828Z   File "<stdin>", line 39, in <module>
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9857289Z   File "<stdin>", line 18, in main
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9857850Z   File "/usr/local/lib/python3.12/urllib/request.py", line 215, in urlopen
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9858456Z     return opener.open(url, data, timeout)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9858898Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9859469Z   File "/usr/local/lib/python3.12/urllib/request.py", line 515, in open
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9860022Z     response = self._open(req, data)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9860399Z                ^^^^^^^^^^^^^^^^^^^^^
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9860918Z   File "/usr/local/lib/python3.12/urllib/request.py", line 532, in _open
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9861564Z     result = self._call_chain(self.handle_open, protocol, protocol +
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9862138Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9863015Z   File "/usr/local/lib/python3.12/urllib/request.py", line 492, in _call_chain
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9863644Z     result = func(*args)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9864024Z              ^^^^^^^^^^^
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9864598Z   File "/usr/local/lib/python3.12/urllib/request.py", line 1386, in http_open
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9865433Z     return self.do_open(http.client.HTTPConnection, req)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9866000Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9866639Z   File "/usr/local/lib/python3.12/urllib/request.py", line 1360, in do_open
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9867264Z     raise URLError(err)
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9867794Z urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9868396Z command terminated with exit code 1
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9868711Z
+kubernetes	Check dry-run then native container recovery	2026-10-21T17:43:20.9936274Z ##[error]Process completed with exit code 1.

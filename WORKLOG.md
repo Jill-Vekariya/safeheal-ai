@@ -174,3 +174,14 @@ Changed only harness readiness: require eligible current telemetry and no active
 User requested completing the GitHub compare/pull-request banner. Verified a clean canonical day4-incident-baseline checkout, private repository, remote branch at 87e2ec25e9264fe0d48b3e5fae97c39762dc03e4, and no divergence from the Day 3 base (main behind by the two intended Day 4 commits). Both jobs in CI run 39640164313 succeeded, including real Kubernetes/Prometheus acceptance. Created PR #1: https://github.com/Jill-Vekariya/safeheal-ai/pull/1.
 
 Updated the current handoff to link the review/merge record and distinguish historical pending-publication notes. This checkpoint changes documentation only. PR and subsequent main checks establish final integration status; do not infer success from a queued run. No new local fault or model call was performed. Full project gates remain 4/10; Day 5 is next.
+
+
+## 2026-10-21 - Bound Service-readiness settling after native recovery
+
+User requested successful GitHub checks. Latest candidate 0498156 had green push/PR runs, but inspection found older PR run 39646024404 failed in native recovery: after the scoped container stop/restart and Pod Ready waits, the first Service HTTP probe failed with connection refused. Retained the original run metadata/log and recovery-20261021T174308-4dbb2d.json under evidence/day4. Passing later runs do not erase that failure or prove absence of a readiness propagation race.
+
+Added a 90-second, monotonic, read-only settling phase that checks DNS, healthz and readyz through actual Service addresses. Each attempt shares one bounded subprocess budget across Pod lookup and exec, capped at 30 seconds or the remaining overall deadline. Failed attempts remain in the raw recovery record; persistent unavailability fails closed. After settling, all existing Pod/container identity checks and three unretried full order checks remain mandatory. Fault injection remains one validated CRI stop, with no retry. Runtime application code, detector rules, and workflow acceptance steps are unchanged.
+
+Eight regression cases cover GET-only versus normal one-POST mode, transient readiness failures, persistent timeout, malformed/unconfirmed probe responses, shared timeout accounting, and failure of the final order check without retry or false success. Windows full suite: 128 passed, one existing warning; evidence/day4/windows-readiness-tests.txt. Full Linux and fresh-kind acceptance are checked after the correction is pushed through PR #1. No additional fault was injected into the user's existing local cluster. Main merge still depends on explicit authorization after the earlier automatic approval rejection.
+
+Text console transcripts normalize line endings and trailing whitespace for Git review; the downloaded raw failure JSON is preserved unchanged.

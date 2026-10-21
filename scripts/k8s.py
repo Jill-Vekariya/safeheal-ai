@@ -99,8 +99,8 @@ def kubectl(*args, stdin=None, timeout=90):
                 "--request-timeout=30s", *args], stdin=stdin, timeout=timeout)
 
 
-def kjson(*args):
-    return json.loads(kubectl(*args, "-o", "json"))
+def kjson(*args, timeout=90):
+    return json.loads(kubectl(*args, "-o", "json", timeout=timeout))
 
 
 def guard_labels(obj, label):
@@ -177,9 +177,10 @@ def deploy():
     print(kubectl("-n", NAMESPACE, "get", "pods,services", "-o", "wide"), flush=True)
 
 
-def pod_for(role):
+def pod_for(role, *, timeout=90):
     pods = kjson("-n", NAMESPACE, "get", "pods", "-l",
-                 f"app.kubernetes.io/name={role},app.kubernetes.io/part-of=safeheal-ai")["items"]
+                 f"app.kubernetes.io/name={role},app.kubernetes.io/part-of=safeheal-ai",
+                 timeout=timeout)["items"]
     active = [p for p in pods if not p["metadata"].get("deletionTimestamp")]
     require(len(active) == 1, f"Expected one active {role} Pod; wait for rollout completion")
     return active[0]
@@ -196,12 +197,42 @@ def pod_state(pod):
             "state": state["state"], "last_state": state.get("lastState", {})}
 
 
-def check_services(request_id):
-    gateway = pod_for("gateway")["metadata"]["name"]
+def check_services(request_id, *, readiness_only=False, timeout=90):
+    deadline = time.monotonic() + timeout
+    gateway = pod_for("gateway", timeout=timeout)["metadata"]["name"]
     script = (ROOT / "scripts/in_cluster_check.py").read_text(encoding="utf-8")
+    remaining = deadline - time.monotonic()
+    require(remaining > 0, "Service check deadline expired during Pod lookup")
     output = kubectl("-n", NAMESPACE, "exec", "-i", gateway, "-c", "gateway", "--",
-                     "env", f"CHECK_REQUEST_ID={request_id}", "python", "-", stdin=script)
+                     "env", f"CHECK_REQUEST_ID={request_id}",
+                     f"CHECK_READINESS_ONLY={int(readiness_only)}", "python", "-",
+                     stdin=script, timeout=remaining)
     return json.loads(output)
+
+
+def wait_for_service_routes(record, timeout=90):
+    # Pod Ready can precede Service routing convergence. Poll GETs only;
+    # the final three full checks (including POST /orders) are never retried.
+    require(timeout > 0, "Service readiness timeout must be positive")
+    deadline = time.monotonic() + timeout
+    attempts = record["route_readiness_attempts"] = []
+    while (remaining := deadline - time.monotonic()) > 0:
+        attempt = {"at": utc(), "passed": False}
+        attempts.append(attempt)
+        try:
+            attempt["check"] = check_services(
+                record["trial_id"] + f"-routes-{len(attempts)}",
+                readiness_only=True, timeout=min(30, remaining))
+            require(attempt["check"].get("readiness_only") is True and
+                    attempt["check"].get("passed") is True,
+                    "Readiness probe did not confirm GET-only health")
+        except (RuntimeError, subprocess.SubprocessError, OSError) as exc:
+            attempt["error"] = str(exc)
+        else:
+            attempt["passed"] = True
+            return
+        time.sleep(min(1, max(0, deadline - time.monotonic())))
+    raise RuntimeError(f"Service HTTP routes did not become healthy within {timeout} seconds")
 
 
 def ready_snapshot():
@@ -318,6 +349,7 @@ def recovery(execute=False):
         for role in ROLES:
             kubectl("-n", NAMESPACE, "wait", "--for=condition=Ready", "pod/" + before[role]["pod"],
                     "--timeout=90s", timeout=100)
+        wait_for_service_routes(record)
         record["after"] = ready_snapshot()
         after = record["after"]["payment"]
         require(after["uid"] == before["payment"]["uid"], "Payment Pod was replaced during readiness checks")
