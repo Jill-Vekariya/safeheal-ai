@@ -79,3 +79,27 @@ Initial kind image import of the Prometheus multi-platform digest failed because
 archive lacked other-platform content. No monitoring resources had been applied. Replaced this
 preload step with normal kubelet pull by immutable digest; no cluster recreation or unrelated changes.
 Live monitoring acceptance is pending at this implementation checkpoint. Research findings remain none.
+
+## 2026-10-21 — Day 3 acceptance and completion
+
+Committed implementation `9b5fec7d517dd46b68eb65a9442335fcb4c77560` and pushed to private main; remote SHA matched.
+CI run 39587430249 passed both unit and live-kind jobs, including observability acceptance on a fresh Linux cluster.
+Rebuilt/redeployed the exact committed source and reused the existing Windows kind cluster. Final monitoring rollouts passed.
+
+Resolved remaining setup issues: Prometheus rejected `--web.enable-admin-api=false`; removed the flag, leaving the default disabled.
+Grafana image transfer was interrupted by unexpected EOF; selected the Linux amd64 child manifest, loaded the cached image and
+verified rollout. Earlier rollout waits failed during download/startup, and a corrected wait passed. These are setup failures,
+not experiment trials. No cluster recreation, Pod deletion or unrelated-project change was needed.
+
+Ran `python scripts/observe.py verify --native-fault`: PASS. Trial `day3-c56cd5922e10`, clean source checkout, 2026-10-21T10:53:00.097837+00:00 to
+2026-10-21T10:53:57.942991+00:00 UTC. Actual gateway diagnostic workload: 108 requests in 45.352 s, 80 HTTP 201 / 21 HTTP 422 / 7 HTTP 503.
+All three Prometheus targets UP; all expressions behind eight Grafana panels populated; Grafana datasource proxy returned all services.
+Verified correlated successful JSON logs, matching 503 request/trace IDs at gateway and order, and five linked SERVER/CLIENT spans
+for `day3-c56cd5922e10-0` / trace `343fa893514c31296812ada4604de8d9`. Previous payment logs retained early spans across the restart.
+Native trial `day2-native-478183e561ad` passed same-Pod kubelet restart, stable upstream identities and three post-recovery order checks.
+Final Service-DNS, health/readiness and synthetic-order checks passed. Raw evidence lives under evidence/day3 and the referenced Day 2-format recovery JSON.
+
+All five Deployments are Ready. Started loopback-only Grafana port 13000 and Prometheus port 19090 forwards; both health URLs returned 200.
+These forwards are temporary processes on the development PC. Updated PROJECT_STATUS.md version 4, ROADMAP.md and EXPERIMENTS.md to
+Day 3 complete / full gates 3 of 10 (30%). Final evidence/status documentation is committed separately from implementation.
+No benchmark MTTR, diagnostic score, overhead comparison, AI improvement or admission claim is made. Next: Day 4 deterministic detector.

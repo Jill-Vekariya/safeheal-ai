@@ -1,6 +1,6 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-21, Asia/Kolkata (verification timestamps below are UTC). **Version:** 4 (in progress). **Phase:** DAY 3 IN PROGRESS. Live observability acceptance pending.
+**Snapshot:** 2026-10-21, Asia/Kolkata (verification timestamps below are UTC). **Version:** 4. **Phase:** DAY 3 COMPLETE. Next: Day 4 deterministic detector.
 
 ## Read this first in a new chat
 
@@ -8,26 +8,15 @@ The user wants this file to preserve continuity even if earlier chats are delete
 
 User objective: build SafeHeal AI, a trustworthy self-healing distributed-systems platform powered by an evidence-grounded LLM agent, as a rigorous portfolio/research project supporting a Georgia Tech on-campus MS CS/AI application for Fall 2028. User profile in supplied specification: BTech expected July 2028, CGPA 8.75/10, research ongoing. Never claim admission is guaranteed or experimental gains are proven without measurements.
 
-## Day 3 implementation checkpoint
-
-User authorized the complete Day 3 observability checklist and commits on 2026-10-21.
-The computer was initially offline, then reconnected. The canonical checkout was clean at
-`a4ce10a5e5eb201e5a11cfefe971eb5d7419785e`, matched private remote main; all three original Pods were healthy.
-Implemented bounded Prometheus counters/histograms, JSON request logs, OpenTelemetry W3C
-server/client tracing with JSON span export, digest-pinned Prometheus/Grafana manifests,
-eight provisioned operational panels, acceptance scripts, tests and the observability runbook.
-Tests: 51 passed with one existing dependency deprecation warning. The first monitoring
-image-import attempt failed because Docker's partially pulled multi-platform archive lacked
-other-platform content. Deployment now lets kubelet resolve the pinned image directly.
-Live monitoring deployment/traffic acceptance and final commit/CI remain pending. Gate 3 is not complete.
-
 ## Progress at this snapshot
 
 - Day 1 checklist: **13 of 13 tasks complete (100%)**.
 - Day 2 checklist: **9 of 9 tasks complete (100%)**. All core services run in kind, and a deliberately terminated payment container recovered through native Kubernetes mechanisms.
-- Full daily acceptance gates: **2 of 10 complete (20%)**. This is a strict gate count, not an estimate of effort already spent. **The whole project is NOT complete.**
-- Kubernetes deployment, service discovery, probes and a native container-restart acceptance check are verified. AI integration, the rule controller, observability stack and controlled research benchmarks remain unfinished.
-- Verified Day 2 implementation commit: `43abb2318280ff455ad9ab56e9359af9f5531eed` on `main`, matched to the remote before collecting local evidence. This status and evidence are maintained in a subsequent documentation commit; inspect `git log -1` and `git ls-remote origin refs/heads/main` for the latest documentation SHA.
+- Day 3 checklist: **9 of 9 tasks complete (100%)**; live traffic, monitoring, logs and basic distributed tracing verified.
+- Full daily acceptance gates: **3 of 10 complete (30%)**. This is a strict gate count, not an estimate of effort already spent. **The whole project is NOT complete.**
+- Kubernetes deployment, service discovery, probes and a native container-restart acceptance check are verified. Observability is now verified. AI integration, the rule controller, safe recovery executor and controlled research benchmarks remain unfinished.
+- Verified Day 3 implementation commit: `9b5fec7d517dd46b68eb65a9442335fcb4c77560` on `main`; source checkout was clean at the start of live acceptance. Both CI jobs passed [run 39587430249](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39587430249). Final evidence/status documentation is committed subsequently; verify the latest tip with `git log -1` and `git ls-remote origin refs/heads/main`.
+- Historical Day 2 implementation commit: `43abb2318280ff455ad9ab56e9359af9f5531eed` on `main`, matched to the remote before collecting local evidence. This status and evidence are maintained in a subsequent documentation commit; inspect `git log -1` and `git ls-remote origin refs/heads/main` for the latest documentation SHA.
 - GitHub URL: https://github.com/Jill-Vekariya/safeheal-ai — **private**, verified through GitHub CLI. Origin: `https://github.com/Jill-Vekariya/safeheal-ai.git`.
 
 ## Current environment and artifacts
@@ -48,7 +37,12 @@ Live monitoring deployment/traffic acceptance and final commit/CI remain pending
 | Node / runtime | `safeheal-dev-control-plane`, single Ready node; containerd 2.3.4 |
 | Kubernetes configuration | Explicit project `.local/kubeconfig`; loopback API; private ownership labels `safeheal.ai/project=safeheal-ai` and `safeheal.ai/environment=local-test` |
 | Local API docs | Compose: `http://127.0.0.1:18080/docs`; Kubernetes: `http://127.0.0.1:18081/docs` only while `python scripts/k8s.py port-forward` runs |
-| Container state | Kubernetes gateway/order/payment all 1/1 Ready; payment restart count 1, upstream counts 0 after the recorded test. Compose remains healthy. Recheck later. |
+| Container state | All five Kubernetes Deployments Ready/Available after Day 3; payment restart count 1 and gateway/order 0 after the scoped Day 3 fault. Compose is an older Day 2 stack and was not changed/reverified in Day 3. Recheck next session. |
+| Monitoring | Prometheus 3.15.0; Grafana 13.2.4; digest-pinned manifests in `infrastructure/observability` |
+| Python telemetry | prometheus-client 0.26.0; OpenTelemetry SDK/API 1.45.1; exact lock retained |
+| Grafana | `http://127.0.0.1:13000/d/safeheal-operations`, on development PC while its forward is running; HTTP health 200 verified |
+| Prometheus | `http://127.0.0.1:19090`, on development PC while its forward is running; readiness HTTP 200 verified |
+| Trace storage | Basic W3C/OpenTelemetry SERVER/CLIENT spans exported to JSON container logs; no trace UI/backend |
 | Source backup | Current source/status in the private GitHub repository; earlier `SafeHeal_AI_Day1.zip` is a pre-publication snapshot with older status |
 
 ## Day 1 checklist
@@ -79,6 +73,43 @@ Live monitoring deployment/traffic acceptance and final commit/CI remain pending
 8. [x] Add scoped install/setup/deploy/verify/recovery/status/port-forward scripts and safety tests.
 9. [x] Commit and push tested implementation to private GitHub; unit and live kind CI both pass.
 
+## Day 3 checklist
+
+1. [x] Integrate Prometheus metrics into gateway, order and payment using separate per-app registries.
+2. [x] Add request counts, separate 4xx/5xx outcomes, error-rate queries and latency histograms.
+3. [x] Add structured JSON request/error logs with UTC timestamps and correlation identifiers.
+4. [x] Add and verify basic distributed tracing: W3C propagation, SERVER/CLIENT spans and parentage.
+5. [x] Configure scoped Prometheus and Grafana with immutable image digests and local-only forwarding.
+6. [x] Provision eight useful operational dashboard panels and a working Prometheus datasource.
+7. [x] Verify telemetry using actual traffic and an authorized scoped native payment-container interruption.
+8. [x] Document the pipeline, commands, measurement semantics, resource limits and limitations.
+9. [x] Commit/push implementation to the private repository and verify passing unit/live-kind CI; retain evidence.
+
+## Day 3 verification and evidence
+
+- Unit/safety/trace suite: **51 passed**, one pre-existing Starlette/HTTPX deprecation warning, 25.71 s; `evidence/day3/tests.txt`.
+- Implementation: `9b5fec7d517dd46b68eb65a9442335fcb4c77560`. Local HEAD matched private remote main. The live acceptance record reports an initially **clean working tree** and records additional observability file hashes.
+- Raw acceptance: `evidence/day3/observability-20261021T105300-day3-c56cd5922e10.json`, **PASS**.
+- Acceptance ran from `2026-10-21T10:53:00.097837+00:00` to `2026-10-21T10:53:57.942991+00:00` (UTC).
+- Gateway diagnostic workload: **108 actual HTTP requests** over **45.352 s**: **80 HTTP 201**, **21 HTTP 422**, **7 HTTP 503**. No transport errors were recorded. Successful orders were checked for confirmed status and 2000 cents. These are workload observations, not production availability or research benchmarks.
+- Diagnostic traffic used the validated gateway Pod IP so readiness withdrawal did not hide application errors. Baseline/final checks separately passed through Service DNS, health/readiness and end-to-end order flow.
+- Prometheus: **3/3 scrape targets UP**. All nine expressions behind the eight Grafana panels returned data. Server-error counters showed **7** for gateway and **7** for order: the same seven failed gateway requests propagated through the dependency chain, not fourteen independent incidents. Histograms and request/status counters populated from actual calls.
+- Grafana **13.2.4**: health/database passed; eight-panel provisioned dashboard retrieved; Grafana's actual datasource proxy returned all three services. Loopback forwarded Grafana and Prometheus health endpoints both returned HTTP 200.
+- Structured logs correlate all three services on successful request `day3-c56cd5922e10-0`. Failure request IDs/trace IDs also match between gateway and order; e.g. `day3-c56cd5922e10-28`, HTTP 503, trace `2d3766018fe3320286b2d83f69912235`.
+- Basic distributed tracing: **five distinct linked spans** for request `day3-c56cd5922e10-0`, common trace ID `343fa893514c31296812ada4604de8d9`. Verified chain: gateway SERVER -> gateway CLIENT -> order SERVER -> order CLIENT -> payment SERVER. Previous payment-container logs preserved early spans across the deliberate restart.
+- Native fault trial `day2-native-478183e561ad`: **PASS**, `evidence/day2/recovery-20261021T105312-78fdbe.json`. Guarded payment-container stop; kubelet restarted it in the same Pod, increased restart count and changed container ID; upstream containers remained stable; three subsequent healthy order checks passed. No manual restart or Pod deletion was used.
+- CI [run 39587430249](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39587430249): **completed / success**, both `test` and `kubernetes` jobs. The fresh Linux kind job reproduced service checks, native recovery and non-fault observability acceptance. Metadata: `evidence/day3/implementation-ci.json`.
+- Packaging/startup issues resolved: partial multi-platform archive could not be imported into kind; normal kubelet digest pull used instead. Prometheus rejected an explicit false-valued flag; omitted it (admin API remains disabled by default). Grafana download suffered an unexpected EOF and startup/provisioning took time; pinned its Linux amd64 manifest, loaded the cached image, and verified the final rollout. One earlier rollout wait exceeded its deadline before the corrected rollout succeeded. These were setup failures, not failed research trials.
+- Day 3 blockers: **none**. All five Deployments finished Ready/Available. Local viewing forwards were left running; they must be restarted if the device/session stops.
+
+### Day 3 implementation choices and limits
+
+Application metrics exclude `/healthz`, `/readyz` and `/metrics`; otherwise probe traffic could dilute the error denominator. Labels use service, normalized method, route template and status class. Request IDs, trace IDs, raw paths, query strings and payloads do not become labels. Duration histograms use seconds and cover the existing two/three-second dependency timeouts. Quantiles are bucket estimates. Undefined zero-traffic percentages are not zero-error claims.
+
+Request logs carry UTC timestamp, validated request ID, route/method, status, elapsed time, exception type and trace/span IDs. W3C context propagates through real HTTP boundaries. The basic OpenTelemetry exporter writes spans as JSON logs; **no Tempo/Jaeger/collector, persistent trace store or Grafana tracing UI** was added. Synchronous span logging overhead has not been benchmarked.
+
+Prometheus/Grafana run non-root in the existing restricted namespace, with no ServiceAccount token and no new API permissions. Static Service scrape targets support the current **one replica per service** only. Monitoring uses capped resources, ephemeral storage and a 24-hour/256 MB Prometheus block-retention setting; WAL/head overhead is additional. Recreated monitoring Pods lose live data, while Git configuration and committed JSON evidence remain. No public ingress was created. Grafana has anonymous Viewer access only inside this local lab. See `docs/OBSERVABILITY.md` for deployment and interpretation.
+
 ## Day 2 verification and evidence
 
 - Unit/safety suite: **40 passed, 1 existing Starlette/HTTPX deprecation warning**. Raw final test output: `evidence/day2/tests.txt`. The 18 added safety tests cover target/context/ownership checks, dry-run behaviour and concurrent-fault locking.
@@ -107,6 +138,10 @@ Live monitoring deployment/traffic acceptance and final commit/CI remain pending
 
 ## GitHub verification
 
+- Day 2 completion/evidence commit: [`a4ce10a5e5eb201e5a11cfefe971eb5d7419785e`](https://github.com/Jill-Vekariya/safeheal-ai/commit/a4ce10a5e5eb201e5a11cfefe971eb5d7419785e). Push succeeded; local HEAD matched remote `main`, and the working tree was clean.
+- Final commit CI: [run 39509354163](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39509354163) **completed / success** for both `test` and `kubernetes` jobs. The latter created a fresh cluster and verified deployment, discovery, HTTP communication and native container recovery.
+- This portable copy adds the final publication results to the canonical `PROJECT_STATUS.md` committed with the evidence. All three local services were rechecked after the push and remained 1/1 Ready.
+
 - Authenticated account: Jill-Vekariya, account ID 195921415.
 - Repository visibility reverified **PRIVATE** on 2026-10-21 local time.
 - Day 1 baseline `9b75e000492162de9528bb18a5ffbc7219875262` passed run 39399733684.
@@ -121,25 +156,24 @@ Live monitoring deployment/traffic acceptance and final commit/CI remain pending
 
 Gateway -> order -> payment over HTTP, with one shared application factory selected by SERVICE_ROLE. Each container runs as non-root with dropped capabilities and a read-only root filesystem. Payment creates synthetic receipts only. No external money movement or API credentials are used.
 
-All items have a synthetic fixed price of 1000 cents. Order/payment records are not persisted. POST calls are not retried because idempotency is not implemented. Structured request logging exists; Prometheus dashboards and OpenTelemetry tracing do not yet exist. Gateway HTTP timeout is 3 seconds; order timeout is 2 seconds. Liveness does not call dependencies; readiness checks the dependency chain.
+All items have a synthetic fixed price of 1000 cents. Order/payment records are not persisted. POST calls are not retried because idempotency is not implemented. Prometheus request/status/duration metrics, correlated JSON logs, an eight-panel Grafana dashboard and basic OpenTelemetry distributed spans now exist; see the Day 3 section and runbook. Gateway HTTP timeout is 3 seconds; order timeout is 2 seconds. Liveness does not call dependencies; readiness checks the dependency chain.
 
 Kubernetes uses one replica per service, internal port 8000, ClusterIP DNS routing, a restricted Pod Security namespace and a token-free ServiceAccount with no RoleBinding. Each container requests 100m CPU/128Mi memory, limits 500m/256Mi, runs as UID 10001 with read-only root, dropped capabilities and RuntimeDefault seccomp. `/healthz` supplies startup/liveness; `/readyz` supplies readiness. See `docs/KUBERNETES.md` for the diagram, timings and commands.
 
-The single-node lab has no high availability, public ingress, enforced NetworkPolicy, metrics stack or production recovery controller. The developer fault script uses privileged Docker access to the kind node and must not become an unrestricted LLM tool. Full least-privilege recovery policies remain Day 7 work.
+The single-node lab has no high availability, public ingress, enforced NetworkPolicy or production recovery controller. The Day 3 monitoring stack is a local lab configuration, not production observability. The developer fault script uses privileged Docker access to the kind node and must not become an unrestricted LLM tool. Full least-privilege recovery policies remain Day 7 work.
 
 ## Exact next action
 
-**Continue with Day 3: observability. Days 1 and 2 are complete.**
+**Continue with Day 4: deterministic detector. Days 1–3 are complete.**
 
-1. Reconnect to the development computer; inspect PROJECT_STATUS.md, WORKLOG.md, `git status`, current HEAD and remote before making changes. Do not reset or overwrite newer work.
-2. Check Docker and `python scripts/k8s.py status`; reuse the existing dedicated cluster. Do not recreate it merely to resume work.
-3. Add real request/error/latency metrics to the services with bounded label cardinality and an appropriate histogram.
-4. Deploy a scoped Prometheus/Grafana setup with reproducible configuration and local-only access; account for the host's resource limits.
-5. Generate real synthetic traffic, demonstrate populated dashboards and correlate failures with existing request IDs/logs. Add OpenTelemetry tracing if feasible and verify its actual propagation if included.
-6. Run meaningful tests and save real observability evidence. Do not mark Day 3 complete until its acceptance gate is demonstrated.
-7. Update the status/worklog/experiment register, commit/push the authorized changes and provide the next portable status snapshot.
+1. Reconnect to Jill-Vekariya10; read current PROJECT_STATUS.md, WORKLOG.md, ROADMAP.md and actual git state. Do not reset or overwrite newer work. Check the latest local/remote SHA and private visibility.
+2. Check Docker and the existing `safeheal-dev` cluster; verify all five Deployments. Restart local Grafana/Prometheus forwards when needed. Reuse the cluster.
+3. Define deterministic thresholds/windows, minimum sample counts and stale/missing-telemetry handling using the real Prometheus schema. Keep insufficient evidence distinct from healthy state.
+4. Implement an incident lifecycle with timestamps, deduplication and SQLite persistence. Add bounded read-only evidence collection and rule-based diagnosis with explicit evidence references.
+5. Test normal, faulty, transient, stale/missing and duplicate conditions. Verify against scoped real-service scenarios. Do not yet give a detector arbitrary shell or cluster-write access.
+6. Update status/worklog/experiment register; retain failed checks and raw evidence; commit/push authorized tested changes. Mark Day 4 complete only when its acceptance gate passes.
 
-The user explicitly authorized Day 2 implementation, the local Kubernetes restart demonstration, commits/pushes and continued work through Desktop Commander. These completed actions need no repeated permission. Keep the repository private. Public publishing, destructive changes outside the scoped test and significant paid calls still require the appropriate authorization.
+The user explicitly authorized Day 2 implementation, the local Kubernetes restart demonstration, commits/pushes and continued work through Desktop Commander. The user also explicitly authorized the full Day 3 observability checklist, actual service verification and commits. These completed actions need no repeated permission. Keep the repository private. Public publishing, destructive changes outside the scoped test and significant paid calls still require the appropriate authorization.
 
 Do not ask for passwords or tokens in chat. If the computer is offline, report it and use the authorized repository for inspection; never claim remote execution that did not occur.
 
@@ -149,7 +183,7 @@ Do not ask for passwords or tokens in chat. If the computer is offline, report i
 |---|---|---|
 | Day 1: foundation | COMPLETE | Tested running microservices AND working private GitHub baseline |
 | Day 2: Kubernetes | COMPLETE | kind cluster, deployments/services/probes, service discovery and recorded native container recovery |
-| Day 3: observability | IN PROGRESS | Real Prometheus error/latency/request metrics, JSON logs, Grafana; tracing if feasible |
+| Day 3: observability | COMPLETE | Real Prometheus error/latency/request metrics, JSON logs, Grafana; tracing if feasible |
 | Day 4: deterministic detector | Not started | Rules, incident lifecycle, timestamps/evidence, SQLite and rule diagnosis with tests |
 | Day 5: fault benchmark | Not started | At least three repeatable scoped faults, ground truth, native/rule trials and raw records |
 | Day 6: AI diagnosis | Not started | Provider integration, bounded read-only tools, structured hypotheses, evidence references, uncertainty and fallback |
@@ -166,7 +200,7 @@ Research question: can evidence-grounded LLM assistance improve incident diagnos
 
 Compare A: native Kubernetes recovery, B: rule-based incident controller, C: AI-assisted diagnosis with the same independent safety gate. Plan process crash, HTTP 500 spike, latency, resource saturation, faulty deployment/configuration; cascading dependency outage is optional. Aim for at least five repeats per scenario/approach if resources allow. Record detection latency, diagnostic accuracy, recovery time/success, false positives/negatives, unsafe proposals/executions, token usage/cost and overhead. Separate diagnostic success from service recovery; retain failed trials. Never fabricate findings.
 
-Final deliverables still required: working controller, observability, rule baseline, AI diagnosis, safety/executor/verification, broader fault harness, controlled-trial datasets, analysis charts, research report, demo, achievement-based resume/SOP text and 15–20 interview questions. Kubernetes manifests and one scoped native-recovery demonstration now exist; Days 1–2 form the foundation for the remaining deliverables.
+Final deliverables still required: working controller, rule baseline, AI diagnosis, safety/executor/verification, broader fault harness, controlled-trial datasets, analysis charts, research report, demo, achievement-based resume/SOP text and 15–20 interview questions. Kubernetes manifests, scoped native-recovery demonstrations and verified observability now exist; Days 1–3 form the foundation for the remaining deliverables.
 
 ## Safety and continuity requirements
 

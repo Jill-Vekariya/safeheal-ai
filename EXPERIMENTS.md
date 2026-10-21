@@ -1,6 +1,6 @@
 # Experiment register
 
-Status: research protocol remains a draft. Day 2 now has one recorded local native-recovery engineering acceptance trial and a successful independent CI execution. No matched research benchmark, rule-controller result or AI result has been collected.
+Status: research protocol remains a draft. Day 2 now has one recorded local native-recovery engineering acceptance trial and a successful independent CI execution. Day 3 observability also passed a recorded real-traffic engineering check, including basic distributed spans and an intentional native container interruption. No matched research benchmark, rule-controller result or AI result has been collected.
 
 ## Hypothesis
 
@@ -60,3 +60,27 @@ Limitations: one local trial, three short post-recovery checks, no sustained loa
 Implemented metrics, JSON logs, basic distributed traces and monitoring configuration.
 The 51-test engineering suite passes. Real-traffic telemetry acceptance is pending; no new
 research trials, diagnostic gains, overhead gains or AI benefits are claimed.
+
+## Day 3 observability engineering acceptance
+
+Implementation `9b5fec7d517dd46b68eb65a9442335fcb4c77560`; clean source at trial start.
+Trial `day3-c56cd5922e10` passed on 2026-10-21, 10:53:00.097837–10:53:57.942991 UTC.
+A 45.352-second workload generated 108 gateway HTTP responses: 80 x 201, 21 x 422 and 7 x 503.
+Workload targeted the validated gateway Pod IP to preserve observation through readiness withdrawal;
+baseline/final Service-DNS checks passed separately. This workload is diagnostic and is not a production availability sample.
+
+Prometheus scraped all three services; request/status counters and histograms populated. Gateway/order each recorded
+seven 5xx responses for the same seven failed gateway requests. Eight Grafana panels and the real datasource proxy were checked.
+JSON logs contain matching failure request/trace IDs at gateway and order. A successful request produced five linked
+OpenTelemetry SERVER/CLIENT spans across all three services. Native payment-stop trial `day2-native-478183e561ad` passed;
+no LLM, deterministic controller, manual restart or Pod deletion took part.
+
+Raw telemetry: `evidence/day3/observability-20261021T105300-day3-c56cd5922e10.json`.
+Native recovery: `evidence/day2/recovery-20261021T105312-78fdbe.json`.
+CI: successful run 39587430249, metadata `evidence/day3/implementation-ci.json`.
+Tests: 51 passed / one existing warning, `evidence/day3/tests.txt`.
+
+Limitations: one engineering traffic run, no matched A/B/C scenarios, no randomized repetitions, no benchmark SLO/recovery
+window and no overhead control. Five-second scrape timing, one-minute rate windows, ephemeral monitoring data, one-replica
+Service scraping and synchronous JSON span export must be considered before experiments. No research effect size, MTTR,
+false-alert estimate, diagnostic accuracy or AI benefit is inferred from this check. Setup/image/startup issues are in WORKLOG.md.
