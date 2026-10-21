@@ -77,3 +77,7 @@ Prometheus metrics, correlated JSON logs, basic OpenTelemetry distributed spans 
 8-panel provisioned Grafana dashboard are implemented. See [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md)
 for deployment, loopback access, the actual-traffic acceptance verifier and research limitations.
 The optional developer fault check uses the existing guarded payment-container-stop procedure.
+
+## Deterministic incident detector (Day 4)
+
+Run `python scripts/detect.py serve` in the project environment while the local Prometheus forward is active. The read-only API is at `http://127.0.0.1:18082/docs`; SQLite evidence defaults to `.local/incidents.sqlite3`. No LLM or cluster-write access is used. Rules, thresholds, lifecycle, correlation, bounded collection, tests and current acceptance limits are in [docs/INCIDENT_DETECTION.md](docs/INCIDENT_DETECTION.md).

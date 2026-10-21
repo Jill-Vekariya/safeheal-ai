@@ -1,0 +1,463 @@
+{
+  "kind": "synthetic_engineering_acceptance",
+  "live_cluster": false,
+  "llm_used": false,
+  "rule_version": "day4-v1",
+  "recorded_at": "2026-10-21T16:08:31.617707+00:00",
+  "scenarios": {
+    "scrape_unavailable": {
+      "passed": true,
+      "incident": {
+        "id": "59b0b263-47d4-4958-9a4d-165b77336732",
+        "service": "payment",
+        "rule": "scrape_unavailable",
+        "state": "resolved",
+        "detected_at": "2027-01-15T08:00:00+00:00",
+        "opened_at": "2027-01-15T08:00:10+00:00",
+        "updated_at": "2027-01-15T08:00:35+00:00",
+        "resolved_at": "2027-01-15T08:00:35+00:00",
+        "alert_since": "2027-01-15T08:00:00+00:00",
+        "recovery_since": "2027-01-15T08:00:20+00:00",
+        "last_sample_at": "2027-01-15T08:00:35+00:00",
+        "last_evidence_id": 8,
+        "resolution": "recovered",
+        "version": "day4-v1",
+        "transitions": [
+          {
+            "id": 4,
+            "incident_id": "59b0b263-47d4-4958-9a4d-165b77336732",
+            "at": 1800000035.0,
+            "previous": "recovering",
+            "state": "resolved",
+            "reason": "continuous healthy recovery window",
+            "evidence_id": 8
+          },
+          {
+            "id": 3,
+            "incident_id": "59b0b263-47d4-4958-9a4d-165b77336732",
+            "at": 1800000020.0,
+            "previous": "open",
+            "state": "recovering",
+            "reason": "first qualifying recovery observation",
+            "evidence_id": 5
+          },
+          {
+            "id": 2,
+            "incident_id": "59b0b263-47d4-4958-9a4d-165b77336732",
+            "at": 1800000010.0,
+            "previous": "pending",
+            "state": "open",
+            "reason": "continuous qualifying failure window",
+            "evidence_id": 3
+          },
+          {
+            "id": 1,
+            "incident_id": "59b0b263-47d4-4958-9a4d-165b77336732",
+            "at": 1800000000.0,
+            "previous": null,
+            "state": "pending",
+            "reason": "first qualifying observation",
+            "evidence_id": 1
+          }
+        ],
+        "diagnosis": {
+          "at": "2027-01-15T08:00:35+00:00",
+          "classification": "recovered",
+          "controller": "deterministic",
+          "current_decision": "clear",
+          "evidence_refs": [
+            {
+              "evidence_id": 8,
+              "rule": "scrape_unavailable",
+              "service": "payment"
+            }
+          ],
+          "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+          "recommended_action": "inspect bounded read-only service/metrics evidence",
+          "rule_version": "day4-v1",
+          "service": "payment",
+          "suspected_root_service": null
+        },
+        "correlations": []
+      },
+      "last_evidence": {
+        "at": 1800000035.0,
+        "errors": {},
+        "raw": {
+          "synthetic": true
+        },
+        "rule_version": "day4-v1",
+        "services": {
+          "gateway": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "order": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "payment": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          }
+        }
+      }
+    },
+    "high_error_rate": {
+      "passed": true,
+      "incident": {
+        "id": "a398d12b-879d-4ee4-873b-3e4eee398991",
+        "service": "payment",
+        "rule": "high_error_rate",
+        "state": "resolved",
+        "detected_at": "2027-01-15T08:00:00+00:00",
+        "opened_at": "2027-01-15T08:00:15+00:00",
+        "updated_at": "2027-01-15T08:00:35+00:00",
+        "resolved_at": "2027-01-15T08:00:35+00:00",
+        "alert_since": "2027-01-15T08:00:00+00:00",
+        "recovery_since": "2027-01-15T08:00:20+00:00",
+        "last_sample_at": "2027-01-15T08:00:35+00:00",
+        "last_evidence_id": 8,
+        "resolution": "recovered",
+        "version": "day4-v1",
+        "transitions": [
+          {
+            "id": 4,
+            "incident_id": "a398d12b-879d-4ee4-873b-3e4eee398991",
+            "at": 1800000035.0,
+            "previous": "recovering",
+            "state": "resolved",
+            "reason": "continuous healthy recovery window",
+            "evidence_id": 8
+          },
+          {
+            "id": 3,
+            "incident_id": "a398d12b-879d-4ee4-873b-3e4eee398991",
+            "at": 1800000020.0,
+            "previous": "open",
+            "state": "recovering",
+            "reason": "first qualifying recovery observation",
+            "evidence_id": 5
+          },
+          {
+            "id": 2,
+            "incident_id": "a398d12b-879d-4ee4-873b-3e4eee398991",
+            "at": 1800000015.0,
+            "previous": "pending",
+            "state": "open",
+            "reason": "continuous qualifying failure window",
+            "evidence_id": 4
+          },
+          {
+            "id": 1,
+            "incident_id": "a398d12b-879d-4ee4-873b-3e4eee398991",
+            "at": 1800000000.0,
+            "previous": null,
+            "state": "pending",
+            "reason": "first qualifying observation",
+            "evidence_id": 1
+          }
+        ],
+        "diagnosis": {
+          "at": "2027-01-15T08:00:35+00:00",
+          "classification": "recovered",
+          "controller": "deterministic",
+          "current_decision": "clear",
+          "evidence_refs": [
+            {
+              "evidence_id": 8,
+              "rule": "high_error_rate",
+              "service": "payment"
+            }
+          ],
+          "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+          "recommended_action": "inspect bounded read-only service/metrics evidence",
+          "rule_version": "day4-v1",
+          "service": "payment",
+          "suspected_root_service": null
+        },
+        "correlations": []
+      },
+      "last_evidence": {
+        "at": 1800000035.0,
+        "errors": {},
+        "raw": {
+          "synthetic": true
+        },
+        "rule_version": "day4-v1",
+        "services": {
+          "gateway": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "order": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "payment": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          }
+        }
+      }
+    },
+    "high_latency": {
+      "passed": true,
+      "incident": {
+        "id": "8577086d-bb24-45a9-852b-2f6e438f79eb",
+        "service": "payment",
+        "rule": "high_latency",
+        "state": "resolved",
+        "detected_at": "2027-01-15T08:00:00+00:00",
+        "opened_at": "2027-01-15T08:00:15+00:00",
+        "updated_at": "2027-01-15T08:00:35+00:00",
+        "resolved_at": "2027-01-15T08:00:35+00:00",
+        "alert_since": "2027-01-15T08:00:00+00:00",
+        "recovery_since": "2027-01-15T08:00:20+00:00",
+        "last_sample_at": "2027-01-15T08:00:35+00:00",
+        "last_evidence_id": 8,
+        "resolution": "recovered",
+        "version": "day4-v1",
+        "transitions": [
+          {
+            "id": 4,
+            "incident_id": "8577086d-bb24-45a9-852b-2f6e438f79eb",
+            "at": 1800000035.0,
+            "previous": "recovering",
+            "state": "resolved",
+            "reason": "continuous healthy recovery window",
+            "evidence_id": 8
+          },
+          {
+            "id": 3,
+            "incident_id": "8577086d-bb24-45a9-852b-2f6e438f79eb",
+            "at": 1800000020.0,
+            "previous": "open",
+            "state": "recovering",
+            "reason": "first qualifying recovery observation",
+            "evidence_id": 5
+          },
+          {
+            "id": 2,
+            "incident_id": "8577086d-bb24-45a9-852b-2f6e438f79eb",
+            "at": 1800000015.0,
+            "previous": "pending",
+            "state": "open",
+            "reason": "continuous qualifying failure window",
+            "evidence_id": 4
+          },
+          {
+            "id": 1,
+            "incident_id": "8577086d-bb24-45a9-852b-2f6e438f79eb",
+            "at": 1800000000.0,
+            "previous": null,
+            "state": "pending",
+            "reason": "first qualifying observation",
+            "evidence_id": 1
+          }
+        ],
+        "diagnosis": {
+          "at": "2027-01-15T08:00:35+00:00",
+          "classification": "recovered",
+          "controller": "deterministic",
+          "current_decision": "clear",
+          "evidence_refs": [
+            {
+              "evidence_id": 8,
+              "rule": "high_latency",
+              "service": "payment"
+            }
+          ],
+          "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+          "recommended_action": "inspect bounded read-only service/metrics evidence",
+          "rule_version": "day4-v1",
+          "service": "payment",
+          "suspected_root_service": null
+        },
+        "correlations": []
+      },
+      "last_evidence": {
+        "at": 1800000035.0,
+        "errors": {},
+        "raw": {
+          "synthetic": true
+        },
+        "rule_version": "day4-v1",
+        "services": {
+          "gateway": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "order": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "payment": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          }
+        }
+      }
+    },
+    "telemetry_unavailable": {
+      "passed": true,
+      "incident": {
+        "id": "c37e1f80-7d8c-4529-840a-8e100dd771f4",
+        "service": "payment",
+        "rule": "telemetry_unavailable",
+        "state": "resolved",
+        "detected_at": "2027-01-15T08:00:00+00:00",
+        "opened_at": "2027-01-15T08:00:15+00:00",
+        "updated_at": "2027-01-15T08:00:35+00:00",
+        "resolved_at": "2027-01-15T08:00:35+00:00",
+        "alert_since": "2027-01-15T08:00:00+00:00",
+        "recovery_since": "2027-01-15T08:00:20+00:00",
+        "last_sample_at": "2027-01-15T08:00:35+00:00",
+        "last_evidence_id": 8,
+        "resolution": "recovered",
+        "version": "day4-v1",
+        "transitions": [
+          {
+            "id": 4,
+            "incident_id": "c37e1f80-7d8c-4529-840a-8e100dd771f4",
+            "at": 1800000035.0,
+            "previous": "recovering",
+            "state": "resolved",
+            "reason": "continuous healthy recovery window",
+            "evidence_id": 8
+          },
+          {
+            "id": 3,
+            "incident_id": "c37e1f80-7d8c-4529-840a-8e100dd771f4",
+            "at": 1800000020.0,
+            "previous": "open",
+            "state": "recovering",
+            "reason": "first qualifying recovery observation",
+            "evidence_id": 5
+          },
+          {
+            "id": 2,
+            "incident_id": "c37e1f80-7d8c-4529-840a-8e100dd771f4",
+            "at": 1800000015.0,
+            "previous": "pending",
+            "state": "open",
+            "reason": "continuous qualifying failure window",
+            "evidence_id": 4
+          },
+          {
+            "id": 1,
+            "incident_id": "c37e1f80-7d8c-4529-840a-8e100dd771f4",
+            "at": 1800000000.0,
+            "previous": null,
+            "state": "pending",
+            "reason": "first qualifying observation",
+            "evidence_id": 1
+          }
+        ],
+        "diagnosis": {
+          "at": "2027-01-15T08:00:35+00:00",
+          "classification": "recovered",
+          "controller": "deterministic",
+          "current_decision": "clear",
+          "evidence_refs": [
+            {
+              "evidence_id": 8,
+              "rule": "telemetry_unavailable",
+              "service": "payment"
+            }
+          ],
+          "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+          "recommended_action": "inspect bounded read-only service/metrics evidence",
+          "rule_version": "day4-v1",
+          "service": "payment",
+          "suspected_root_service": null
+        },
+        "correlations": []
+      },
+      "last_evidence": {
+        "at": 1800000035.0,
+        "errors": {},
+        "raw": {
+          "synthetic": true
+        },
+        "rule_version": "day4-v1",
+        "services": {
+          "gateway": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "order": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          },
+          "payment": {
+            "errors": 0.0,
+            "metrics_at": 1800000035.0,
+            "p95": 0.05,
+            "problems": [],
+            "requests": 100.0,
+            "up": true,
+            "up_at": 1800000035.0
+          }
+        }
+      }
+    }
+  },
+  "passed": true,
+  "limitations": "Synthetic source times and observations; not live Prometheus/kind or research benchmark evidence."
+}

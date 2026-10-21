@@ -1,6 +1,7 @@
 import asyncio
 import json
 import logging
+import time
 
 import httpx
 import pytest
@@ -83,7 +84,10 @@ def test_latency_observes_completed_work_and_independent_registries():
     app = create_app("payment")
     @app.get("/delayed")
     async def delayed():
-        await asyncio.sleep(.03)
+        deadline = time.perf_counter() + .03
+        # Windows event-loop clock resolution can wake a short sleep early.
+        while time.perf_counter() < deadline:
+            await asyncio.sleep(.005)
         return {"ok": True}
     with TestClient(app) as a, TestClient(create_app("payment")) as b:
         assert a.get("/delayed").status_code == 200
