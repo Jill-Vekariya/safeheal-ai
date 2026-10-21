@@ -43,3 +43,7 @@ Prometheus instance. Grafana queries Prometheus through a provisioned datasource
 context links manual OpenTelemetry server/client spans, exported as JSON container logs.
 Request logs carry the same request, trace and span IDs. No external telemetry sink or model
 call is involved. See docs/OBSERVABILITY.md for precise semantics, resource limits and verification.
+
+## Day 4 detector boundary
+
+The standalone incident service reads only three fixed Prometheus matrix queries. Pure deterministic verdicts feed a transactional SQLite lifecycle and rule-based diagnosis controller. A loopback-only GET API exposes incidents and evidence. This service cannot execute recovery or access Kubernetes credentials. Fixed dependency topology can correlate upstream server errors with a suspected downstream outage while preserving both evidence references. See docs/INCIDENT_DETECTION.md.

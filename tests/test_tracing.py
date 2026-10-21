@@ -2,9 +2,16 @@ import json
 import logging
 
 import httpx
+import pytest
 from fastapi.testclient import TestClient
 
 from services.app import create_app
+
+
+@pytest.fixture(autouse=True)
+def deterministic_sampling(monkeypatch):
+    # Developer/host sampling settings must not make exporter assertions probabilistic.
+    monkeypatch.setenv("OTEL_TRACES_SAMPLER", "parentbased_always_on")
 
 
 def test_w3c_server_to_client_propagation_and_json_export(caplog):

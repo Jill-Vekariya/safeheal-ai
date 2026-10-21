@@ -19,6 +19,11 @@ def main():
                 body = json.load(response)
                 assert response.status == 200 and body == {"status": expected, "service": role}
                 result["health"][role][endpoint] = body
+    if os.environ.get("CHECK_READINESS_ONLY") == "1":
+        result["readiness_only"] = True
+        result["passed"] = True
+        print(json.dumps(result))
+        return
     request = urllib.request.Request(
         "http://gateway:8000/orders",
         data=json.dumps({"item_id": "day2-demo", "quantity": 2}).encode(),

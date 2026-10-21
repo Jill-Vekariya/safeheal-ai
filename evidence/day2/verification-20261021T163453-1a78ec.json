@@ -1,0 +1,832 @@
+{
+  "checked_at": "2026-10-21T16:34:48.575252+00:00",
+  "context": "kind-safeheal-dev",
+  "namespace": "safeheal-dev",
+  "source": {
+    "head": "bc06bf52efe19db592932b824de5da864c8b8c8d",
+    "working_tree": [
+      " M .github/workflows/tests.yml",
+      " M ARCHITECTURE.md",
+      " M EXPERIMENTS.md",
+      " M PROJECT_STATUS.md",
+      " M README.md",
+      " M ROADMAP.md",
+      " M WORKLOG.md",
+      " M tests/test_observability.py",
+      " M tests/test_tracing.py",
+      "?? docs/INCIDENT_DETECTION.md",
+      "?? evidence/day4/",
+      "?? scripts/detect.py",
+      "?? scripts/verify_detector.py",
+      "?? scripts/verify_detector_api.py",
+      "?? scripts/verify_detector_live.py",
+      "?? services/incidents/",
+      "?? tests/test_detector_live_safety.py",
+      "?? tests/test_incident_service_metrics.py",
+      "?? tests/test_incidents.py"
+    ],
+    "sha256": {
+      "infrastructure/kind.yaml": "d30ec4812ebd2f61e18d69dce72a329676760be0b30503fed35e0fd8fcbe256b",
+      "infrastructure/kubernetes/gateway.yaml": "a2e92643a07ae0dfb7b5a1dd60b3305c55e315557d8a211eebf11072ac8ba1ac",
+      "infrastructure/kubernetes/kustomization.yaml": "a9a1580b65df723904f29c4d9493a118aa8fe0cf2acabd5c1a568d6c77266550",
+      "infrastructure/kubernetes/namespace.yaml": "8d125bd3889c23a376e404e48a8a834a6314267d4f4bcc750052f0e50fd31b93",
+      "infrastructure/kubernetes/order.yaml": "2631f254e8da28f4c43f2cb38f802d3057b4b46af7fe1d689fac863a00ef6b8c",
+      "infrastructure/kubernetes/payment.yaml": "e4e96cdd706415d3d9811488266feb8e2aff04c165661f0a157d25dba223d6ee",
+      "infrastructure/kubernetes/serviceaccount.yaml": "8c856b80521ba4ef383cd09c260df67cf89a90fa9f5868304391e181f813290b",
+      "infrastructure/observability/dashboards.yaml": "ca892dda69468e71eec09c67b445a8a94820721325b4d94ce2bfae5d7b3803f8",
+      "infrastructure/observability/datasources.yaml": "2744d315e2d08e3171af3533806a336ee5538ddf85d339c005587b68048b64ca",
+      "infrastructure/observability/kustomization.yaml": "aff297de4ce3fb85ef838570933e2869b31c634e94e04988265b1f37644b8e39",
+      "scripts/k8s.py": "7c6f3c62781a39fa565a9bddcdf3b0d8de303e8f30ccbe632a92c253650d4a04",
+      "scripts/in_cluster_check.py": "654fbaa1416b9e7c9f03d1f7b924b9b6d2fc318899baf8a8ecdd6cbeee3c8f71"
+    },
+    "kind": "kind v0.33.0 go1.26.7 windows/amd64",
+    "kubectl": "v1.36.1",
+    "kubernetes": "v1.36.4"
+  },
+  "pods": {
+    "payment": {
+      "pod": "payment-d88cdf59d-gmztg",
+      "uid": "39790775-f90d-4e2a-ab33-72335521e1ae",
+      "node": "safeheal-dev-control-plane",
+      "container": "payment",
+      "container_id": "containerd://7194af534aa3d7db73723c4e211e4e62b5149f522ade32270d4c65f56294a600",
+      "image_id": "docker.io/library/import-2026-10-21@sha256:21599fb5f7de9e23a37636de13046c68c2ac3b60fc2e2e5fd11f741c5afa059f",
+      "restart_count": 2,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-21T11:05:10Z"
+        }
+      },
+      "last_state": {
+        "terminated": {
+          "containerID": "containerd://114b8213ec06d8e004b5360eb57ecf56df7b354c23e89004ce2ac6c56d09d502",
+          "exitCode": 137,
+          "finishedAt": "2026-10-21T11:05:09Z",
+          "reason": "Error",
+          "startedAt": "2026-10-21T10:53:14Z"
+        }
+      }
+    },
+    "order": {
+      "pod": "order-6f58bdd9bc-hq2fv",
+      "uid": "932189ae-7ed6-478d-92cf-ccb617764f1a",
+      "node": "safeheal-dev-control-plane",
+      "container": "order",
+      "container_id": "containerd://04775a7389706f64670581de4ff3ea56d3e36ad795fe0f75da17b966b52ffd17",
+      "image_id": "docker.io/library/import-2026-10-21@sha256:21599fb5f7de9e23a37636de13046c68c2ac3b60fc2e2e5fd11f741c5afa059f",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-21T10:52:42Z"
+        }
+      },
+      "last_state": {}
+    },
+    "gateway": {
+      "pod": "gateway-7668ffbc4c-vdc2z",
+      "uid": "c00907f7-6b3d-40f1-beed-957fc4e052cb",
+      "node": "safeheal-dev-control-plane",
+      "container": "gateway",
+      "container_id": "containerd://575f16aa6698a42d464bc68a292b2cd6cb68e7326d8475ea31b7d4dc75223d3d",
+      "image_id": "docker.io/library/import-2026-10-21@sha256:21599fb5f7de9e23a37636de13046c68c2ac3b60fc2e2e5fd11f741c5afa059f",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-21T10:52:42Z"
+        }
+      },
+      "last_state": {}
+    }
+  },
+  "check": {
+    "request_id": "day2-6f08c51986d5",
+    "dns": {
+      "gateway": {
+        "short": "10.96.56.205",
+        "fqdn": "10.96.56.205"
+      },
+      "order": {
+        "short": "10.96.23.37",
+        "fqdn": "10.96.23.37"
+      },
+      "payment": {
+        "short": "10.96.88.201",
+        "fqdn": "10.96.88.201"
+      }
+    },
+    "health": {
+      "gateway": {
+        "healthz": {
+          "status": "ok",
+          "service": "gateway"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "gateway"
+        }
+      },
+      "order": {
+        "healthz": {
+          "status": "ok",
+          "service": "order"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "order"
+        }
+      },
+      "payment": {
+        "healthz": {
+          "status": "ok",
+          "service": "payment"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "payment"
+        }
+      }
+    },
+    "order": {
+      "order_id": "d6e9e291-11fa-4693-9e05-7fe27c4594a1",
+      "item_id": "day2-demo",
+      "quantity": 2,
+      "amount_cents": 2000,
+      "payment_id": "7dbfa579-4ec1-4780-a18c-9b6036e23789",
+      "status": "confirmed"
+    },
+    "http_status": 201,
+    "passed": true
+  },
+  "correlated_logs": {
+    "payment": [
+      {
+        "timestamp": "2026-10-21T16:34:51.476997+00:00",
+        "service": "payment",
+        "request_id": "day2-6f08c51986d5",
+        "method": "POST",
+        "path": "/payments",
+        "status": 201,
+        "duration_ms": 3.606,
+        "exception_type": null,
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "5a2f361d403b7397"
+      },
+      {
+        "event": "span",
+        "service": "payment",
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "5a2f361d403b7397",
+        "parent_span_id": "18da8653d4ccd5e4",
+        "name": "POST /payments",
+        "kind": "SERVER",
+        "status": "UNSET",
+        "start_time_unix_nano": 1792600491473514742,
+        "end_time_unix_nano": 1792600491477208065,
+        "duration_ms": 3.693323,
+        "attributes": {
+          "request_id": "day2-6f08c51986d5",
+          "http.request.method": "POST",
+          "http.route": "/payments",
+          "http.response.status_code": 201
+        }
+      }
+    ],
+    "order": [
+      {
+        "event": "span",
+        "service": "order",
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "18da8653d4ccd5e4",
+        "parent_span_id": "b1834098682806b7",
+        "name": "POST /payments",
+        "kind": "CLIENT",
+        "status": "UNSET",
+        "start_time_unix_nano": 1792600491470787990,
+        "end_time_unix_nano": 1792600491478584098,
+        "duration_ms": 7.796108,
+        "attributes": {
+          "request_id": "day2-6f08c51986d5",
+          "http.request.method": "POST",
+          "http.response.status_code": 201
+        }
+      },
+      {
+        "timestamp": "2026-10-21T16:34:51.479659+00:00",
+        "service": "order",
+        "request_id": "day2-6f08c51986d5",
+        "method": "POST",
+        "path": "/orders",
+        "status": 201,
+        "duration_ms": 9.808,
+        "exception_type": null,
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "b1834098682806b7"
+      },
+      {
+        "event": "span",
+        "service": "order",
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "b1834098682806b7",
+        "parent_span_id": "392242da980356cc",
+        "name": "POST /orders",
+        "kind": "SERVER",
+        "status": "UNSET",
+        "start_time_unix_nano": 1792600491469993204,
+        "end_time_unix_nano": 1792600491479847135,
+        "duration_ms": 9.853931,
+        "attributes": {
+          "request_id": "day2-6f08c51986d5",
+          "http.request.method": "POST",
+          "http.route": "/orders",
+          "http.response.status_code": 201
+        }
+      }
+    ],
+    "gateway": [
+      {
+        "event": "span",
+        "service": "gateway",
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "392242da980356cc",
+        "parent_span_id": "2dbb162e59ca24e8",
+        "name": "POST /orders",
+        "kind": "CLIENT",
+        "status": "UNSET",
+        "start_time_unix_nano": 1792600491466965476,
+        "end_time_unix_nano": 1792600491482740708,
+        "duration_ms": 15.775232,
+        "attributes": {
+          "request_id": "day2-6f08c51986d5",
+          "http.request.method": "POST",
+          "http.response.status_code": 201
+        }
+      },
+      {
+        "timestamp": "2026-10-21T16:34:51.484660+00:00",
+        "service": "gateway",
+        "request_id": "day2-6f08c51986d5",
+        "method": "POST",
+        "path": "/orders",
+        "status": 201,
+        "duration_ms": 18.503,
+        "exception_type": null,
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "2dbb162e59ca24e8"
+      },
+      {
+        "event": "span",
+        "service": "gateway",
+        "trace_id": "00cdf87b08a821eef8c2ded6477eae52",
+        "span_id": "2dbb162e59ca24e8",
+        "parent_span_id": null,
+        "name": "POST /orders",
+        "kind": "SERVER",
+        "status": "UNSET",
+        "start_time_unix_nano": 1792600491466199521,
+        "end_time_unix_nano": 1792600491485077860,
+        "duration_ms": 18.878339,
+        "attributes": {
+          "request_id": "day2-6f08c51986d5",
+          "http.request.method": "POST",
+          "http.route": "/orders",
+          "http.response.status_code": 201
+        }
+      }
+    ]
+  },
+  "services": [
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gateway\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"name\":\"gateway\",\"namespace\":\"safeheal-dev\"},\"spec\":{\"ports\":[{\"name\":\"http\",\"port\":8000,\"targetPort\":\"http\"}],\"selector\":{\"app.kubernetes.io/name\":\"gateway\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "creationTimestamp": "2026-10-20T17:58:48Z",
+        "labels": {
+          "app.kubernetes.io/name": "gateway",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "name": "gateway",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "635",
+        "uid": "b1a543eb-691e-4486-9e0a-03c162fe70eb"
+      },
+      "spec": {
+        "clusterIP": "10.96.56.205",
+        "clusterIPs": [
+          "10.96.56.205"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 8000,
+            "protocol": "TCP",
+            "targetPort": "http"
+          }
+        ],
+        "selector": {
+          "app.kubernetes.io/name": "gateway",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"grafana\",\"app.kubernetes.io/part-of\":\"safeheal-ai\",\"safeheal.ai/environment\":\"local-test\",\"safeheal.ai/project\":\"safeheal-ai\"},\"name\":\"grafana\",\"namespace\":\"safeheal-dev\"},\"spec\":{\"ports\":[{\"name\":\"http\",\"port\":3000,\"targetPort\":\"http\"}],\"selector\":{\"app.kubernetes.io/name\":\"grafana\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "creationTimestamp": "2026-10-21T10:42:19Z",
+        "labels": {
+          "app.kubernetes.io/name": "grafana",
+          "app.kubernetes.io/part-of": "safeheal-ai",
+          "safeheal.ai/environment": "local-test",
+          "safeheal.ai/project": "safeheal-ai"
+        },
+        "name": "grafana",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "34176",
+        "uid": "77edbd0f-aeb6-4322-bb83-bec1c4394cd9"
+      },
+      "spec": {
+        "clusterIP": "10.96.109.188",
+        "clusterIPs": [
+          "10.96.109.188"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 3000,
+            "protocol": "TCP",
+            "targetPort": "http"
+          }
+        ],
+        "selector": {
+          "app.kubernetes.io/name": "grafana",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"order\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"name\":\"order\",\"namespace\":\"safeheal-dev\"},\"spec\":{\"ports\":[{\"name\":\"http\",\"port\":8000,\"targetPort\":\"http\"}],\"selector\":{\"app.kubernetes.io/name\":\"order\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "creationTimestamp": "2026-10-20T17:58:49Z",
+        "labels": {
+          "app.kubernetes.io/name": "order",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "name": "order",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "639",
+        "uid": "783d8a93-8a6a-4226-bc73-38027376a8f3"
+      },
+      "spec": {
+        "clusterIP": "10.96.23.37",
+        "clusterIPs": [
+          "10.96.23.37"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 8000,
+            "protocol": "TCP",
+            "targetPort": "http"
+          }
+        ],
+        "selector": {
+          "app.kubernetes.io/name": "order",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"name\":\"payment\",\"namespace\":\"safeheal-dev\"},\"spec\":{\"ports\":[{\"name\":\"http\",\"port\":8000,\"targetPort\":\"http\"}],\"selector\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "creationTimestamp": "2026-10-20T17:58:49Z",
+        "labels": {
+          "app.kubernetes.io/name": "payment",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "name": "payment",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "46332",
+        "uid": "2581fb55-d964-493e-968b-dffccb1679eb"
+      },
+      "spec": {
+        "clusterIP": "10.96.88.201",
+        "clusterIPs": [
+          "10.96.88.201"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 8000,
+            "protocol": "TCP",
+            "targetPort": "http"
+          }
+        ],
+        "selector": {
+          "app.kubernetes.io/name": "payment",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"prometheus\",\"app.kubernetes.io/part-of\":\"safeheal-ai\",\"safeheal.ai/environment\":\"local-test\",\"safeheal.ai/project\":\"safeheal-ai\"},\"name\":\"prometheus\",\"namespace\":\"safeheal-dev\"},\"spec\":{\"ports\":[{\"name\":\"http\",\"port\":9090,\"targetPort\":\"http\"}],\"selector\":{\"app.kubernetes.io/name\":\"prometheus\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "creationTimestamp": "2026-10-21T10:42:19Z",
+        "labels": {
+          "app.kubernetes.io/name": "prometheus",
+          "app.kubernetes.io/part-of": "safeheal-ai",
+          "safeheal.ai/environment": "local-test",
+          "safeheal.ai/project": "safeheal-ai"
+        },
+        "name": "prometheus",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "34180",
+        "uid": "f0a46ee0-a979-4a39-931d-5d6306e1db11"
+      },
+      "spec": {
+        "clusterIP": "10.96.124.98",
+        "clusterIPs": [
+          "10.96.124.98"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 9090,
+            "protocol": "TCP",
+            "targetPort": "http"
+          }
+        ],
+        "selector": {
+          "app.kubernetes.io/name": "prometheus",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    }
+  ],
+  "endpoint_slices": [
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.244.0.15"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "safeheal-dev-control-plane",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "gateway-7668ffbc4c-vdc2z",
+            "namespace": "safeheal-dev",
+            "uid": "c00907f7-6b3d-40f1-beed-957fc4e052cb"
+          }
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "creationTimestamp": "2026-10-20T17:58:48Z",
+        "generateName": "gateway-",
+        "generation": 15,
+        "labels": {
+          "app.kubernetes.io/name": "gateway",
+          "app.kubernetes.io/part-of": "safeheal-ai",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "gateway"
+        },
+        "name": "gateway-pnfn4",
+        "namespace": "safeheal-dev",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "gateway",
+            "uid": "b1a543eb-691e-4486-9e0a-03c162fe70eb"
+          }
+        ],
+        "resourceVersion": "45885",
+        "uid": "fe9ed3f3-aff6-4a1b-bf10-31064eb03c47"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 8000,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.244.0.14"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "safeheal-dev-control-plane",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "grafana-7cb56fc879-d87k8",
+            "namespace": "safeheal-dev",
+            "uid": "1840b1a8-b47e-4790-8901-5684a0354383"
+          }
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-21T10:51:48Z"
+        },
+        "creationTimestamp": "2026-10-21T10:42:19Z",
+        "generateName": "grafana-",
+        "generation": 7,
+        "labels": {
+          "app.kubernetes.io/name": "grafana",
+          "app.kubernetes.io/part-of": "safeheal-ai",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "grafana",
+          "safeheal.ai/environment": "local-test",
+          "safeheal.ai/project": "safeheal-ai"
+        },
+        "name": "grafana-b6p6d",
+        "namespace": "safeheal-dev",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "grafana",
+            "uid": "77edbd0f-aeb6-4322-bb83-bec1c4394cd9"
+          }
+        ],
+        "resourceVersion": "35176",
+        "uid": "44afc7c6-2553-481e-8c33-8544e890d64f"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 3000,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.244.0.16"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "safeheal-dev-control-plane",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "order-6f58bdd9bc-hq2fv",
+            "namespace": "safeheal-dev",
+            "uid": "932189ae-7ed6-478d-92cf-ccb617764f1a"
+          }
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-21T10:52:49Z"
+        },
+        "creationTimestamp": "2026-10-20T17:58:49Z",
+        "generateName": "order-",
+        "generation": 13,
+        "labels": {
+          "app.kubernetes.io/name": "order",
+          "app.kubernetes.io/part-of": "safeheal-ai",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "order"
+        },
+        "name": "order-4n8gm",
+        "namespace": "safeheal-dev",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "order",
+            "uid": "783d8a93-8a6a-4226-bc73-38027376a8f3"
+          }
+        ],
+        "resourceVersion": "35385",
+        "uid": "e9f1072d-875a-48bb-845e-68037302feb3"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 8000,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.244.0.17"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "safeheal-dev-control-plane",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "payment-d88cdf59d-gmztg",
+            "namespace": "safeheal-dev",
+            "uid": "39790775-f90d-4e2a-ab33-72335521e1ae"
+          }
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-21T11:05:13Z"
+        },
+        "creationTimestamp": "2026-10-20T17:58:49Z",
+        "generateName": "payment-",
+        "generation": 21,
+        "labels": {
+          "app.kubernetes.io/name": "payment",
+          "app.kubernetes.io/part-of": "safeheal-ai",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "payment"
+        },
+        "name": "payment-mw7dv",
+        "namespace": "safeheal-dev",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "payment",
+            "uid": "2581fb55-d964-493e-968b-dffccb1679eb"
+          }
+        ],
+        "resourceVersion": "46333",
+        "uid": "6c17f356-3d86-4b4f-b5b0-128fd3face1d"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 8000,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.244.0.13"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "safeheal-dev-control-plane",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "prometheus-58f678c48b-kbmxb",
+            "namespace": "safeheal-dev",
+            "uid": "87c08c2b-a182-40b5-80f5-72927352d3f4"
+          }
+        }
+      ],
+      "kind": "EndpointSlice",
+      "metadata": {
+        "creationTimestamp": "2026-10-21T10:42:19Z",
+        "generateName": "prometheus-",
+        "generation": 6,
+        "labels": {
+          "app.kubernetes.io/name": "prometheus",
+          "app.kubernetes.io/part-of": "safeheal-ai",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "prometheus",
+          "safeheal.ai/environment": "local-test",
+          "safeheal.ai/project": "safeheal-ai"
+        },
+        "name": "prometheus-clhfj",
+        "namespace": "safeheal-dev",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "prometheus",
+            "uid": "f0a46ee0-a979-4a39-931d-5d6306e1db11"
+          }
+        ],
+        "resourceVersion": "34494",
+        "uid": "e3f678b4-ca42-4535-9beb-23b48b37e384"
+      },
+      "ports": [
+        {
+          "name": "http",
+          "port": 9090,
+          "protocol": "TCP"
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

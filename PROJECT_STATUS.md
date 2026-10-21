@@ -1,6 +1,39 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-21, Asia/Kolkata (verification timestamps below are UTC). **Version:** 4.1. **Phase:** DAY 3 COMPLETE. Next: Day 4 deterministic detector.
+**Snapshot:** 2026-10-21, Asia/Kolkata; evidence timestamps are UTC. **Version:** 5.3. **Phase:** DAY 4 COMPLETE - deterministic detector. Next: Day 5 fault benchmark.
+
+## Current Day 4 delivery checkpoint
+
+Day 4 delivery is tracked in [pull request #1](https://github.com/Jill-Vekariya/safeheal-ai/pull/1). The reviewed implementation is `87e2ec25e9264fe0d48b3e5fae97c39762dc03e4`; both jobs passed [CI run 39640164313](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39640164313). Windows and Linux suites passed 120 tests. The PR runs the full suite again, including the real Kubernetes/Prometheus fault acceptance; use the PR's current checks and merge record for its final integration status.
+
+The user requested reliable successful GitHub checks. An earlier PR run (39646024404) failed after native recovery when the first HTTP probe received connection refused despite Pod Ready. The original failed log, run metadata, and raw recovery JSON are retained under evidence/day4. The recovery harness now uses a bounded 90-second GET-only Service-readiness wait, followed by the unchanged identity assertions and three unretried end-to-end order checks. The CRI stop remains one-shot; detector behavior and thresholds are unchanged. Windows verification: **128 passed**, one existing dependency warning, in evidence/day4/windows-readiness-tests.txt. PR #1 reruns the full Linux/Kubernetes suite; check its latest commit and results before claiming final CI success. The repository remains private. Earlier publication/merge notes below are historical checkpoints.
+
+Full acceptance gates remain **4/10 (40%)**. Days 5-10 are incomplete. Next: controlled fault benchmark, not additional Day 4 implementation. Recheck remote main, the latest Actions run and the local checkout before starting the next day.
+
+## Day 4 completion — read before historical Day 3 sections
+
+The computer reconnected, canonical working tree was clean and local/remote main both matched `bc06bf52efe19db592932b824de5da864c8b8c8d`. Private visibility and all five healthy Deployments were verified. The offline Day 4 patch applied only after `git apply --check`; canonical Git history was preserved. The earlier isolated commit `0dc5ff6` is a historical delivery checkpoint, not the canonical Day 4 commit. Automatic approval review rejected direct publication to default main. Day 4 is committed on `day4-incident-baseline` for private branch publication/review, preserving main at the Day 3 tip. Inspect current `git log -1`, the review branch and Actions for the publication SHA/result; the portable completion copy appends final verification.
+
+**Day 4 checklist: 8/8 implemented and verified.**
+
+1. [x] Separate incident detection polling service and read-only FastAPI API.
+2. [x] Deterministic scrape, 5xx-rate, latency and telemetry-availability rules with windows/minima/hysteresis.
+3. [x] Evidence-backed suspected dependency correlation on the fixed service topology.
+4. [x] Persistent pending/open/recovering/resolved transitions, deduplication and restart handling.
+5. [x] SQLite timestamps, raw telemetry, verdicts, history, diagnosis and evidence references.
+6. [x] Basic rule diagnosis without a model/provider or recovery executor.
+7. [x] 120 passing tests plus actual Prometheus/HTTP fault acceptance; failed attempts retained.
+8. [x] Reviewed source/docs/evidence committed in canonical history; GitHub integration and current checks are tracked in PR #1.
+
+Live acceptance `day4-pause-670cd6f0b91f`: **PASS**, 2026-10-21 16:41:02.324443 to 16:43:49.611107 UTC. One identity-checked payment container task was paused with fixed timed resumption. The detector opened **five incidents**: payment scrape outage; gateway/order latency; gateway/order 5xx rates. All five followed pending -> open -> recovering -> resolved. Upstream error incidents had suspected-payment dependency links with evidence references. Raw record: `evidence/day4/day4-pause-670cd6f0b91f.json`.
+
+Actual gateway workload: **250 HTTP responses: 187 x 201 and 63 x 503**. Final fresh DNS/health/readiness/order checks passed (confirmed, 2000 cents). Payment retained its Pod UID and was restarted natively, count **2 -> 3**; gateway/order retained identities and counts **0 -> 0**. The detector executed no remediation and used no LLM. The developer harness has host/cluster credentials; OS privilege separation is not established by this check. This is engineering acceptance, not benchmark MTTR, diagnostic accuracy, false-positive rates or an AI improvement.
+
+Windows after the CI harness correction: **120 passed**, one existing Starlette/HTTPX warning; `evidence/day4/windows-tests.txt`. Linux suite also passed 120. Two test-environment issues were corrected only in tests: inherited 1% trace sampling and a Windows short-sleep timing assumption. Initial failures remain recorded. The initial CI run 39638639803 passed unit tests but rejected an already-resolved transient telemetry warm-up record before fault injection. The corrected harness waits for current eligible telemetry with no **active** incidents; detector rules/thresholds are unchanged. Failed CI logs, run metadata and raw JSON are retained. Verify the corrected CI result after publication.
+
+Two Service-selector trials remain **FAILED** in their original JSON: one scrape incident was detected/recovered but gateway keep-alive connections prevented expected 5xx; in the second, Prometheus kept a working connection and no scrape outage was observable. Thresholds were not lowered to turn these into successes. See WORKLOG.md and EXPERIMENTS.md.
+
+**Overall acceptance gates: 4/10 (40%).** Days 5–10 remain incomplete. The safe recovery executor, model integration, controlled research benchmarks and final report are not implemented. `docs/INCIDENT_DETECTION.md` documents the service, exact thresholds, operations, limitations and reproducible guarded live check. The CI Kubernetes job now runs that check against real Prometheus in a fresh isolated cluster and uploads its evidence.
 
 ## CI timeout correction after Day 3 completion
 
@@ -35,8 +68,9 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 - Day 1 checklist: **13 of 13 tasks complete (100%)**.
 - Day 2 checklist: **9 of 9 tasks complete (100%)**. All core services run in kind, and a deliberately terminated payment container recovered through native Kubernetes mechanisms.
 - Day 3 checklist: **9 of 9 tasks complete (100%)**; live traffic, monitoring, logs and basic distributed tracing verified.
-- Full daily acceptance gates: **3 of 10 complete (30%)**. This is a strict gate count, not an estimate of effort already spent. **The whole project is NOT complete.**
-- Kubernetes deployment, service discovery, probes and a native container-restart acceptance check are verified. Observability is now verified. AI integration, the rule controller, safe recovery executor and controlled research benchmarks remain unfinished.
+- Day 4 checklist: **8 of 8 tasks complete**; deterministic detection/diagnosis verified against real failures without an LLM.
+- Full daily acceptance gates: **4 of 10 complete (40%)**. This is a strict gate count, not an estimate of effort already spent. **The whole project is NOT complete.**
+- Kubernetes deployment, service discovery, probes and a native container-restart acceptance check are verified. Observability is now verified. The deterministic incident/diagnosis controller is verified. AI integration, the safe recovery executor and controlled research benchmarks remain unfinished.
 - Verified Day 3 implementation commit: `9b5fec7d517dd46b68eb65a9442335fcb4c77560` on `main`; source checkout was clean at the start of live acceptance. Both CI jobs passed [run 39587430249](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39587430249). Final evidence/status documentation is committed subsequently; verify the latest tip with `git log -1` and `git ls-remote origin refs/heads/main`.
 - Historical Day 2 implementation commit: `43abb2318280ff455ad9ab56e9359af9f5531eed` on `main`, matched to the remote before collecting local evidence. This status and evidence are maintained in a subsequent documentation commit; inspect `git log -1` and `git ls-remote origin refs/heads/main` for the latest documentation SHA.
 - GitHub URL: https://github.com/Jill-Vekariya/safeheal-ai — **private**, verified through GitHub CLI. Origin: `https://github.com/Jill-Vekariya/safeheal-ai.git`.
@@ -59,7 +93,7 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 | Node / runtime | `safeheal-dev-control-plane`, single Ready node; containerd 2.3.4 |
 | Kubernetes configuration | Explicit project `.local/kubeconfig`; loopback API; private ownership labels `safeheal.ai/project=safeheal-ai` and `safeheal.ai/environment=local-test` |
 | Local API docs | Compose: `http://127.0.0.1:18080/docs`; Kubernetes: `http://127.0.0.1:18081/docs` only while `python scripts/k8s.py port-forward` runs |
-| Container state | All five Kubernetes Deployments Ready/Available after Day 3; payment restart count 2 and gateway/order 0 after the Day 3 fault and subsequent timeout-fix recovery check. Compose is an older Day 2 stack and was not changed/reverified in Day 3. Recheck next session. |
+| Container state | All five Kubernetes Deployments Ready/Available after Day 3; payment restart count 3 and gateway/order 0 after the Day 4 task-pause acceptance. Compose is an older Day 2 stack and was not changed/reverified in Day 3. Recheck next session. |
 | Monitoring | Prometheus 3.15.0; Grafana 13.2.4; digest-pinned manifests in `infrastructure/observability` |
 | Python telemetry | prometheus-client 0.26.0; OpenTelemetry SDK/API 1.45.1; exact lock retained |
 | Grafana | `http://127.0.0.1:13000/d/safeheal-operations`, on development PC while its forward is running; HTTP health 200 verified |
@@ -186,18 +220,15 @@ The single-node lab has no high availability, public ingress, enforced NetworkPo
 
 ## Exact next action
 
-**Continue with Day 4: deterministic detector. Days 1–3 are complete.**
+**Continue with Day 5: controlled fault benchmark. Days 1–4 are complete.**
 
-1. Reconnect to Jill-Vekariya10; read current PROJECT_STATUS.md, WORKLOG.md, ROADMAP.md and actual git state. Do not reset or overwrite newer work. Check the latest local/remote SHA and private visibility.
-2. Check Docker and the existing `safeheal-dev` cluster; verify all five Deployments. Restart local Grafana/Prometheus forwards when needed. Reuse the cluster.
-3. Define deterministic thresholds/windows, minimum sample counts and stale/missing-telemetry handling using the real Prometheus schema. Keep insufficient evidence distinct from healthy state.
-4. Implement an incident lifecycle with timestamps, deduplication and SQLite persistence. Add bounded read-only evidence collection and rule-based diagnosis with explicit evidence references.
-5. Test normal, faulty, transient, stale/missing and duplicate conditions. Verify against scoped real-service scenarios. Do not yet give a detector arbitrary shell or cluster-write access.
-6. Update status/worklog/experiment register; retain failed checks and raw evidence; commit/push authorized tested changes. Mark Day 4 complete only when its acceptance gate passes.
+1. Reconnect and inspect current canonical PROJECT_STATUS.md, WORKLOG.md, ROADMAP.md, git status/HEAD, private remote main and latest Actions result. Reuse the existing cluster; do not reset or overwrite newer work.
+2. Define at least three repeatable scoped fault scenarios, verified ground truth, workload, reset/health checks and raw trial records. Keep fault capabilities separate from the detector and any later model.
+3. Use the existing process-pause check as engineering reference. Service-selector withdrawal can be invisible to existing HTTP/Prometheus connections; account for that observability limit instead of claiming unobserved failure detection.
+4. Record native and rule-diagnosis baselines with clearly declared metrics and limitations. Rule/AI recovery execution remains Day 7; do not attribute native or harness recovery to the detector. Keep research effectiveness claims pending controlled matched trials.
+5. Test the runner, retain unsuccessful trials, update status/worklog/experiment register, and commit/push authorized tested changes. Keep the repository private.
 
-The user explicitly authorized Day 2 implementation, the local Kubernetes restart demonstration, commits/pushes and continued work through Desktop Commander. The user also explicitly authorized the full Day 3 observability checklist, actual service verification and commits. These completed actions need no repeated permission. Keep the repository private. Public publishing, destructive changes outside the scoped test and significant paid calls still require the appropriate authorization.
-
-Do not ask for passwords or tokens in chat. If the computer is offline, report it and use the authorized repository for inspection; never claim remote execution that did not occur.
+Existing authorization covers scoped local-test work, tested commits and private pushes. Public publishing, destructive changes outside the test scope and significant paid provider calls still need the appropriate authorization. Do not ask for passwords or tokens in chat.
 
 ## Remaining 10-day roadmap / acceptance gates
 
@@ -206,7 +237,7 @@ Do not ask for passwords or tokens in chat. If the computer is offline, report i
 | Day 1: foundation | COMPLETE | Tested running microservices AND working private GitHub baseline |
 | Day 2: Kubernetes | COMPLETE | kind cluster, deployments/services/probes, service discovery and recorded native container recovery |
 | Day 3: observability | COMPLETE | Real Prometheus error/latency/request metrics, JSON logs, Grafana; tracing if feasible |
-| Day 4: deterministic detector | Not started | Rules, incident lifecycle, timestamps/evidence, SQLite and rule diagnosis with tests |
+| Day 4: deterministic detector | COMPLETE | Rules, SQLite lifecycle/evidence, diagnosis/correlation, 120 tests and real Prometheus/task-failure acceptance; verify publication CI after commit |
 | Day 5: fault benchmark | Not started | At least three repeatable scoped faults, ground truth, native/rule trials and raw records |
 | Day 6: AI diagnosis | Not started | Provider integration, bounded read-only tools, structured hypotheses, evidence references, uncertainty and fallback |
 | Day 7: safe recovery | Not started | Allowlisted operations, independent policies, approval/dry-run, RBAC, audit and verified recovery |
@@ -237,3 +268,6 @@ Final deliverables still required: working controller, rule baseline, AI diagnos
 ## What “whole project complete” means
 
 Mark `PROJECT COMPLETE` only after all 10 acceptance gates pass and the final deliverables are verified. Full-gate completion percentage = completed gates / 10 * 100. Report partially completed task checklists separately. A plan, a status file, mocked-model success or an unverified claim is not completion. When scope changes, record the approved change and its limitations explicitly.
+
+
+Day 4 loopback service smoke also passed: started the actual detector as an isolated local process with no Prometheus listener, observed three open `telemetry_unavailable` incidents through real HTTP GET requests, health 200 and readiness 503, read their diagnoses/evidence, then stopped only that process. Raw record: `evidence/day4/api-smoke.json`; console: `evidence/day4/api-smoke.txt`. This verifies real detector execution and telemetry-outage detection, not business-fault detection in the existing kind cluster. Reproduce only with unused local ports 18082/19090 using `python scripts/verify_detector_api.py`.

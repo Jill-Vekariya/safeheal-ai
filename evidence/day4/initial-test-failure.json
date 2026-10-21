@@ -1,0 +1,17 @@
+{
+  "kind": "observed_engineering_test_failure_summary",
+  "initial_full_suite": {
+    "passed": 101,
+    "failed": 1,
+    "warnings": 1
+  },
+  "failed_test": "tests/test_tracing.py::test_invalid_traceparent_is_replaced_and_probes_do_not_export_spans",
+  "assertion": "Expected one exported span, observed zero",
+  "host_environment": {
+    "OTEL_TRACES_SAMPLER": "parentbased_traceidratio",
+    "OTEL_TRACES_SAMPLER_ARG": "0.01"
+  },
+  "correction": "Test-local autouse fixture selects parentbased_always_on; no production trace sampler changed.",
+  "final_evidence": "evidence/day4/tests.txt",
+  "raw_initial_console_log_saved": false
+}

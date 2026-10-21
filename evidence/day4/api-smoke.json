@@ -1,0 +1,231 @@
+{
+  "kind": "live_loopback_detector_smoke",
+  "recorded_at": "2026-10-21T16:07:40.449691+00:00",
+  "known_condition": "Prometheus endpoint absent on isolated local loopback; telemetry outage",
+  "live_cluster": false,
+  "llm_used": false,
+  "health_status": 200,
+  "readiness_status": 503,
+  "incidents": [
+    {
+      "id": "302b8fe4-0472-4f43-a7e4-3e9be1ca3bea",
+      "service": "gateway",
+      "rule": "telemetry_unavailable",
+      "state": "open",
+      "detected_at": "2026-10-21T16:07:40.952560+00:00",
+      "opened_at": "2026-10-21T16:07:56.022087+00:00",
+      "updated_at": "2026-10-21T16:07:56.022087+00:00",
+      "resolved_at": null,
+      "alert_since": "2026-10-21T16:07:40.952560+00:00",
+      "recovery_since": null,
+      "last_sample_at": "2026-10-21T16:07:56.022087+00:00",
+      "last_evidence_id": 4,
+      "resolution": null,
+      "version": "day4-v1",
+      "transitions": [
+        {
+          "id": 4,
+          "incident_id": "302b8fe4-0472-4f43-a7e4-3e9be1ca3bea",
+          "at": 1792598876.0220869,
+          "previous": "pending",
+          "state": "open",
+          "reason": "continuous qualifying failure window",
+          "evidence_id": 4
+        },
+        {
+          "id": 1,
+          "incident_id": "302b8fe4-0472-4f43-a7e4-3e9be1ca3bea",
+          "at": 1792598860.9525597,
+          "previous": null,
+          "state": "pending",
+          "reason": "first qualifying observation",
+          "evidence_id": 1
+        }
+      ],
+      "diagnosis": {
+        "at": "2026-10-21T16:07:56.022087+00:00",
+        "classification": "insufficient_telemetry",
+        "controller": "deterministic",
+        "current_decision": "alert",
+        "evidence_refs": [
+          {
+            "evidence_id": 4,
+            "rule": "telemetry_unavailable",
+            "service": "gateway"
+          }
+        ],
+        "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+        "recommended_action": "inspect bounded read-only service/metrics evidence",
+        "rule_version": "day4-v1",
+        "service": "gateway",
+        "suspected_root_service": null
+      },
+      "correlations": []
+    },
+    {
+      "id": "a3bde1a0-a1f7-458c-920d-c5b7addecba4",
+      "service": "order",
+      "rule": "telemetry_unavailable",
+      "state": "open",
+      "detected_at": "2026-10-21T16:07:40.952560+00:00",
+      "opened_at": "2026-10-21T16:07:56.022087+00:00",
+      "updated_at": "2026-10-21T16:07:56.022087+00:00",
+      "resolved_at": null,
+      "alert_since": "2026-10-21T16:07:40.952560+00:00",
+      "recovery_since": null,
+      "last_sample_at": "2026-10-21T16:07:56.022087+00:00",
+      "last_evidence_id": 4,
+      "resolution": null,
+      "version": "day4-v1",
+      "transitions": [
+        {
+          "id": 5,
+          "incident_id": "a3bde1a0-a1f7-458c-920d-c5b7addecba4",
+          "at": 1792598876.0220869,
+          "previous": "pending",
+          "state": "open",
+          "reason": "continuous qualifying failure window",
+          "evidence_id": 4
+        },
+        {
+          "id": 2,
+          "incident_id": "a3bde1a0-a1f7-458c-920d-c5b7addecba4",
+          "at": 1792598860.9525597,
+          "previous": null,
+          "state": "pending",
+          "reason": "first qualifying observation",
+          "evidence_id": 1
+        }
+      ],
+      "diagnosis": {
+        "at": "2026-10-21T16:07:56.022087+00:00",
+        "classification": "insufficient_telemetry",
+        "controller": "deterministic",
+        "current_decision": "alert",
+        "evidence_refs": [
+          {
+            "evidence_id": 4,
+            "rule": "telemetry_unavailable",
+            "service": "order"
+          }
+        ],
+        "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+        "recommended_action": "inspect bounded read-only service/metrics evidence",
+        "rule_version": "day4-v1",
+        "service": "order",
+        "suspected_root_service": null
+      },
+      "correlations": []
+    },
+    {
+      "id": "c7ef30f2-7f65-4416-b235-a075f3796efb",
+      "service": "payment",
+      "rule": "telemetry_unavailable",
+      "state": "open",
+      "detected_at": "2026-10-21T16:07:40.952560+00:00",
+      "opened_at": "2026-10-21T16:07:56.022087+00:00",
+      "updated_at": "2026-10-21T16:07:56.022087+00:00",
+      "resolved_at": null,
+      "alert_since": "2026-10-21T16:07:40.952560+00:00",
+      "recovery_since": null,
+      "last_sample_at": "2026-10-21T16:07:56.022087+00:00",
+      "last_evidence_id": 4,
+      "resolution": null,
+      "version": "day4-v1",
+      "transitions": [
+        {
+          "id": 6,
+          "incident_id": "c7ef30f2-7f65-4416-b235-a075f3796efb",
+          "at": 1792598876.0220869,
+          "previous": "pending",
+          "state": "open",
+          "reason": "continuous qualifying failure window",
+          "evidence_id": 4
+        },
+        {
+          "id": 3,
+          "incident_id": "c7ef30f2-7f65-4416-b235-a075f3796efb",
+          "at": 1792598860.9525597,
+          "previous": null,
+          "state": "pending",
+          "reason": "first qualifying observation",
+          "evidence_id": 1
+        }
+      ],
+      "diagnosis": {
+        "at": "2026-10-21T16:07:56.022087+00:00",
+        "classification": "insufficient_telemetry",
+        "controller": "deterministic",
+        "current_decision": "alert",
+        "evidence_refs": [
+          {
+            "evidence_id": 4,
+            "rule": "telemetry_unavailable",
+            "service": "payment"
+          }
+        ],
+        "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+        "recommended_action": "inspect bounded read-only service/metrics evidence",
+        "rule_version": "day4-v1",
+        "service": "payment",
+        "suspected_root_service": null
+      },
+      "correlations": []
+    }
+  ],
+  "evidence": {
+    "at": 1792598876.0220869,
+    "errors": {
+      "buckets": "ConnectError",
+      "requests": "ConnectError",
+      "up": "ConnectError"
+    },
+    "raw": {},
+    "rule_version": "day4-v1",
+    "services": {
+      "gateway": {
+        "errors": null,
+        "metrics_at": null,
+        "p95": null,
+        "problems": [
+          "up:unavailable_or_invalid",
+          "requests:unavailable_or_invalid",
+          "buckets:unavailable_or_invalid",
+          "up:missing_stale_or_invalid"
+        ],
+        "requests": null,
+        "up": null,
+        "up_at": null
+      },
+      "order": {
+        "errors": null,
+        "metrics_at": null,
+        "p95": null,
+        "problems": [
+          "up:unavailable_or_invalid",
+          "requests:unavailable_or_invalid",
+          "buckets:unavailable_or_invalid",
+          "up:missing_stale_or_invalid"
+        ],
+        "requests": null,
+        "up": null,
+        "up_at": null
+      },
+      "payment": {
+        "errors": null,
+        "metrics_at": null,
+        "p95": null,
+        "problems": [
+          "up:unavailable_or_invalid",
+          "requests:unavailable_or_invalid",
+          "buckets:unavailable_or_invalid",
+          "up:missing_stale_or_invalid"
+        ],
+        "requests": null,
+        "up": null,
+        "up_at": null
+      }
+    }
+  },
+  "passed": true
+}

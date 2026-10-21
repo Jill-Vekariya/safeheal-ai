@@ -1,0 +1,73 @@
+INFO:     Started server process [6]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18082 (Press CTRL+C to quit)
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents?active_only=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /healthz HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /readyz HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:48968 - "GET /incidents/302b8fe4-0472-4f43-a7e4-3e9be1ca3bea HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents/a3bde1a0-a1f7-458c-920d-c5b7addecba4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /incidents/c7ef30f2-7f65-4416-b235-a075f3796efb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48968 - "GET /evidence/4 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [6]

@@ -1,0 +1,39 @@
+[Reading last 34 lines (total: 34 lines)]
+
+........................................................................ [ 67%]
+.......F...........................                                      [100%]
+================================== FAILURES ===================================
+_______ test_latency_observes_completed_work_and_independent_registries _______
+
+    def test_latency_observes_completed_work_and_independent_registries():
+        app = create_app("payment")
+        @app.get("/delayed")
+        async def delayed():
+            await asyncio.sleep(.03)
+            return {"ok": True}
+        with TestClient(app) as a, TestClient(create_app("payment")) as b:
+            assert a.get("/delayed").status_code == 200
+>           assert samples(a, "safeheal_http_request_duration_seconds_sum")[0].value >= .025
+E           AssertionError: assert 0.02397680000285618 >= 0.025
+E            +  where 0.02397680000285618 = Sample(name='safeheal_http_request_duration_seconds_sum', labels={'method': 'GET', 'route': '/delayed', 'service': 'payment', 'status_class': '2xx'}, value=0.02397680000285618, timestamp=None, exemplar=None, native_histogram=None).value
+
+tests\test_observability.py:90: AssertionError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\jillv\Projects\safeheal-ai\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_observability.py::test_latency_observes_completed_work_and_independent_registries
+1 failed, 106 passed, 1 warning in 14.31s
+Tests failed
+At line:7 char:28
++ if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
++                            ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Tests failed:String) [], RuntimeException
+    + FullyQualifiedErrorId : Tests failed
+
+✅ Process completed with exit code 1 (runtime: 19.05s)
+
+[executed on device: Jill-Vekariya10 (8025e560-e3a9-4f10-9084-a256f42ffb82)]

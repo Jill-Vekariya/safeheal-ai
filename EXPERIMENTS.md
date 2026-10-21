@@ -97,3 +97,52 @@ no automatic injection retry), 51 tests and a scoped local native recovery passe
 `evidence/day2/recovery-20261021T110508-9fb946.json`. This check exercises the corrected client configuration;
 it does not prove that the preceding failed CI fault did not occur, or provide a controlled MTTR comparison.
 No failed record was removed or relabelled as successful. Full CI is required for the correction commit.
+
+## Day 4 deterministic baseline — offline engineering evidence
+
+The detector and rule diagnosis are implemented and tested in an isolated source snapshot because the canonical development computer was offline and GitHub access was unconnected. See evidence/day4/source-provenance.json. Current canonical HEAD and existing cluster were not inspected or modified.
+
+- Full local suite: 107 passed / one existing warning, including 56 added detector and service-metrics integration tests. evidence/day4/tests.txt.
+- Four controlled **synthetic** failure classes passed lifecycle acceptance with no LLM or recovery action. Full records and evidence references: evidence/day4/synthetic-acceptance.json. Source timestamps and observations are synthetic.
+- One integration test derives the server-error signal from actual 503s and Prometheus metrics emitted by the existing order FastAPI app; TestClient transport and scrape timestamps are simulated. This verifies schema compatibility, not a live Prometheus/kind experiment.
+- One initial full-suite failure was retained as a summary in evidence/day4/initial-test-failure.json. Host 1% trace sampling prevented an existing exporter assertion; test-only deterministic sampling resolved it. Production tracing code is unchanged.
+
+No matched native/rule/AI trials, diagnosis accuracy denominator, false-alert rates, detection latency measurement, benchmark MTTR or overhead estimate has been collected. Thresholds are declared in docs/INCIDENT_DETECTION.md before future trials. Actual cluster acceptance and canonical publication/CI are pending; full gates remain 3/10.
+
+
+Day 4 loopback service smoke also passed: started the actual detector as an isolated local process with no Prometheus listener, observed three open `telemetry_unavailable` incidents through real HTTP GET requests, health 200 and readiness 503, read their diagnoses/evidence, then stopped only that process. Raw record: `evidence/day4/api-smoke.json`; console: `evidence/day4/api-smoke.txt`. This verifies real detector execution and telemetry-outage detection, not business-fault detection in the existing kind cluster. Reproduce only with unused local ports 18082/19090 using `python scripts/verify_detector_api.py`.
+
+## Day 4 canonical engineering attempts and observability limitation
+
+Canonical source was integrated after reconnection and successful patch applicability checks, against clean local/remote main bc06bf52efe19db592932b824de5da864c8b8c8d. Private visibility and the five healthy existing Deployments were verified.
+
+Two routing-disconnection acceptance attempts remain recorded as failed:
+
+- day4-live-463536f6246c: payment scrape failure opened and resolved correctly, with successful final health/orders and exact selector restoration. The overall harness failed an additional gateway-5xx assertion because long-lived internal connections kept working.
+- day4-live-b54f1ad56622: existing Prometheus connections also kept working, so there was no observable payment `up=0` and no incident opened. The selector was restored; separate service verification passed.
+
+These records show that Service endpoint withdrawal need not interrupt existing TCP connections. They are retained as failed engineering acceptance attempts. Do not treat them as matched benchmark results, relabel them as successes, infer a research false-negative rate, or claim that metrics can detect a failure absent from their inputs. The final observable-fault harness pauses the validated payment task with timed resumption and allows native Kubernetes liveness recovery, while preserving all observations and recovery attribution. Provider/model usage remains zero.
+
+
+## Day 4 final local engineering acceptance — PASS
+
+Trial `day4-pause-670cd6f0b91f` passed from 2026-10-21T16:41:02.324443 to 16:43:49.611107 UTC. Fixed identity-checked payment task pause; node-side pause/resume command completed with exit 0. Actual Prometheus observations opened payment scrape outage, gateway/order latency and gateway/order 5xx incidents. All five completed pending -> open -> recovering -> resolved; error incidents carried suspected-payment correlation links and evidence IDs. Actual gateway workload: 250 responses, 187 x 201 / 63 x 503. Final fresh DNS/health/readiness/order checks passed (confirmed, 2000 cents). Payment retained its Pod UID with native restart count 2 -> 3; upstream identities/counts stayed unchanged (0 -> 0). Detector remediation/model calls: none. Runtime source hashes, raw query matrices and failed checks are retained in evidence/day4.
+
+Final Windows suite: 118 passed / one existing dependency warning in 28.26 s, evidence/day4/windows-tests.txt. Linux suite: 118 passed. Expanded CI installs the existing locked runtime, forwards Prometheus locally, executes the guarded dry run and observable task-pause check in fresh kind, and uploads Day 4 evidence. Canonical implementation/docs/evidence are committed privately; publication SHA/CI is verified after commit and appended to the portable completion copy. Day 4 checklist 8/8; full gates 4/10 (40%). Next: Day 5 controlled fault runner/ground truth/native and rule-diagnosis baselines. No controlled benchmark, MTTR, model benefit or OS privilege-separation claim is made.
+
+
+## CI warm-up baseline correction
+
+Initial branch CI run 39638639803 (76d78187619e45da87fbe85601e37c822e13b860) passed the unit job and failed the new live acceptance **before fault injection**. Raw CI trial day4-pause-3416e684d4a5 had two baseline polls: the first recorded incomplete warm-up telemetry; the second had all targets UP, eligible zero-error traffic, no telemetry problems, and that transient incident already resolved without opening. The harness incorrectly rejected any historical incident. Failure logs, metadata and raw trial remain under evidence/day4.
+
+Changed only harness readiness: require eligible current telemetry and no active incidents; resolved warm-up history remains visible and no longer blocks a healthy baseline. Active incidents still block acceptance. Added two regression tests; suite now 120 tests, rules/thresholds/state machine unchanged. No fault is automatically retried after ambiguous injection. The corrected commit runs the full CI suite again; its final result is verified after private review-branch publication. A console Unicode error while printing the downloaded log was a retrieval-display issue; the UTF-8 failure file and downloaded raw JSON were already retained.
+
+
+## Day 4 publication checkpoint - 2026-10-21
+
+GitHub PR #1 tracks integration of the completed deterministic detector and retained engineering evidence: https://github.com/Jill-Vekariya/safeheal-ai/pull/1. The implementation at 87e2ec25e9264fe0d48b3e5fae97c39762dc03e4 passed both jobs in CI run 39640164313. The publication documentation does not change rules, thresholds, fault behavior, or experimental outcomes. No additional local trial or benchmark was conducted; previous failed attempts remain intact. Final PR/main CI state is available from GitHub. Controlled research benchmarks remain Day 5 work.
+
+
+## Native recovery verification settling - 2026-10-21
+
+PR run 39646024404 remains a failed engineering acceptance: post-restart HTTP Service access was refused after Pod Ready. Original JSON, log and run metadata are retained. The developer harness now records bounded GET-only readiness attempts before the unchanged three end-to-end order checks; failed final checks still fail the trial, with no POST or fault retry. This corrects readiness verification, not production recovery, detector thresholds, or a benchmark outcome. Eight regression cases bring Windows tests to 128 passing. Fresh Linux/Kubernetes correction CI is verified after publication through PR #1. No new controlled-trial dataset or model call was produced.
