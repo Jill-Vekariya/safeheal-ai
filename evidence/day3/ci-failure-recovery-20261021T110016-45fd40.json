@@ -1,0 +1,287 @@
+{
+  "trial_id": "day2-native-47d128d33325",
+  "approach": "native-kubernetes",
+  "scenario": "payment-container-stop",
+  "context": "kind-safeheal-dev",
+  "namespace": "safeheal-dev",
+  "source": {
+    "head": "10d8415150860c62ba41168a4793a36dbfc3072d",
+    "working_tree": [
+      "?? evidence/day2/verification-20261021T110014-f0b453.json"
+    ],
+    "sha256": {
+      "infrastructure/kind.yaml": "ddb538debec323de725ad97048098708e46e54565e47a5e8d2ffec0ff23990a1",
+      "infrastructure/kubernetes/gateway.yaml": "24a9498ff6f97f9f9cc53b70483a47bb77220a731eda314e8531bc02609b596c",
+      "infrastructure/kubernetes/kustomization.yaml": "3025db6d1f6d4749cdb8189299e6b03ff7107781bd16186f425df059e5b95cea",
+      "infrastructure/kubernetes/namespace.yaml": "df6760e8eb463345938593cacebdb49dd348d4a4c05203640f885ec8cd90a5b1",
+      "infrastructure/kubernetes/order.yaml": "b068c0ed8e5ce569b6bbafd705cd1008f009e050873bf2bc38f1deed1996d182",
+      "infrastructure/kubernetes/payment.yaml": "521b92e1f1e2bf09c9ea4e60a693fa65f32b85ed16008e793cc4499a8158dcb3",
+      "infrastructure/kubernetes/serviceaccount.yaml": "be75aeb162b36e1411ecbad0ed8c1238ff52b3c2de7da74f0c90dd21a7d5e0c1",
+      "infrastructure/observability/dashboards.yaml": "ca892dda69468e71eec09c67b445a8a94820721325b4d94ce2bfae5d7b3803f8",
+      "infrastructure/observability/datasources.yaml": "2744d315e2d08e3171af3533806a336ee5538ddf85d339c005587b68048b64ca",
+      "infrastructure/observability/kustomization.yaml": "aff297de4ce3fb85ef838570933e2869b31c634e94e04988265b1f37644b8e39",
+      "scripts/k8s.py": "2b7f4f96b81a8009f91676aca05c9fc0eb853c4988e30613a1abefaeffcadf5e",
+      "scripts/in_cluster_check.py": "c2cc7081b0261257bb034e089f99531388e5c024649b337d1e4d788aa68260ad"
+    },
+    "kind": "kind v0.33.0 go1.26.7 linux/amd64",
+    "kubectl": "v1.37.1",
+    "kubernetes": "v1.36.4"
+  },
+  "before": {
+    "payment": {
+      "pod": "payment-7c8977b777-s9flg",
+      "uid": "6df0dfed-23f2-4630-b57b-df92a9202082",
+      "node": "safeheal-dev-control-plane",
+      "container": "payment",
+      "container_id": "containerd://ee436e8de76b189794fa2e8b27ae4d9935b15e907fb5408da14c4b9457e503dc",
+      "image_id": "docker.io/library/import-2026-10-21@sha256:48c96c0f1f240b4a8a627cf48a9f795d009517052d34bc82fdb950d81faf0f36",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-21T11:00:04Z"
+        }
+      },
+      "last_state": {}
+    },
+    "order": {
+      "pod": "order-5f49b5c88d-tjct7",
+      "uid": "c5b55d78-98d4-48b9-a4fa-ad623f1cb44f",
+      "node": "safeheal-dev-control-plane",
+      "container": "order",
+      "container_id": "containerd://72a510d17ae82df467135389f285330062435ffd9975d8562e10085856fb61a5",
+      "image_id": "docker.io/library/import-2026-10-21@sha256:48c96c0f1f240b4a8a627cf48a9f795d009517052d34bc82fdb950d81faf0f36",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-21T11:00:04Z"
+        }
+      },
+      "last_state": {}
+    },
+    "gateway": {
+      "pod": "gateway-74b947fcfb-vm75m",
+      "uid": "3d7396c5-104b-4c0e-a0fa-10eaff616a6e",
+      "node": "safeheal-dev-control-plane",
+      "container": "gateway",
+      "container_id": "containerd://a4a9369bfde801e9b5604f689e528bfcfd8459a8305b4f324d43264104f5967d",
+      "image_id": "docker.io/library/import-2026-10-21@sha256:48c96c0f1f240b4a8a627cf48a9f795d009517052d34bc82fdb950d81faf0f36",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-21T11:00:04Z"
+        }
+      },
+      "last_state": {}
+    }
+  },
+  "command": [
+    "docker",
+    "exec",
+    "safeheal-dev-control-plane",
+    "crictl",
+    "stop",
+    "--timeout",
+    "0",
+    "ee436e8de76b189794fa2e8b27ae4d9935b15e907fb5408da14c4b9457e503dc"
+  ],
+  "observations": [],
+  "passed": false,
+  "measurement": "Host elapsed time from stop request to three successful recovery checks; includes tool/API/poll overhead; not benchmark MTTR.",
+  "baseline_check": {
+    "request_id": "day2-native-47d128d33325-before",
+    "dns": {
+      "gateway": {
+        "short": "10.96.213.10",
+        "fqdn": "10.96.213.10"
+      },
+      "order": {
+        "short": "10.96.237.225",
+        "fqdn": "10.96.237.225"
+      },
+      "payment": {
+        "short": "10.96.158.46",
+        "fqdn": "10.96.158.46"
+      }
+    },
+    "health": {
+      "gateway": {
+        "healthz": {
+          "status": "ok",
+          "service": "gateway"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "gateway"
+        }
+      },
+      "order": {
+        "healthz": {
+          "status": "ok",
+          "service": "order"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "order"
+        }
+      },
+      "payment": {
+        "healthz": {
+          "status": "ok",
+          "service": "payment"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "payment"
+        }
+      }
+    },
+    "order": {
+      "order_id": "8505f786-523b-40fc-9578-9067810152c2",
+      "item_id": "day2-demo",
+      "quantity": 2,
+      "amount_cents": 2000,
+      "payment_id": "85d99066-5622-4598-b193-1bf21ed9a9ab",
+      "status": "confirmed"
+    },
+    "http_status": 201,
+    "passed": true
+  },
+  "injection_requested_at": "2026-10-21T11:00:16.782326+00:00",
+  "error": "Command failed (1): docker exec safeheal-dev-control-plane crictl stop --timeout 0 ee436e8de76b189794fa2e8b27ae4d9935b15e907fb5408da14c4b9457e503dc\n\nE1021 11:00:18.827018    3763 remote_runtime.go:459] \"StopContainer from runtime service failed\" err=\"rpc error: code = DeadlineExceeded desc = context deadline exceeded\" containerID=\"ee436e8de76b189794fa2e8b27ae4d9935b15e907fb5408da14c4b9457e503dc\"\ntime=\"2026-10-21T11:00:18Z\" level=fatal msg=\"stopping the container \\\"ee436e8de76b189794fa2e8b27ae4d9935b15e907fb5408da14c4b9457e503dc\\\": rpc error: code = DeadlineExceeded desc = context deadline exceeded\"\n",
+  "elapsed_to_final_check_s": 2.06,
+  "events": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-21T11:00:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "payment-7c8977b777-s9flg",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "598",
+        "uid": "6df0dfed-23f2-4630-b57b-df92a9202082"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-21T11:00:03Z",
+      "message": "Successfully assigned safeheal-dev/payment-7c8977b777-s9flg to safeheal-dev-control-plane",
+      "metadata": {
+        "creationTimestamp": "2026-10-21T11:00:03Z",
+        "name": "payment-7c8977b777-s9flg.18e086613116e441",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "607",
+        "uid": "952cac96-e053-4480-9c5b-5cf648f4707b"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-21T11:00:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{payment}",
+        "kind": "Pod",
+        "name": "payment-7c8977b777-s9flg",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "602",
+        "uid": "6df0dfed-23f2-4630-b57b-df92a9202082"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-21T11:00:04Z",
+      "message": "Container image \"safeheal-ai:sha256-2ff25b34f27345b6\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-21T11:00:04Z",
+        "name": "payment-7c8977b777-s9flg.18e086615a357afa",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "626",
+        "uid": "5e389911-0d8f-4a4c-998a-5b259dd9b67b"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "safeheal-dev-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "safeheal-dev-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-21T11:00:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{payment}",
+        "kind": "Pod",
+        "name": "payment-7c8977b777-s9flg",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "602",
+        "uid": "6df0dfed-23f2-4630-b57b-df92a9202082"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-21T11:00:04Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-21T11:00:04Z",
+        "name": "payment-7c8977b777-s9flg.18e086615d491281",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "628",
+        "uid": "91357256-e427-43d7-b425-fbb279c0db7a"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "safeheal-dev-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "safeheal-dev-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-21T11:00:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{payment}",
+        "kind": "Pod",
+        "name": "payment-7c8977b777-s9flg",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "602",
+        "uid": "6df0dfed-23f2-4630-b57b-df92a9202082"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-21T11:00:04Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-21T11:00:04Z",
+        "name": "payment-7c8977b777-s9flg.18e08661665f28d2",
+        "namespace": "safeheal-dev",
+        "resourceVersion": "633",
+        "uid": "2cd34f92-ebef-4b97-8e5b-c544508f0a5b"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "safeheal-dev-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "safeheal-dev-control-plane"
+      },
+      "type": "Normal"
+    }
+  ]
+}

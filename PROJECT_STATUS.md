@@ -1,6 +1,28 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-21, Asia/Kolkata (verification timestamps below are UTC). **Version:** 4. **Phase:** DAY 3 COMPLETE. Next: Day 4 deterministic detector.
+**Snapshot:** 2026-10-21, Asia/Kolkata (verification timestamps below are UTC). **Version:** 4.1. **Phase:** DAY 3 COMPLETE. Next: Day 4 deterministic detector.
+
+## CI timeout correction after Day 3 completion
+
+The later documentation/evidence commit `10d8415150860c62ba41168a4793a36dbfc3072d`
+passed unit tests but its fresh-cluster recovery check failed in [run 39588507641](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39588507641).
+`crictl` returned a runtime RPC `DeadlineExceeded` at its default **2-second** client deadline;
+the log did not establish a verified recovery outcome. The observability step was consequently skipped.
+This does not invalidate the earlier completed local observability acceptance or passing implementation CI.
+
+Corrected the developer recovery script to use an explicit **30-second CRI client timeout**, within its
+existing 45-second outer command bound. The separate container kill grace remains **0 seconds**;
+there is still one scoped stop request, no automatic retry, the same ownership guards/lock and the same
+required recovery assertions. `crictl` 1.36.0 local help verified the two distinct timeout meanings.
+The corrected code passed **51 tests** and a new local dry-run/native recovery check, including the same
+Pod/new container/increased restart count, stable upstream containers and three healthy order checks.
+Evidence: `evidence/day3/tests-rpc-timeout-fix.txt`, `evidence/day2/recovery-20261021T110508-9fb946.json`.
+The original failed CI record and run metadata are preserved under `evidence/day3/ci-failure-*`.
+
+The complete CI suite is rerun by the correction commit. At the time this source document was written,
+that new run was pending; inspect the latest GitHub Actions run/current HEAD before claiming the
+latest commit is green. The portable handoff can append the final verified publication result.
+Day 3 remains 9/9; full gates remain 3/10 (30%). No new research benchmark claim is made.
 
 ## Read this first in a new chat
 
@@ -37,7 +59,7 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 | Node / runtime | `safeheal-dev-control-plane`, single Ready node; containerd 2.3.4 |
 | Kubernetes configuration | Explicit project `.local/kubeconfig`; loopback API; private ownership labels `safeheal.ai/project=safeheal-ai` and `safeheal.ai/environment=local-test` |
 | Local API docs | Compose: `http://127.0.0.1:18080/docs`; Kubernetes: `http://127.0.0.1:18081/docs` only while `python scripts/k8s.py port-forward` runs |
-| Container state | All five Kubernetes Deployments Ready/Available after Day 3; payment restart count 1 and gateway/order 0 after the scoped Day 3 fault. Compose is an older Day 2 stack and was not changed/reverified in Day 3. Recheck next session. |
+| Container state | All five Kubernetes Deployments Ready/Available after Day 3; payment restart count 2 and gateway/order 0 after the Day 3 fault and subsequent timeout-fix recovery check. Compose is an older Day 2 stack and was not changed/reverified in Day 3. Recheck next session. |
 | Monitoring | Prometheus 3.15.0; Grafana 13.2.4; digest-pinned manifests in `infrastructure/observability` |
 | Python telemetry | prometheus-client 0.26.0; OpenTelemetry SDK/API 1.45.1; exact lock retained |
 | Grafana | `http://127.0.0.1:13000/d/safeheal-operations`, on development PC while its forward is running; HTTP health 200 verified |

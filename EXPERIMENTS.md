@@ -84,3 +84,16 @@ Limitations: one engineering traffic run, no matched A/B/C scenarios, no randomi
 window and no overhead control. Five-second scrape timing, one-minute rate windows, ephemeral monitoring data, one-replica
 Service scraping and synchronous JSON span export must be considered before experiments. No research effect size, MTTR,
 false-alert estimate, diagnostic accuracy or AI benefit is inferred from this check. Setup/image/startup issues are in WORKLOG.md.
+
+## CI client-deadline failure retained
+
+Run 39588507641 failed during StopContainer at crictl's two-second default runtime-client deadline.
+Its record does not establish a verified recovery outcome; it is an engineering acceptance failure,
+not a matched research trial. Original raw record: `evidence/day3/ci-failure-recovery-20261021T110016-45fd40.json`;
+run metadata: `evidence/day3/ci-failure-39588507641.json`.
+
+After explicitly bounding that RPC at 30 seconds (kill grace still zero; outer process bound 45 seconds;
+no automatic injection retry), 51 tests and a scoped local native recovery passed. Local raw record:
+`evidence/day2/recovery-20261021T110508-9fb946.json`. This check exercises the corrected client configuration;
+it does not prove that the preceding failed CI fault did not occur, or provide a controlled MTTR comparison.
+No failed record was removed or relabelled as successful. Full CI is required for the correction commit.

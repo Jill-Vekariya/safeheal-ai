@@ -194,3 +194,13 @@ enforcement. It is an isolated local lab, not production security hardening.
 - [Kubernetes DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 - [Kubernetes probes](https://kubernetes.io/docs/concepts/workloads/pods/probes/)
 - [Kubernetes Pod lifecycle and restart policy](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
+
+
+## Runtime-client deadline in the native recovery test
+
+`crictl --timeout=30s stop --timeout 0 <validated-container-id>` uses two different timeout scopes.
+The global 30-second bound permits the CRI RPC to finish on a busy runner; stop's zero-second
+kill grace keeps the intended fault unchanged. The host subprocess remains bounded at 45 seconds.
+A timed-out stop is an ambiguous execution outcome and fails acceptance; the script never retries
+that injection automatically. Raw errors remain in evidence. See WORKLOG.md for the retained
+39588507641 CI deadline failure and subsequent correction checks.

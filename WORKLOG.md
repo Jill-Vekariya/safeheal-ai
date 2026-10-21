@@ -103,3 +103,23 @@ All five Deployments are Ready. Started loopback-only Grafana port 13000 and Pro
 These forwards are temporary processes on the development PC. Updated PROJECT_STATUS.md version 4, ROADMAP.md and EXPERIMENTS.md to
 Day 3 complete / full gates 3 of 10 (30%). Final evidence/status documentation is committed separately from implementation.
 No benchmark MTTR, diagnostic score, overhead comparison, AI improvement or admission claim is made. Next: Day 4 deterministic detector.
+
+## 2026-10-21 — CI runtime-client timeout correction
+
+When the user asked whether everything was on GitHub, confirmed local/remote main matched `10d8415`,
+clean working tree and PRIVATE visibility. The subsequent Actions run 39588507641 had failed in the
+Day 2 native recovery step: StopContainer RPC exceeded crictl's default two-second client deadline.
+Unit tests passed; observability acceptance was skipped. Retrieved and retained the original failed
+trial as `evidence/day3/ci-failure-recovery-20261021T110016-45fd40.json` and run metadata as
+`evidence/day3/ci-failure-39588507641.json`. No verified CI recovery success was inferred from the timeout.
+
+User explicitly requested making the run successful. Verified installed crictl 1.36.0 help: global
+`--timeout` controls runtime-client timeout, while `stop --timeout` controls kill grace. Added only
+`--timeout=30s` before `stop`, retaining zero-second kill grace, existing 45-second host subprocess
+bound, one-shot injection/no retries, target ownership validation, fault lock and recovery assertions.
+
+Corrected code: 51 tests passed / one existing warning in 15.21 s, saved tests-rpc-timeout-fix.txt.
+Dry run passed; actual local native recovery passed, raw record `evidence/day2/recovery-20261021T110508-9fb946.json`.
+Same payment Pod/new container/restart count increased 1 -> 2; upstream containers stable; three healthy
+order checks passed. Documentation and experiment register updated. Correction commit reruns the full
+GitHub suite; final run state is verified after publication rather than assuming the timeout increase succeeded.

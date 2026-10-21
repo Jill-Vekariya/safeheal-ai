@@ -282,7 +282,11 @@ def recovery(execute=False):
     container_id = before["payment"]["container_id"].removeprefix("containerd://")
     cri = json.loads(run(["docker", "exec", NODE, "crictl", "inspect", container_id]))
     container_id = guard_target(pod, cri)
-    command = ["docker", "exec", NODE, "crictl", "stop", "--timeout", "0", container_id]
+    # The global timeout bounds the CRI RPC; stop's timeout is a separate kill grace.
+    # crictl defaults to a 2s RPC deadline, which can expire on a busy CI runner.
+    # Never retry an ambiguous stop: keep one scoped request and retain failures.
+    command = ["docker", "exec", NODE, "crictl", "--timeout=30s",
+               "stop", "--timeout", "0", container_id]
     if not execute:
         print(json.dumps({"dry_run": True, "target": before["payment"], "command": command,
                           "impact": "One payment container stops; kubelet restarts it. Brief order failures possible."}, indent=2))
