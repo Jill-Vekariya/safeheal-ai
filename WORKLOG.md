@@ -167,3 +167,10 @@ Automatic approval review rejected a combined commit/default-main push command b
 Initial branch CI run 39638639803 (76d78187619e45da87fbe85601e37c822e13b860) passed the unit job and failed the new live acceptance **before fault injection**. Raw CI trial day4-pause-3416e684d4a5 had two baseline polls: the first recorded incomplete warm-up telemetry; the second had all targets UP, eligible zero-error traffic, no telemetry problems, and that transient incident already resolved without opening. The harness incorrectly rejected any historical incident. Failure logs, metadata and raw trial remain under evidence/day4.
 
 Changed only harness readiness: require eligible current telemetry and no active incidents; resolved warm-up history remains visible and no longer blocks a healthy baseline. Active incidents still block acceptance. Added two regression tests; suite now 120 tests, rules/thresholds/state machine unchanged. No fault is automatically retried after ambiguous injection. The corrected commit runs the full CI suite again; its final result is verified after private review-branch publication. A console Unicode error while printing the downloaded log was a retrieval-display issue; the UTF-8 failure file and downloaded raw JSON were already retained.
+
+
+## 2026-10-21 - Day 4 GitHub pull-request completion
+
+User requested completing the GitHub compare/pull-request banner. Verified a clean canonical day4-incident-baseline checkout, private repository, remote branch at 87e2ec25e9264fe0d48b3e5fae97c39762dc03e4, and no divergence from the Day 3 base (main behind by the two intended Day 4 commits). Both jobs in CI run 39640164313 succeeded, including real Kubernetes/Prometheus acceptance. Created PR #1: https://github.com/Jill-Vekariya/safeheal-ai/pull/1.
+
+Updated the current handoff to link the review/merge record and distinguish historical pending-publication notes. This checkpoint changes documentation only. PR and subsequent main checks establish final integration status; do not infer success from a queued run. No new local fault or model call was performed. Full project gates remain 4/10; Day 5 is next.
