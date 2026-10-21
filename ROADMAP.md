@@ -2,7 +2,7 @@
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
-**Verified progress: Days 1–4 complete, 4/10 gates (40%), as of 2026-10-21 Asia/Kolkata. Next: Day 5 controlled fault benchmark.** Day 4 has 118 passing tests and actual Prometheus/payment-task-failure acceptance with five resolved incidents. Failed routing attempts remain recorded; inspect latest private publication/CI after commit. See PROJECT_STATUS.md and docs/INCIDENT_DETECTION.md.
+**Verified progress: Days 1–4 complete, 4/10 gates (40%), as of 2026-10-21 Asia/Kolkata. Next: Day 5 controlled fault benchmark.** Day 4 has 120 passing tests and actual Prometheus/payment-task-failure acceptance with five resolved incidents. Failed routing attempts remain recorded; inspect latest private publication/CI after commit. See PROJECT_STATUS.md and docs/INCIDENT_DETECTION.md.
 
 | Day | Implementation tasks | Acceptance evidence |
 |---|---|---|

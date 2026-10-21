@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import k8s as lab
 from services.incidents.controller import Controller
 from services.incidents.telemetry import Collector
-from verify_detector_live import TRAFFIC_SCRIPT
+from verify_detector_live import TRAFFIC_SCRIPT, baseline_ready
 
 PAUSE_SCRIPT = '''task_id="$1"
 resume_task() { ctr --timeout 10s --connect-timeout 5s --namespace k8s.io tasks resume "$task_id" >/dev/null 2>&1 || true; }
@@ -103,11 +103,11 @@ def main():
         deadline = time.monotonic()+40
         while True:
             snapshot = collect("baseline")
-            if all(v.up is True and not v.problems and v.requests is not None and v.requests >= 20 for v in snapshot.services.values()):
+            if baseline_ready(snapshot, controller):
                 break
             lab.require(time.monotonic()<deadline, "Baseline telemetry did not become eligible")
             time.sleep(5)
-        lab.require(not controller.list_incidents(), "Unexpected baseline incident")
+        lab.require(not controller.list_incidents(active_only=True), "Unexpected active baseline incident")
         with lab.recovery_lock():
             # Revalidate the exact task immediately before injection.
             lab.require(pause_target(lab.pod_for("payment"), json.loads(lab.run(["docker", "exec", lab.NODE, "crictl", "inspect", cid]))) == cid,

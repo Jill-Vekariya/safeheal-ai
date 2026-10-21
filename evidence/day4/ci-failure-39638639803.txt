@@ -1,0 +1,64 @@
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	﻿2026-10-21T16:55:24.8868696Z ##[group]Run kubectl --kubeconfig .local/kubeconfig --context kind-safeheal-dev -n safeheal-dev port-forward --address=127.0.0.1 service/prometheus 19090:9090 > .local/day4-prometheus-forward.log 2>&1 &
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8871632Z ^[[36;1mkubectl --kubeconfig .local/kubeconfig --context kind-safeheal-dev -n safeheal-dev port-forward --address=127.0.0.1 service/prometheus 19090:9090 > .local/day4-prometheus-forward.log 2>&1 &^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8873445Z ^[[36;1mdetector_forward_pid=$!^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8874219Z ^[[36;1mtrap 'kill "$detector_forward_pid" 2>/dev/null || true' EXIT^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8874964Z ^[[36;1mpython scripts/verify_detector_pause.py^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8875636Z ^[[36;1mpython scripts/verify_detector_pause.py --execute^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8947692Z shell: /usr/bin/bash -e {0}
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8948147Z env:
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8948612Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8949749Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8950599Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8951166Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8951549Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8952190Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:24.8952722Z ##[endgroup]
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0394616Z {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0395314Z   "dry_run": true,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0395872Z   "target": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0396440Z     "pod": "payment-78db7cfdcf-pfcqb",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0397130Z     "uid": "d420bb3e-964a-4081-b6e5-76cf1d06e2cf",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0397828Z     "node": "safeheal-dev-control-plane",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0398486Z     "container": "payment",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0399431Z     "container_id": "containerd://77888bff0739334c058d91c769fcfd6a634c5d7ea2f90edc4ff4e291eeee87d2",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0400972Z     "image_id": "docker.io/library/import-2026-10-21@sha256:a190f3f1911dec740c0985b5b37cbcb87b60395b289307adb24415c3a4851972",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0402065Z     "restart_count": 1,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0402586Z     "ready": true,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0403081Z     "state": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0403863Z       "running": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0404388Z         "startedAt": "2026-10-21T16:53:53Z"
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0404982Z       }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0405667Z     },
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0406108Z     "last_state": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0406604Z       "terminated": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0407470Z         "containerID": "containerd://724a9bc01f39549124580b873cb6935b7b2e8270ffddafa3dfdab5567f038948",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0408479Z         "exitCode": 137,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0409066Z         "finishedAt": "2026-10-21T16:53:52Z",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0409686Z         "reason": "Error",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0410221Z         "startedAt": "2026-10-21T16:53:38Z"
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0410797Z       }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0411229Z     }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0411647Z   },
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0412364Z   "command": [
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0412996Z     "docker",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0414570Z     "exec",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0415380Z     "safeheal-dev-control-plane",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0416093Z     "sh",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0416780Z     "-c",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0419442Z     "task_id=\"$1\"\nresume_task() { ctr --timeout 10s --connect-timeout 5s --namespace k8s.io tasks resume \"$task_id\" >/dev/null 2>&1 || true; }\ntrap resume_task EXIT HUP INT TERM\nctr --timeout 10s --connect-timeout 5s --namespace k8s.io tasks pause \"$task_id\" || exit 1\nprintf 'PAYMENT_TASK_PAUSED\n'\nsleep 35\nresume_task\nprintf 'PAYMENT_PAUSE_WINDOW_FINISHED\n'\n",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0422031Z     "safeheal-day4-pause",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0423059Z     "77888bff0739334c058d91c769fcfd6a634c5d7ea2f90edc4ff4e291eeee87d2"
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0424305Z   ],
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0498556Z   "impact": "One validated payment task pauses for 35s, then resumes automatically. Native liveness restart is possible."
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:26.0500961Z }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:27.8704774Z Warming actual traffic and Prometheus evidence
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0353841Z Evidence: evidence/day4/day4-pause-3416e684d4a5.json
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0374000Z Traceback (most recent call last):
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0392298Z   File "/home/runner/work/safeheal-ai/safeheal-ai/scripts/verify_detector_pause.py", line 173, in <module>
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0393930Z     main()
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0394837Z   File "/home/runner/work/safeheal-ai/safeheal-ai/scripts/verify_detector_pause.py", line 110, in main
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0396042Z     lab.require(not controller.list_incidents(), "Unexpected baseline incident")
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0397216Z   File "/home/runner/work/safeheal-ai/safeheal-ai/scripts/k8s.py", line 38, in require
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0400488Z     raise RuntimeError(message)
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0401502Z RuntimeError: Unexpected baseline incident
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-21T16:55:33.0641172Z ##[error]Process completed with exit code 1.

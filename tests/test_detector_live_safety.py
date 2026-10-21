@@ -72,3 +72,21 @@ def test_pause_command_uses_exact_dedicated_node_and_separate_id_argument():
     assert command[:5] == ["docker","exec","safeheal-dev-control-plane","sh","-c"]
     assert command[-1] == cid and cid not in command[5]
     assert 'sleep 35' in command[5] and 'trap resume_task' in command[5]
+
+
+def test_resolved_warmup_history_does_not_reject_a_healthy_baseline():
+    from services.incidents.telemetry import ServiceEvidence, Snapshot, SERVICES
+    snapshot = Snapshot(100., {s:ServiceEvidence(True,100.,40.,0.,.05,100.) for s in SERVICES})
+    class History:
+        def list_incidents(self, active_only=False):
+            return [] if active_only else [{"state":"resolved","resolution":"transient"}]
+    assert live.baseline_ready(snapshot, History())
+
+
+def test_unresolved_incidents_still_block_baseline_acceptance():
+    from services.incidents.telemetry import ServiceEvidence, Snapshot, SERVICES
+    snapshot = Snapshot(100., {s:ServiceEvidence(True,100.,40.,0.,.05,100.) for s in SERVICES})
+    class History:
+        def list_incidents(self, active_only=False):
+            return [{"state":"open"}]
+    assert not live.baseline_ready(snapshot, History())

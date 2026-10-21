@@ -160,3 +160,10 @@ Final Windows suite: 118 passed / one existing dependency warning in 28.26 s, ev
 
 
 Automatic approval review rejected a combined commit/default-main push command before execution, stating that exact default-branch publication was not clearly authorized. No main push occurred. Continued with the materially safer alternative: a separate day4-incident-baseline branch and reviewable private publication. Main remains at the verified Day 3 tip until a separately authorized merge. The requested implementation, tests and commit are completed on that review branch; CI is checked there.
+
+
+## CI warm-up baseline correction
+
+Initial branch CI run 39638639803 (76d78187619e45da87fbe85601e37c822e13b860) passed the unit job and failed the new live acceptance **before fault injection**. Raw CI trial day4-pause-3416e684d4a5 had two baseline polls: the first recorded incomplete warm-up telemetry; the second had all targets UP, eligible zero-error traffic, no telemetry problems, and that transient incident already resolved without opening. The harness incorrectly rejected any historical incident. Failure logs, metadata and raw trial remain under evidence/day4.
+
+Changed only harness readiness: require eligible current telemetry and no active incidents; resolved warm-up history remains visible and no longer blocks a healthy baseline. Active incidents still block acceptance. Added two regression tests; suite now 120 tests, rules/thresholds/state machine unchanged. No fault is automatically retried after ambiguous injection. The corrected commit runs the full CI suite again; its final result is verified after private review-branch publication. A console Unicode error while printing the downloaded log was a retrieval-display issue; the UTF-8 failure file and downloaded raw JSON were already retained.
