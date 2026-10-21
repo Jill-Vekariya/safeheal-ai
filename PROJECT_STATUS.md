@@ -1,12 +1,25 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-21, Asia/Kolkata (verification timestamps below are UTC). **Version:** 3. **Phase:** DAY 2 COMPLETE. Next: Day 3 observability.
+**Snapshot:** 2026-10-21, Asia/Kolkata (verification timestamps below are UTC). **Version:** 4 (in progress). **Phase:** DAY 3 IN PROGRESS. Live observability acceptance pending.
 
 ## Read this first in a new chat
 
 The user wants this file to preserve continuity even if earlier chats are deleted. Read the entire file, inspect the actual project and WORKLOG.md, then continue from the next incomplete task. Do not start again or assume an unchecked item is complete. This file describes the project; it does not contain all its source code. Use the existing local folder or private GitHub repository to access current code. The earlier SafeHeal_AI_Day1.zip and Day 2 in-progress status are historical snapshots.
 
 User objective: build SafeHeal AI, a trustworthy self-healing distributed-systems platform powered by an evidence-grounded LLM agent, as a rigorous portfolio/research project supporting a Georgia Tech on-campus MS CS/AI application for Fall 2028. User profile in supplied specification: BTech expected July 2028, CGPA 8.75/10, research ongoing. Never claim admission is guaranteed or experimental gains are proven without measurements.
+
+## Day 3 implementation checkpoint
+
+User authorized the complete Day 3 observability checklist and commits on 2026-10-21.
+The computer was initially offline, then reconnected. The canonical checkout was clean at
+`a4ce10a5e5eb201e5a11cfefe971eb5d7419785e`, matched private remote main; all three original Pods were healthy.
+Implemented bounded Prometheus counters/histograms, JSON request logs, OpenTelemetry W3C
+server/client tracing with JSON span export, digest-pinned Prometheus/Grafana manifests,
+eight provisioned operational panels, acceptance scripts, tests and the observability runbook.
+Tests: 51 passed with one existing dependency deprecation warning. The first monitoring
+image-import attempt failed because Docker's partially pulled multi-platform archive lacked
+other-platform content. Deployment now lets kubelet resolve the pinned image directly.
+Live monitoring deployment/traffic acceptance and final commit/CI remain pending. Gate 3 is not complete.
 
 ## Progress at this snapshot
 
@@ -136,7 +149,7 @@ Do not ask for passwords or tokens in chat. If the computer is offline, report i
 |---|---|---|
 | Day 1: foundation | COMPLETE | Tested running microservices AND working private GitHub baseline |
 | Day 2: Kubernetes | COMPLETE | kind cluster, deployments/services/probes, service discovery and recorded native container recovery |
-| Day 3: observability | Not started | Real Prometheus error/latency/request metrics, JSON logs, Grafana; tracing if feasible |
+| Day 3: observability | IN PROGRESS | Real Prometheus error/latency/request metrics, JSON logs, Grafana; tracing if feasible |
 | Day 4: deterministic detector | Not started | Rules, incident lifecycle, timestamps/evidence, SQLite and rule diagnosis with tests |
 | Day 5: fault benchmark | Not started | At least three repeatable scoped faults, ground truth, native/rule trials and raw records |
 | Day 6: AI diagnosis | Not started | Provider integration, bounded read-only tools, structured hypotheses, evidence references, uncertainty and fallback |

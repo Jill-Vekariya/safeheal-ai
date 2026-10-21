@@ -58,3 +58,24 @@ Final Windows checks on 2026-10-21 local time (UTC records dated 2026-10-20):
 - Saved implementation CI metadata in `evidence/day2/implementation-ci.json`.
 
 Updated PROJECT_STATUS.md to version 3, Day 2 9/9 and full gates 2/10 (20%); updated ROADMAP.md and EXPERIMENTS.md. Evidence and completion documentation are committed separately from the tested implementation. The cluster and existing Compose stack remain running for inspection. Day 2 has no blockers; next is Day 3 observability. This proves a native container restart, not liveness-failure thresholds, Pod replacement, high availability or AI effectiveness.
+
+
+## 2026-10-21 — Day 3 implementation checkpoint
+
+User requested Day 3 observability and an updated portable status. Computer was initially offline;
+reconnected after the user reported it online. Canonical checkout clean and local/remote HEAD matched
+`a4ce10a5e5eb201e5a11cfefe971eb5d7419785e`; private visibility confirmed; all services Ready in the existing cluster.
+No newer work or parent AGENTS.md was found. Reused the cluster without recreation.
+
+Added per-app Prometheus registries and ASGI request/status/duration metrics; bounded labels and
+probe exclusions; correlated JSON logs including failures; OpenTelemetry manual server/client spans
+with W3C propagation and local JSON span export. Added digest-pinned monitoring manifests,
+eight provisioned Grafana panels, guarded deployment and actual-traffic verification scripts,
+unit/safety/trace tests, CI extension and docs/OBSERVABILITY.md. New packages installed only in
+project .venv; exact installed versions captured in requirements.lock.
+
+Tests: 51 passed, one existing Starlette warning. All app Deployments rolled out successfully.
+Initial kind image import of the Prometheus multi-platform digest failed because Docker's local
+archive lacked other-platform content. No monitoring resources had been applied. Replaced this
+preload step with normal kubelet pull by immutable digest; no cluster recreation or unrelated changes.
+Live monitoring acceptance is pending at this implementation checkpoint. Research findings remain none.

@@ -1,0 +1,257 @@
+{
+  "uid": "safeheal-operations",
+  "title": "SafeHeal Operations",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "5s",
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timezone": "browser",
+  "tags": [
+    "safeheal",
+    "local-lab"
+  ],
+  "editable": false,
+  "description": "Application requests exclude health/readiness/metrics. No traffic gives undefined rates, not a zero-error claim. Static service targets support the one-replica lab only.",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Application requests / second",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (service) (rate(safeheal_http_requests_total[1m]))",
+          "legendFormat": "{{service}} {{status_class}} {{instance}} {{le}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Server error percentage",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "100 * ((sum by (service) (rate(safeheal_http_requests_total{status_class=\"5xx\"}[1m])) or on(service) (0 * sum by(service) (rate(safeheal_http_requests_total[1m])))) / sum by(service) (rate(safeheal_http_requests_total[1m])))",
+          "legendFormat": "{{service}} {{status_class}} {{instance}} {{le}}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Request latency p50 / p95 (seconds)",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "histogram_quantile(0.95, sum by (service, le) (rate(safeheal_http_request_duration_seconds_bucket[1m])))",
+          "legendFormat": "{{service}} p95"
+        },
+        {
+          "refId": "B",
+          "expr": "histogram_quantile(0.50, sum by (service, le) (rate(safeheal_http_request_duration_seconds_bucket[1m])))",
+          "legendFormat": "{{service}} p50"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Completed requests by outcome",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by(service,status_class) (safeheal_http_requests_total)",
+          "legendFormat": "{{service}} {{status_class}} {{instance}} {{le}}"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Scrape target health",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "up{job=\"safeheal\"}",
+          "legendFormat": "{{service}} {{status_class}} {{instance}} {{le}}"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Average request latency (seconds)",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by(service)(rate(safeheal_http_request_duration_seconds_sum[1m])) / sum by(service)(rate(safeheal_http_request_duration_seconds_count[1m]))",
+          "legendFormat": "{{service}} {{status_class}} {{instance}} {{le}}"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Client error percentage",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "100 * ((sum by(service)(rate(safeheal_http_requests_total{status_class=\"4xx\"}[1m])) or on(service) (0 * sum by(service)(rate(safeheal_http_requests_total[1m])))) / sum by(service)(rate(safeheal_http_requests_total[1m])))",
+          "legendFormat": "{{service}} {{status_class}} {{instance}} {{le}}"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Latency bucket observations / second",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "safeheal-prometheus"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by(service,le)(rate(safeheal_http_request_duration_seconds_bucket[1m]))",
+          "legendFormat": "{{service}} {{status_class}} {{instance}} {{le}}"
+        }
+      ]
+    }
+  ]
+}

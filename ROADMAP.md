@@ -2,7 +2,7 @@
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
-**Verified progress: Days 1 and 2 complete, 2/10 gates (20%), as of 2026-10-21 Asia/Kolkata. Next: Day 3 observability.** Day 2 evidence is in `evidence/day2/`; see PROJECT_STATUS.md for actual results.
+**Verified progress: Days 1 and 2 complete, 2/10 gates (20%), as of 2026-10-21 Asia/Kolkata. Day 3 observability implementation in progress; live acceptance pending.** Day 2 evidence is in `evidence/day2/`; see PROJECT_STATUS.md for actual results.
 
 | Day | Implementation tasks | Acceptance evidence |
 |---|---|---|

@@ -53,3 +53,10 @@ Day 1 tests/smoke checks and the Day 2 acceptance checks below are engineering v
 No local recovery trial failed. Two earlier cluster bootstrap attempts failed before application deployment because of an invalid node-registration label; the first was auto-cleaned by kind and the second retained for diagnosis. Earlier CI run 39469746459 failed for the same configuration error. These are retained as setup failures in WORKLOG.md and GitHub history; they are not counted as recovery trials.
 
 Limitations: one local trial, three short post-recovery checks, no sustained load/SLO window, no matched rule/AI comparison or randomized repetitions. The host stop request is not a precisely instrumented service-outage onset. The 13.844 s value is neither downtime nor an estimate of MTTR. Liveness-triggered restarts, replacement of deleted Pods, node faults and high availability were not tested. No diagnosis score, cost saving or AI improvement can be inferred.
+
+
+## Day 3 instrumentation checkpoint
+
+Implemented metrics, JSON logs, basic distributed traces and monitoring configuration.
+The 51-test engineering suite passes. Real-traffic telemetry acceptance is pending; no new
+research trials, diagnostic gains, overhead gains or AI benefits are claimed.

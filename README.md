@@ -69,3 +69,11 @@ Compare native Kubernetes recovery, deterministic rule-based recovery and eviden
 See ROADMAP.md, ARCHITECTURE.md, EXPERIMENTS.md and WORKLOG.md. The original user specification is retained in docs/MASTER_SPEC.txt.
 
 Official implementation references: https://fastapi.tiangolo.com/tutorial/testing/ and https://docs.docker.com/compose/how-tos/startup-order/.
+
+
+## Observability (Day 3)
+
+Prometheus metrics, correlated JSON logs, basic OpenTelemetry distributed spans and an
+8-panel provisioned Grafana dashboard are implemented. See [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md)
+for deployment, loopback access, the actual-traffic acceptance verifier and research limitations.
+The optional developer fault check uses the existing guarded payment-container-stop procedure.

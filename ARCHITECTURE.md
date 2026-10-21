@@ -34,3 +34,12 @@ No network policy enforcement or public ingress is configured.
 
 [Day 2 architecture, diagram, deployment and recovery runbook](docs/KUBERNETES.md)
 contains the full implementation, exact commands and limitations.
+
+
+## Observability extension
+
+Each service exposes bounded request/status counters and duration histograms to a local
+Prometheus instance. Grafana queries Prometheus through a provisioned datasource. W3C trace
+context links manual OpenTelemetry server/client spans, exported as JSON container logs.
+Request logs carry the same request, trace and span IDs. No external telemetry sink or model
+call is involved. See docs/OBSERVABILITY.md for precise semantics, resource limits and verification.

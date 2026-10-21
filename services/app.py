@@ -1,16 +1,16 @@
 """Three independently deployed services sharing transport and validation code."""
-from contextlib import asynccontextmanager
-import json
-import logging
+from contextlib import asynccontextmanager, nullcontext
 import os
-import time
 from uuid import uuid4
 
 import httpx
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Response
+from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+from services.observability import Metrics, ObservabilityMiddleware, EXCLUDED
+from services.tracing import make_tracer, propagator
+from opentelemetry.trace import SpanKind, Status, StatusCode
 from pydantic import BaseModel, Field, ValidationError
 
-logger = logging.getLogger("safeheal.requests")
 
 
 class Purchase(BaseModel):
@@ -46,42 +46,54 @@ def create_app(role: str, downstream_url: str | None = None,
     if role != "payment" and not downstream_url:
         raise ValueError("A downstream URL is required")
 
+    provider, tracer = make_tracer(role)
+
     @asynccontextmanager
     async def lifespan(app):
         async with httpx.AsyncClient(timeout=3.0 if role == "gateway" else 2.0,
                                      transport=transport, trust_env=False) as client:
             app.state.http = client
-            yield
+            try:
+                yield
+            finally:
+                provider.shutdown()
 
     app = FastAPI(title=f"SafeHeal {role}", lifespan=lifespan)
 
-    @app.middleware("http")
-    async def request_context(request: Request, call_next):
-        supplied = request.headers.get("x-request-id", "")
-        request_id = supplied if supplied and len(supplied) <= 64 and all(
-            c.isascii() and (c.isalnum() or c in "-_") for c in supplied
-        ) else str(uuid4())
-        request.state.request_id = request_id
-        started = time.monotonic()
-        response = await call_next(request)
-        response.headers["x-request-id"] = request_id
-        logger.info(json.dumps({"service": role, "request_id": request_id,
-                               "method": request.method, "path": request.url.path,
-                               "status": response.status_code,
-                               "duration_ms": round((time.monotonic()-started)*1000, 3)}))
-        return response
+    metrics = Metrics()
+    app.state.metrics = metrics
+    app.add_middleware(ObservabilityMiddleware, role=role, metrics=metrics, tracer=tracer)
+
+    @app.get("/metrics", include_in_schema=False)
+    def metric_endpoint():
+        return Response(content=generate_latest(metrics.registry),
+                        headers={"Content-Type": CONTENT_TYPE_LATEST})
 
     async def downstream(method, path, request, payload=None):
-        try:
-            response = await app.state.http.request(
-                method, downstream_url.rstrip("/") + path,
-                json=payload, headers={"x-request-id": request.state.request_id})
-            response.raise_for_status()
-            return response.json()
-        except httpx.TimeoutException as exc:
-            raise HTTPException(504, "Dependency timed out") from exc
-        except (httpx.HTTPError, ValueError) as exc:
-            raise HTTPException(503, "Dependency unavailable or invalid response") from exc
+        span_context = tracer.start_as_current_span(
+            f"{method} {path}", kind=SpanKind.CLIENT,
+            attributes={"request_id": request.state.request_id, "http.request.method": method},
+            record_exception=False, set_status_on_exception=False
+        ) if request.url.path not in EXCLUDED else nullcontext(None)
+        with span_context as span:
+            headers = {"x-request-id": request.state.request_id}
+            if span:
+                propagator.inject(headers)
+            try:
+                response = await app.state.http.request(
+                    method, downstream_url.rstrip("/") + path, json=payload, headers=headers)
+                if span:
+                    span.set_attribute("http.response.status_code", response.status_code)
+                response.raise_for_status()
+                return response.json()
+            except httpx.TimeoutException as exc:
+                if span:
+                    span.set_status(Status(StatusCode.ERROR))
+                raise HTTPException(504, "Dependency timed out") from exc
+            except (httpx.HTTPError, ValueError) as exc:
+                if span:
+                    span.set_status(Status(StatusCode.ERROR))
+                raise HTTPException(503, "Dependency unavailable or invalid response") from exc
 
     @app.get("/healthz")
     def health():
@@ -138,5 +150,6 @@ def create_app(role: str, downstream_url: str | None = None,
 
 def from_env():
     role = os.environ.get("SERVICE_ROLE", "payment")
+    import logging
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     return create_app(role, os.environ.get("DOWNSTREAM_URL"))
