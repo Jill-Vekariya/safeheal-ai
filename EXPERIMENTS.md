@@ -146,3 +146,12 @@ GitHub PR #1 tracks integration of the completed deterministic detector and reta
 ## Native recovery verification settling - 2026-10-21
 
 PR run 39646024404 remains a failed engineering acceptance: post-restart HTTP Service access was refused after Pod Ready. Original JSON, log and run metadata are retained. The developer harness now records bounded GET-only readiness attempts before the unchanged three end-to-end order checks; failed final checks still fail the trial, with no POST or fault retry. This corrects readiness verification, not production recovery, detector thresholds, or a benchmark outcome. Eight regression cases bring Windows tests to 128 passing. Fresh Linux/Kubernetes correction CI is verified after publication through PR #1. No new controlled-trial dataset or model call was produced.
+
+
+## Day 5 protocol implementation checkpoint — 2026-10-22
+
+The executable protocol in docs/BENCHMARKS.md declares three payment faults: one-shot process crash,90-second HTTP500 lease and90-second1.25-second added-latency lease. Default seed5 shuffles two repetitions of each. Four closed-loop workers wait0.2s between completed requests. The existing Day4 detector runs unchanged as an observer; native recovery and application-fault expiration are separately attributed. Detection, business-recovery and native-ready intervals start at the host injection request and include tooling/polling overhead. Failed, missed or censored observations remain explicit; unavailable timestamps are null.
+
+Ground truth is persisted before mutation, then verified with CRI identity/termination or direct fault-ID response proof and gateway impact. Each trial retains requests.jsonl,telemetry.jsonl,platform.jsonl,detector.sqlite3 and trial.json. Run/summary JSON and trial CSV include every attempt and require complete finalization for acceptance. At least two successful Kubernetes trials per scenario are required by the implementation, exceeding the requested three-repeatable-scenario gate. Local-process or synthetic fixtures cannot satisfy it.
+
+This checkpoint contains protocol/test evidence only; actual six-trial dataset is pending. Initial Windows test failures and Docker API publishing setup failures are retained separately and are not benchmark outcomes. No matched intervention comparison, model benefit, recovery-executor result, statistical precision or research MTTR claim is made.

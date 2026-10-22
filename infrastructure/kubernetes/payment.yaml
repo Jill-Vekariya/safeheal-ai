@@ -41,6 +41,9 @@ spec:
           env:
             - name: SERVICE_ROLE
               value: payment
+            # Only this dedicated local-test manifest opts into bounded leases.
+            - name: SAFEHEAL_FAULTS_ENABLED
+              value: local-test
             - name: PYTHONDONTWRITEBYTECODE
               value: "1"
           resources:

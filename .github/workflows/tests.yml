@@ -15,7 +15,7 @@ jobs:
       - run: python -m pytest -q
   kubernetes:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -48,6 +48,10 @@ jobs:
           trap 'kill "$detector_forward_pid" 2>/dev/null || true' EXIT
           python scripts/verify_detector_pause.py
           python scripts/verify_detector_pause.py --execute
+      - name: Repeat three labelled faults and record native and rule baselines
+        run: |
+          python scripts/benchmark.py run
+          python scripts/benchmark.py run --execute --backend kubernetes --repeats 2 --baseline-seconds 30
       - name: Preserve verification evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -57,4 +61,5 @@ jobs:
             evidence/day2/
             evidence/day3/
             evidence/day4/
+            evidence/day5/
           retention-days: 7

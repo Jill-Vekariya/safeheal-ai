@@ -1,6 +1,16 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-21, Asia/Kolkata; evidence timestamps are UTC. **Version:** 5.3. **Phase:** DAY 4 COMPLETE - deterministic detector. Next: Day 5 fault benchmark.
+**Snapshot:** 2026-10-22 UTC. **Version:** 6.0. **Phase:** DAY 5 IMPLEMENTED — live benchmark acceptance pending.
+
+## Current Day 5 checkpoint
+
+Canonical Day 4 main was verified at `156da54a5de4ddf4977676ebf7ce29310089fb0f` (merged PR #1), with passing CI run 39651662574 and a clean private repository. Day 5 work is on the separate `day5-fault-benchmark` review branch.
+
+Implemented seeded, repeatable payment process-crash, HTTP 500 and added-latency scenarios, a guarded Kubernetes backend, independent ground-truth labels, real workload and Prometheus capture, rule-observer SQLite evidence, detection/recovery timestamps and durable JSON/CSV summaries. Each fault is bounded and scoped; the detector performs no recovery action. The acceptance summary requires two successful Kubernetes repetitions per scenario and verified final run health/shutdown. See [docs/BENCHMARKS.md](docs/BENCHMARKS.md).
+
+Canonical Windows validation: **288 passed, 1 skipped**, one existing Starlette/HTTPX warning; `evidence/day5/windows-final-tests.txt`. The skipped symlink test requires unavailable Windows symlink privileges. Initial 16 Windows failures are retained in `windows-initial-failure.txt`: fixed the disabled default fault path and Linux-container path test fixtures. The isolated Linux source workspace passed 268 tests; it predates 21 canonical Day 4 tests and is not the canonical Git history.
+
+Live trials are pending. Docker Desktop resumed with the existing kind node running but its published API port missing (`NetworkSettings.Ports[6443/tcp]` empty). Scoped node/network recovery is being checked; no cluster deletion or global Docker restart was used. CI now independently runs all six trials in a fresh isolated kind cluster and preserves raw evidence. Do not mark Day 5 complete until actual stored acceptance passes. Full gates remain **4/10**.
 
 ## Current Day 4 delivery checkpoint
 
