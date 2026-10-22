@@ -1,0 +1,19 @@
+{
+  "error_clear": 0.05,
+  "executor": "none",
+  "high_error_rate": 0.2,
+  "high_latency_seconds": 1.0,
+  "holds_seconds": {
+    "high_error_rate": 15.0,
+    "high_latency": 15.0,
+    "scrape_unavailable": 10.0,
+    "telemetry_unavailable": 15.0
+  },
+  "latency_clear_seconds": 0.5,
+  "max_collection_gap_seconds": 15.0,
+  "max_sample_age_seconds": 15,
+  "minimum_observed_requests": 20,
+  "recovery_hold_seconds": 15.0,
+  "rule_version": "day4-v1",
+  "window_seconds": 60
+}

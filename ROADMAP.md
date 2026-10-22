@@ -2,7 +2,7 @@
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
-**Verified progress: Days 1–4 complete, 4/10 gates (40%), as of 2026-10-21 Asia/Kolkata. Next: Day 5 controlled fault benchmark.** Day 4 has 120 passing tests and actual Prometheus/payment-task-failure acceptance with five resolved incidents. Failed routing attempts remain recorded; inspect latest private publication/CI after commit. See PROJECT_STATUS.md and docs/INCIDENT_DETECTION.md.
+**Verified progress: Days 1–5 complete, 5/10 gates (50%), as of 2026-10-22 UTC. Next: Day 6 evidence-grounded AI diagnosis.** Day 5 passed six actual Kubernetes trials (two per scenario) with stored ground truth, rule detections, recovery timestamps and raw evidence. Both jobs passed CI39774736343 for implementation31f2af6; canonical Linux tests:289 passed. See PROJECT_STATUS.md, docs/BENCHMARKS.md and evidence/day5/README.md.
 
 | Day | Implementation tasks | Acceptance evidence |
 |---|---|---|
@@ -27,4 +27,4 @@ At session start: read PROJECT_STATUS.md, WORKLOG.md, actual git state and test 
 
 ## Deferred dependencies and choices
 
-Private repository baseline and scoped kind setup are complete. Reuse the existing `safeheal-dev` cluster after checking its current state. Select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.
+Private repository baseline and scoped kind setup are complete. Day 5 live acceptance ran in fresh Linux CI. The existing Windows `safeheal-dev` node has a missing Docker host API mapping; restore and verify access before local live work, preserving its state and unrelated projects. Select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.

@@ -1,0 +1,4 @@
+# Preserve raw benchmark artifact bytes across Windows and Linux checkouts.
+# Recognize intentional CRLF in CSV and captured Windows metadata/logs.
+ci-*/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+run-*/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

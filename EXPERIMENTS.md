@@ -1,6 +1,6 @@
 # Experiment register
 
-Status: research protocol remains a draft. Day 2 now has one recorded local native-recovery engineering acceptance trial and a successful independent CI execution. Day 3 observability also passed a recorded real-traffic engineering check, including basic distributed spans and an intentional native container interruption. No matched research benchmark, rule-controller result or AI result has been collected.
+Status: Day 5 initial benchmark is complete: six real Kubernetes trials, two repetitions each of process crash, HTTP 500 and added latency, with verified labels, rule observations, recovery attribution and stored raw evidence. All six executions and the final run gate passed. The broader matched native/rule/AI intervention study remains a draft; no rule recovery executor or AI outcome has been measured.
 
 ## Hypothesis
 
@@ -27,7 +27,7 @@ Process crash; HTTP 500 spike; added latency; CPU/memory saturation; faulty depl
 
 Aim for five repetitions per scenario/approach when resources permit. Randomize/counterbalance ordering, reset verified baseline state, retain individual JSONL/CSV records, and bootstrap uncertainty where appropriate; explain small-sample limits.
 
-Day 1 tests/smoke checks and the Day 2 acceptance checks below are engineering validation, not controlled research benchmark evidence. Research findings: none yet.
+Day 1–4 tests and smoke/acceptance checks below are historical engineering validation. Day 5 adds the initial measured dataset recorded at the end of this register; no comparative AI-effectiveness finding is established.
 
 ## Day 2 native recovery acceptance record
 
@@ -155,3 +155,26 @@ The executable protocol in docs/BENCHMARKS.md declares three payment faults: one
 Ground truth is persisted before mutation, then verified with CRI identity/termination or direct fault-ID response proof and gateway impact. Each trial retains requests.jsonl,telemetry.jsonl,platform.jsonl,detector.sqlite3 and trial.json. Run/summary JSON and trial CSV include every attempt and require complete finalization for acceptance. At least two successful Kubernetes trials per scenario are required by the implementation, exceeding the requested three-repeatable-scenario gate. Local-process or synthetic fixtures cannot satisfy it.
 
 This checkpoint contains protocol/test evidence only; actual six-trial dataset is pending. Initial Windows test failures and Docker API publishing setup failures are retained separately and are not benchmark outcomes. No matched intervention comparison, model benefit, recovery-executor result, statistical precision or research MTTR claim is made.
+
+## Day 5 initial measured benchmark — 2026-10-22
+
+**Source:** `31f2af628e70487f1cd0098403bd3ab2304a4d46`. **CI:** [39774736343](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343), both jobs successful. **Data:** [evidence/day5/ci-39774736343/run-03a9072a24f8](evidence/day5/ci-39774736343/run-03a9072a24f8). **Protocol:** [docs/BENCHMARKS.md](docs/BENCHMARKS.md). **Detailed findings/timestamps:** [evidence/day5/README.md](evidence/day5/README.md).
+
+The real execution used a fresh Linux CI kind cluster (Kubernetes v1.36.4), seed 5, two repetitions, 30-second minimum baseline, four closed-loop workers with 0.2-second completion delay, five-second rule polling, 90-second application fault leases and 1.25-second added payment latency. The canonical rule implementation and thresholds were unchanged. The batch ran from 12:05:12.009502 to 12:22:41.030610 UTC.
+
+| Trial | Scenario / repeat | Rule detection (s) | Sustained business recovery (s) | Observed native Ready (s) | Recovery attribution |
+|---|---|---:|---:|---:|---|
+| `d5-01-http_5xx-d6b754b6` | http_5xx / 1 | 27.130 | 93.040 | N/A | `fault_expiry` |
+| `d5-02-process_crash-41c49801` | process_crash / 1 | 17.172 | 32.429 | 34.317 | `native_kubernetes` |
+| `d5-03-process_crash-d3a98bd4` | process_crash / 2 | 12.033 | 51.740 | 50.340 | `native_kubernetes` |
+| `d5-04-latency-f3613d30` | latency / 2 | 32.187 | 92.979 | N/A | `fault_expiry` |
+| `d5-05-latency-caab66e3` | latency / 1 | 32.321 | 93.064 | N/A | `fault_expiry` |
+| `d5-06-http_5xx-bea84ddf` | http_5xx / 2 | 32.103 | 93.107 | N/A | `fault_expiry` |
+
+All six attempts completed with verified ground truth, eligible matched detections, sustained business recovery and cleanup. Final run health/shutdown passed. There were no failed, missed, ineligible or censored benchmark outcomes in this batch; unsuccessful Windows unit/setup work is retained separately and is not benchmark execution. Each timing starts at the host injection request, including tool/polling overhead; it is not exact physical downtime or a population MTTR estimate.
+
+Both process crashes were one forced exit of the validated payment container, recovered by native Kubernetes restart in the same Pod (restart count 2→3→4, old container termination IDs matched, exit 137). This does not assert that liveness probes detected the forced exit. Gateway/order container identities remained stable, although readiness temporarily dropped during both outages. HTTP and latency faults left container identities/restart counts unchanged and all three services Ready in the sampled platform observations; application recovery followed lease expiry. No rule or AI recovery execution occurred.
+
+The first qualifying matched diagnosis described payment unavailability for the two crashes, server-error symptoms on order/gateway for the two HTTP trials, and latency on gateway/payment for the two latency trials. Its service matched the injected target in 3/6 records; suspected_root_service was null in all six first diagnoses. Additional telemetry incidents remain in raw SQLite evidence. The matched-detection count does not establish general root-cause accuracy or false-positive/negative rates.
+
+Retained 15,180 request rows, 212 telemetry snapshots, six detector SQLite stores, per-trial ground truth/platform state, plan/source/runtime/rule metadata and workflow logs. Replaying stored summaries reproduced JSON content and CSV bytes; raw request aggregates matched and every SQLite integrity check returned ok. Original benchmark files were preserved byte-for-byte and hashes retained in audit.json. Only two repetitions per scenario, shared cluster/restart history, variable throughput under the closed-loop workload and absence of matched A/B/C arms limit interpretation. The initial engineering acceptance gate is satisfied; broader comparative research remains Day 9.

@@ -1,0 +1,1103 @@
+kubernetes	Set up job	﻿2026-10-22T11:59:23.9255236Z Current runner version: '2.338.0'
+kubernetes	Set up job	2026-10-22T11:59:23.9294330Z ##[group]Runner Image Provisioner
+kubernetes	Set up job	2026-10-22T11:59:23.9295845Z Hosted Compute Agent
+kubernetes	Set up job	2026-10-22T11:59:23.9296993Z Version: 20261012.601
+kubernetes	Set up job	2026-10-22T11:59:23.9298170Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+kubernetes	Set up job	2026-10-22T11:59:23.9300170Z Build Date: 2026-10-12T17:48:21Z
+kubernetes	Set up job	2026-10-22T11:59:23.9301519Z Worker ID: {42f227d3-9fee-404b-a96a-cb0f3474a2ec}
+kubernetes	Set up job	2026-10-22T11:59:23.9302832Z Region: westus2
+kubernetes	Set up job	2026-10-22T11:59:23.9304057Z Cloud: Azure
+kubernetes	Set up job	2026-10-22T11:59:23.9305037Z ##[endgroup]
+kubernetes	Set up job	2026-10-22T11:59:23.9307489Z ##[group]Operating System
+kubernetes	Set up job	2026-10-22T11:59:23.9309031Z Ubuntu
+kubernetes	Set up job	2026-10-22T11:59:23.9309974Z 24.04.5
+kubernetes	Set up job	2026-10-22T11:59:23.9311008Z LTS
+kubernetes	Set up job	2026-10-22T11:59:23.9311895Z ##[endgroup]
+kubernetes	Set up job	2026-10-22T11:59:23.9312895Z ##[group]Runner Image
+kubernetes	Set up job	2026-10-22T11:59:23.9314002Z Image: ubuntu-24.04
+kubernetes	Set up job	2026-10-22T11:59:23.9314958Z Version: 20261012.334.1
+kubernetes	Set up job	2026-10-22T11:59:23.9317044Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+kubernetes	Set up job	2026-10-22T11:59:23.9321027Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+kubernetes	Set up job	2026-10-22T11:59:23.9322948Z ##[endgroup]
+kubernetes	Set up job	2026-10-22T11:59:23.9325070Z ##[group]GITHUB_TOKEN Permissions
+kubernetes	Set up job	2026-10-22T11:59:23.9328166Z Contents: read
+kubernetes	Set up job	2026-10-22T11:59:23.9329683Z Metadata: read
+kubernetes	Set up job	2026-10-22T11:59:23.9330879Z ##[endgroup]
+kubernetes	Set up job	2026-10-22T11:59:23.9334170Z Secret source: Actions
+kubernetes	Set up job	2026-10-22T11:59:23.9335833Z Cache mode: write
+kubernetes	Set up job	2026-10-22T11:59:23.9337387Z Prepare workflow directory
+kubernetes	Set up job	2026-10-22T11:59:23.9788257Z Prepare all required actions
+kubernetes	Set up job	2026-10-22T11:59:23.9837382Z Getting action download info
+kubernetes	Set up job	2026-10-22T11:59:24.3170712Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+kubernetes	Set up job	2026-10-22T11:59:24.4418444Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+kubernetes	Set up job	2026-10-22T11:59:24.5276847Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+kubernetes	Set up job	2026-10-22T11:59:24.7647342Z Complete job name: kubernetes
+kubernetes	Run actions/checkout@v4	﻿2026-10-22T11:59:24.8466224Z ##[group]Run actions/checkout@v4
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8467137Z with:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8467596Z   repository: Jill-Vekariya/safeheal-ai
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8471689Z   token: ***
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8472119Z   ssh-strict: true
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8472539Z   ssh-user: git
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8472969Z   persist-credentials: true
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8473436Z   clean: true
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8473869Z   sparse-checkout-cone-mode: true
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8474372Z   fetch-depth: 1
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8474778Z   fetch-tags: false
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8475262Z   show-progress: true
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8475695Z   lfs: false
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8476094Z   submodules: false
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8476523Z   set-safe-directory: true
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8477014Z   allow-unsafe-pr-checkout: false
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.8477792Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.9774946Z Syncing repository: Jill-Vekariya/safeheal-ai
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.9777836Z ##[group]Getting Git version info
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:24.9779281Z Working directory is '/home/runner/work/safeheal-ai/safeheal-ai'
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.0995178Z [command]/usr/bin/git version
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.0996762Z git version 2.55.0
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1000576Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1008252Z Temporarily overriding HOME='/home/runner/work/_temp/11699376-c3b0-4add-b31f-20094aad97e6' before making global git config changes
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1011446Z Adding repository directory to the temporary git global config as a safe directory
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1013684Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/safeheal-ai/safeheal-ai
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1017386Z Deleting the contents of '/home/runner/work/safeheal-ai/safeheal-ai'
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1019775Z ##[group]Initializing the repository
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1030080Z [command]/usr/bin/git init /home/runner/work/safeheal-ai/safeheal-ai
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1032945Z hint: Using 'master' as the name for the initial branch. This default branch name
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1035550Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1037417Z hint: to use in all of your new repositories, which will suppress this warning,
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1040003Z hint: call:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1042850Z hint:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1044708Z hint: 	git config --global init.defaultBranch <name>
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1046438Z hint:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1048288Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1052435Z hint: 'development'. The just-created branch can be renamed via this command:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1054587Z hint:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1055749Z hint: 	git branch -m <name>
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1057408Z hint:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1059291Z hint: Disable this message with "git config set advice.defaultBranchName false"
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1074311Z Initialized empty Git repository in /home/runner/work/safeheal-ai/safeheal-ai/.git/
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1111819Z [command]/usr/bin/git remote add origin https://github.com/Jill-Vekariya/safeheal-ai
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1114738Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1115942Z ##[group]Disabling automatic garbage collection
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1117044Z [command]/usr/bin/git config --local gc.auto 0
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1119589Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1120722Z ##[group]Setting up auth
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1121859Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1125331Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1411136Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1631093Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1744287Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.1787425Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.2066256Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.2097667Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.2100202Z ##[group]Fetching the repository
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.2110772Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +31f2af628e70487f1cd0098403bd3ab2304a4d46:refs/remotes/origin/day5-fault-benchmark
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6486769Z From https://github.com/Jill-Vekariya/safeheal-ai
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6489386Z  * [new ref]         31f2af628e70487f1cd0098403bd3ab2304a4d46 -> origin/day5-fault-benchmark
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6495194Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6497603Z ##[group]Determining the checkout info
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6499841Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6501088Z [command]/usr/bin/git sparse-checkout disable
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6529795Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6566633Z ##[group]Checking out the ref
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6573099Z [command]/usr/bin/git checkout --progress --force -B day5-fault-benchmark refs/remotes/origin/day5-fault-benchmark
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6819823Z Switched to a new branch 'day5-fault-benchmark'
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6828262Z branch 'day5-fault-benchmark' set up to track 'origin/day5-fault-benchmark'.
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6845138Z ##[endgroup]
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6916577Z [command]/usr/bin/git log -1 --format=%H
+kubernetes	Run actions/checkout@v4	2026-10-22T11:59:25.6939007Z 31f2af628e70487f1cd0098403bd3ab2304a4d46
+kubernetes	Run actions/setup-python@v5	﻿2026-10-22T11:59:25.7386804Z ##[group]Run actions/setup-python@v5
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7387536Z with:
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7387975Z   python-version: 3.12
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7389057Z   check-latest: false
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7393022Z   token: ***
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7393499Z   update-environment: true
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7394042Z   allow-prereleases: false
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7394564Z   freethreaded: false
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.7395052Z ##[endgroup]
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.9116808Z ##[group]Installed versions
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.9285473Z (node:2302) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.9320418Z Successfully set up CPython (3.12.15)
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.9336166Z (Use `node --trace-deprecation ...` to show where the warning was created)
+kubernetes	Run actions/setup-python@v5	2026-10-22T11:59:25.9377393Z ##[endgroup]
+kubernetes	Install detector runtime	﻿2026-10-22T11:59:25.9638981Z ##[group]Run python -m pip install -r requirements.lock
+kubernetes	Install detector runtime	2026-10-22T11:59:25.9641889Z ^[[36;1mpython -m pip install -r requirements.lock^[[0m
+kubernetes	Install detector runtime	2026-10-22T11:59:25.9644365Z ^[[36;1mpython -m pip install --no-deps -e .^[[0m
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0026266Z shell: /usr/bin/bash -e {0}
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0027631Z env:
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0029087Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0031103Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0033099Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0034886Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0036718Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0038879Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Install detector runtime	2026-10-22T11:59:26.0040518Z ##[endgroup]
+kubernetes	Install detector runtime	2026-10-22T11:59:27.1245008Z Collecting annotated-doc==0.0.5 (from -r requirements.lock (line 1))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.2049698Z   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.2198299Z Collecting annotated-types==0.8.0 (from -r requirements.lock (line 2))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.2271921Z   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.2551176Z Collecting anyio==4.15.1 (from -r requirements.lock (line 3))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.2623219Z   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.2855325Z Collecting certifi==2026.10.19 (from -r requirements.lock (line 4))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.2907496Z   Downloading certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.3113340Z Collecting click==8.5.0 (from -r requirements.lock (line 5))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.3185285Z   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.3358800Z Collecting colorama==0.4.6 (from -r requirements.lock (line 6))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.3430095Z   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.3941869Z Collecting fastapi==0.151.0 (from -r requirements.lock (line 7))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.4017609Z   Downloading fastapi-0.151.0-py3-none-any.whl.metadata (26 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.4285822Z Collecting h11==0.16.0 (from -r requirements.lock (line 8))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.4360512Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.4659832Z Collecting httpcore==1.0.9 (from -r requirements.lock (line 9))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.4762511Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.5255942Z Collecting httpx==0.28.1 (from -r requirements.lock (line 10))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.5349144Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.5623044Z Collecting idna==3.20 (from -r requirements.lock (line 11))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.5674177Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.5822062Z Collecting iniconfig==2.3.1 (from -r requirements.lock (line 12))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.5895349Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.6108398Z Collecting opentelemetry-api==1.45.1 (from -r requirements.lock (line 13))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.6185844Z   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.6401415Z Collecting opentelemetry-sdk==1.45.1 (from -r requirements.lock (line 14))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.6475226Z   Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl.metadata (1.6 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.6681344Z Collecting opentelemetry-semantic-conventions==0.66b1 (from -r requirements.lock (line 15))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.6755324Z   Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl.metadata (2.4 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.6942544Z Collecting packaging==26.3 (from -r requirements.lock (line 16))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.7015429Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.7174480Z Collecting pluggy==1.7.0 (from -r requirements.lock (line 17))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.7248980Z   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.7422921Z Collecting prometheus_client==0.26.0 (from -r requirements.lock (line 18))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.7493470Z   Downloading prometheus_client-0.26.0-py3-none-any.whl.metadata (2.1 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:27.8920151Z Collecting pydantic==2.14.1 (from -r requirements.lock (line 19))
+kubernetes	Install detector runtime	2026-10-22T11:59:27.8998276Z   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.7141948Z Collecting pydantic_core==2.50.1 (from -r requirements.lock (line 20))
+kubernetes	Install detector runtime	2026-10-22T11:59:28.7218193Z   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.7427240Z Collecting Pygments==2.21.0 (from -r requirements.lock (line 21))
+kubernetes	Install detector runtime	2026-10-22T11:59:28.7498827Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.7792737Z Collecting pytest==9.1.1 (from -r requirements.lock (line 22))
+kubernetes	Install detector runtime	2026-10-22T11:59:28.7871518Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.8166213Z Collecting starlette==1.9.0 (from -r requirements.lock (line 23))
+kubernetes	Install detector runtime	2026-10-22T11:59:28.8244363Z   Downloading starlette-1.9.0-py3-none-any.whl.metadata (6.6 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.8406644Z Collecting typing-inspection==0.4.4 (from -r requirements.lock (line 24))
+kubernetes	Install detector runtime	2026-10-22T11:59:28.8481145Z   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.8672980Z Collecting typing_extensions==4.16.0 (from -r requirements.lock (line 25))
+kubernetes	Install detector runtime	2026-10-22T11:59:28.8749567Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.9017194Z Collecting uvicorn==0.54.0 (from -r requirements.lock (line 26))
+kubernetes	Install detector runtime	2026-10-22T11:59:28.9091546Z   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.9490162Z Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.9599381Z Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.9719355Z Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:28.9889552Z Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0029930Z Downloading click-8.5.0-py3-none-any.whl (125 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0129774Z Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0218412Z Downloading fastapi-0.151.0-py3-none-any.whl (145 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0325216Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0419454Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0518100Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0620399Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0719889Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0820583Z Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.0936936Z Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl (140 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1054970Z Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl (206 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1158683Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1266908Z Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1350904Z Downloading prometheus_client-0.26.0-py3-none-any.whl (64 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1451745Z Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1603775Z Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1780010Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 131.0 MB/s  0:00:00
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1871474Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.1991451Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 156.5 MB/s  0:00:00
+kubernetes	Install detector runtime	2026-10-22T11:59:29.2062016Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.2167357Z Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.2264898Z Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.2368932Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.2461644Z Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+kubernetes	Install detector runtime	2026-10-22T11:59:29.3926195Z Installing collected packages: typing_extensions, Pygments, prometheus_client, pluggy, packaging, iniconfig, idna, h11, colorama, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic_core, opentelemetry-api, httpcore, anyio, starlette, pydantic, opentelemetry-semantic-conventions, httpx, opentelemetry-sdk, fastapi
+kubernetes	Install detector runtime	2026-10-22T11:59:33.2529539Z
+kubernetes	Install detector runtime	2026-10-22T11:59:33.2556766Z Successfully installed Pygments-2.21.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.19 click-8.5.0 colorama-0.4.6 fastapi-0.151.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 iniconfig-2.3.1 opentelemetry-api-1.45.1 opentelemetry-sdk-1.45.1 opentelemetry-semantic-conventions-0.66b1 packaging-26.3 pluggy-1.7.0 prometheus_client-0.26.0 pydantic-2.14.1 pydantic_core-2.50.1 pytest-9.1.1 starlette-1.9.0 typing-inspection-0.4.4 typing_extensions-4.16.0 uvicorn-0.54.0
+kubernetes	Install detector runtime	2026-10-22T11:59:33.2567583Z
+kubernetes	Install detector runtime	2026-10-22T11:59:33.2568125Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+kubernetes	Install detector runtime	2026-10-22T11:59:33.2569518Z [notice] To update, run: pip install --upgrade pip
+kubernetes	Install detector runtime	2026-10-22T11:59:33.7079066Z Obtaining file:///home/runner/work/safeheal-ai/safeheal-ai
+kubernetes	Install detector runtime	2026-10-22T11:59:33.7096707Z   Installing build dependencies: started
+kubernetes	Install detector runtime	2026-10-22T11:59:34.5151878Z   Installing build dependencies: finished with status 'done'
+kubernetes	Install detector runtime	2026-10-22T11:59:34.5158985Z   Checking if build backend supports build_editable: started
+kubernetes	Install detector runtime	2026-10-22T11:59:34.8828273Z   Checking if build backend supports build_editable: finished with status 'done'
+kubernetes	Install detector runtime	2026-10-22T11:59:34.8839619Z   Getting requirements to build editable: started
+kubernetes	Install detector runtime	2026-10-22T11:59:35.2469942Z   Getting requirements to build editable: finished with status 'done'
+kubernetes	Install detector runtime	2026-10-22T11:59:35.2479308Z   Preparing editable metadata (pyproject.toml): started
+kubernetes	Install detector runtime	2026-10-22T11:59:35.4560205Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+kubernetes	Install detector runtime	2026-10-22T11:59:35.4619366Z Building wheels for collected packages: safeheal-ai
+kubernetes	Install detector runtime	2026-10-22T11:59:35.4622344Z   Building editable for safeheal-ai (pyproject.toml): started
+kubernetes	Install detector runtime	2026-10-22T11:59:35.6950292Z   Building editable for safeheal-ai (pyproject.toml): finished with status 'done'
+kubernetes	Install detector runtime	2026-10-22T11:59:35.6954045Z   Created wheel for safeheal-ai: filename=safeheal_ai-0.1.0-0.editable-py3-none-any.whl size=2857 sha256=ee8e6b9b5dce33efe1a621abdd2d6672b49d5e7346bb63c364ab008f621bb0be
+kubernetes	Install detector runtime	2026-10-22T11:59:35.6956362Z   Stored in directory: /tmp/pip-ephem-wheel-cache-8aoyvojc/wheels/b8/5b/f9/34f274ba46cd26f94cb2e7932c38d04adeaab484d6c86e2aa4
+kubernetes	Install detector runtime	2026-10-22T11:59:35.6979189Z Successfully built safeheal-ai
+kubernetes	Install detector runtime	2026-10-22T11:59:35.7092877Z Installing collected packages: safeheal-ai
+kubernetes	Install detector runtime	2026-10-22T11:59:35.7183845Z Successfully installed safeheal-ai-0.1.0
+kubernetes	Install detector runtime	2026-10-22T11:59:35.7195232Z
+kubernetes	Install detector runtime	2026-10-22T11:59:35.7197711Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+kubernetes	Install detector runtime	2026-10-22T11:59:35.7198706Z [notice] To update, run: pip install --upgrade pip
+kubernetes	Install pinned project-local kind	﻿2026-10-22T11:59:35.7853758Z ##[group]Run python scripts/k8s.py install-kind
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7854184Z ^[[36;1mpython scripts/k8s.py install-kind^[[0m
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7922987Z shell: /usr/bin/bash -e {0}
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7923282Z env:
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7923588Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7924098Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7924589Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7925024Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7925459Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7925902Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:35.7926272Z ##[endgroup]
+kubernetes	Install pinned project-local kind	2026-10-22T11:59:36.1357183Z kind v0.33.0 go1.26.7 linux/amd64
+kubernetes	Create isolated kind cluster	﻿2026-10-22T11:59:36.1503967Z ##[group]Run python scripts/k8s.py setup
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1504347Z ^[[36;1mpython scripts/k8s.py setup^[[0m
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1570066Z shell: /usr/bin/bash -e {0}
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1570353Z env:
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1570673Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1571181Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1571680Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1572124Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1572561Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1572997Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.1573365Z ##[endgroup]
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.6073898Z Creating safeheal-dev using kindest/node:v1.36.4@sha256:099e049362a1526b2db71494e1947aae99bd16290d7c895f2b7ea312e3cbfaed
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.6959609Z Creating cluster "safeheal-dev" ...
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:36.6960633Z  • Ensuring node image (kindest/node:v1.36.4) 🖼️  ...
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:47.5782864Z  ✓ Ensuring node image (kindest/node:v1.36.4) 🖼️
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:47.5783615Z  • Preparing nodes 📦   ...
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:51.7674799Z  ✓ Preparing nodes 📦
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:51.7996565Z  • Writing configuration 📜  ...
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:52.0191727Z  ✓ Writing configuration 📜
+kubernetes	Create isolated kind cluster	2026-10-22T11:59:52.0193345Z  • Starting control-plane 🕹️  ...
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:01.8076162Z  ✓ Starting control-plane 🕹️
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:01.8078013Z  • Installing CNI 🔌  ...
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:02.3395635Z  ✓ Installing CNI 🔌
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:02.3396685Z  • Installing StorageClass 💾  ...
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:02.7760025Z  ✓ Installing StorageClass 💾
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:02.8080377Z  • Waiting ≤ 3m0s for control-plane = Ready ⏳  ...
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.4073502Z  ✓ Waiting ≤ 3m0s for control-plane = Ready ⏳
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.4076243Z  • Ready after 17s 💚
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.6113795Z Set kubectl context to "kind-safeheal-dev"
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.6117279Z You can now use your cluster with:
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.6117593Z
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.6118194Z kubectl cluster-info --context kind-safeheal-dev --kubeconfig /home/runner/work/safeheal-ai/safeheal-ai/.local/kubeconfig
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.6119376Z
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.6120241Z Not sure what to do next? 😅  Check out https://kind.sigs.k8s.io/docs/user/quick-start/
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:19.6217529Z
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:23.3498404Z NAME                         STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION              CONTAINER-RUNTIME
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:23.3500716Z safeheal-dev-control-plane   Ready    control-plane   25s   v1.36.4   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.17.0-1022-azure (amd64)   containerd://2.3.4
+kubernetes	Create isolated kind cluster	2026-10-22T12:00:23.3501813Z
+kubernetes	Deploy and validate manifests	﻿2026-10-22T12:00:23.3651743Z ##[group]Run python scripts/k8s.py deploy
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3652221Z ^[[36;1mpython scripts/k8s.py deploy^[[0m
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3720469Z shell: /usr/bin/bash -e {0}
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3720739Z env:
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3721017Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3721494Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3722159Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3722574Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3722979Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3723390Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.3723735Z ##[endgroup]
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:23.8768338Z Building image from this checkout
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.2059342Z #0 building with "default" instance using docker driver
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.2060072Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.2060580Z #1 [internal] load build definition from Dockerfile
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.2061291Z #1 transferring dockerfile: 411B done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.2061989Z #1 DONE 0.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.2062223Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.2063147Z #2 [internal] load metadata for docker.io/library/python:3.12-slim
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.4443978Z #2 ...
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.4445567Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.4448392Z #3 [auth] library/python:pull token for registry-1.docker.io
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.4449411Z #3 DONE 0.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.5943311Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:24.5944174Z #2 [internal] load metadata for docker.io/library/python:3.12-slim
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.0044137Z #2 DONE 1.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1338126Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1339333Z #4 [internal] load .dockerignore
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1340114Z #4 transferring context: 167B done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1340712Z #4 DONE 0.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1341039Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1341346Z #5 [internal] load build context
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1341924Z #5 transferring context: 53.67kB 0.0s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1342513Z #5 DONE 0.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1342952Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1343755Z #6 [1/5] FROM docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1345500Z #6 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1347120Z #6 sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 10.37kB / 10.37kB done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1348748Z #6 sha256:e8a38829209aea82774882e5157e1f7c3e8c8393ff53a697b3580896e57f345c 1.75kB / 1.75kB done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1350132Z #6 sha256:a33c10a97f11005523814c6eee013986119fe41f3122f444518117536675c8e1 5.66kB / 5.66kB done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1351454Z #6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 0B / 29.84MB 0.1s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1352808Z #6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0B / 1.29MB 0.1s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.1354222Z #6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 0B / 12.12MB 0.1s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.2352477Z #6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 12.58MB / 29.84MB 0.2s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.3379816Z #6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.2s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.3381390Z #6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 8.39MB / 12.12MB 0.3s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.3382763Z #6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 0B / 249B 0.3s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.3384013Z #6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.4398410Z #6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 1.29MB / 1.29MB 0.3s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.4400738Z #6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.3s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:25.4402369Z #6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 249B / 249B 0.3s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:26.5417723Z #6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 1.2s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:26.6832422Z #6 extracting sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0.1s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:26.8457629Z #6 extracting sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0.1s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:28.0774378Z #6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:28.8741307Z #6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 0.7s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:28.8744791Z #6 extracting sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:28.8745765Z #6 DONE 3.8s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:28.8746011Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:28.8746191Z #7 [2/5] WORKDIR /app
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0653700Z #7 DONE 0.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0657486Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0669005Z #8 [3/5] COPY pyproject.toml requirements.lock ./
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0675681Z #8 DONE 0.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0688957Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0690955Z #9 [4/5] COPY services ./services
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0691388Z #9 DONE 0.0s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0691709Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:29.0718817Z #10 [5/5] RUN pip install --no-cache-dir -r requirements.lock && pip install --no-cache-dir --no-deps . && useradd --uid 10001 --create-home appuser
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:30.7858476Z #10 1.871 Collecting annotated-doc==0.0.5 (from -r requirements.lock (line 1))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:30.8901591Z #10 1.902   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:30.8903023Z #10 1.915 Collecting annotated-types==0.8.0 (from -r requirements.lock (line 2))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:30.8904503Z #10 1.922   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:30.8905692Z #10 1.945 Collecting anyio==4.15.1 (from -r requirements.lock (line 3))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:30.8906634Z #10 1.952   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:30.8907363Z #10 1.975 Collecting certifi==2026.10.19 (from -r requirements.lock (line 4))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.0261790Z #10 1.984   Downloading certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.0264558Z #10 2.011 Collecting click==8.5.0 (from -r requirements.lock (line 5))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.0266079Z #10 2.018   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.0267625Z #10 2.034 Collecting colorama==0.4.6 (from -r requirements.lock (line 6))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.0269101Z #10 2.041   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.0270145Z #10 2.111 Collecting fastapi==0.151.0 (from -r requirements.lock (line 7))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.1263980Z #10 2.119   Downloading fastapi-0.151.0-py3-none-any.whl.metadata (26 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.1265224Z #10 2.140 Collecting h11==0.16.0 (from -r requirements.lock (line 8))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.1266043Z #10 2.147   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.1266875Z #10 2.175 Collecting httpcore==1.0.9 (from -r requirements.lock (line 9))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.1267723Z #10 2.182   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.1268739Z #10 2.205 Collecting httpx==0.28.1 (from -r requirements.lock (line 10))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.1269444Z #10 2.212   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2451771Z #10 2.228 Collecting idna==3.20 (from -r requirements.lock (line 11))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2452652Z #10 2.235   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2453450Z #10 2.247 Collecting iniconfig==2.3.1 (from -r requirements.lock (line 12))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2454285Z #10 2.253   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2455252Z #10 2.276 Collecting opentelemetry-api==1.45.1 (from -r requirements.lock (line 13))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2456229Z #10 2.283   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2457753Z #10 2.304 Collecting opentelemetry-sdk==1.45.1 (from -r requirements.lock (line 14))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2458970Z #10 2.311   Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl.metadata (1.6 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.2460096Z #10 2.330 Collecting opentelemetry-semantic-conventions==0.66b1 (from -r requirements.lock (line 15))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4487423Z #10 2.338   Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl.metadata (2.4 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4490187Z #10 2.370 Collecting packaging==26.3 (from -r requirements.lock (line 16))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4491321Z #10 2.378   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4492471Z #10 2.391 Collecting pluggy==1.7.0 (from -r requirements.lock (line 17))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4493241Z #10 2.397   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4493931Z #10 2.415 Collecting prometheus_client==0.26.0 (from -r requirements.lock (line 18))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4494671Z #10 2.423   Downloading prometheus_client-0.26.0-py3-none-any.whl.metadata (2.1 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.4495360Z #10 2.534 Collecting pydantic==2.14.1 (from -r requirements.lock (line 19))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:31.6064071Z #10 2.541   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.1477713Z #10 3.232 Collecting pydantic_core==2.50.1 (from -r requirements.lock (line 20))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.2610873Z #10 3.240   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.2612398Z #10 3.260 Collecting Pygments==2.21.0 (from -r requirements.lock (line 21))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.2613245Z #10 3.267   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.2614002Z #10 3.306 Collecting pytest==9.1.1 (from -r requirements.lock (line 22))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.2614757Z #10 3.313   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.2615660Z #10 3.346 Collecting starlette==1.9.0 (from -r requirements.lock (line 23))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4623838Z #10 3.353   Downloading starlette-1.9.0-py3-none-any.whl.metadata (6.6 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4625023Z #10 3.366 Collecting typing-inspection==0.4.4 (from -r requirements.lock (line 24))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4625911Z #10 3.373   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4626811Z #10 3.390 Collecting typing_extensions==4.16.0 (from -r requirements.lock (line 25))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4627659Z #10 3.398   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4628413Z #10 3.428 Collecting uvicorn==0.54.0 (from -r requirements.lock (line 26))
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4629441Z #10 3.436   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.4630113Z #10 3.547 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5659271Z #10 3.554 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5660240Z #10 3.561 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5660961Z #10 3.569 Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5661668Z #10 3.577 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5662368Z #10 3.584 Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5663029Z #10 3.592 Downloading fastapi-0.151.0-py3-none-any.whl (145 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5663461Z #10 3.599 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5663858Z #10 3.607 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5664258Z #10 3.614 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5664630Z #10 3.621 Downloading idna-3.20-py3-none-any.whl (69 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5665019Z #10 3.629 Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5665446Z #10 3.636 Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5666178Z #10 3.643 Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl (140 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.5666702Z #10 3.650 Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl (206 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6699775Z #10 3.658 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6700626Z #10 3.665 Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6701450Z #10 3.672 Downloading prometheus_client-0.26.0-py3-none-any.whl (64 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6701933Z #10 3.679 Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6702528Z #10 3.691 Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6703422Z #10 3.705    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 184.9 MB/s eta 0:00:00
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6703871Z #10 3.713 Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6704368Z #10 3.719    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 375.0 MB/s eta 0:00:00
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6704798Z #10 3.726 Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6705187Z #10 3.734 Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6705608Z #10 3.740 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6706079Z #10 3.747 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.6706512Z #10 3.754 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:32.9054200Z #10 3.839 Installing collected packages: typing_extensions, Pygments, prometheus_client, pluggy, packaging, iniconfig, idna, h11, colorama, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic_core, opentelemetry-api, httpcore, anyio, starlette, pydantic, opentelemetry-semantic-conventions, httpx, opentelemetry-sdk, fastapi
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:35.2311685Z #10 6.315 Successfully installed Pygments-2.21.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.19 click-8.5.0 colorama-0.4.6 fastapi-0.151.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 iniconfig-2.3.1 opentelemetry-api-1.45.1 opentelemetry-sdk-1.45.1 opentelemetry-semantic-conventions-0.66b1 packaging-26.3 pluggy-1.7.0 prometheus_client-0.26.0 pydantic-2.14.1 pydantic_core-2.50.1 pytest-9.1.1 starlette-1.9.0 typing-inspection-0.4.4 typing_extensions-4.16.0 uvicorn-0.54.0
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:35.4630926Z #10 6.315 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:35.4633837Z #10 6.397
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:35.4634785Z #10 6.397 [notice] A new release of pip is available: 25.0.1 -> 26.2.2
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:35.4635818Z #10 6.397 [notice] To update, run: pip install --upgrade pip
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:35.8077352Z #10 6.893 Processing /app
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:35.9613741Z #10 6.896   Installing build dependencies: started
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.0601802Z #10 8.144   Installing build dependencies: finished with status 'done'
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.2119651Z #10 8.145   Getting requirements to build wheel: started
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.3189623Z #10 8.404   Getting requirements to build wheel: finished with status 'done'
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.4694008Z #10 8.404   Preparing metadata (pyproject.toml): started
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.5333307Z #10 8.619   Preparing metadata (pyproject.toml): finished with status 'done'
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.6888576Z #10 8.622 Building wheels for collected packages: safeheal-ai
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.6890959Z #10 8.623   Building wheel for safeheal-ai (pyproject.toml): started
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.7910107Z #10 8.876   Building wheel for safeheal-ai (pyproject.toml): finished with status 'done'
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9024536Z #10 8.877   Created wheel for safeheal-ai: filename=safeheal_ai-0.1.0-py3-none-any.whl size=19824 sha256=de50a4f07182e089c650488b38c730f1a7e28262696f8ab3be956a8fe55447b5
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9027867Z #10 8.877   Stored in directory: /tmp/pip-ephem-wheel-cache-umftkodw/wheels/54/1b/b7/aa63e25c8f14f4f2ae7b04e6097bdecb770e455c5c1ee0a600
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9029767Z #10 8.880 Successfully built safeheal-ai
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9030991Z #10 8.880 Installing collected packages: safeheal-ai
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9031876Z #10 8.905 Successfully installed safeheal-ai-0.1.0
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9034673Z #10 8.906 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9037427Z #10 8.988
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9038165Z #10 8.988 [notice] A new release of pip is available: 25.0.1 -> 26.2.2
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:37.9039524Z #10 8.988 [notice] To update, run: pip install --upgrade pip
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:38.1250390Z #10 DONE 9.2s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:38.2771866Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:38.2789489Z #11 exporting to image
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:38.2793965Z #11 exporting layers
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:39.3055689Z #11 exporting layers 1.2s done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:39.3269533Z #11 writing image sha256:a568206f3ed483e29d925de3b9299868c0f0b26951db6c2051d1426b1003be13 done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:39.3270908Z #11 naming to docker.io/library/safeheal-ai:day2-build done
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:39.3271510Z #11 DONE 1.2s
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:39.3914500Z Loading safeheal-ai:sha256-a568206f3ed483e2 into the dedicated node
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:39.5842876Z Image: "safeheal-ai:sha256-a568206f3ed483e2" with ID "sha256:a568206f3ed483e29d925de3b9299868c0f0b26951db6c2051d1426b1003be13" not yet present on node "safeheal-dev-control-plane", loading...
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:45.8211029Z namespace/safeheal-dev created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:45.8217248Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5416336Z namespace/safeheal-dev unchanged (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5419311Z serviceaccount/safeheal-workload created (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5419961Z service/gateway created (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5420489Z service/order created (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5420898Z service/payment created (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5421410Z deployment.apps/gateway created (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5421958Z deployment.apps/order created (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5422524Z deployment.apps/payment created (server dry run)
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:46.5423360Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4225306Z namespace/safeheal-dev unchanged
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4226246Z serviceaccount/safeheal-workload created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4227019Z service/gateway created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4227797Z service/order created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4228429Z service/payment created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4229280Z deployment.apps/gateway created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4229988Z deployment.apps/order created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4230646Z deployment.apps/payment created
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:47.4231199Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:51.8808401Z Waiting for deployment "payment" rollout to finish: 0 of 1 updated replicas are available...
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:51.8821905Z deployment "payment" successfully rolled out
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:51.8822817Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:52.2544344Z Waiting for deployment "order" rollout to finish: 0 of 1 updated replicas are available...
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:52.2545379Z deployment "order" successfully rolled out
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:52.2545777Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.2757153Z Waiting for deployment "gateway" rollout to finish: 0 of 1 updated replicas are available...
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.2769554Z deployment "gateway" successfully rolled out
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.2770149Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4292206Z NAME                           READY   STATUS    RESTARTS   AGE   IP           NODE                         NOMINATED NODE   READINESS GATES
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4293876Z pod/gateway-76746867c-9gdh8    1/1     Running   0          10s   10.244.0.5   safeheal-dev-control-plane   <none>           <none>
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4295776Z pod/order-658d9bc577-mh8vv     1/1     Running   0          10s   10.244.0.6   safeheal-dev-control-plane   <none>           <none>
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4297099Z pod/payment-84c9495668-nwzbf   1/1     Running   0          10s   10.244.0.7   safeheal-dev-control-plane   <none>           <none>
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4298533Z
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4298956Z NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4301045Z service/gateway   ClusterIP   10.96.8.166     <none>        8000/TCP   10s   app.kubernetes.io/name=gateway,app.kubernetes.io/part-of=safeheal-ai
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4302530Z service/order     ClusterIP   10.96.86.89     <none>        8000/TCP   10s   app.kubernetes.io/name=order,app.kubernetes.io/part-of=safeheal-ai
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4303939Z service/payment   ClusterIP   10.96.175.183   <none>        8000/TCP   10s   app.kubernetes.io/name=payment,app.kubernetes.io/part-of=safeheal-ai
+kubernetes	Deploy and validate manifests	2026-10-22T12:00:57.4304840Z
+kubernetes	Verify real service discovery and HTTP calls	﻿2026-10-22T12:00:57.4453340Z ##[group]Run python scripts/k8s.py verify
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4453912Z ^[[36;1mpython scripts/k8s.py verify^[[0m
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4522654Z shell: /usr/bin/bash -e {0}
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4522918Z env:
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4523185Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4523654Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4524132Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4524521Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4524904Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4525302Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:57.4525637Z ##[endgroup]
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:59.9143469Z Evidence: evidence/day2/verification-20261022T120059-9dc0fc.json
+kubernetes	Verify real service discovery and HTTP calls	2026-10-22T12:00:59.9146844Z VERIFY PASS: DNS, all health/readiness endpoints, synthetic order, correlation across all services
+kubernetes	Check dry-run then native container recovery	﻿2026-10-22T12:00:59.9319961Z ##[group]Run python scripts/k8s.py recovery
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9320645Z ^[[36;1mpython scripts/k8s.py recovery^[[0m
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9321247Z ^[[36;1mpython scripts/k8s.py recovery --execute^[[0m
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9414402Z shell: /usr/bin/bash -e {0}
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9414677Z env:
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9414956Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9415423Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9415895Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9416299Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9416698Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9417085Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:00:59.9417407Z ##[endgroup]
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9941511Z {
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9942282Z   "dry_run": true,
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9942795Z   "target": {
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9943408Z     "pod": "payment-84c9495668-nwzbf",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9944058Z     "uid": "163ff0e6-8161-4daf-a4ca-d1ec11514aa3",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9944721Z     "node": "safeheal-dev-control-plane",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9945340Z     "container": "payment",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9946258Z     "container_id": "containerd://bb97776ba578f7e173924c2e6ebe1404ec451b6a16bf51df4c81d9250cead009",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9947643Z     "image_id": "docker.io/library/import-2026-10-22@sha256:129a77a79ce5c19454a1f9390b6806af6011de417a683e2c47c9e26bcdd4ec5a",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9948913Z     "restart_count": 0,
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9949439Z     "ready": true,
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9949888Z     "state": {
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9950321Z       "running": {
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9950783Z         "startedAt": "2026-10-22T12:00:48Z"
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9951325Z       }
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9951728Z     },
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9952142Z     "last_state": {}
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9952588Z   },
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9952994Z   "command": [
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9953428Z     "docker",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9953837Z     "exec",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9954298Z     "safeheal-dev-control-plane",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9954815Z     "crictl",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9955244Z     "--timeout=30s",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9956165Z     "stop",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9956603Z     "--timeout",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9957032Z     "0",
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9957610Z     "bb97776ba578f7e173924c2e6ebe1404ec451b6a16bf51df4c81d9250cead009"
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9958432Z   ],
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9959675Z   "impact": "One payment container stops; kubelet restarts it. Brief order failures possible."
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:00.9960503Z }
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:14.0683030Z Evidence: evidence/day2/recovery-20261022T120102-e81bcd.json
+kubernetes	Check dry-run then native container recovery	2026-10-22T12:01:14.0687797Z RECOVERY PASS: same Pod, new container, increased restart count, upstream containers stable, 3 healthy order checks
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	﻿2026-10-22T12:01:14.0840050Z ##[group]Run python scripts/observe.py deploy
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0840513Z ^[[36;1mpython scripts/observe.py deploy^[[0m
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0840825Z ^[[36;1mpython scripts/observe.py verify^[[0m
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0906302Z shell: /usr/bin/bash -e {0}
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0906569Z env:
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0906840Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0907322Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0907771Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0908159Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0908936Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0909353Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:14.0909676Z ##[endgroup]
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5951458Z configmap/safeheal-grafana-dashboards-5dm4kb2cgd created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5952988Z configmap/safeheal-grafana-datasources-fcf6h4kd58 created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5954339Z configmap/safeheal-grafana-providers-4c8hmb6c48 created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5955354Z configmap/safeheal-prometheus-dtb8d4988t created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5956232Z service/grafana created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5957037Z service/prometheus created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5957857Z deployment.apps/grafana created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5959878Z deployment.apps/prometheus created (server dry run)
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:15.5960536Z
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0795078Z configmap/safeheal-grafana-dashboards-5dm4kb2cgd created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0809363Z configmap/safeheal-grafana-datasources-fcf6h4kd58 created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0823061Z configmap/safeheal-grafana-providers-4c8hmb6c48 created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0847640Z configmap/safeheal-prometheus-dtb8d4988t created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0851419Z service/grafana created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0870253Z service/prometheus created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0889304Z deployment.apps/grafana created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0909039Z deployment.apps/prometheus created
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:16.0918870Z
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:37.4220469Z Waiting for deployment "prometheus" rollout to finish: 0 out of 1 new replicas have been updated...
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:37.4222179Z Waiting for deployment "prometheus" rollout to finish: 0 of 1 updated replicas are available...
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:37.4223556Z deployment "prometheus" successfully rolled out
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:37.4224060Z
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:42.5064295Z Waiting for deployment "grafana" rollout to finish: 0 of 1 updated replicas are available...
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:42.5080337Z deployment "grafana" successfully rolled out
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:01:42.5080898Z
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:02:37.7932468Z Evidence: evidence/day3/observability-20261022T120143-day3-c3173e16431b.json
+kubernetes	Deploy observability and verify actual traffic, dashboards and traces	2026-10-22T12:02:37.7934069Z OBSERVABILITY PASS: three UP targets, real traffic, eight dashboard panels, Grafana datasource, JSON logs and five linked spans
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	﻿2026-10-22T12:02:37.8116328Z ##[group]Run kubectl --kubeconfig .local/kubeconfig --context kind-safeheal-dev -n safeheal-dev port-forward --address=127.0.0.1 service/prometheus 19090:9090 > .local/day4-prometheus-forward.log 2>&1 &
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8118410Z ^[[36;1mkubectl --kubeconfig .local/kubeconfig --context kind-safeheal-dev -n safeheal-dev port-forward --address=127.0.0.1 service/prometheus 19090:9090 > .local/day4-prometheus-forward.log 2>&1 &^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8119972Z ^[[36;1mdetector_forward_pid=$!^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8120338Z ^[[36;1mtrap 'kill "$detector_forward_pid" 2>/dev/null || true' EXIT^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8120741Z ^[[36;1mpython scripts/verify_detector_pause.py^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8121109Z ^[[36;1mpython scripts/verify_detector_pause.py --execute^[[0m
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8203431Z shell: /usr/bin/bash -e {0}
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8203890Z env:
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8204322Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8205064Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8205880Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8206537Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8207168Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8207830Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:37.8208318Z ##[endgroup]
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0159904Z {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0165142Z   "dry_run": true,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0166094Z   "target": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0166932Z     "pod": "payment-84c9495668-nwzbf",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0167598Z     "uid": "163ff0e6-8161-4daf-a4ca-d1ec11514aa3",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0168518Z     "node": "safeheal-dev-control-plane",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0169692Z     "container": "payment",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0170873Z     "container_id": "containerd://190de0aacf1acdf4b1071dae55f7c6902d4319673e11447aba141ade8f5bb7fa",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0172533Z     "image_id": "docker.io/library/import-2026-10-22@sha256:129a77a79ce5c19454a1f9390b6806af6011de417a683e2c47c9e26bcdd4ec5a",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0173868Z     "restart_count": 1,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0174615Z     "ready": true,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0175067Z     "state": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0175767Z       "running": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0176258Z         "startedAt": "2026-10-22T12:01:04Z"
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0177106Z       }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0177525Z     },
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0178565Z     "last_state": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0179854Z       "terminated": {
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0181351Z         "containerID": "containerd://bb97776ba578f7e173924c2e6ebe1404ec451b6a16bf51df4c81d9250cead009",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0183320Z         "exitCode": 137,
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0184407Z         "finishedAt": "2026-10-22T12:01:02Z",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0185652Z         "reason": "Error",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0186791Z         "startedAt": "2026-10-22T12:00:48Z"
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0187866Z       }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0188732Z     }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0190772Z   },
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0192719Z   "command": [
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0221993Z     "docker",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0222904Z     "exec",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0223480Z     "safeheal-dev-control-plane",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0224315Z     "sh",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0224788Z     "-c",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0226942Z     "task_id=\"$1\"\nresume_task() { ctr --timeout 10s --connect-timeout 5s --namespace k8s.io tasks resume \"$task_id\" >/dev/null 2>&1 || true; }\ntrap resume_task EXIT HUP INT TERM\nctr --timeout 10s --connect-timeout 5s --namespace k8s.io tasks pause \"$task_id\" || exit 1\nprintf 'PAYMENT_TASK_PAUSED\n'\nsleep 35\nresume_task\nprintf 'PAYMENT_PAUSE_WINDOW_FINISHED\n'\n",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0229756Z     "safeheal-day4-pause",
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0230461Z     "190de0aacf1acdf4b1071dae55f7c6902d4319673e11447aba141ade8f5bb7fa"
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0231187Z   ],
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0232035Z   "impact": "One validated payment task pauses for 35s, then resumes automatically. Native liveness restart is possible."
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:39.0233428Z }
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:40.8799757Z Warming actual traffic and Prometheus evidence
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:46.2585786Z Evidence: evidence/day4/day4-pause-b9e407a75729.json
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:02:46.2596752Z One validated payment task paused; node-side auto-resume is bounded to 35 seconds
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:05:11.6319834Z Evidence: evidence/day4/day4-pause-b9e407a75729.json
+kubernetes	Verify deterministic incidents with real Prometheus and a scoped payment task failure	2026-10-22T12:05:11.6349393Z DETECTOR LIVE PASS: payment task failure detected without LLM, incident resolved, final health/orders verified
+kubernetes	Repeat three labelled faults and record native and rule baselines	﻿2026-10-22T12:05:11.6694848Z ##[group]Run python scripts/benchmark.py run
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6695528Z ^[[36;1mpython scripts/benchmark.py run^[[0m
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6696570Z ^[[36;1mpython scripts/benchmark.py run --execute --backend kubernetes --repeats 2 --baseline-seconds 30^[[0m
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6793028Z shell: /usr/bin/bash -e {0}
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6793305Z env:
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6793583Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6794051Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6794507Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6795142Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6795698Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6796130Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.6796458Z ##[endgroup]
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8390285Z {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8391129Z   "dry_run": true,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8391901Z   "plan": {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8392906Z     "schema_version": 1,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8393889Z     "kind": "benchmark_plan",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8394804Z     "backend": "kubernetes",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8395996Z     "scenarios": [
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8396533Z       "process_crash",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8397040Z       "http_5xx",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8397521Z       "latency"
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8397981Z     ],
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8398433Z     "repeats": 2,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8399167Z     "seed": 5,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8399967Z     "duration_seconds": 90,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8401010Z     "baseline_seconds": 75,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8401570Z     "recovery_timeout_seconds": 180,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8402143Z     "poll_seconds": 5,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8402668Z     "request_interval_seconds": 0.2,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8403261Z     "concurrency": 4,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8403742Z     "trials": [
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8404191Z       {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8404638Z         "scenario": "http_5xx",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8405194Z         "repetition": 1,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8405701Z         "sequence": 1
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8406168Z       },
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8406587Z       {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8407039Z         "scenario": "process_crash",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8407603Z         "repetition": 1,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8408105Z         "sequence": 2
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8408789Z       },
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8409240Z       {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8409738Z         "scenario": "process_crash",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8410305Z         "repetition": 2,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8410801Z         "sequence": 3
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8411586Z       },
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8412033Z       {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8412492Z         "scenario": "latency",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8413040Z         "repetition": 2,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8413542Z         "sequence": 4
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8414034Z       },
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8414459Z       {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8414905Z         "scenario": "latency",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8415431Z         "repetition": 1,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8415944Z         "sequence": 5
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8416409Z       },
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8417148Z       {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8417637Z         "scenario": "http_5xx",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8418210Z         "repetition": 2,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8418921Z         "sequence": 6
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8419414Z       }
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8419851Z     ]
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8420464Z   }
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:11.8420947Z }
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:05:49.2333597Z d5-01-http_5xx-d6b754b6: injecting http_5xx
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:08:33.5512968Z d5-01-http_5xx-d6b754b6: completed; detection=detected; recovery=fault_expiry
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:09:06.4074683Z d5-02-process_crash-41c49801: injecting process_crash
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:10:35.8178296Z d5-02-process_crash-41c49801: completed; detection=detected; recovery=native_kubernetes
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:11:08.8153443Z d5-03-process_crash-d3a98bd4: injecting process_crash
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:13:03.0198406Z d5-03-process_crash-d3a98bd4: completed; detection=detected; recovery=native_kubernetes
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:13:35.8666762Z d5-04-latency-f3613d30: injecting latency
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:16:10.1505068Z d5-04-latency-f3613d30: completed; detection=detected; recovery=fault_expiry
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:16:42.8622568Z d5-05-latency-caab66e3: injecting latency
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:19:17.3177530Z d5-05-latency-caab66e3: completed; detection=detected; recovery=fault_expiry
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:19:50.2686963Z d5-06-http_5xx-bea84ddf: injecting http_5xx
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:39.6170796Z d5-06-http_5xx-bea84ddf: completed; detection=detected; recovery=fault_expiry
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0447024Z {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0448150Z   "run_directory": "/home/runner/work/safeheal-ai/safeheal-ai/evidence/day5/run-03a9072a24f8",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0449787Z   "run_status": "completed",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0450332Z   "attempts": 6,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0450853Z   "successful_executions": 6,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0451459Z   "kubernetes_acceptance": {
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0451997Z     "passed": true,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0452500Z     "required_backend": "kubernetes",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0453141Z     "required_repeats_per_scenario": 2,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0453784Z     "required_scenarios": [
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0454374Z       "process_crash",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0454851Z       "http_5xx",
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0455294Z       "latency"
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0455718Z     ],
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0456157Z     "missing_scenarios": [],
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0456673Z     "trials_passed": true,
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0457179Z     "run_finalization_passed": true
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0457704Z   }
+kubernetes	Repeat three labelled faults and record native and rule baselines	2026-10-22T12:22:41.0458090Z }
+kubernetes	Preserve verification evidence	﻿2026-10-22T12:22:41.0834871Z ##[group]Run actions/upload-artifact@v4
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0835435Z with:
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0835905Z   name: kubernetes-observability-evidence
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0848049Z   path: evidence/day2/
+kubernetes	Preserve verification evidence	evidence/day3/
+kubernetes	Preserve verification evidence	evidence/day4/
+kubernetes	Preserve verification evidence	evidence/day5/
+kubernetes	Preserve verification evidence
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0848957Z   retention-days: 7
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0849306Z   if-no-files-found: warn
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0849681Z   compression-level: 6
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0850025Z   overwrite: false
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0850380Z   include-hidden-files: false
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0850627Z env:
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0850896Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0851354Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0851786Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0852168Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0852551Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0852970Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.0853418Z ##[endgroup]
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.4814280Z (node:18832) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.4816048Z (Use `node --trace-deprecation ...` to show where the warning was created)
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.7169243Z Multiple search paths detected. Calculating the least common ancestor of all paths
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.7261415Z The least common ancestor is /home/runner/work/safeheal-ai/safeheal-ai/evidence. This will be the root directory of the artifact
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.7266943Z With the provided path, there will be 78 files uploaded
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.7268336Z Artifact name is valid!
+kubernetes	Preserve verification evidence	2026-10-22T12:22:41.7269252Z Root directory input is valid!
+kubernetes	Preserve verification evidence	2026-10-22T12:22:42.0020249Z Beginning upload of artifact content to blob storage
+kubernetes	Preserve verification evidence	2026-10-22T12:22:42.5621535Z (node:18832) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+kubernetes	Preserve verification evidence	2026-10-22T12:22:43.3862942Z Uploaded bytes 2172629
+kubernetes	Preserve verification evidence	2026-10-22T12:22:43.5392059Z Finished uploading artifact content to blob storage!
+kubernetes	Preserve verification evidence	2026-10-22T12:22:43.5394431Z SHA256 digest of uploaded artifact zip is cbc6b8ee5c8d6d0e048a220f470e0e3bc3693fafdb3b2b5fd3f35d22b5fa8cce
+kubernetes	Preserve verification evidence	2026-10-22T12:22:43.5395888Z Finalizing artifact upload
+kubernetes	Preserve verification evidence	2026-10-22T12:22:44.1172428Z Artifact kubernetes-observability-evidence.zip successfully finalized. Artifact ID 12424698880
+kubernetes	Preserve verification evidence	2026-10-22T12:22:44.1174636Z Artifact kubernetes-observability-evidence has been successfully uploaded! Final size is 2172629 bytes. Artifact ID is 12424698880
+kubernetes	Preserve verification evidence	2026-10-22T12:22:44.1176604Z Artifact download URL: https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343/artifacts/12424698880
+kubernetes	Post Run actions/setup-python@v5	﻿2026-10-22T12:22:44.1415027Z Post job cleanup.
+kubernetes	Post Run actions/setup-python@v5	2026-10-22T12:22:44.2833048Z (node:18847) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+kubernetes	Post Run actions/setup-python@v5	2026-10-22T12:22:44.2835228Z (Use `node --trace-deprecation ...` to show where the warning was created)
+kubernetes	Post Run actions/checkout@v4	﻿2026-10-22T12:22:44.3113880Z Post job cleanup.
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.4875431Z [command]/usr/bin/git version
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.4979642Z git version 2.55.0
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5050334Z Temporarily overriding HOME='/home/runner/work/_temp/c8413818-5a02-4224-aabd-dc5996354818' before making global git config changes
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5060094Z Adding repository directory to the temporary git global config as a safe directory
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5079624Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/safeheal-ai/safeheal-ai
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5150064Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5182541Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5539921Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5599295Z http.https://github.com/.extraheader
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5632001Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.5750570Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.6159933Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+kubernetes	Post Run actions/checkout@v4	2026-10-22T12:22:44.6235530Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+kubernetes	Complete job	﻿2026-10-22T12:22:44.6873375Z Cleaning up orphan processes
+kubernetes	Complete job	2026-10-22T12:22:44.7966327Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+test	Set up job	﻿2026-10-22T11:59:23.1114505Z Current runner version: '2.338.0'
+test	Set up job	2026-10-22T11:59:23.1151634Z ##[group]Runner Image Provisioner
+test	Set up job	2026-10-22T11:59:23.1152967Z Hosted Compute Agent
+test	Set up job	2026-10-22T11:59:23.1153954Z Version: 20261021.618
+test	Set up job	2026-10-22T11:59:23.1155095Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+test	Set up job	2026-10-22T11:59:23.1156400Z Build Date: 2026-10-21T00:45:21Z
+test	Set up job	2026-10-22T11:59:23.1157940Z Worker ID: {5f64dfc1-a4ed-465d-98d6-d2a17801bba6}
+test	Set up job	2026-10-22T11:59:23.1159204Z Region: eastus2
+test	Set up job	2026-10-22T11:59:23.1160162Z Cloud: Azure
+test	Set up job	2026-10-22T11:59:23.1161235Z ##[endgroup]
+test	Set up job	2026-10-22T11:59:23.1163694Z ##[group]Operating System
+test	Set up job	2026-10-22T11:59:23.1164885Z Ubuntu
+test	Set up job	2026-10-22T11:59:23.1165734Z 24.04.5
+test	Set up job	2026-10-22T11:59:23.1166522Z LTS
+test	Set up job	2026-10-22T11:59:23.1167521Z ##[endgroup]
+test	Set up job	2026-10-22T11:59:23.1168826Z ##[group]Runner Image
+test	Set up job	2026-10-22T11:59:23.1169879Z Image: ubuntu-24.04
+test	Set up job	2026-10-22T11:59:23.1170885Z Version: 20261021.345.10
+test	Set up job	2026-10-22T11:59:23.1172778Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261021.345/images/ubuntu/Ubuntu2404-Readme.md
+test	Set up job	2026-10-22T11:59:23.1175806Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261021.345
+test	Set up job	2026-10-22T11:59:23.1178377Z ##[endgroup]
+test	Set up job	2026-10-22T11:59:23.1180405Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-10-22T11:59:23.1183805Z Contents: read
+test	Set up job	2026-10-22T11:59:23.1184910Z Metadata: read
+test	Set up job	2026-10-22T11:59:23.1185882Z ##[endgroup]
+test	Set up job	2026-10-22T11:59:23.1189094Z Secret source: Actions
+test	Set up job	2026-10-22T11:59:23.1190667Z Cache mode: write
+test	Set up job	2026-10-22T11:59:23.1192129Z Prepare workflow directory
+test	Set up job	2026-10-22T11:59:23.1666527Z Prepare all required actions
+test	Set up job	2026-10-22T11:59:23.1736491Z Getting action download info
+test	Set up job	2026-10-22T11:59:23.3902498Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+test	Set up job	2026-10-22T11:59:23.4918603Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+test	Set up job	2026-10-22T11:59:23.6946045Z Complete job name: test
+test	Run actions/checkout@v4	﻿2026-10-22T11:59:23.7813866Z ##[group]Run actions/checkout@v4
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7814785Z with:
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7815247Z   repository: Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7819473Z   token: ***
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7819928Z   ssh-strict: true
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7820427Z   ssh-user: git
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7820888Z   persist-credentials: true
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7821384Z   clean: true
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7821845Z   sparse-checkout-cone-mode: true
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7822437Z   fetch-depth: 1
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7822926Z   fetch-tags: false
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7823402Z   show-progress: true
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7823845Z   lfs: false
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7824260Z   submodules: false
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7824712Z   set-safe-directory: true
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7825226Z   allow-unsafe-pr-checkout: false
+test	Run actions/checkout@v4	2026-10-22T11:59:23.7826062Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9249002Z Syncing repository: Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9262771Z ##[group]Getting Git version info
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9278153Z Working directory is '/home/runner/work/safeheal-ai/safeheal-ai'
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9280829Z [command]/usr/bin/git version
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9428968Z git version 2.55.0
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9500011Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9509192Z Temporarily overriding HOME='/home/runner/work/_temp/7240edbb-4d5e-4c20-a41f-66d027d3fdb9' before making global git config changes
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9512060Z Adding repository directory to the temporary git global config as a safe directory
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9514244Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/safeheal-ai/safeheal-ai
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9577396Z Deleting the contents of '/home/runner/work/safeheal-ai/safeheal-ai'
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9579859Z ##[group]Initializing the repository
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9581286Z [command]/usr/bin/git init /home/runner/work/safeheal-ai/safeheal-ai
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9767307Z hint: Using 'master' as the name for the initial branch. This default branch name
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9779589Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9783077Z hint: to use in all of your new repositories, which will suppress this warning,
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9786213Z hint: call:
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9787492Z hint:
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9788805Z hint: 	git config --global init.defaultBranch <name>
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9790250Z hint:
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9791558Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9793738Z hint: 'development'. The just-created branch can be renamed via this command:
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9795517Z hint:
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9796332Z hint: 	git branch -m <name>
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9797452Z hint:
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9799393Z hint: Disable this message with "git config set advice.defaultBranchName false"
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9804704Z Initialized empty Git repository in /home/runner/work/safeheal-ai/safeheal-ai/.git/
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9839346Z [command]/usr/bin/git remote add origin https://github.com/Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9919137Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9920716Z ##[group]Disabling automatic garbage collection
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9922095Z [command]/usr/bin/git config --local gc.auto 0
+test	Run actions/checkout@v4	2026-10-22T11:59:23.9999389Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:24.0019623Z ##[group]Setting up auth
+test	Run actions/checkout@v4	2026-10-22T11:59:24.0035694Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Run actions/checkout@v4	2026-10-22T11:59:24.0042405Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Run actions/checkout@v4	2026-10-22T11:59:24.0480039Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Run actions/checkout@v4	2026-10-22T11:59:24.0684712Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Run actions/checkout@v4	2026-10-22T11:59:24.0865630Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Run actions/checkout@v4	2026-10-22T11:59:24.1804573Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Run actions/checkout@v4	2026-10-22T11:59:24.1812878Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Run actions/checkout@v4	2026-10-22T11:59:24.1816680Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:24.1818514Z ##[group]Fetching the repository
+test	Run actions/checkout@v4	2026-10-22T11:59:24.1821699Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +31f2af628e70487f1cd0098403bd3ab2304a4d46:refs/remotes/origin/day5-fault-benchmark
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5503697Z From https://github.com/Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5511595Z  * [new ref]         31f2af628e70487f1cd0098403bd3ab2304a4d46 -> origin/day5-fault-benchmark
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5520609Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5522341Z ##[group]Determining the checkout info
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5524308Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5525444Z [command]/usr/bin/git sparse-checkout disable
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5531324Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5537482Z ##[group]Checking out the ref
+test	Run actions/checkout@v4	2026-10-22T11:59:24.5540176Z [command]/usr/bin/git checkout --progress --force -B day5-fault-benchmark refs/remotes/origin/day5-fault-benchmark
+test	Run actions/checkout@v4	2026-10-22T11:59:24.6033298Z Switched to a new branch 'day5-fault-benchmark'
+test	Run actions/checkout@v4	2026-10-22T11:59:24.6045681Z branch 'day5-fault-benchmark' set up to track 'origin/day5-fault-benchmark'.
+test	Run actions/checkout@v4	2026-10-22T11:59:24.6054440Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-22T11:59:24.6060830Z [command]/usr/bin/git log -1 --format=%H
+test	Run actions/checkout@v4	2026-10-22T11:59:24.6062921Z 31f2af628e70487f1cd0098403bd3ab2304a4d46
+test	Run actions/setup-python@v5	﻿2026-10-22T11:59:24.6351737Z ##[group]Run actions/setup-python@v5
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6352419Z with:
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6352878Z   python-version: 3.12
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6353388Z   check-latest: false
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6357176Z   token: ***
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6357853Z   update-environment: true
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6358654Z   allow-prereleases: false
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6359192Z   freethreaded: false
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.6359689Z ##[endgroup]
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.7808687Z ##[group]Installed versions
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.7892699Z (node:2037) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.7895379Z Successfully set up CPython (3.12.15)
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.7919530Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Run actions/setup-python@v5	2026-10-22T11:59:24.7921258Z ##[endgroup]
+test	Run python -m pip install -r requirements.lock	﻿2026-10-22T11:59:24.8234479Z ##[group]Run python -m pip install -r requirements.lock
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8235936Z ^[[36;1mpython -m pip install -r requirements.lock^[[0m
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8531755Z shell: /usr/bin/bash -e {0}
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8532474Z env:
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8533082Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8534033Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8534962Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8535784Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8536594Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8537408Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:24.8538475Z ##[endgroup]
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.2775289Z Collecting annotated-doc==0.0.5 (from -r requirements.lock (line 1))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.3371506Z   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.3531042Z Collecting annotated-types==0.8.0 (from -r requirements.lock (line 2))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.3614838Z   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.3931496Z Collecting anyio==4.15.1 (from -r requirements.lock (line 3))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.4008671Z   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.4278323Z Collecting certifi==2026.10.19 (from -r requirements.lock (line 4))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.4353709Z   Downloading certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.4598643Z Collecting click==8.5.0 (from -r requirements.lock (line 5))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.4673069Z   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.4908844Z Collecting colorama==0.4.6 (from -r requirements.lock (line 6))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.4988813Z   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.5734541Z Collecting fastapi==0.151.0 (from -r requirements.lock (line 7))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.5813291Z   Downloading fastapi-0.151.0-py3-none-any.whl.metadata (26 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.6022600Z Collecting h11==0.16.0 (from -r requirements.lock (line 8))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.6101699Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.6308100Z Collecting httpcore==1.0.9 (from -r requirements.lock (line 9))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.6383782Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.6819058Z Collecting httpx==0.28.1 (from -r requirements.lock (line 10))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.6888730Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.7149061Z Collecting idna==3.20 (from -r requirements.lock (line 11))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.7248531Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.7391432Z Collecting iniconfig==2.3.1 (from -r requirements.lock (line 12))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.7465742Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.7701895Z Collecting opentelemetry-api==1.45.1 (from -r requirements.lock (line 13))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.7777875Z   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8015889Z Collecting opentelemetry-sdk==1.45.1 (from -r requirements.lock (line 14))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8098763Z   Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl.metadata (1.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8310648Z Collecting opentelemetry-semantic-conventions==0.66b1 (from -r requirements.lock (line 15))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8466093Z   Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl.metadata (2.4 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8655425Z Collecting packaging==26.3 (from -r requirements.lock (line 16))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8730769Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8890342Z Collecting pluggy==1.7.0 (from -r requirements.lock (line 17))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.8966452Z   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.9199072Z Collecting prometheus_client==0.26.0 (from -r requirements.lock (line 18))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:26.9268881Z   Downloading prometheus_client-0.26.0-py3-none-any.whl.metadata (2.1 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.0561386Z Collecting pydantic==2.14.1 (from -r requirements.lock (line 19))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.0647155Z   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.8373680Z Collecting pydantic_core==2.50.1 (from -r requirements.lock (line 20))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.8448110Z   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.8655011Z Collecting Pygments==2.21.0 (from -r requirements.lock (line 21))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.8731155Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9013434Z Collecting pytest==9.1.1 (from -r requirements.lock (line 22))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9088727Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9366084Z Collecting starlette==1.9.0 (from -r requirements.lock (line 23))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9441425Z   Downloading starlette-1.9.0-py3-none-any.whl.metadata (6.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9596724Z Collecting typing-inspection==0.4.4 (from -r requirements.lock (line 24))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9672916Z   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9869066Z Collecting typing_extensions==4.16.0 (from -r requirements.lock (line 25))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:27.9945353Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.0203887Z Collecting uvicorn==0.54.0 (from -r requirements.lock (line 26))
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.0282197Z   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.0650828Z Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.0752581Z Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.0856641Z Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.0970416Z Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1070535Z Downloading click-8.5.0-py3-none-any.whl (125 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1166458Z Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1396960Z Downloading fastapi-0.151.0-py3-none-any.whl (145 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1506658Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1605634Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1714848Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1831916Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.1928144Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2021794Z Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2128859Z Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl (140 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2227821Z Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl (206 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2333847Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2439169Z Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2534055Z Downloading prometheus_client-0.26.0-py3-none-any.whl (64 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2647016Z Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2813527Z Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.2948592Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 196.8 MB/s  0:00:00
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.3031612Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.3100767Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 236.8 MB/s  0:00:00
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.3183264Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.3286662Z Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.3384110Z Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.3493931Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.3603312Z Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:28.5035744Z Installing collected packages: typing_extensions, Pygments, prometheus_client, pluggy, packaging, iniconfig, idna, h11, colorama, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic_core, opentelemetry-api, httpcore, anyio, starlette, pydantic, opentelemetry-semantic-conventions, httpx, opentelemetry-sdk, fastapi
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:30.9579040Z
+test	Run python -m pip install -r requirements.lock	2026-10-22T11:59:30.9608807Z Successfully installed Pygments-2.21.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.19 click-8.5.0 colorama-0.4.6 fastapi-0.151.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 iniconfig-2.3.1 opentelemetry-api-1.45.1 opentelemetry-sdk-1.45.1 opentelemetry-semantic-conventions-0.66b1 packaging-26.3 pluggy-1.7.0 prometheus_client-0.26.0 pydantic-2.14.1 pydantic_core-2.50.1 pytest-9.1.1 starlette-1.9.0 typing-inspection-0.4.4 typing_extensions-4.16.0 uvicorn-0.54.0
+test	Run python -m pip install --no-deps -e .	﻿2026-10-22T11:59:31.0512991Z ##[group]Run python -m pip install --no-deps -e .
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0513435Z ^[[36;1mpython -m pip install --no-deps -e .^[[0m
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0569073Z shell: /usr/bin/bash -e {0}
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0569337Z env:
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0569616Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0570084Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0570532Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0570924Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0571327Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0571723Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.0572055Z ##[endgroup]
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.9108737Z Obtaining file:///home/runner/work/safeheal-ai/safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:31.9124715Z   Installing build dependencies: started
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:33.2063724Z   Installing build dependencies: finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:33.2070788Z   Checking if build backend supports build_editable: started
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:33.5379137Z   Checking if build backend supports build_editable: finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:33.5385222Z   Getting requirements to build editable: started
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:33.8783634Z   Getting requirements to build editable: finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:33.8793421Z   Preparing editable metadata (pyproject.toml): started
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.0788990Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.0814324Z Building wheels for collected packages: safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.0823837Z   Building editable for safeheal-ai (pyproject.toml): started
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.3070830Z   Building editable for safeheal-ai (pyproject.toml): finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.3078894Z   Created wheel for safeheal-ai: filename=safeheal_ai-0.1.0-0.editable-py3-none-any.whl size=2857 sha256=ee8e6b9b5dce33efe1a621abdd2d6672b49d5e7346bb63c364ab008f621bb0be
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.3081303Z   Stored in directory: /tmp/pip-ephem-wheel-cache-8l5bu30t/wheels/b8/5b/f9/34f274ba46cd26f94cb2e7932c38d04adeaab484d6c86e2aa4
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.3102824Z Successfully built safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.3216861Z Installing collected packages: safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-22T11:59:34.3308727Z Successfully installed safeheal-ai-0.1.0
+test	Run python -m pytest -q	﻿2026-10-22T11:59:34.3891458Z ##[group]Run python -m pytest -q
+test	Run python -m pytest -q	2026-10-22T11:59:34.3891808Z ^[[36;1mpython -m pytest -q^[[0m
+test	Run python -m pytest -q	2026-10-22T11:59:34.3944253Z shell: /usr/bin/bash -e {0}
+test	Run python -m pytest -q	2026-10-22T11:59:34.3944522Z env:
+test	Run python -m pytest -q	2026-10-22T11:59:34.3944797Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-22T11:59:34.3945270Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Run python -m pytest -q	2026-10-22T11:59:34.3945735Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-22T11:59:34.3946154Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-22T11:59:34.3946553Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-22T11:59:34.3946944Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Run python -m pytest -q	2026-10-22T11:59:34.3947275Z ##[endgroup]
+test	Run python -m pytest -q	2026-10-22T11:59:36.5626012Z ........................................................................ [ 24%]
+test	Run python -m pytest -q	2026-10-22T11:59:36.7232699Z ........................................................................ [ 49%]
+test	Run python -m pytest -q	2026-10-22T11:59:37.8971997Z ........................................................................ [ 74%]
+test	Run python -m pytest -q	2026-10-22T11:59:38.7838715Z ........................................................................ [ 99%]
+test	Run python -m pytest -q	2026-10-22T11:59:38.8682964Z .                                                                        [100%]
+test	Run python -m pytest -q	2026-10-22T11:59:38.8684040Z =============================== warnings summary ===============================
+test	Run python -m pytest -q	2026-10-22T11:59:38.8685431Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+test	Run python -m pytest -q	2026-10-22T11:59:38.8687487Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+test	Run python -m pytest -q	2026-10-22T11:59:38.8689753Z     from starlette.testclient import TestClient as TestClient  # noqa
+test	Run python -m pytest -q	2026-10-22T11:59:38.8690462Z
+test	Run python -m pytest -q	2026-10-22T11:59:38.8690998Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+test	Run python -m pytest -q	2026-10-22T11:59:38.8691861Z 289 passed, 1 warning in 3.85s
+test	Post Run actions/setup-python@v5	﻿2026-10-22T11:59:38.9932809Z Post job cleanup.
+test	Post Run actions/setup-python@v5	2026-10-22T11:59:39.1297151Z (node:2230) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Post Run actions/setup-python@v5	2026-10-22T11:59:39.1299147Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Post Run actions/checkout@v4	﻿2026-10-22T11:59:39.1589284Z Post job cleanup.
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.2746919Z [command]/usr/bin/git version
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.2841209Z git version 2.55.0
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.2945608Z Temporarily overriding HOME='/home/runner/work/_temp/8046426f-5c19-4cfa-a500-ea90330869d8' before making global git config changes
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.2960378Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.2961902Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/safeheal-ai/safeheal-ai
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.3015944Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.3107832Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.3510198Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.3560868Z http.https://github.com/.extraheader
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.3580003Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.3687120Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.4428698Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Run actions/checkout@v4	2026-10-22T11:59:39.4520302Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Complete job	﻿2026-10-22T11:59:39.5168329Z Cleaning up orphan processes
+test	Complete job	2026-10-22T11:59:39.5502226Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
