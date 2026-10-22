@@ -1,0 +1,8 @@
+{
+  "container": "5bf4fdad05c0e67128783489f3773b4806a51c8bb26f4d3691d6464156a31129",
+  "image": "sha256:582414cbbff5eaf412379f9b8f7f62dcb90613a1f9c5216273269e4293e4be8e",
+  "network": "kind",
+  "publish": "127.0.0.1:18082:6443",
+  "target": "safeheal-dev-control-plane:6443",
+  "method": "TLS passthrough; project-only endpoint updated; credentials and default context unchanged"
+}

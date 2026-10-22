@@ -1,0 +1,22 @@
+{
+  "verified_at": "2026-10-22T13:18:38.099957+00:00",
+  "source_head": "0b1e4cb9b344a41415cbc1789038920dd35c695d",
+  "original_artifact_hashes_verified": 39,
+  "original_request_records": 15180,
+  "original_telemetry_snapshots": 212,
+  "databases_integrity_ok": 6,
+  "summary_replay_json_content_equal": true,
+  "summary_replay_csv_bytes_equal": true,
+  "windows_unit_tests": {
+    "passed": 288,
+    "skipped": 1,
+    "warnings": 1
+  },
+  "final_ci_run": 39780164487,
+  "final_ci_conclusion": "success",
+  "local_preflight_passed": true,
+  "local_service_verification": "evidence/day2/verification-20261022T131742-68c7dd.json",
+  "local_api_endpoint": "https://127.0.0.1:18082",
+  "local_deployment_image": "safeheal-ai:sha256-311922d1b56ffd31",
+  "benchmark_faults_executed_during_local_repair": false
+}

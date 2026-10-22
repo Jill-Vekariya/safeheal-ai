@@ -1,0 +1,18 @@
+{
+  "image": "safeheal-ai:sha256-311922d1b56ffd31",
+  "image_id": "sha256:311922d1b56ffd31e9a038e71218c8ec707df49bb9aa337828dc153c2973eabe",
+  "source_head": "0b1e4cb9b344a41415cbc1789038920dd35c695d",
+  "dependency_metadata": {
+    "image": "safeheal-ai:sha256-582414cbbff5eaf4",
+    "image_files": {
+      "pyproject.toml": "3249677e92c746ea557faafa47ee93024482c01fc1102f869e5f8c6c07a86355",
+      "requirements.lock": "5604f4a7ff39c493c2a7459f2c1c1651ba0913563b7e84f272e2d5166b6cade0"
+    },
+    "checkout_files": {
+      "pyproject.toml": "3249677e92c746ea557faafa47ee93024482c01fc1102f869e5f8c6c07a86355",
+      "requirements.lock": "5604f4a7ff39c493c2a7459f2c1c1651ba0913563b7e84f272e2d5166b6cade0"
+    },
+    "match": true
+  },
+  "method": "offline source refresh from existing dependency-equivalent application image"
+}

@@ -1,0 +1,5 @@
+FROM safeheal-ai:sha256-582414cbbff5eaf4
+USER root
+RUN rm -rf /app/services
+COPY services /app/services
+USER 10001

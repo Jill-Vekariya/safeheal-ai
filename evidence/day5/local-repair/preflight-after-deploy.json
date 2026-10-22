@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "at": "2026-10-22T13:18:37.964422+00:00",
+  "context": "kind-safeheal-dev",
+  "namespace": "safeheal-dev",
+  "fault_controls_enabled": true,
+  "all_payment_python_sources_match": true,
+  "python_source_count": 10,
+  "source_sha256": {
+    "services/benchmark_faults.py": "5fae2813b8d18f7dd0fa7b5ca037d9322ba1b3a1014a417b969cbf784a0e3454",
+    "services/app.py": "e8e74109ef7771be23b70297ad1d0ed6f79f7a206f0e5643b05d811e01127f67",
+    "services/observability.py": "fe43b06ac15c4794f2b9b86f40818a810b1569720f6c8f81943f5ccd59dfd490",
+    "services/tracing.py": "18780d7140dc8208cd57a41875b75e17f495c4da0fb763ec563bce3a93ca0fe2",
+    "services/__init__.py": "0cf488624af1661ffd284915fdc48cf73d09c2946971383cf0bcc16e8db00e5a",
+    "services/incidents/telemetry.py": "2a88c979e02dd346e1098b9d28acdf1936f59e0c2ebd10f260c86a762ec283bc",
+    "services/incidents/app.py": "243b4cc0321b334225a228b80ffdc85de11311461f71a03c55e653509dae7b41",
+    "services/incidents/rules.py": "7b1179870fbf635504698445f5d427eaf10e901a0c8670514c1ded8ccafd2362",
+    "services/incidents/__init__.py": "c162f376df4afb8078c0939c67f92be02f2b153154b7e39213091499dfccf465",
+    "services/incidents/controller.py": "829c29c0abc8ecd43f892e70791ab75ccad7ec9819a88782c1b8f2cdca39920c"
+  },
+  "baseline": {
+    "payment": {
+      "pod": "payment-c8557699d-xbbdj",
+      "uid": "9127a394-f163-49a6-b13e-b1eee8eba703",
+      "node": "safeheal-dev-control-plane",
+      "container": "payment",
+      "container_id": "containerd://354caabe27850428b282c535c0d2e0c9286037ddb1ab474e17eb901d2d93523c",
+      "image_id": "docker.io/library/import-2026-10-22@sha256:3cc7978807c49ed160bf24d5453b0506e4d56deaccd76ab7004d0c283ed87642",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-22T13:17:11Z"
+        }
+      },
+      "last_state": {}
+    },
+    "order": {
+      "pod": "order-544f565d8c-g2vml",
+      "uid": "a7447fd0-8cff-49c6-be7e-de863b565b83",
+      "node": "safeheal-dev-control-plane",
+      "container": "order",
+      "container_id": "containerd://efb0d031562343c2d2e227ea64e180fbe4f27ef86e855b80f3932c3f6b84bb12",
+      "image_id": "docker.io/library/import-2026-10-22@sha256:3cc7978807c49ed160bf24d5453b0506e4d56deaccd76ab7004d0c283ed87642",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-22T13:17:11Z"
+        }
+      },
+      "last_state": {}
+    },
+    "gateway": {
+      "pod": "gateway-594cf4b9dc-wjbcr",
+      "uid": "3dcc0299-aa14-4ab0-94dd-384b3445abb2",
+      "node": "safeheal-dev-control-plane",
+      "container": "gateway",
+      "container_id": "containerd://d707da17c88682ea6d65069ce597e2ae8216efe8dcb8ac25cdd7c3eebda31958",
+      "image_id": "docker.io/library/import-2026-10-22@sha256:3cc7978807c49ed160bf24d5453b0506e4d56deaccd76ab7004d0c283ed87642",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-22T13:17:11Z"
+        }
+      },
+      "last_state": {}
+    }
+  }
+}

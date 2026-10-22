@@ -1,0 +1,12 @@
+{
+  "image": "safeheal-ai:sha256-582414cbbff5eaf4",
+  "image_files": {
+    "pyproject.toml": "3249677e92c746ea557faafa47ee93024482c01fc1102f869e5f8c6c07a86355",
+    "requirements.lock": "5604f4a7ff39c493c2a7459f2c1c1651ba0913563b7e84f272e2d5166b6cade0"
+  },
+  "checkout_files": {
+    "pyproject.toml": "3249677e92c746ea557faafa47ee93024482c01fc1102f869e5f8c6c07a86355",
+    "requirements.lock": "5604f4a7ff39c493c2a7459f2c1c1651ba0913563b7e84f272e2d5166b6cade0"
+  },
+  "match": true
+}

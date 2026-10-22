@@ -1,6 +1,14 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-22 UTC. **Version:** 6.1. **Phase:** DAY 5 COMPLETE — initial reproducible fault benchmark. **Next:** Day 6 evidence-grounded AI diagnosis.
+**Snapshot:** 2026-10-22 UTC. **Version:** 6.2. **Phase:** DAY 5 COMPLETE — initial reproducible fault benchmark. **Next:** Day 6 evidence-grounded AI diagnosis.
+
+## Final Day 5 verification after reconnection
+
+Day 5 remains complete (8/8; full project 5/10). CI39780164487 for 0b1e4cb completed successfully, including both jobs and all six repeated fault trials. The prior pending CI note is resolved. The original 39 artifact hashes, six databases and summary replay passed independent verification; Windows suite: 288 passed, one privilege-related skip, one warning.
+
+Local API access is restored through the loopback-only Docker container safeheal-dev-api-proxy at https://127.0.0.1:18082; only the project-local kubeconfig endpoint changed. Original Docker port49693 publishing remains broken. A registry timeout prevented the normal image build; a dependency-equivalent cached-image source refresh deployed the current application as safeheal-ai:sha256-311922d1b56ffd31. All three rollouts, DNS/health/readiness/order checks, all10 payment Python source hashes and benchmark preflight passed. No additional local fault batch was run. Credentials/default context and existing cluster data were preserved.
+
+See [final verification](Day5_Verification_2026-10-22.md), evidence/day5/ci-39780164487 and evidence/day5/local-repair. This final documentation/evidence update leaves executable implementation unchanged and uses [skip ci]; the full passing run above supplies implementation validation. Inspect actual branch HEAD after publication. Keep the proxy running for local work; kind setup may restore the old endpoint. No Day5 acceptance item remains; Day6 is next. Historical mapping/pending-CI notes below are superseded by this checkpoint.
 
 ## Current Day 5 completion
 
