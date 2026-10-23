@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-23",
+  "implementation_commit": "33b27a43b18f808474e9778ce432aebc789d69e0",
+  "repository": "Jill-Vekariya/safeheal-ai",
+  "is_private": true,
+  "viewer_permission": "ADMIN",
+  "remote_main": "156da54a5de4ddf4977676ebf7ce29310089fb0f",
+  "published_day5_branch": "e04a5069d2cfa6142b44bb85b16b27a2dc91efab",
+  "day5_pull_request": 2,
+  "day6_published": false,
+  "day6_ci_run": false,
+  "protection": {
+    "enabled": false,
+    "http_status": 403,
+    "message": "Upgrade to GitHub Pro or make this repository public to enable this feature.",
+    "configuration_file": "docs/MAIN_BRANCH_PROTECTION.json",
+    "configuration_applied": false
+  },
+  "upload_review": {
+    "status": "rejected",
+    "reason": "The vague authorization to do whatever is insufficient for sensitive egress; pushing the full source, documentation, and benchmark evidence to the private GitHub repository still lacks explicit destination-and-payload approval."
+  },
+  "verification": {
+    "source_hash_mismatches": 0,
+    "mocked_grounded": 6,
+    "fallback_grounded": 6,
+    "credential_available": false
+  },
+  "no_visibility_change": true,
+  "no_purchase": true,
+  "no_force_push": true
+}
