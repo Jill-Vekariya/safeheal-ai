@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-23",
+  "environment": "Canonical Windows Python 3.12 project environment",
+  "command": "python -m pytest tests/test_diagnosis.py tests/test_diagnosis_live.py -q",
+  "result": {"passed": 42, "failed": 1, "skipped": 1, "warnings": 1},
+  "failed_test": "test_evidence_hash_deduplication_and_conflicting_timestamp",
+  "observation": "The test modified uncited records; the initial scorer verified hashes only for cited records and returned true.",
+  "correction": "Verify SHA-256 and content-addressed IDs for every bundled record, including uncited records, before checking hypothesis references.",
+  "live_model": "Skipped: no configured credentials or paid-call opt-in. No real model was called.",
+  "warning": "Existing Starlette/httpx deprecation warning. No dependency lock change."
+}

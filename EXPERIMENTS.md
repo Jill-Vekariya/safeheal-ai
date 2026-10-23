@@ -184,3 +184,16 @@ Retained 15,180 request rows, 212 telemetry snapshots, six detector SQLite store
 The previously pending evidence-commit CI39780164487 completed successfully, including unit and live Kubernetes jobs and six further completed/detected trials. Retained metadata/logs under evidence/day5/ci-39780164487. These later CI records are not pooled with the original benchmark dataset or used to rewrite its measured intervals. All39 original artifact hashes, six SQLite integrity checks and JSON/CSV replay remained valid.
 
 Local API access was restored with a separate loopback TLS proxy on18082. Current application source was deployed with a documented cached dependency-equivalent source-refresh image after Docker Hub timed out; no fault was injected as part of repair. DNS/health/readiness/order checks, benchmark preflight and all10 deployed payment source hashes passed. See Day5_Verification_2026-10-22.md and evidence/day5/local-repair for failed setup attempts, workaround details, deployment identity and limits. This closes environment verification without claiming another local benchmark or a comparative recovery gain.
+
+
+## Day 6 retrospective diagnosis replay — 2026-10-23
+
+Implemented configurable disabled-by-default JSON provider, fixed read-only incident/telemetry tools, bounded evidence normalization, strict cited hypotheses, confidence/abstention/fallback handling and independent ground-truth scoring. Source/tests: services/diagnosis, scripts/diagnose.py, tests/test_diagnosis*.py. Protocol: docs/AI_DIAGNOSIS.md.
+
+Replayed all six original Day 5 Kubernetes trials using telemetry/platform observations only, with a fixed first-observation +105s cutoff. Ground truth is read after each diagnosis. Mocked HTTP transport and deterministic fallback each obtained 6/6 grounded, target-matched and observable-class-matched outputs. Reports and input SHA-256 hashes are retained under evidence/day6. No new fault trials, real-model calls, recovery execution, held-out accuracy estimate, or comparative AI-benefit claim is made. Original Day 5 artifacts remained unchanged.
+
+Windows final full suite: 337 passed, 2 skipped, 0 failed; one existing dependency warning. The skips are symlink privilege and unavailable real-model opt-in/credentials. Initial targeted run: 42 passed, one failed, one skipped; it exposed that the scorer checked only cited record hashes. Corrected to verify every bundled record, and retained the failure description. Additional malformed JSON, oversized confidence and corrupt-database handling passed. CLI benchmark replay passed. Final test log and acceptance manifest are retained.
+
+Canonical private review branch day6-ai-diagnosis begins at e04a506. No main merge. CI publication/final result is checked after push. PC connected; Docker engine stopped, so no local cluster operation was attempted. Next: independent Day 7 safe-recovery controls; real-provider quality remains unmeasured until an explicit model/call budget and credentials are available.
+
+Publication boundary: automatic approval review rejected the combined local commit/private push as an unapproved disclosure to GitHub. The rejected terminal command did not run. Local commit is explicitly authorized and is completed separately; no push or Day 6 CI run is claimed. Remote publication requires explicit approval.

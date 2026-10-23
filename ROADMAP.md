@@ -2,7 +2,7 @@
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
-**Verified progress: Days 1–5 complete, 5/10 gates (50%), as of 2026-10-22 UTC. Next: Day 6 evidence-grounded AI diagnosis.** Day 5 passed six actual Kubernetes trials (two per scenario) with stored ground truth, rule detections, recovery timestamps and raw evidence. Both jobs passed CI39774736343 for implementation31f2af6; canonical Linux tests:289 passed. See PROJECT_STATUS.md, docs/BENCHMARKS.md and evidence/day5/README.md.
+**Verified progress: Days 1–6 complete, 6/10 gates (60%), as of 2026-10-23. Next: Day 7 independent safe recovery.** Day 6 engineering acceptance: all six retained Kubernetes benchmark incidents produce structured, evidence-grounded diagnoses in mocked-provider and deterministic-fallback replay. Windows: 337 passed, two environment/configuration skips. Real-provider tests exist but are not executed without credentials and explicit model/budget opt-in. See PROJECT_STATUS.md, docs/AI_DIAGNOSIS.md and evidence/day6.
 
 | Day | Implementation tasks | Acceptance evidence |
 |---|---|---|

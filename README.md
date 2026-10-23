@@ -2,7 +2,7 @@
 
 An isolated research testbed for evidence-grounded AI diagnosis and policy-controlled recovery of distributed services.
 
-**Current scope:** Synthetic gateway/order/payment services, scoped Kubernetes deployment, Prometheus/Grafana observability, a deterministic incident detector, and a reproducible three-scenario fault benchmark. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for verified acceptance results. AI diagnosis, policy-controlled remediation and matched approach comparisons remain future work.
+**Current scope:** Synthetic gateway/order/payment services, scoped Kubernetes deployment, Prometheus/Grafana observability, a deterministic incident detector, a reproducible three-scenario fault benchmark, and bounded evidence-grounded diagnosis with a configurable LLM provider. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for verified acceptance results. Policy-controlled remediation and matched approach comparisons remain future work. Real-model performance is unmeasured until explicit provider credentials and a call budget are configured.
 
 ## Run on Windows
 
@@ -94,3 +94,13 @@ The first command prints the seeded plan without touching the cluster. After dep
 See [docs/BENCHMARKS.md](docs/BENCHMARKS.md) for prerequisites, exact workload and reset conditions, timestamp definitions, summaries and interpretation. The rule detector observes the experiments without executing recovery. Application fault expiration and native Kubernetes recovery have separate attribution.
 
 Initial acceptance passed in [CI39774736343](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343): six real Kubernetes trials, two per scenario, with stored raw evidence and verified final health. Read the [initial benchmark results](evidence/day5/README.md) for individual detection/recovery timings, recovery attribution, audit and limitations.
+
+
+## Evidence-grounded diagnosis (Day 6)
+
+```text
+python scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
+python scripts/diagnose.py incident --database .local/incidents.sqlite3 --incident-id INCIDENT_ID
+```
+
+The default provider is disabled, so these commands need no model credentials. Enable an explicit OpenAI-compatible endpoint/model and call budget only when intended. The agent accepts only grounded hypotheses with matching evidence IDs, adds uncertainty and conservative confidence handling, and falls back on provider failure. It exposes no recovery actions. [Provider setup, schema, limits and live-test instructions](docs/AI_DIAGNOSIS.md); [retained acceptance evidence](evidence/day6/README.md). Mocked and fallback replay passed all six stored trials; real-model performance remains unmeasured.

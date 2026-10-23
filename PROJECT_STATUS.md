@@ -1,5 +1,22 @@
 # SafeHeal AI — portable project status
 
+## Current Day 6 checkpoint — 2026-10-23
+
+**DAY 6 COMPLETE: bounded AI diagnosis engineering acceptance passed. Overall gates: 6/10 (60%). Next: Day 7 independent safe-recovery policy and executor.** Earlier status counts below are historical snapshots superseded by this checkpoint. The full project remains incomplete.
+
+Implemented an explicitly configured OpenAI-compatible JSON provider with disabled-by-default operation, secret-free errors, call/output/input/response budgets, no retries and timeout fallback. Read-only incident tools use an existing SQLite database in read-only/query-only mode and fixed queries; the optional telemetry tool reuses the existing bounded Prometheus collector. No model shell, mutation tool, cluster credential or recovery action is exposed.
+
+Evidence aggregation re-decodes original Prometheus samples, strips arbitrary prose/labels, validates recent platform termination/restart evidence, deduplicates content-addressed records and bounds the diagnosis window. Strict model proposals must cite records supporting their service and class; output adds confidence limits, explicit uncertainty, insufficient-evidence handling, and deterministic fallback. Diagnosis is separate from execution.
+
+Acceptance replays the six retained Day 5 Kubernetes trials without loading labels until after diagnosis. A declared first-observation +105-second cutoff avoids ground-truth timestamps. Both mocked HTTP-provider and deterministic-fallback modes produced **6/6 structured grounded diagnoses, 6/6 target agreement, 6/6 observable-class agreement**. Mocked output is not real-model performance; observable symptoms do not establish the injected physical mechanism, general root-cause accuracy or AI benefit. Original Day 5 evidence is unchanged.
+
+Final Windows suite: **337 passed, 2 skipped, 0 failed**, one existing Starlette/httpx warning. Skips: Windows symlink privilege and explicit real-model test opt-in. No LLM credentials were configured, so no paid/real-model call was made. The six-call real-model integration test is implemented and requires explicit endpoint/model/credential/budget configuration. Initial integrity-test failure and its correction are retained. CLI replay also passed. See docs/AI_DIAGNOSIS.md and evidence/day6/{acceptance.json,windows-tests.txt,mocked-model-replay.json,fallback-replay.json}.
+
+Current branch: `day6-ai-diagnosis`, based on canonical Day 5 final checkpoint `e04a5069d2cfa6142b44bb85b16b27a2dc91efab`. Keep repository PRIVATE; do not merge either Day 5 or Day 6 into main without authorization. Local acceptance is verified. Automatic approval review rejected the combined commit/push command because it treated the GitHub upload as an unapproved disclosure. The changes will be committed locally without a push; Day 6 remote publication and CI remain blocked pending explicit approval. Do not claim a pushed SHA or green Day 6 CI.
+
+The earlier Day 5 evidence-commit CI39780164487 was rechecked and completed successfully. The canonical computer was connected; Docker Desktop's Linux engine was stopped at session start. No local cluster mutation, fault injection, Docker reset, or proxy recreation was attempted for Day 6. The retained evidence supports offline diagnosis development without changing that environment.
+
+
 **Snapshot:** 2026-10-22 UTC. **Version:** 6.2. **Phase:** DAY 5 COMPLETE — initial reproducible fault benchmark. **Next:** Day 6 evidence-grounded AI diagnosis.
 
 ## Final Day 5 verification after reconnection

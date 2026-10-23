@@ -220,3 +220,16 @@ The original kind API port49693 refused connections and Windows denied binding i
 Normal docker build failed at Docker Hub metadata resolution. Exact dependency/package metadata hashes matched the cached immutable image, so built a separate offline source-refresh image, loaded it into the same kind node, server-validated current manifests and deployed safeheal-ai:sha256-311922d1b56ffd31. All three rollouts and DNS/health/readiness/order/correlation checks passed. Benchmark preflight and all10 deployed payment source hashes matched current checkout. Failed preflight/build and successful repair/deployment provenance are separately retained. No local fault batch was performed during repair.
 
 Updated status, experiment register, roadmap and final verification note. Publication is documentation/evidence only on the private Day5 branch with [skip ci]; executable implementation remains identical to successful full CI39780164487. The final pushed hash and clean tree are verified separately after commit. Day5 complete; Day6 next.
+
+
+## Day 6 implementation and verification — 2026-10-23
+
+Implemented configurable disabled-by-default JSON provider, fixed read-only incident/telemetry tools, bounded evidence normalization, strict cited hypotheses, confidence/abstention/fallback handling and independent ground-truth scoring. Source/tests: services/diagnosis, scripts/diagnose.py, tests/test_diagnosis*.py. Protocol: docs/AI_DIAGNOSIS.md.
+
+Replayed all six original Day 5 Kubernetes trials using telemetry/platform observations only, with a fixed first-observation +105s cutoff. Ground truth is read after each diagnosis. Mocked HTTP transport and deterministic fallback each obtained 6/6 grounded, target-matched and observable-class-matched outputs. Reports and input SHA-256 hashes are retained under evidence/day6. No new fault trials, real-model calls, recovery execution, held-out accuracy estimate, or comparative AI-benefit claim is made. Original Day 5 artifacts remained unchanged.
+
+Windows final full suite: 337 passed, 2 skipped, 0 failed; one existing dependency warning. The skips are symlink privilege and unavailable real-model opt-in/credentials. Initial targeted run: 42 passed, one failed, one skipped; it exposed that the scorer checked only cited record hashes. Corrected to verify every bundled record, and retained the failure description. Additional malformed JSON, oversized confidence and corrupt-database handling passed. CLI benchmark replay passed. Final test log and acceptance manifest are retained.
+
+Canonical private review branch day6-ai-diagnosis begins at e04a506. No main merge. CI publication/final result is checked after push. PC connected; Docker engine stopped, so no local cluster operation was attempted. Next: independent Day 7 safe-recovery controls; real-provider quality remains unmeasured until an explicit model/call budget and credentials are available.
+
+Publication boundary: automatic approval review rejected the combined local commit/private push as an unapproved disclosure to GitHub. The rejected terminal command did not run. Local commit is explicitly authorized and is completed separately; no push or Day 6 CI run is claimed. Remote publication requires explicit approval.
