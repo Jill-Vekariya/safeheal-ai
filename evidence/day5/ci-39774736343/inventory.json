@@ -1,0 +1,898 @@
+{
+  "ci": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343",
+  "conclusion": "success",
+  "head": "31f2af628e70487f1cd0098403bd3ab2304a4d46",
+  "runs": [
+    {
+      "path": "evidence\\day5\\ci-39774736343\\run-03a9072a24f8",
+      "run_status": "completed",
+      "error": null,
+      "summary": {
+        "acceptance": {
+          "missing_scenarios": [],
+          "passed": true,
+          "required_backend": "kubernetes",
+          "required_repeats_per_scenario": 2,
+          "required_scenarios": [
+            "process_crash",
+            "http_5xx",
+            "latency"
+          ],
+          "run_finalization_passed": true,
+          "trials_passed": true
+        },
+        "attempts": 6,
+        "by_scenario": {
+          "http_5xx": {
+            "attempts": 2,
+            "detected_eligible_trials": 2,
+            "eligible_detection_trials": 2,
+            "execution_success_rate": 1.0,
+            "ineligible_detection_trials": 0,
+            "kubernetes_successful_repeats": 2,
+            "missed_eligible_trials": 0,
+            "successful_executions": 2
+          },
+          "latency": {
+            "attempts": 2,
+            "detected_eligible_trials": 2,
+            "eligible_detection_trials": 2,
+            "execution_success_rate": 1.0,
+            "ineligible_detection_trials": 0,
+            "kubernetes_successful_repeats": 2,
+            "missed_eligible_trials": 0,
+            "successful_executions": 2
+          },
+          "process_crash": {
+            "attempts": 2,
+            "detected_eligible_trials": 2,
+            "eligible_detection_trials": 2,
+            "execution_success_rate": 1.0,
+            "ineligible_detection_trials": 0,
+            "kubernetes_successful_repeats": 2,
+            "missed_eligible_trials": 0,
+            "successful_executions": 2
+          }
+        },
+        "duplicate_trial_ids": [],
+        "execution_success_rate": 1.0,
+        "kind": "initial_benchmark_summary",
+        "limitations": [
+          "Rules observed recovery; no rule or AI recovery executor was used.",
+          "Local-process/synthetic trials do not establish Kubernetes behavior.",
+          "Timing includes sampling and observation overhead; it is not exact downtime.",
+          "Small initial repetitions do not establish superiority or production reliability.",
+          "No population false-positive rate or root-cause accuracy is inferred."
+        ],
+        "run_finalization": {
+          "final_health_verified": true,
+          "finished_at": "2026-10-22T12:22:41.030610+00:00",
+          "metadata_error": null,
+          "passed": true,
+          "shutdown_verified": true,
+          "status": "completed"
+        },
+        "schema_version": 1,
+        "successful_executions": 6,
+        "trials": [
+          {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:08:31.360435+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 27.129998,
+              "diagnosis_target_match": false,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:06:16.340655+00:00",
+                "classification": "server_error_spike",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 13,
+                    "rule": "high_error_rate",
+                    "service": "order"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "order",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:06:16.406931+00:00",
+              "first_opened_at": "2026-10-22T12:06:16.340655+00:00",
+              "latency_from_first_observed_effect_seconds": 25.938666,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "06b35f00-84c2-4e53-b669-b9c871a867f0",
+                "7fc17fd0-6623-4977-91f7-46914c95dd7f",
+                "e5b6f896-da64-4940-b947-63bdb492dc51"
+              ],
+              "observation_window_seconds": 162.149778,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 93.039552,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "repetition": 1,
+            "scenario": "http_5xx",
+            "schema_version": 1,
+            "status": "completed",
+            "trial_id": "d5-01-http_5xx-d6b754b6",
+            "trial_passed": true
+          },
+          {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:10:33.573298+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 17.171671,
+              "diagnosis_target_match": true,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:09:23.570797+00:00",
+                "classification": "service_or_metrics_endpoint_unavailable",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 11,
+                    "rule": "scrape_unavailable",
+                    "service": "payment"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "payment",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:09:23.620064+00:00",
+              "first_opened_at": "2026-10-22T12:09:23.570797+00:00",
+              "latency_from_first_observed_effect_seconds": 16.402721,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "8471a195-0cd4-4787-863d-9fc14ca85569",
+                "166cbf43-47ca-4ece-8955-aa5ea1e58866",
+                "875f28b2-1baa-4060-bb09-84af55190b23"
+              ],
+              "observation_window_seconds": 87.174172,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "native_kubernetes",
+              "business_recovery_seconds": 32.428712,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": 34.316846,
+              "native_restart_verified": true,
+              "rule_executed_recovery": false
+            },
+            "repetition": 1,
+            "scenario": "process_crash",
+            "schema_version": 1,
+            "status": "completed",
+            "trial_id": "d5-02-process_crash-41c49801",
+            "trial_passed": true
+          },
+          {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:13:00.843624+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 12.032699,
+              "diagnosis_target_match": true,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:11:20.840902+00:00",
+                "classification": "service_or_metrics_endpoint_unavailable",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 10,
+                    "rule": "scrape_unavailable",
+                    "service": "payment"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "payment",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:11:20.895718+00:00",
+              "first_opened_at": "2026-10-22T12:11:20.840902+00:00",
+              "latency_from_first_observed_effect_seconds": 11.25097,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "c742fee5-f88f-4863-9a21-f3410e84a4ed",
+                "d0a9bc03-14a4-4029-8c8b-6790630826c1",
+                "e2cc6b19-061b-4d8b-bd93-1134f4b32787",
+                "6bbcec83-0784-42a5-a2e3-a39ec112efb3",
+                "a74fa8b9-a4bc-4357-a1a1-d07c8563e828"
+              ],
+              "observation_window_seconds": 112.035421,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "native_kubernetes",
+              "business_recovery_seconds": 51.740179,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": 50.340404,
+              "native_restart_verified": true,
+              "rule_executed_recovery": false
+            },
+            "repetition": 2,
+            "scenario": "process_crash",
+            "schema_version": 1,
+            "status": "completed",
+            "trial_id": "d5-03-process_crash-d3a98bd4",
+            "trial_passed": true
+          },
+          {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:16:08.048878+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 32.187341,
+              "diagnosis_target_match": false,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:14:08.046247+00:00",
+                "classification": "request_latency_degradation",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 14,
+                    "rule": "high_latency",
+                    "service": "gateway"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "gateway",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:14:08.089347+00:00",
+              "first_opened_at": "2026-10-22T12:14:08.046247+00:00",
+              "latency_from_first_observed_effect_seconds": 29.894599,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "88ded3c7-2502-4044-8938-d03bfadd2512",
+                "69283a14-bc6d-472f-ac79-2959ad4b3bc4",
+                "c9bcac1d-fdba-482e-98df-ab2779e1f3d4"
+              ],
+              "observation_window_seconds": 152.189972,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 92.979272,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "repetition": 2,
+            "scenario": "latency",
+            "schema_version": 1,
+            "status": "completed",
+            "trial_id": "d5-04-latency-f3613d30",
+            "trial_passed": true
+          },
+          {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:19:15.178381+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 32.321146,
+              "diagnosis_target_match": true,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:17:15.175509+00:00",
+                "classification": "request_latency_degradation",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 14,
+                    "rule": "high_latency",
+                    "service": "payment"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "payment",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:17:15.225642+00:00",
+              "first_opened_at": "2026-10-22T12:17:15.175509+00:00",
+              "latency_from_first_observed_effect_seconds": 30.100037,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "6d8d7920-096a-48bd-9523-8c8b0477e6a9",
+                "5bbb6795-b877-40e2-88f6-c4d9ce39001e",
+                "96500f84-b95b-4685-a73a-2d1a2fab71e3"
+              ],
+              "observation_window_seconds": 152.324018,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 93.064051,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "repetition": 1,
+            "scenario": "latency",
+            "schema_version": 1,
+            "status": "completed",
+            "trial_id": "d5-05-latency-caab66e3",
+            "trial_passed": true
+          },
+          {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:22:37.367498+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 32.103129,
+              "diagnosis_target_match": false,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:20:22.364161+00:00",
+                "classification": "server_error_spike",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 14,
+                    "rule": "high_error_rate",
+                    "service": "gateway"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "gateway",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:20:22.442014+00:00",
+              "first_opened_at": "2026-10-22T12:20:22.364161+00:00",
+              "latency_from_first_observed_effect_seconds": 31.066918,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "a2c2579f-6c88-487a-b37e-5a7188dbb13f",
+                "e6257280-988b-477f-aa86-894257130f2e",
+                "04cfaea6-6d1e-496a-a569-d5962918a8ec"
+              ],
+              "observation_window_seconds": 167.106466,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 93.107353,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "repetition": 2,
+            "scenario": "http_5xx",
+            "schema_version": 1,
+            "status": "completed",
+            "trial_id": "d5-06-http_5xx-bea84ddf",
+            "trial_passed": true
+          }
+        ]
+      },
+      "trials": [
+        {
+          "trial_id": "d5-01-http_5xx-d6b754b6",
+          "scenario": "http_5xx",
+          "repetition": 1,
+          "status": "completed",
+          "error": null,
+          "evaluation": {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:08:31.360435+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 27.129998,
+              "diagnosis_target_match": false,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:06:16.340655+00:00",
+                "classification": "server_error_spike",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 13,
+                    "rule": "high_error_rate",
+                    "service": "order"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "order",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:06:16.406931+00:00",
+              "first_opened_at": "2026-10-22T12:06:16.340655+00:00",
+              "latency_from_first_observed_effect_seconds": 25.938666,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "06b35f00-84c2-4e53-b669-b9c871a867f0",
+                "7fc17fd0-6623-4977-91f7-46914c95dd7f",
+                "e5b6f896-da64-4940-b947-63bdb492dc51"
+              ],
+              "observation_window_seconds": 162.149778,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 93.039552,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "scenario": "http_5xx",
+            "schema_version": 1,
+            "trial_id": "d5-01-http_5xx-d6b754b6",
+            "trial_passed": true
+          },
+          "workload_summary": {
+            "requests": 3628,
+            "schedule": "closed-loop workers; fixed delay after each completion",
+            "status_counts": {
+              "201": 1969,
+              "503": 1659
+            },
+            "transport_errors": 0,
+            "valid_responses": 1969
+          }
+        },
+        {
+          "trial_id": "d5-02-process_crash-41c49801",
+          "scenario": "process_crash",
+          "repetition": 1,
+          "status": "completed",
+          "error": null,
+          "evaluation": {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:10:33.573298+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 17.171671,
+              "diagnosis_target_match": true,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:09:23.570797+00:00",
+                "classification": "service_or_metrics_endpoint_unavailable",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 11,
+                    "rule": "scrape_unavailable",
+                    "service": "payment"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "payment",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:09:23.620064+00:00",
+              "first_opened_at": "2026-10-22T12:09:23.570797+00:00",
+              "latency_from_first_observed_effect_seconds": 16.402721,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "8471a195-0cd4-4787-863d-9fc14ca85569",
+                "166cbf43-47ca-4ece-8955-aa5ea1e58866",
+                "875f28b2-1baa-4060-bb09-84af55190b23"
+              ],
+              "observation_window_seconds": 87.174172,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "native_kubernetes",
+              "business_recovery_seconds": 32.428712,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": 34.316846,
+              "native_restart_verified": true,
+              "rule_executed_recovery": false
+            },
+            "scenario": "process_crash",
+            "schema_version": 1,
+            "trial_id": "d5-02-process_crash-41c49801",
+            "trial_passed": true
+          },
+          "workload_summary": {
+            "requests": 1793,
+            "schedule": "closed-loop workers; fixed delay after each completion",
+            "status_counts": {
+              "201": 1709,
+              "503": 84
+            },
+            "transport_errors": 0,
+            "valid_responses": 1709
+          }
+        },
+        {
+          "trial_id": "d5-03-process_crash-d3a98bd4",
+          "scenario": "process_crash",
+          "repetition": 2,
+          "status": "completed",
+          "error": null,
+          "evaluation": {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:13:00.843624+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 12.032699,
+              "diagnosis_target_match": true,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:11:20.840902+00:00",
+                "classification": "service_or_metrics_endpoint_unavailable",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 10,
+                    "rule": "scrape_unavailable",
+                    "service": "payment"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "payment",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:11:20.895718+00:00",
+              "first_opened_at": "2026-10-22T12:11:20.840902+00:00",
+              "latency_from_first_observed_effect_seconds": 11.25097,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "c742fee5-f88f-4863-9a21-f3410e84a4ed",
+                "d0a9bc03-14a4-4029-8c8b-6790630826c1",
+                "e2cc6b19-061b-4d8b-bd93-1134f4b32787",
+                "6bbcec83-0784-42a5-a2e3-a39ec112efb3",
+                "a74fa8b9-a4bc-4357-a1a1-d07c8563e828"
+              ],
+              "observation_window_seconds": 112.035421,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "native_kubernetes",
+              "business_recovery_seconds": 51.740179,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": 50.340404,
+              "native_restart_verified": true,
+              "rule_executed_recovery": false
+            },
+            "scenario": "process_crash",
+            "schema_version": 1,
+            "trial_id": "d5-03-process_crash-d3a98bd4",
+            "trial_passed": true
+          },
+          "workload_summary": {
+            "requests": 1954,
+            "schedule": "closed-loop workers; fixed delay after each completion",
+            "status_counts": {
+              "201": 1830,
+              "503": 124
+            },
+            "transport_errors": 0,
+            "valid_responses": 1830
+          }
+        },
+        {
+          "trial_id": "d5-04-latency-f3613d30",
+          "scenario": "latency",
+          "repetition": 2,
+          "status": "completed",
+          "error": null,
+          "evaluation": {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:16:08.048878+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 32.187341,
+              "diagnosis_target_match": false,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:14:08.046247+00:00",
+                "classification": "request_latency_degradation",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 14,
+                    "rule": "high_latency",
+                    "service": "gateway"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "gateway",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:14:08.089347+00:00",
+              "first_opened_at": "2026-10-22T12:14:08.046247+00:00",
+              "latency_from_first_observed_effect_seconds": 29.894599,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "88ded3c7-2502-4044-8938-d03bfadd2512",
+                "69283a14-bc6d-472f-ac79-2959ad4b3bc4",
+                "c9bcac1d-fdba-482e-98df-ab2779e1f3d4"
+              ],
+              "observation_window_seconds": 152.189972,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 92.979272,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "scenario": "latency",
+            "schema_version": 1,
+            "trial_id": "d5-04-latency-f3613d30",
+            "trial_passed": true
+          },
+          "workload_summary": {
+            "requests": 2038,
+            "schedule": "closed-loop workers; fixed delay after each completion",
+            "status_counts": {
+              "201": 2038
+            },
+            "transport_errors": 0,
+            "valid_responses": 2038
+          }
+        },
+        {
+          "trial_id": "d5-05-latency-caab66e3",
+          "scenario": "latency",
+          "repetition": 1,
+          "status": "completed",
+          "error": null,
+          "evaluation": {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:19:15.178381+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 32.321146,
+              "diagnosis_target_match": true,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:17:15.175509+00:00",
+                "classification": "request_latency_degradation",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 14,
+                    "rule": "high_latency",
+                    "service": "payment"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "payment",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:17:15.225642+00:00",
+              "first_opened_at": "2026-10-22T12:17:15.175509+00:00",
+              "latency_from_first_observed_effect_seconds": 30.100037,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "6d8d7920-096a-48bd-9523-8c8b0477e6a9",
+                "5bbb6795-b877-40e2-88f6-c4d9ce39001e",
+                "96500f84-b95b-4685-a73a-2d1a2fab71e3"
+              ],
+              "observation_window_seconds": 152.324018,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 93.064051,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "scenario": "latency",
+            "schema_version": 1,
+            "trial_id": "d5-05-latency-caab66e3",
+            "trial_passed": true
+          },
+          "workload_summary": {
+            "requests": 2035,
+            "schedule": "closed-loop workers; fixed delay after each completion",
+            "status_counts": {
+              "201": 2035
+            },
+            "transport_errors": 0,
+            "valid_responses": 2035
+          }
+        },
+        {
+          "trial_id": "d5-06-http_5xx-bea84ddf",
+          "scenario": "http_5xx",
+          "repetition": 2,
+          "status": "completed",
+          "error": null,
+          "evaluation": {
+            "backend": "kubernetes",
+            "detection": {
+              "all_matched_resolved": true,
+              "all_matched_resolved_at": "2026-10-22T12:22:37.367498+00:00",
+              "censored": false,
+              "detected": true,
+              "detection_latency_seconds": 32.103129,
+              "diagnosis_target_match": false,
+              "eligible": true,
+              "first_open_diagnosis": {
+                "at": "2026-10-22T12:20:22.364161+00:00",
+                "classification": "server_error_spike",
+                "controller": "deterministic",
+                "current_decision": "alert",
+                "evidence_refs": [
+                  {
+                    "evidence_id": 14,
+                    "rule": "high_error_rate",
+                    "service": "gateway"
+                  }
+                ],
+                "limitations": "Symptoms and topology support hypotheses; process crash/root cause is not proven. No recovery executed.",
+                "recommended_action": "inspect bounded read-only service/metrics evidence",
+                "rule_version": "day4-v1",
+                "service": "gateway",
+                "suspected_root_service": null
+              },
+              "first_open_observed_at": "2026-10-22T12:20:22.442014+00:00",
+              "first_opened_at": "2026-10-22T12:20:22.364161+00:00",
+              "latency_from_first_observed_effect_seconds": 31.066918,
+              "latency_time_origin": "injection_requested_at",
+              "matched_incident_ids": [
+                "a2c2579f-6c88-487a-b37e-5a7188dbb13f",
+                "e6257280-988b-477f-aa86-894257130f2e",
+                "04cfaea6-6d1e-496a-a569-d5962918a8ec"
+              ],
+              "observation_window_seconds": 167.106466,
+              "status": "detected"
+            },
+            "ground_truth_verified": true,
+            "reasons": [],
+            "recovery": {
+              "attribution": "fault_expiry",
+              "business_recovery_seconds": 93.107353,
+              "business_recovery_time_origin": "injection_requested_at",
+              "business_recovery_verified": true,
+              "censored": false,
+              "cleanup_verified": true,
+              "native_ready_latency_seconds": null,
+              "native_restart_verified": false,
+              "rule_executed_recovery": false
+            },
+            "scenario": "http_5xx",
+            "schema_version": 1,
+            "trial_id": "d5-06-http_5xx-bea84ddf",
+            "trial_passed": true
+          },
+          "workload_summary": {
+            "requests": 3732,
+            "schedule": "closed-loop workers; fixed delay after each completion",
+            "status_counts": {
+              "201": 2066,
+              "503": 1666
+            },
+            "transport_errors": 0,
+            "valid_responses": 2066
+          }
+        }
+      ]
+    }
+  ],
+  "file_count": 41,
+  "bytes": 27226160
+}

@@ -1,5 +1,6 @@
 """Three independently deployed services sharing transport and validation code."""
 from contextlib import asynccontextmanager, nullcontext
+import asyncio
 import os
 from uuid import uuid4
 
@@ -8,6 +9,7 @@ from fastapi import FastAPI, HTTPException, Request, Response
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from services.observability import Metrics, ObservabilityMiddleware, EXCLUDED
 from services.tracing import make_tracer, propagator
+from services.benchmark_faults import FaultControl
 from opentelemetry.trace import SpanKind, Status, StatusCode
 from pydantic import BaseModel, Field, ValidationError
 
@@ -109,8 +111,15 @@ def create_app(role: str, downstream_url: str | None = None,
         return {"status": "ready", "service": role}
 
     if role == "payment":
+        fault_control = FaultControl.from_env()
         @app.post("/payments", response_model=Receipt, status_code=201)
-        def payment(charge: Charge):
+        async def payment(charge: Charge, response: Response):
+            fault = fault_control.current()
+            if fault is not None:
+                if fault.scenario == "http_5xx":
+                    raise HTTPException(500, "Injected local-test HTTP error", headers=fault.headers)
+                await asyncio.sleep(min(fault.delay_seconds, fault.remaining_seconds))
+                response.headers.update(fault.headers)
             # Synthetic receipt only: no money movement or external gateway.
             return Receipt(order_id=charge.order_id, payment_id=str(uuid4()),
                            status="simulated_paid", amount_cents=charge.amount_cents)

@@ -1,8 +1,49 @@
 # SafeHeal AI — portable project status
 
-**Snapshot:** 2026-10-21, Asia/Kolkata; evidence timestamps are UTC. **Version:** 5.3. **Phase:** DAY 4 COMPLETE - deterministic detector. Next: Day 5 fault benchmark.
+## Current Day 6 checkpoint — 2026-10-23
 
-## Current Day 4 delivery checkpoint
+**DAY 6 COMPLETE: bounded AI diagnosis engineering acceptance passed. Overall gates: 6/10 (60%). Next: Day 7 independent safe-recovery policy and executor.** Earlier status counts below are historical snapshots superseded by this checkpoint. The full project remains incomplete.
+
+Implemented an explicitly configured OpenAI-compatible JSON provider with disabled-by-default operation, secret-free errors, call/output/input/response budgets, no retries and timeout fallback. Read-only incident tools use an existing SQLite database in read-only/query-only mode and fixed queries; the optional telemetry tool reuses the existing bounded Prometheus collector. No model shell, mutation tool, cluster credential or recovery action is exposed.
+
+Evidence aggregation re-decodes original Prometheus samples, strips arbitrary prose/labels, validates recent platform termination/restart evidence, deduplicates content-addressed records and bounds the diagnosis window. Strict model proposals must cite records supporting their service and class; output adds confidence limits, explicit uncertainty, insufficient-evidence handling, and deterministic fallback. Diagnosis is separate from execution.
+
+Acceptance replays the six retained Day 5 Kubernetes trials without loading labels until after diagnosis. A declared first-observation +105-second cutoff avoids ground-truth timestamps. Both mocked HTTP-provider and deterministic-fallback modes produced **6/6 structured grounded diagnoses, 6/6 target agreement, 6/6 observable-class agreement**. Mocked output is not real-model performance; observable symptoms do not establish the injected physical mechanism, general root-cause accuracy or AI benefit. Original Day 5 evidence is unchanged.
+
+Final Windows suite: **337 passed, 2 skipped, 0 failed**, one existing Starlette/httpx warning. Skips: Windows symlink privilege and explicit real-model test opt-in. No LLM credentials were configured, so no paid/real-model call was made. The six-call real-model integration test is implemented and requires explicit endpoint/model/credential/budget configuration. Initial integrity-test failure and its correction are retained. CLI replay also passed. See docs/AI_DIAGNOSIS.md and evidence/day6/{acceptance.json,windows-tests.txt,mocked-model-replay.json,fallback-replay.json}.
+
+Current branch: `day6-ai-diagnosis`, based on canonical Day 5 final checkpoint `e04a5069d2cfa6142b44bb85b16b27a2dc91efab`. Keep repository PRIVATE; do not merge either Day 5 or Day 6 into main without authorization. Local acceptance is verified. Automatic approval review rejected the combined commit/push command because it treated the GitHub upload as an unapproved disclosure. The changes will be committed locally without a push; Day 6 remote publication and CI remain blocked pending explicit approval. Do not claim a pushed SHA or green Day 6 CI.
+
+The earlier Day 5 evidence-commit CI39780164487 was rechecked and completed successfully. The canonical computer was connected; Docker Desktop's Linux engine was stopped at session start. No local cluster mutation, fault injection, Docker reset, or proxy recreation was attempted for Day 6. The retained evidence supports offline diagnosis development without changing that environment.
+
+
+**Snapshot:** 2026-10-22 UTC. **Version:** 6.2. **Phase:** DAY 5 COMPLETE — initial reproducible fault benchmark. **Next:** Day 6 evidence-grounded AI diagnosis.
+
+## Final Day 5 verification after reconnection
+
+Day 5 remains complete (8/8; full project 5/10). CI39780164487 for 0b1e4cb completed successfully, including both jobs and all six repeated fault trials. The prior pending CI note is resolved. The original 39 artifact hashes, six databases and summary replay passed independent verification; Windows suite: 288 passed, one privilege-related skip, one warning.
+
+Local API access is restored through the loopback-only Docker container safeheal-dev-api-proxy at https://127.0.0.1:18082; only the project-local kubeconfig endpoint changed. Original Docker port49693 publishing remains broken. A registry timeout prevented the normal image build; a dependency-equivalent cached-image source refresh deployed the current application as safeheal-ai:sha256-311922d1b56ffd31. All three rollouts, DNS/health/readiness/order checks, all10 payment Python source hashes and benchmark preflight passed. No additional local fault batch was run. Credentials/default context and existing cluster data were preserved.
+
+See [final verification](Day5_Verification_2026-10-22.md), evidence/day5/ci-39780164487 and evidence/day5/local-repair. This final documentation/evidence update leaves executable implementation unchanged and uses [skip ci]; the full passing run above supplies implementation validation. Inspect actual branch HEAD after publication. Keep the proxy running for local work; kind setup may restore the old endpoint. No Day5 acceptance item remains; Day6 is next. Historical mapping/pending-CI notes below are superseded by this checkpoint.
+
+## Current Day 5 completion
+
+**Acceptance passed: three real Kubernetes failure scenarios, each executed successfully twice, with stored experimental results. Day 5 checklist: 8/8. Overall daily gates: 5/10 (50%).**
+
+Canonical implementation commit [31f2af628e70487f1cd0098403bd3ab2304a4d46](https://github.com/Jill-Vekariya/safeheal-ai/commit/31f2af628e70487f1cd0098403bd3ab2304a4d46) passed both jobs in [CI run 39774736343](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343). The actual six-trial run completed on 2026-10-22 from 12:05:12 to 12:22:41 UTC. Results, raw data, workflow logs and the replay audit are retained under [evidence/day5](evidence/day5/README.md), dataset `ci-39774736343/run-03a9072a24f8`.
+
+Implemented seeded process-crash, HTTP 500 and 1.25-second added-latency scenarios; independent ground truth before mutation; an experiment runner with real workload and Prometheus capture; unchanged rule-baseline observation; timestamped detection, native-ready and sustained business recovery; reset/cleanup verification; and JSON/CSV summaries. See [docs/BENCHMARKS.md](docs/BENCHMARKS.md) for the exact protocol and repeat commands.
+
+All six executions passed, all six had eligible matched rule detections, and final health/shutdown passed. Crash business-recovery intervals were 32.429 and 51.740 seconds; Kubernetes restarted the same Pod's payment container. HTTP faults recovered in 93.040 and 93.107 seconds, and latency faults in 93.064 and 92.979 seconds, after their 90-second leases expired. These intervals start at the host injection request and include sampling/tooling overhead. The rule detector performed no recovery action. Initial matched diagnoses localized payment in three of six records; detection is not proof of root-cause accuracy. This is not an A/B/C improvement study.
+
+The preserved dataset contains 15,180 request records, 212 telemetry snapshots and six detector SQLite databases, plus platform/identity evidence and source/configuration hashes. Summary replay matched JSON content and CSV bytes; raw workload counts agreed and all six database integrity checks passed. Canonical Linux CI: **289 passed**, one existing warning. Canonical Windows: **288 passed, 1 skipped**, one existing warning; the skipped symlink test needs unavailable Windows creation privilege. Initial Windows failures and their correction evidence remain retained.
+
+Publication uses the private `day5-fault-benchmark` review branch. Day 4 PR #1 was already merged; canonical main was verified at `156da54a5de4ddf4977676ebf7ce29310089fb0f` with successful CI39651662574 before Day 5. This evidence/status checkpoint follows the tested implementation; inspect branch HEAD and its Actions status for the subsequent documentation/data commit. No main merge is performed in Day 5.
+
+**Remaining environment issue:** the existing Windows kind node's internal API is live but Docker's active loopback API mapping is missing. Scoped node restart and network reconnection did not restore it. No cluster deletion or global Docker restart was used. The successful Day 5 live dataset comes from a fresh Linux CI kind cluster; local Windows Kubernetes reruns require restoration of that host mapping. The historical Day 1–4 sections below preserve earlier evidence and point-in-time publication notes.
+
+## Historical Day 4 delivery checkpoint
 
 Day 4 delivery is tracked in [pull request #1](https://github.com/Jill-Vekariya/safeheal-ai/pull/1). The reviewed implementation is `87e2ec25e9264fe0d48b3e5fae97c39762dc03e4`; both jobs passed [CI run 39640164313](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39640164313). Windows and Linux suites passed 120 tests. The PR runs the full suite again, including the real Kubernetes/Prometheus fault acceptance; use the PR's current checks and merge record for its final integration status.
 
@@ -10,7 +51,7 @@ The user requested reliable successful GitHub checks. An earlier PR run (3964602
 
 Full acceptance gates remain **4/10 (40%)**. Days 5-10 are incomplete. Next: controlled fault benchmark, not additional Day 4 implementation. Recheck remote main, the latest Actions run and the local checkout before starting the next day.
 
-## Day 4 completion — read before historical Day 3 sections
+## Historical Day 4 completion
 
 The computer reconnected, canonical working tree was clean and local/remote main both matched `bc06bf52efe19db592932b824de5da864c8b8c8d`. Private visibility and all five healthy Deployments were verified. The offline Day 4 patch applied only after `git apply --check`; canonical Git history was preserved. The earlier isolated commit `0dc5ff6` is a historical delivery checkpoint, not the canonical Day 4 commit. Automatic approval review rejected direct publication to default main. Day 4 is committed on `day4-incident-baseline` for private branch publication/review, preserving main at the Day 3 tip. Inspect current `git log -1`, the review branch and Actions for the publication SHA/result; the portable completion copy appends final verification.
 
@@ -35,7 +76,7 @@ Two Service-selector trials remain **FAILED** in their original JSON: one scrape
 
 **Overall acceptance gates: 4/10 (40%).** Days 5–10 remain incomplete. The safe recovery executor, model integration, controlled research benchmarks and final report are not implemented. `docs/INCIDENT_DETECTION.md` documents the service, exact thresholds, operations, limitations and reproducible guarded live check. The CI Kubernetes job now runs that check against real Prometheus in a fresh isolated cluster and uploads its evidence.
 
-## CI timeout correction after Day 3 completion
+## Historical CI timeout correction after Day 3 completion
 
 The later documentation/evidence commit `10d8415150860c62ba41168a4793a36dbfc3072d`
 passed unit tests but its fresh-cluster recovery check failed in [run 39588507641](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39588507641).
@@ -65,15 +106,16 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 
 ## Progress at this snapshot
 
-- Day 1 checklist: **13 of 13 tasks complete (100%)**.
-- Day 2 checklist: **9 of 9 tasks complete (100%)**. All core services run in kind, and a deliberately terminated payment container recovered through native Kubernetes mechanisms.
-- Day 3 checklist: **9 of 9 tasks complete (100%)**; live traffic, monitoring, logs and basic distributed tracing verified.
-- Day 4 checklist: **8 of 8 tasks complete**; deterministic detection/diagnosis verified against real failures without an LLM.
-- Full daily acceptance gates: **4 of 10 complete (40%)**. This is a strict gate count, not an estimate of effort already spent. **The whole project is NOT complete.**
-- Kubernetes deployment, service discovery, probes and a native container-restart acceptance check are verified. Observability is now verified. The deterministic incident/diagnosis controller is verified. AI integration, the safe recovery executor and controlled research benchmarks remain unfinished.
-- Verified Day 3 implementation commit: `9b5fec7d517dd46b68eb65a9442335fcb4c77560` on `main`; source checkout was clean at the start of live acceptance. Both CI jobs passed [run 39587430249](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39587430249). Final evidence/status documentation is committed subsequently; verify the latest tip with `git log -1` and `git ls-remote origin refs/heads/main`.
-- Historical Day 2 implementation commit: `43abb2318280ff455ad9ab56e9359af9f5531eed` on `main`, matched to the remote before collecting local evidence. This status and evidence are maintained in a subsequent documentation commit; inspect `git log -1` and `git ls-remote origin refs/heads/main` for the latest documentation SHA.
-- GitHub URL: https://github.com/Jill-Vekariya/safeheal-ai — **private**, verified through GitHub CLI. Origin: `https://github.com/Jill-Vekariya/safeheal-ai.git`.
+- Day 1: **13/13 tasks complete** — three services, tests and private GitHub baseline.
+- Day 2: **9/9 tasks complete** — scoped kind cluster, discovery, probes and native recovery.
+- Day 3: **9/9 tasks complete** — real traffic, Prometheus/Grafana, logs and basic distributed tracing.
+- Day 4: **8/8 tasks complete** — deterministic detection/diagnosis without an LLM; PR #1 merged.
+- Day 5: **8/8 tasks complete** — three reproducible fault scenarios, six real Kubernetes trials, stored ground truth/raw data, recovery attribution and private commits.
+- Full daily acceptance gates: **5 of 10 complete (50%)**. This is a strict gate count, not an estimate of effort. **The whole project is not complete.**
+- AI diagnosis/provider integration, the safe recovery executor, robustness evaluation, matched A/B/C research experiments and final deliverables remain unfinished.
+- Verified Day 5 implementation: `31f2af628e70487f1cd0098403bd3ab2304a4d46`; [successful full CI39774736343](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343).
+- Current private development branch: `day5-fault-benchmark`. Main at the start of Day 5: `156da54a5de4ddf4977676ebf7ce29310089fb0f`. Verify current local/remote tips before continuing; do not replace canonical history with an older offline source snapshot.
+- GitHub: https://github.com/Jill-Vekariya/safeheal-ai — private, reverified before Day 5 publication. Origin: `https://github.com/Jill-Vekariya/safeheal-ai.git`.
 
 ## Current environment and artifacts
 
@@ -90,14 +132,14 @@ User objective: build SafeHeal AI, a trustworthy self-healing distributed-system
 | Git author | Repo-local `Jill-Vekariya`, `195921415+Jill-Vekariya@users.noreply.github.com`, based on authenticated GitHub login/ID |
 | kind / kubectl / Kubernetes | Project-local `.tools/kind.exe` v0.33.0 / client v1.36.1 / server v1.36.4 |
 | Cluster / context / namespace | `safeheal-dev` / `kind-safeheal-dev` / `safeheal-dev` |
-| Node / runtime | `safeheal-dev-control-plane`, single Ready node; containerd 2.3.4 |
+| Node / runtime | Existing `safeheal-dev-control-plane` running; internal API live, host-published API mapping missing. Historical runtime containerd 2.3.4; recheck after mapping recovery. |
 | Kubernetes configuration | Explicit project `.local/kubeconfig`; loopback API; private ownership labels `safeheal.ai/project=safeheal-ai` and `safeheal.ai/environment=local-test` |
 | Local API docs | Compose: `http://127.0.0.1:18080/docs`; Kubernetes: `http://127.0.0.1:18081/docs` only while `python scripts/k8s.py port-forward` runs |
-| Container state | All five Kubernetes Deployments Ready/Available after Day 3; payment restart count 3 and gateway/order 0 after the Day 4 task-pause acceptance. Compose is an older Day 2 stack and was not changed/reverified in Day 3. Recheck next session. |
+| Container state | Fresh CI cluster passed final Day 5 Service-DNS/health/order checks; payment restart count 4, gateway/order 0. Existing Windows cluster was not externally reverified because its API mapping is unavailable. Compose is older and was not changed. |
 | Monitoring | Prometheus 3.15.0; Grafana 13.2.4; digest-pinned manifests in `infrastructure/observability` |
 | Python telemetry | prometheus-client 0.26.0; OpenTelemetry SDK/API 1.45.1; exact lock retained |
-| Grafana | `http://127.0.0.1:13000/d/safeheal-operations`, on development PC while its forward is running; HTTP health 200 verified |
-| Prometheus | `http://127.0.0.1:19090`, on development PC while its forward is running; readiness HTTP 200 verified |
+| Grafana | Historical local address `http://127.0.0.1:13000/d/safeheal-operations`; requires a working API/forward. Not reverified on Windows during Day 5. |
+| Prometheus | `http://127.0.0.1:19090` when a project-owned forward is active. Real telemetry verified in Day 5 CI; Windows forward access is not currently verified. |
 | Trace storage | Basic W3C/OpenTelemetry SERVER/CLIENT spans exported to JSON container logs; no trace UI/backend |
 | Source backup | Current source/status in the private GitHub repository; earlier `SafeHeal_AI_Day1.zip` is a pre-publication snapshot with older status |
 
@@ -220,15 +262,16 @@ The single-node lab has no high availability, public ingress, enforced NetworkPo
 
 ## Exact next action
 
-**Continue with Day 5: controlled fault benchmark. Days 1–4 are complete.**
+**Continue with Day 6: bounded, evidence-grounded AI diagnosis. Days 1–5 are complete.**
 
-1. Reconnect and inspect current canonical PROJECT_STATUS.md, WORKLOG.md, ROADMAP.md, git status/HEAD, private remote main and latest Actions result. Reuse the existing cluster; do not reset or overwrite newer work.
-2. Define at least three repeatable scoped fault scenarios, verified ground truth, workload, reset/health checks and raw trial records. Keep fault capabilities separate from the detector and any later model.
-3. Use the existing process-pause check as engineering reference. Service-selector withdrawal can be invisible to existing HTTP/Prometheus connections; account for that observability limit instead of claiming unobserved failure detection.
-4. Record native and rule-diagnosis baselines with clearly declared metrics and limitations. Rule/AI recovery execution remains Day 7; do not attribute native or harness recovery to the detector. Keep research effectiveness claims pending controlled matched trials.
-5. Test the runner, retain unsuccessful trials, update status/worklog/experiment register, and commit/push authorized tested changes. Keep the repository private.
+1. Read this status, WORKLOG.md, ROADMAP.md, docs/BENCHMARKS.md and the retained Day 5 dataset. Recheck canonical Git status/HEAD, the private review branch and latest CI; preserve newer work and historical failures.
+2. Add a configurable provider interface, structured hypotheses, evidence references, uncertainty and deterministic fallback. Keep diagnosis read-only, bounded and separate from ground-truth labels and fault controls.
+3. Use the retained six-trial evidence to exercise diagnosis with honest distinctions between mock tests, replayed data and actual paid-provider execution. Select the provider/model and budget before significant paid calls.
+4. Before a new Windows live trial, restore/verify the missing Docker host API mapping without resetting unrelated resources. Fresh CI already establishes Day 5 Kubernetes acceptance. Reuse the existing lab after checking state.
+5. Recovery execution, policy/RBAC/approval enforcement and action verification remain Day 7; matched A/B/C comparisons and broader repeated experiments remain Day 9. Do not infer AI benefit or detector-caused recovery from Day 5.
+6. Update status/worklog/experiment records and commit/push tested changes on the private review branch under existing authorization. Main merge/public visibility or destructive operations outside the isolated test scope need the appropriate authorization.
 
-Existing authorization covers scoped local-test work, tested commits and private pushes. Public publishing, destructive changes outside the test scope and significant paid provider calls still need the appropriate authorization. Do not ask for passwords or tokens in chat.
+Existing authorization covers scoped local-test work, tested commits and private pushes. Do not request passwords or tokens in chat.
 
 ## Remaining 10-day roadmap / acceptance gates
 
@@ -237,8 +280,8 @@ Existing authorization covers scoped local-test work, tested commits and private
 | Day 1: foundation | COMPLETE | Tested running microservices AND working private GitHub baseline |
 | Day 2: Kubernetes | COMPLETE | kind cluster, deployments/services/probes, service discovery and recorded native container recovery |
 | Day 3: observability | COMPLETE | Real Prometheus error/latency/request metrics, JSON logs, Grafana; tracing if feasible |
-| Day 4: deterministic detector | COMPLETE | Rules, SQLite lifecycle/evidence, diagnosis/correlation, 120 tests and real Prometheus/task-failure acceptance; verify publication CI after commit |
-| Day 5: fault benchmark | Not started | At least three repeatable scoped faults, ground truth, native/rule trials and raw records |
+| Day 4: deterministic detector | COMPLETE | Rules, SQLite lifecycle/evidence, diagnosis/correlation and real Prometheus/task-failure acceptance; PR #1 merged |
+| Day 5: fault benchmark | COMPLETE | Three repeatable faults, two successful Kubernetes executions each, independent labels, native/rule observations, raw records and replay audit |
 | Day 6: AI diagnosis | Not started | Provider integration, bounded read-only tools, structured hypotheses, evidence references, uncertainty and fallback |
 | Day 7: safe recovery | Not started | Allowlisted operations, independent policies, approval/dry-run, RBAC, audit and verified recovery |
 | Day 8: robustness | Not started | Stale/misleading/missing evidence, provider outage, duplicates and safety/failure tests |
@@ -253,7 +296,7 @@ Research question: can evidence-grounded LLM assistance improve incident diagnos
 
 Compare A: native Kubernetes recovery, B: rule-based incident controller, C: AI-assisted diagnosis with the same independent safety gate. Plan process crash, HTTP 500 spike, latency, resource saturation, faulty deployment/configuration; cascading dependency outage is optional. Aim for at least five repeats per scenario/approach if resources allow. Record detection latency, diagnostic accuracy, recovery time/success, false positives/negatives, unsafe proposals/executions, token usage/cost and overhead. Separate diagnostic success from service recovery; retain failed trials. Never fabricate findings.
 
-Final deliverables still required: working controller, rule baseline, AI diagnosis, safety/executor/verification, broader fault harness, controlled-trial datasets, analysis charts, research report, demo, achievement-based resume/SOP text and 15–20 interview questions. Kubernetes manifests, scoped native-recovery demonstrations and verified observability now exist; Days 1–3 form the foundation for the remaining deliverables.
+Final deliverables still required: AI diagnosis, safety/executor/verification, robustness evaluation, broader matched-trial datasets, analysis charts, research report, demo, achievement-based resume/SOP text and 15–20 interview questions. Services, Kubernetes, observability, the deterministic rule baseline and an initial three-scenario benchmark now exist; Days 1–5 form the verified foundation.
 
 ## Safety and continuity requirements
 
@@ -271,3 +314,7 @@ Mark `PROJECT COMPLETE` only after all 10 acceptance gates pass and the final de
 
 
 Day 4 loopback service smoke also passed: started the actual detector as an isolated local process with no Prometheus listener, observed three open `telemetry_unavailable` incidents through real HTTP GET requests, health 200 and readiness 503, read their diagnoses/evidence, then stopped only that process. Raw record: `evidence/day4/api-smoke.json`; console: `evidence/day4/api-smoke.txt`. This verifies real detector execution and telemetry-outage detection, not business-fault detection in the existing kind cluster. Reproduce only with unused local ports 18082/19090 using `python scripts/verify_detector_api.py`.
+
+## Day 6 delivery and repository-state recheck - 2026-10-23
+
+Implementation remains 33b27a43b18f808474e9778ce432aebc789d69e0. All retained source hashes match; both six-trial reports pass grounding recheck. Credentials remain unavailable. GitHub main remains Day 4 at156da54; Day5 branch e04a506 and PR2 are published, Day6 is local only. ADMIN access does not enable branch protection on this private repository plan: GitHub returns403 requiring an eligible upgrade or public visibility. Neither purchase nor visibility change was performed. The proposed docs/MAIN_BRANCH_PROTECTION.json is not applied or enforced. Automatic approval review rejected the source/documentation/benchmark-evidence push again after broad user authorization, requiring explicit destination-and-payload authorization; do not bypass it. No Day6 remote CI or main integration is claimed. See PROJECT_STATUS_Day6_2026-10-23.md and evidence/day6/publication-blockers.json.

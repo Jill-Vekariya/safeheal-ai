@@ -1,0 +1,50 @@
+{
+  "backend": "kubernetes",
+  "baseline_seconds": 30.0,
+  "concurrency": 4,
+  "duration_seconds": 90,
+  "kind": "benchmark_plan",
+  "poll_seconds": 5,
+  "recovery_timeout_seconds": 180,
+  "repeats": 2,
+  "request_interval_seconds": 0.2,
+  "scenarios": [
+    "process_crash",
+    "http_5xx",
+    "latency"
+  ],
+  "schema_version": 1,
+  "seed": 5,
+  "trials": [
+    {
+      "repetition": 1,
+      "scenario": "http_5xx",
+      "sequence": 1
+    },
+    {
+      "repetition": 1,
+      "scenario": "process_crash",
+      "sequence": 2
+    },
+    {
+      "repetition": 2,
+      "scenario": "process_crash",
+      "sequence": 3
+    },
+    {
+      "repetition": 2,
+      "scenario": "latency",
+      "sequence": 4
+    },
+    {
+      "repetition": 1,
+      "scenario": "latency",
+      "sequence": 5
+    },
+    {
+      "repetition": 2,
+      "scenario": "http_5xx",
+      "sequence": 6
+    }
+  ]
+}

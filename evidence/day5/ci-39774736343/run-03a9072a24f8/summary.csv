@@ -1,0 +1,7 @@
+trial_id,scenario,backend,status,trial_passed,detection,detection_seconds,business_recovery_seconds,recovery_attribution
+d5-01-http_5xx-d6b754b6,http_5xx,kubernetes,completed,True,detected,27.129998,93.039552,fault_expiry
+d5-02-process_crash-41c49801,process_crash,kubernetes,completed,True,detected,17.171671,32.428712,native_kubernetes
+d5-03-process_crash-d3a98bd4,process_crash,kubernetes,completed,True,detected,12.032699,51.740179,native_kubernetes
+d5-04-latency-f3613d30,latency,kubernetes,completed,True,detected,32.187341,92.979272,fault_expiry
+d5-05-latency-caab66e3,latency,kubernetes,completed,True,detected,32.321146,93.064051,fault_expiry
+d5-06-http_5xx-bea84ddf,http_5xx,kubernetes,completed,True,detected,32.103129,93.107353,fault_expiry

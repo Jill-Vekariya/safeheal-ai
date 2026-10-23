@@ -2,7 +2,7 @@
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
-**Verified progress: Days 1–4 complete, 4/10 gates (40%), as of 2026-10-21 Asia/Kolkata. Next: Day 5 controlled fault benchmark.** Day 4 has 120 passing tests and actual Prometheus/payment-task-failure acceptance with five resolved incidents. Failed routing attempts remain recorded; inspect latest private publication/CI after commit. See PROJECT_STATUS.md and docs/INCIDENT_DETECTION.md.
+**Verified progress: Days 1–6 complete, 6/10 gates (60%), as of 2026-10-23. Next: Day 7 independent safe recovery.** Day 6 engineering acceptance: all six retained Kubernetes benchmark incidents produce structured, evidence-grounded diagnoses in mocked-provider and deterministic-fallback replay. Windows: 337 passed, two environment/configuration skips. Real-provider tests exist but are not executed without credentials and explicit model/budget opt-in. See PROJECT_STATUS.md, docs/AI_DIAGNOSIS.md and evidence/day6.
 
 | Day | Implementation tasks | Acceptance evidence |
 |---|---|---|
@@ -27,4 +27,4 @@ At session start: read PROJECT_STATUS.md, WORKLOG.md, actual git state and test 
 
 ## Deferred dependencies and choices
 
-Private repository baseline and scoped kind setup are complete. Reuse the existing `safeheal-dev` cluster after checking its current state. Select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.
+Private repository baseline and scoped kind setup are complete. Day 5 live acceptance ran in fresh Linux CI. The Windows lab API is now verified through the owned loopback TLS proxy on port18082; original Docker port49693 publishing remains broken. Current source deployment, end-to-end checks and benchmark preflight pass. Keep safeheal-dev-api-proxy running; inspect the project endpoint if kind setup re-exports kubeconfig. The normal local rebuild hit a Docker Hub timeout; a recorded dependency-equivalent cached-image source refresh was deployed. See Day5_Verification_2026-10-22.md. Select an LLM/provider and budget before paid calls in Day 6. Keep GitHub private unless the user approves public visibility. Do not install system-wide components or delete/reset resources without the required authorization.

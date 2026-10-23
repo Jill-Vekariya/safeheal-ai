@@ -1,0 +1,683 @@
+[Reading 678 lines from line 1 (total: 679 lines, 0 remaining)]
+
+ infrastructure/kubernetes/payment.yaml |  3 +++
+ services/app.py                        | 11 ++++++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+.......................................................FFFFF............ [ 26%]
+...............s.......................................FFFF............. [ 52%]
+........................................................................ [ 78%]
+.................F..FFF.............FF...................F               [100%]
+================================== FAILURES ===================================
+___________________ test_faults_require_exact_opt_in[None] ____________________
+
+lease_path = WindowsPath('C:/Users/jillv/AppData/Local/Temp/pytest-of-jillv/pytest-43/test_faults_require_exact_opt_0/lease.json')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C56DD1040>
+setting = None
+
+    @pytest.mark.parametrize("setting", [None, "true", "1", "production", "LOCAL-TEST"])
+    def test_faults_require_exact_opt_in(lease_path, monkeypatch, setting):
+        faults.activate("trial-001", "http_5xx", 30, path=lease_path)
+        if setting is None:
+            monkeypatch.delenv("SAFEHEAL_FAULTS_ENABLED")
+        else:
+            monkeypatch.setenv("SAFEHEAL_FAULTS_ENABLED", setting)
+        assert not faults.enabled()
+        assert faults.configured_path() == faults.DEFAULT_PATH
+>       with TestClient(create_app("payment")) as client:
+                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_benchmark_faults.py:41:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+___________________ test_faults_require_exact_opt_in[true] ____________________
+
+lease_path = WindowsPath('C:/Users/jillv/AppData/Local/Temp/pytest-of-jillv/pytest-43/test_faults_require_exact_opt_1/lease.json')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C56DD34D0>
+setting = 'true'
+
+    @pytest.mark.parametrize("setting", [None, "true", "1", "production", "LOCAL-TEST"])
+    def test_faults_require_exact_opt_in(lease_path, monkeypatch, setting):
+        faults.activate("trial-001", "http_5xx", 30, path=lease_path)
+        if setting is None:
+            monkeypatch.delenv("SAFEHEAL_FAULTS_ENABLED")
+        else:
+            monkeypatch.setenv("SAFEHEAL_FAULTS_ENABLED", setting)
+        assert not faults.enabled()
+        assert faults.configured_path() == faults.DEFAULT_PATH
+>       with TestClient(create_app("payment")) as client:
+                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_benchmark_faults.py:41:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+_____________________ test_faults_require_exact_opt_in[1] _____________________
+
+lease_path = WindowsPath('C:/Users/jillv/AppData/Local/Temp/pytest-of-jillv/pytest-43/test_faults_require_exact_opt_2/lease.json')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C56DDCD10>
+setting = '1'
+
+    @pytest.mark.parametrize("setting", [None, "true", "1", "production", "LOCAL-TEST"])
+    def test_faults_require_exact_opt_in(lease_path, monkeypatch, setting):
+        faults.activate("trial-001", "http_5xx", 30, path=lease_path)
+        if setting is None:
+            monkeypatch.delenv("SAFEHEAL_FAULTS_ENABLED")
+        else:
+            monkeypatch.setenv("SAFEHEAL_FAULTS_ENABLED", setting)
+        assert not faults.enabled()
+        assert faults.configured_path() == faults.DEFAULT_PATH
+>       with TestClient(create_app("payment")) as client:
+                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_benchmark_faults.py:41:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+________________ test_faults_require_exact_opt_in[production] _________________
+
+lease_path = WindowsPath('C:/Users/jillv/AppData/Local/Temp/pytest-of-jillv/pytest-43/test_faults_require_exact_opt_3/lease.json')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C56FED310>
+setting = 'production'
+
+    @pytest.mark.parametrize("setting", [None, "true", "1", "production", "LOCAL-TEST"])
+    def test_faults_require_exact_opt_in(lease_path, monkeypatch, setting):
+        faults.activate("trial-001", "http_5xx", 30, path=lease_path)
+        if setting is None:
+            monkeypatch.delenv("SAFEHEAL_FAULTS_ENABLED")
+        else:
+            monkeypatch.setenv("SAFEHEAL_FAULTS_ENABLED", setting)
+        assert not faults.enabled()
+        assert faults.configured_path() == faults.DEFAULT_PATH
+>       with TestClient(create_app("payment")) as client:
+                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_benchmark_faults.py:41:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+________________ test_faults_require_exact_opt_in[LOCAL-TEST] _________________
+
+lease_path = WindowsPath('C:/Users/jillv/AppData/Local/Temp/pytest-of-jillv/pytest-43/test_faults_require_exact_opt_4/lease.json')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C56FEEC90>
+setting = 'LOCAL-TEST'
+
+    @pytest.mark.parametrize("setting", [None, "true", "1", "production", "LOCAL-TEST"])
+    def test_faults_require_exact_opt_in(lease_path, monkeypatch, setting):
+        faults.activate("trial-001", "http_5xx", 30, path=lease_path)
+        if setting is None:
+            monkeypatch.delenv("SAFEHEAL_FAULTS_ENABLED")
+        else:
+            monkeypatch.setenv("SAFEHEAL_FAULTS_ENABLED", setting)
+        assert not faults.enabled()
+        assert faults.configured_path() == faults.DEFAULT_PATH
+>       with TestClient(create_app("payment")) as client:
+                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_benchmark_faults.py:41:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+___ test_runtime_guard_before_file_mutation[replacement-refused-activation] ___
+
+code = "import json,os,sys\nfrom pathlib import Path\nfrom services import benchmark_faults as faults\nrequest=json.loads(sys...    raise RuntimeError('Unexpected fault control path')\nprint(json.dumps(faults.activate(**request),allow_nan=False))"
+method = 'activate', matching = False
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C5825D490>
+capsys = <_pytest.capture.CaptureFixture object at 0x0000024C5825D4C0>
+
+    @pytest.mark.parametrize("code,method", [(backend._ACTIVATE_CODE, "activate"), (backend._REMOVE_CODE, "remove")],
+                             ids=["activation", "cleanup"])
+    @pytest.mark.parametrize("matching", [False, True], ids=["replacement-refused", "same-runtime-allowed"])
+    def test_runtime_guard_before_file_mutation(code, method, matching, monkeypatch, capsys):
+        from services import benchmark_faults
+        original_stat, original_read = os.stat, Path.read_text
+        monkeypatch.setattr(os, "stat", lambda p, *a, **k: SimpleNamespace(st_ino=456)
+                            if str(p) == "/proc/self/ns/pid" else original_stat(p, *a, **k))
+        process_stat = "1 (uvicorn process) " + " ".join(["S"] + ["0"] * 18 + ["123"] + ["0"] * 5)
+        monkeypatch.setattr(Path, "read_text", lambda p, *a, **k: process_stat
+                            if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+        monkeypatch.setattr(benchmark_faults, "configured_path", lambda: Path(backend.FAULT_PATH))
+        invoked = []
+        def helper(**kwargs):
+            invoked.append(kwargs)
+            return {"ok": True}
+        monkeypatch.setattr(benchmark_faults, method, helper)
+        identity = {"pid_namespace_inode": 456, "pid1_start_ticks": "123"} if matching else {"wrong": True}
+        monkeypatch.setattr(sys, "argv", ["-c", json.dumps({"runtime_identity": identity, "trial_id": "trial-one"})])
+        if matching:
+            exec(code, {})
+            assert invoked == [{"trial_id": "trial-one"}]
+            assert json.loads(capsys.readouterr().out) == {"ok": True}
+        else:
+            with pytest.raises(RuntimeError, match="runtime changed"):
+>               exec(code, {})
+
+tests\test_benchmark_kubernetes.py:325:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:5: in <module>
+    ???
+tests\test_benchmark_kubernetes.py:310: in <lambda>
+    if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('/proc/1/stat'), mode = 'r', buffering = -1
+encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '\\proc\\1\\stat'
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1013: FileNotFoundError
+____ test_runtime_guard_before_file_mutation[replacement-refused-cleanup] _____
+
+code = "import json,os,sys\nfrom pathlib import Path\nfrom services import benchmark_faults as faults\nrequest=json.loads(sys...\n    raise RuntimeError('Unexpected fault control path')\nprint(json.dumps(faults.remove(**request),allow_nan=False))"
+method = 'remove', matching = False
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C5825F860>
+capsys = <_pytest.capture.CaptureFixture object at 0x0000024C5825EB10>
+
+    @pytest.mark.parametrize("code,method", [(backend._ACTIVATE_CODE, "activate"), (backend._REMOVE_CODE, "remove")],
+                             ids=["activation", "cleanup"])
+    @pytest.mark.parametrize("matching", [False, True], ids=["replacement-refused", "same-runtime-allowed"])
+    def test_runtime_guard_before_file_mutation(code, method, matching, monkeypatch, capsys):
+        from services import benchmark_faults
+        original_stat, original_read = os.stat, Path.read_text
+        monkeypatch.setattr(os, "stat", lambda p, *a, **k: SimpleNamespace(st_ino=456)
+                            if str(p) == "/proc/self/ns/pid" else original_stat(p, *a, **k))
+        process_stat = "1 (uvicorn process) " + " ".join(["S"] + ["0"] * 18 + ["123"] + ["0"] * 5)
+        monkeypatch.setattr(Path, "read_text", lambda p, *a, **k: process_stat
+                            if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+        monkeypatch.setattr(benchmark_faults, "configured_path", lambda: Path(backend.FAULT_PATH))
+        invoked = []
+        def helper(**kwargs):
+            invoked.append(kwargs)
+            return {"ok": True}
+        monkeypatch.setattr(benchmark_faults, method, helper)
+        identity = {"pid_namespace_inode": 456, "pid1_start_ticks": "123"} if matching else {"wrong": True}
+        monkeypatch.setattr(sys, "argv", ["-c", json.dumps({"runtime_identity": identity, "trial_id": "trial-one"})])
+        if matching:
+            exec(code, {})
+            assert invoked == [{"trial_id": "trial-one"}]
+            assert json.loads(capsys.readouterr().out) == {"ok": True}
+        else:
+            with pytest.raises(RuntimeError, match="runtime changed"):
+>               exec(code, {})
+
+tests\test_benchmark_kubernetes.py:325:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:5: in <module>
+    ???
+tests\test_benchmark_kubernetes.py:310: in <lambda>
+    if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('/proc/1/stat'), mode = 'r', buffering = -1
+encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '\\proc\\1\\stat'
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1013: FileNotFoundError
+__ test_runtime_guard_before_file_mutation[same-runtime-allowed-activation] ___
+
+code = "import json,os,sys\nfrom pathlib import Path\nfrom services import benchmark_faults as faults\nrequest=json.loads(sys...    raise RuntimeError('Unexpected fault control path')\nprint(json.dumps(faults.activate(**request),allow_nan=False))"
+method = 'activate', matching = True
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C5822D550>
+capsys = <_pytest.capture.CaptureFixture object at 0x0000024C5822E210>
+
+    @pytest.mark.parametrize("code,method", [(backend._ACTIVATE_CODE, "activate"), (backend._REMOVE_CODE, "remove")],
+                             ids=["activation", "cleanup"])
+    @pytest.mark.parametrize("matching", [False, True], ids=["replacement-refused", "same-runtime-allowed"])
+    def test_runtime_guard_before_file_mutation(code, method, matching, monkeypatch, capsys):
+        from services import benchmark_faults
+        original_stat, original_read = os.stat, Path.read_text
+        monkeypatch.setattr(os, "stat", lambda p, *a, **k: SimpleNamespace(st_ino=456)
+                            if str(p) == "/proc/self/ns/pid" else original_stat(p, *a, **k))
+        process_stat = "1 (uvicorn process) " + " ".join(["S"] + ["0"] * 18 + ["123"] + ["0"] * 5)
+        monkeypatch.setattr(Path, "read_text", lambda p, *a, **k: process_stat
+                            if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+        monkeypatch.setattr(benchmark_faults, "configured_path", lambda: Path(backend.FAULT_PATH))
+        invoked = []
+        def helper(**kwargs):
+            invoked.append(kwargs)
+            return {"ok": True}
+        monkeypatch.setattr(benchmark_faults, method, helper)
+        identity = {"pid_namespace_inode": 456, "pid1_start_ticks": "123"} if matching else {"wrong": True}
+        monkeypatch.setattr(sys, "argv", ["-c", json.dumps({"runtime_identity": identity, "trial_id": "trial-one"})])
+        if matching:
+>           exec(code, {})
+
+tests\test_benchmark_kubernetes.py:320:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:5: in <module>
+    ???
+tests\test_benchmark_kubernetes.py:310: in <lambda>
+    if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('/proc/1/stat'), mode = 'r', buffering = -1
+encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '\\proc\\1\\stat'
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1013: FileNotFoundError
+____ test_runtime_guard_before_file_mutation[same-runtime-allowed-cleanup] ____
+
+code = "import json,os,sys\nfrom pathlib import Path\nfrom services import benchmark_faults as faults\nrequest=json.loads(sys...\n    raise RuntimeError('Unexpected fault control path')\nprint(json.dumps(faults.remove(**request),allow_nan=False))"
+method = 'remove', matching = True
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024C5800DA60>
+capsys = <_pytest.capture.CaptureFixture object at 0x0000024C5800ECF0>
+
+    @pytest.mark.parametrize("code,method", [(backend._ACTIVATE_CODE, "activate"), (backend._REMOVE_CODE, "remove")],
+                             ids=["activation", "cleanup"])
+    @pytest.mark.parametrize("matching", [False, True], ids=["replacement-refused", "same-runtime-allowed"])
+    def test_runtime_guard_before_file_mutation(code, method, matching, monkeypatch, capsys):
+        from services import benchmark_faults
+        original_stat, original_read = os.stat, Path.read_text
+        monkeypatch.setattr(os, "stat", lambda p, *a, **k: SimpleNamespace(st_ino=456)
+                            if str(p) == "/proc/self/ns/pid" else original_stat(p, *a, **k))
+        process_stat = "1 (uvicorn process) " + " ".join(["S"] + ["0"] * 18 + ["123"] + ["0"] * 5)
+        monkeypatch.setattr(Path, "read_text", lambda p, *a, **k: process_stat
+                            if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+        monkeypatch.setattr(benchmark_faults, "configured_path", lambda: Path(backend.FAULT_PATH))
+        invoked = []
+        def helper(**kwargs):
+            invoked.append(kwargs)
+            return {"ok": True}
+        monkeypatch.setattr(benchmark_faults, method, helper)
+        identity = {"pid_namespace_inode": 456, "pid1_start_ticks": "123"} if matching else {"wrong": True}
+        monkeypatch.setattr(sys, "argv", ["-c", json.dumps({"runtime_identity": identity, "trial_id": "trial-one"})])
+        if matching:
+>           exec(code, {})
+
+tests\test_benchmark_kubernetes.py:320:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:5: in <module>
+    ???
+tests\test_benchmark_kubernetes.py:310: in <lambda>
+    if str(p) == "/proc/1/stat" else original_read(p, *a, **k))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('/proc/1/stat'), mode = 'r', buffering = -1
+encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '\\proc\\1\\stat'
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1013: FileNotFoundError
+_________________ test_success_validation_and_probe_exclusion _________________
+
+    def test_success_validation_and_probe_exclusion():
+>       with TestClient(create_app("payment")) as c:
+                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_observability.py:20:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+____________ test_unhandled_exception_recorded_and_gauge_released _____________
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x0000024C582BDDF0>
+
+    def test_unhandled_exception_recorded_and_gauge_released(caplog):
+>       app = create_app("payment")
+              ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_observability.py:47:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+________________ test_bounded_labels_and_json_log_correlation _________________
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x0000024C56FC2E40>
+
+    def test_bounded_labels_and_json_log_correlation(caplog):
+>       app = create_app("payment")
+              ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_observability.py:62:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+_______ test_latency_observes_completed_work_and_independent_registries _______
+
+    def test_latency_observes_completed_work_and_independent_registries():
+>       app = create_app("payment")
+              ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_observability.py:84:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+______________ test_liveness_does_not_call_dependencies[payment] ______________
+
+role = 'payment'
+
+    @pytest.mark.parametrize("role", ["gateway", "order", "payment"])
+    def test_liveness_does_not_call_dependencies(role):
+        def unexpected(request):
+            raise AssertionError("Liveness must not call dependencies")
+>       with TestClient(create_app(role, "http://dependency" if role != "payment" else None,
+                                   httpx.MockTransport(unexpected))) as client:
+
+tests\test_services.py:11:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+_____________________ test_payment_validation_and_receipt _____________________
+
+    def test_payment_validation_and_receipt():
+>       with TestClient(create_app("payment")) as client:
+                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_services.py:17:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+_____ test_invalid_traceparent_is_replaced_and_probes_do_not_export_spans _____
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x0000024C583888C0>
+
+    def test_invalid_traceparent_is_replaced_and_probes_do_not_export_spans(caplog):
+        with caplog.at_level(logging.INFO, logger="safeheal.traces"):
+>           with TestClient(create_app("payment")) as c:
+                            ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_tracing.py:41:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+services\app.py:114: in create_app
+    fault_control = FaultControl.from_env()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:198: in from_env
+    return cls(enabled=enabled(), path=configured_path())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+services\benchmark_faults.py:188: in __init__
+    self.enabled, self.path = enabled, _path(path)
+                                       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('/tmp/safeheal-benchmark-fault.json')
+
+    def _path(path):
+        result = Path(path)
+        if not result.is_absolute():
+>           raise ValueError("Fault lease path must be absolute")
+E           ValueError: Fault lease path must be absolute
+
+services\benchmark_faults.py:43: ValueError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\jillv\Projects\safeheal-ai\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_benchmark_faults.py::test_faults_require_exact_opt_in[None]
+FAILED tests/test_benchmark_faults.py::test_faults_require_exact_opt_in[true]
+FAILED tests/test_benchmark_faults.py::test_faults_require_exact_opt_in[1] - ...
+FAILED tests/test_benchmark_faults.py::test_faults_require_exact_opt_in[production]
+FAILED tests/test_benchmark_faults.py::test_faults_require_exact_opt_in[LOCAL-TEST]
+FAILED tests/test_benchmark_kubernetes.py::test_runtime_guard_before_file_mutation[replacement-refused-activation]
+FAILED tests/test_benchmark_kubernetes.py::test_runtime_guard_before_file_mutation[replacement-refused-cleanup]
+FAILED tests/test_benchmark_kubernetes.py::test_runtime_guard_before_file_mutation[same-runtime-allowed-activation]
+FAILED tests/test_benchmark_kubernetes.py::test_runtime_guard_before_file_mutation[same-runtime-allowed-cleanup]
+FAILED tests/test_observability.py::test_success_validation_and_probe_exclusion
+FAILED tests/test_observability.py::test_unhandled_exception_recorded_and_gauge_released
+FAILED tests/test_observability.py::test_bounded_labels_and_json_log_correlation
+FAILED tests/test_observability.py::test_latency_observes_completed_work_and_independent_registries
+FAILED tests/test_services.py::test_liveness_does_not_call_dependencies[payment]
+FAILED tests/test_services.py::test_payment_validation_and_receipt - ValueErr...
+FAILED tests/test_tracing.py::test_invalid_traceparent_is_replaced_and_probes_do_not_export_spans
+16 failed, 257 passed, 1 skipped, 1 warning in 63.19s (0:01:03)
+✅ Process completed with exit code 1 (runtime: 96.53s)
+
+[executed on device: Jill-Vekariya10 (8025e560-e3a9-4f10-9084-a256f42ffb82)]

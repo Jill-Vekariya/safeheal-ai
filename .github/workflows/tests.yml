@@ -13,9 +13,18 @@ jobs:
       - run: python -m pip install -r requirements.lock
       - run: python -m pip install --no-deps -e .
       - run: python -m pytest -q
+      - name: Replay retained benchmark with read-only diagnosis fallback
+        run: python scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
+      - name: Preserve Day 6 replay
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: day6-diagnosis-replay
+          path: .local/day6-replay.json
+          retention-days: 7
   kubernetes:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -48,6 +57,10 @@ jobs:
           trap 'kill "$detector_forward_pid" 2>/dev/null || true' EXIT
           python scripts/verify_detector_pause.py
           python scripts/verify_detector_pause.py --execute
+      - name: Repeat three labelled faults and record native and rule baselines
+        run: |
+          python scripts/benchmark.py run
+          python scripts/benchmark.py run --execute --backend kubernetes --repeats 2 --baseline-seconds 30
       - name: Preserve verification evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -57,4 +70,5 @@ jobs:
             evidence/day2/
             evidence/day3/
             evidence/day4/
+            evidence/day5/
           retention-days: 7

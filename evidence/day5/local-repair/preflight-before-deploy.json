@@ -1,0 +1,4 @@
+{
+  "passed": false,
+  "error": "Deploy the explicit local-test fault opt-in before benchmarking"
+}

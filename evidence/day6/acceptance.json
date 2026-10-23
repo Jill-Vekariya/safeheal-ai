@@ -1,0 +1,47 @@
+{
+  "schema_version": "day6-acceptance-v1",
+  "base_commit": "e04a5069d2cfa6142b44bb85b16b27a2dc91efab",
+  "windows_tests": {
+    "passed": 337,
+    "skipped": 2,
+    "failed": 0,
+    "warnings": 1
+  },
+  "mocked_model": {
+    "attempted": 6,
+    "grounded": 6,
+    "target_match": 6,
+    "observable_class_match": 6,
+    "llm_diagnoses": 6,
+    "fallback_diagnoses": 0,
+    "structured_grounded_acceptance": true
+  },
+  "deterministic_fallback": {
+    "attempted": 6,
+    "grounded": 6,
+    "target_match": 6,
+    "observable_class_match": 6,
+    "llm_diagnoses": 0,
+    "fallback_diagnoses": 6,
+    "structured_grounded_acceptance": true
+  },
+  "real_model": {
+    "called": false,
+    "reason": "No configured credentials or explicit model/cost-budget opt-in"
+  },
+  "original_day5_evidence_unchanged": true,
+  "source_sha256": {
+    "services/diagnosis/agent.py": "d7486842a98579d3a572729ea3bc6065c26935a4da79ca9d2fac36cb53bed4ba",
+    "services/diagnosis/evidence.py": "e9262242e7389dfd83ee541b7f2c000b7868946819d9ec2f1ab6fdd88ed79d36",
+    "services/diagnosis/provider.py": "ef9433fb04864aa6412fbb2a96a5389b1f7639ab00253d02a906f35d3259d388",
+    "services/diagnosis/replay.py": "a5e8817191b8b11ed55a3672c0c2282d85244728fd99e95102cf0427ddfcf4b9",
+    "services/diagnosis/tools.py": "01a6da1b943b41cbdab340e6ea86a05e5066d991f3785b24834ecd6ec41062e4",
+    "services/diagnosis/__init__.py": "27f93b82a474afd8a5d92ca0fed72c2f01722c4b47a6809475dadcc6eec777d3",
+    "scripts/diagnose.py": "0772b5c36141613199b5041ce0e3b9011aff84182c4924951d9ec1b255c44735",
+    "tests/test_diagnosis.py": "3645ce3110feb30ce86cd5aa19bddda6f49cfc2ba65c792b499db42466c7d8b6",
+    "tests/test_diagnosis_live.py": "73d33db5d971f4077aed680edb8a81b2128d72845ac43d497b63b649a1486b95",
+    ".github/workflows/tests.yml": "003c15a5629544b31002a7fb09cce604aaf9b7305c16aa695efdefeb0edb1b6a",
+    "requirements.lock": "5604f4a7ff39c493c2a7459f2c1c1651ba0913563b7e84f272e2d5166b6cade0",
+    "pyproject.toml": "3249677e92c746ea557faafa47ee93024482c01fc1102f869e5f8c6c07a86355"
+  }
+}

@@ -1,6 +1,6 @@
 # Experiment register
 
-Status: research protocol remains a draft. Day 2 now has one recorded local native-recovery engineering acceptance trial and a successful independent CI execution. Day 3 observability also passed a recorded real-traffic engineering check, including basic distributed spans and an intentional native container interruption. No matched research benchmark, rule-controller result or AI result has been collected.
+Status: Day 5 initial benchmark is complete: six real Kubernetes trials, two repetitions each of process crash, HTTP 500 and added latency, with verified labels, rule observations, recovery attribution and stored raw evidence. All six executions and the final run gate passed. The broader matched native/rule/AI intervention study remains a draft; no rule recovery executor or AI outcome has been measured.
 
 ## Hypothesis
 
@@ -27,7 +27,7 @@ Process crash; HTTP 500 spike; added latency; CPU/memory saturation; faulty depl
 
 Aim for five repetitions per scenario/approach when resources permit. Randomize/counterbalance ordering, reset verified baseline state, retain individual JSONL/CSV records, and bootstrap uncertainty where appropriate; explain small-sample limits.
 
-Day 1 tests/smoke checks and the Day 2 acceptance checks below are engineering validation, not controlled research benchmark evidence. Research findings: none yet.
+Day 1–4 tests and smoke/acceptance checks below are historical engineering validation. Day 5 adds the initial measured dataset recorded at the end of this register; no comparative AI-effectiveness finding is established.
 
 ## Day 2 native recovery acceptance record
 
@@ -146,3 +146,59 @@ GitHub PR #1 tracks integration of the completed deterministic detector and reta
 ## Native recovery verification settling - 2026-10-21
 
 PR run 39646024404 remains a failed engineering acceptance: post-restart HTTP Service access was refused after Pod Ready. Original JSON, log and run metadata are retained. The developer harness now records bounded GET-only readiness attempts before the unchanged three end-to-end order checks; failed final checks still fail the trial, with no POST or fault retry. This corrects readiness verification, not production recovery, detector thresholds, or a benchmark outcome. Eight regression cases bring Windows tests to 128 passing. Fresh Linux/Kubernetes correction CI is verified after publication through PR #1. No new controlled-trial dataset or model call was produced.
+
+
+## Day 5 protocol implementation checkpoint — 2026-10-22
+
+The executable protocol in docs/BENCHMARKS.md declares three payment faults: one-shot process crash,90-second HTTP500 lease and90-second1.25-second added-latency lease. Default seed5 shuffles two repetitions of each. Four closed-loop workers wait0.2s between completed requests. The existing Day4 detector runs unchanged as an observer; native recovery and application-fault expiration are separately attributed. Detection, business-recovery and native-ready intervals start at the host injection request and include tooling/polling overhead. Failed, missed or censored observations remain explicit; unavailable timestamps are null.
+
+Ground truth is persisted before mutation, then verified with CRI identity/termination or direct fault-ID response proof and gateway impact. Each trial retains requests.jsonl,telemetry.jsonl,platform.jsonl,detector.sqlite3 and trial.json. Run/summary JSON and trial CSV include every attempt and require complete finalization for acceptance. At least two successful Kubernetes trials per scenario are required by the implementation, exceeding the requested three-repeatable-scenario gate. Local-process or synthetic fixtures cannot satisfy it.
+
+This checkpoint contains protocol/test evidence only; actual six-trial dataset is pending. Initial Windows test failures and Docker API publishing setup failures are retained separately and are not benchmark outcomes. No matched intervention comparison, model benefit, recovery-executor result, statistical precision or research MTTR claim is made.
+
+## Day 5 initial measured benchmark — 2026-10-22
+
+**Source:** `31f2af628e70487f1cd0098403bd3ab2304a4d46`. **CI:** [39774736343](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343), both jobs successful. **Data:** [evidence/day5/ci-39774736343/run-03a9072a24f8](evidence/day5/ci-39774736343/run-03a9072a24f8). **Protocol:** [docs/BENCHMARKS.md](docs/BENCHMARKS.md). **Detailed findings/timestamps:** [evidence/day5/README.md](evidence/day5/README.md).
+
+The real execution used a fresh Linux CI kind cluster (Kubernetes v1.36.4), seed 5, two repetitions, 30-second minimum baseline, four closed-loop workers with 0.2-second completion delay, five-second rule polling, 90-second application fault leases and 1.25-second added payment latency. The canonical rule implementation and thresholds were unchanged. The batch ran from 12:05:12.009502 to 12:22:41.030610 UTC.
+
+| Trial | Scenario / repeat | Rule detection (s) | Sustained business recovery (s) | Observed native Ready (s) | Recovery attribution |
+|---|---|---:|---:|---:|---|
+| `d5-01-http_5xx-d6b754b6` | http_5xx / 1 | 27.130 | 93.040 | N/A | `fault_expiry` |
+| `d5-02-process_crash-41c49801` | process_crash / 1 | 17.172 | 32.429 | 34.317 | `native_kubernetes` |
+| `d5-03-process_crash-d3a98bd4` | process_crash / 2 | 12.033 | 51.740 | 50.340 | `native_kubernetes` |
+| `d5-04-latency-f3613d30` | latency / 2 | 32.187 | 92.979 | N/A | `fault_expiry` |
+| `d5-05-latency-caab66e3` | latency / 1 | 32.321 | 93.064 | N/A | `fault_expiry` |
+| `d5-06-http_5xx-bea84ddf` | http_5xx / 2 | 32.103 | 93.107 | N/A | `fault_expiry` |
+
+All six attempts completed with verified ground truth, eligible matched detections, sustained business recovery and cleanup. Final run health/shutdown passed. There were no failed, missed, ineligible or censored benchmark outcomes in this batch; unsuccessful Windows unit/setup work is retained separately and is not benchmark execution. Each timing starts at the host injection request, including tool/polling overhead; it is not exact physical downtime or a population MTTR estimate.
+
+Both process crashes were one forced exit of the validated payment container, recovered by native Kubernetes restart in the same Pod (restart count 2→3→4, old container termination IDs matched, exit 137). This does not assert that liveness probes detected the forced exit. Gateway/order container identities remained stable, although readiness temporarily dropped during both outages. HTTP and latency faults left container identities/restart counts unchanged and all three services Ready in the sampled platform observations; application recovery followed lease expiry. No rule or AI recovery execution occurred.
+
+The first qualifying matched diagnosis described payment unavailability for the two crashes, server-error symptoms on order/gateway for the two HTTP trials, and latency on gateway/payment for the two latency trials. Its service matched the injected target in 3/6 records; suspected_root_service was null in all six first diagnoses. Additional telemetry incidents remain in raw SQLite evidence. The matched-detection count does not establish general root-cause accuracy or false-positive/negative rates.
+
+Retained 15,180 request rows, 212 telemetry snapshots, six detector SQLite stores, per-trial ground truth/platform state, plan/source/runtime/rule metadata and workflow logs. Replaying stored summaries reproduced JSON content and CSV bytes; raw request aggregates matched and every SQLite integrity check returned ok. Original benchmark files were preserved byte-for-byte and hashes retained in audit.json. Only two repetitions per scenario, shared cluster/restart history, variable throughput under the closed-loop workload and absence of matched A/B/C arms limit interpretation. The initial engineering acceptance gate is satisfied; broader comparative research remains Day 9.
+
+## Final Day 5 verification ? 2026-10-22
+
+The previously pending evidence-commit CI39780164487 completed successfully, including unit and live Kubernetes jobs and six further completed/detected trials. Retained metadata/logs under evidence/day5/ci-39780164487. These later CI records are not pooled with the original benchmark dataset or used to rewrite its measured intervals. All39 original artifact hashes, six SQLite integrity checks and JSON/CSV replay remained valid.
+
+Local API access was restored with a separate loopback TLS proxy on18082. Current application source was deployed with a documented cached dependency-equivalent source-refresh image after Docker Hub timed out; no fault was injected as part of repair. DNS/health/readiness/order checks, benchmark preflight and all10 deployed payment source hashes passed. See Day5_Verification_2026-10-22.md and evidence/day5/local-repair for failed setup attempts, workaround details, deployment identity and limits. This closes environment verification without claiming another local benchmark or a comparative recovery gain.
+
+
+## Day 6 retrospective diagnosis replay — 2026-10-23
+
+Implemented configurable disabled-by-default JSON provider, fixed read-only incident/telemetry tools, bounded evidence normalization, strict cited hypotheses, confidence/abstention/fallback handling and independent ground-truth scoring. Source/tests: services/diagnosis, scripts/diagnose.py, tests/test_diagnosis*.py. Protocol: docs/AI_DIAGNOSIS.md.
+
+Replayed all six original Day 5 Kubernetes trials using telemetry/platform observations only, with a fixed first-observation +105s cutoff. Ground truth is read after each diagnosis. Mocked HTTP transport and deterministic fallback each obtained 6/6 grounded, target-matched and observable-class-matched outputs. Reports and input SHA-256 hashes are retained under evidence/day6. No new fault trials, real-model calls, recovery execution, held-out accuracy estimate, or comparative AI-benefit claim is made. Original Day 5 artifacts remained unchanged.
+
+Windows final full suite: 337 passed, 2 skipped, 0 failed; one existing dependency warning. The skips are symlink privilege and unavailable real-model opt-in/credentials. Initial targeted run: 42 passed, one failed, one skipped; it exposed that the scorer checked only cited record hashes. Corrected to verify every bundled record, and retained the failure description. Additional malformed JSON, oversized confidence and corrupt-database handling passed. CLI benchmark replay passed. Final test log and acceptance manifest are retained.
+
+Canonical private review branch day6-ai-diagnosis begins at e04a506. No main merge. CI publication/final result is checked after push. PC connected; Docker engine stopped, so no local cluster operation was attempted. Next: independent Day 7 safe-recovery controls; real-provider quality remains unmeasured until an explicit model/call budget and credentials are available.
+
+Publication boundary: automatic approval review rejected the combined local commit/private push as an unapproved disclosure to GitHub. The rejected terminal command did not run. Local commit is explicitly authorized and is completed separately; no push or Day 6 CI run is claimed. Remote publication requires explicit approval.
+
+
+## Day 6 delivery and repository-state recheck - 2026-10-23
+
+Implementation remains 33b27a43b18f808474e9778ce432aebc789d69e0. All retained source hashes match; both six-trial reports pass grounding recheck. Credentials remain unavailable. GitHub main remains Day 4 at156da54; Day5 branch e04a506 and PR2 are published, Day6 is local only. ADMIN access does not enable branch protection on this private repository plan: GitHub returns403 requiring an eligible upgrade or public visibility. Neither purchase nor visibility change was performed. The proposed docs/MAIN_BRANCH_PROTECTION.json is not applied or enforced. Automatic approval review rejected the source/documentation/benchmark-evidence push again after broad user authorization, requiring explicit destination-and-payload authorization; do not bypass it. No Day6 remote CI or main integration is claimed. See PROJECT_STATUS_Day6_2026-10-23.md and evidence/day6/publication-blockers.json.

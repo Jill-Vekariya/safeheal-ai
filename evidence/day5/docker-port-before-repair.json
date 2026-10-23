@@ -1,0 +1,39 @@
+﻿{
+    "At":  "2026-10-22T11:54:34.0315496Z",
+    "Node":  "/safeheal-dev-control-plane",
+    "Networks":  {
+                     "kind":  {
+                                  "IPAMConfig":  null,
+                                  "Links":  null,
+                                  "Aliases":  null,
+                                  "DriverOpts":  null,
+                                  "GwPriority":  0,
+                                  "NetworkID":  "f0d34fefdd585041d4fca223854385bed35d202a2c6779051b5f142b6e33bb0c",
+                                  "EndpointID":  "b63ccb12750f63608f0424c54923ae16b26502343f4005ea2eac0e139e77d468",
+                                  "Gateway":  "172.23.0.1",
+                                  "IPAddress":  "172.23.0.2",
+                                  "MacAddress":  "8e:84:66:cd:96:b8",
+                                  "IPPrefixLen":  16,
+                                  "IPv6Gateway":  "fc00:f853:ccd:e793::1",
+                                  "GlobalIPv6Address":  "fc00:f853:ccd:e793::2",
+                                  "GlobalIPv6PrefixLen":  64,
+                                  "DNSNames":  [
+                                                   "safeheal-dev-control-plane",
+                                                   "158f50e1f96c"
+                                               ]
+                              }
+                 },
+    "Bindings":  {
+                     "6443/tcp":  [
+                                      {
+                                          "HostIp":  "127.0.0.1",
+                                          "HostPort":  "49693"
+                                      }
+                                  ]
+                 },
+    "Ports":  {
+                  "6443/tcp":  [
+
+                               ]
+              }
+}
