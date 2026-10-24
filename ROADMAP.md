@@ -1,5 +1,7 @@
 # SafeHeal AI — 10-day execution plan
 
+**Current verified progress: Days 1–8 complete, 8/10 milestones (80%), 2026-10-24.** Day 8: exact-Git paired synthetic robustness cases 27/36 -> 36/36, no regressions; 74 new safety tests; full suite 476 passed, 2 skipped. No real-model quality or MTTR claim. Next: Day 9 matched controlled experiments; Day 10 finalization remains incomplete. GitHub publication/remote CI remain separate. See PROJECT_STATUS_Day8_2026-10-24.md.
+
 **Current verified progress: Days 1–7 complete, 7/10 gates (70%), 2026-10-24.** Day 7 passed both real Kubernetes recovery modes with independent policy, narrow RBAC/admission, dry-run/approval, audit and verification. Final suite: 402 passed, 2 skipped. Next: Day 8 robustness. Prior checkpoint counts below are historical. Publication/remote CI remain outstanding. See PROJECT_STATUS_Day7_2026-10-24.md.
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.

@@ -5,3 +5,11 @@ scripts/verify_recovery.py text eol=lf
 infrastructure/recovery/*.yaml text eol=lf
 tests/test_safe_recovery.py text eol=lf
 evidence/day7/** -text
+
+# Day 8 source and retained paired reports.
+services/diagnosis/*.py text eol=lf
+scripts/diagnose.py text eol=lf
+scripts/evaluate_robustness.py text eol=lf
+scripts/compare_robustness.py text eol=lf
+tests/test_diagnosis_robustness.py text eol=lf
+evidence/day8/** -text

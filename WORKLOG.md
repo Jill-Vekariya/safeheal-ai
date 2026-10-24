@@ -251,3 +251,16 @@ Retained four failed live attempts: explicit denial-reason mismatch (422 instead
 Original safeheal-dev node remains preserved/stopped after Windows rejected its reserved API port. Created the separate pinned safeheal-day7 cluster with independent project kubeconfig and loaded the previously verified application image. No global reset, cluster deletion, default-context change or original benchmark rewrite. No paid model call, general reliability or A/B/C recovery gain claim.
 
 CI now includes both guarded recovery modes and artifact retention, but local branch day7-safe-recovery was not published; no remote CI or main integration is claimed. Overall gate count 7/10; Day 8 next. Detailed handoff: PROJECT_STATUS_Day7_2026-10-24.md.
+
+
+## Day 8 AI reliability and robustness — 2026-10-24
+
+Implemented fixed synthetic adversarial development evaluation and exact-Git baseline comparison; actual-sample freshness, normalized schema/hash/support validation of every record, detached provider input, malformed platform exclusion and generic adapter-exception fallback. Added local notification intake with strict time/ID schema, durable duplicate notification/evidence suppression, concurrency/restart persistence, claim-before-call, collision/capacity checks and fail-closed journal/crash behavior. Added CLI route, 74 tests, operational contract and paired CI/artifact wiring. No recovery authority or new model tool was exposed.
+
+Authoritative paired reports: evidence/day8/paired/{before,after,comparison}.json. Same evaluator/case manifest; baseline exported from d10575a79781eda91f942aef56ee5a90fa5e1aba and independently verified against Git. Before: 27/36 passed; after: 36/36 passed; nine improved, zero regressed. Five repeated notifications or new IDs for identical incident/evidence: five simulated calls -> one; stale notification: one -> zero. Complete case outcomes, diagnoses and source hashes retained. These are mocked/synthetic development safeguards, not held-out/real-model performance, production reliability or an MTTR result.
+
+The first after-evaluator attempt raised AttributeError while reading diagnosis=null for a suppressed notification. Corrected null handling, retained the description and exact early evaluator variants verified against their recorded SHA-256, then reran both paired arms using the same corrected evaluator. Early before.json/after-initial.json remain separate. Initial new tests: 71 passed; final new coverage: 74 passed. Final full Windows suite: 476 passed, two existing skips, one existing warning; focused diagnosis suite 123 passed. Original Day 5/6/7 evidence remains unchanged.
+
+No real-provider call, cluster mutation, new fault trial, Docker reset or kubeconfig change was performed in Day 8. The notification journal is local; compromised same-user processes or dishonest telemetry instruments remain outside the guarantee. Pending/uncertain claims suppress automatic retry; operator investigation/maintenance is required. Direct incident/benchmark CLI calls remain intentional one-shot/replay interfaces.
+
+Canonical branch day8-ai-robustness continues the tested Day 7 history. Commit is local; no Day 8 GitHub publication, remote CI or main integration is claimed. Overall milestones 8/10 (80%); Day 9 matched controlled experiments next. Detailed handoff: PROJECT_STATUS_Day8_2026-10-24.md.

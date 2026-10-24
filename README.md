@@ -1,5 +1,18 @@
 # SafeHeal AI
 
+## Current Day 8 checkpoint — 2026-10-24
+
+**DAY 8 COMPLETE: documented AI failure handling and automated robustness acceptance passed. Overall milestones: 8/10 (80%). Next: Day 9 controlled experiments. The full project is not complete.** Previous checkpoint counts below are historical.
+
+Fixed paired development evaluation: **27/36 cases before -> 36/36 after; nine improved, zero regressions**. The runner exports exact Day 7 d10575a source and uses identical evaluator/cases for both arms, with source/hash verification. This is synthetic evidence and mocked-provider engineering acceptance, not real-model accuracy or MTTR improvement. Simulated calls for five duplicate notifications fell from five to one; stale notification calls fell from one to zero. No real-model call or cluster mutation occurred.
+
+Added actual-sample freshness, all-record normalized-schema/hash/support validation before model use, detached provider inputs, malformed-platform exclusion and secret-free unexpected-adapter fallback. Added durable local notification intake with strict event/time schema, repeated-ID/evidence deduplication across restarts/concurrent consumers, claim-before-call, collision/capacity checks, audit and fail-closed interrupted/persistence handling. Existing diagnosis outputs remain non-executable; Day 7 recovery code/policy is unchanged.
+
+Final Windows suite: **476 passed, 2 skipped, 0 failed**, one existing warning; **74 new robustness tests**, combined diagnosis-focused suite 123 passed. Existing symlink privilege and real-provider opt-in skips remain. Initial evaluator null-result bug and early reports are retained/described; both final paired arms use the corrected evaluator. Original Day 5/6/7 evidence is unchanged.
+
+Canonical local branch: day8-ai-robustness, based on d10575a79781eda91f942aef56ee5a90fa5e1aba. This milestone is committed locally; inspect git log for the final SHA. No Day 8 push, merge or remote CI is claimed. CI wiring includes full baseline history, paired evaluation and retained reports. See PROJECT_STATUS_Day8_2026-10-24.md, docs/AI_ROBUSTNESS.md and evidence/day8/acceptance.json. Prior GitHub publication/account-feature blockers remain separate.
+
+
 ## Current Day 7 checkpoint — 2026-10-24
 
 **DAY 7 COMPLETE: independent safe autonomous recovery acceptance passed. Overall milestones: 7/10 (70%). Next: Day 8 robustness. The full project remains incomplete.** Earlier checkpoint counts below are historical and superseded.
