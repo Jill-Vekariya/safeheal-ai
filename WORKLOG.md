@@ -312,3 +312,15 @@ The user repeated authorization to complete the project with full access. Preser
 Fresh local clone at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de, new Python 3.12 virtual environment and pinned dependency installation all passed. Suite: 509 passed, 2 skipped. Offline replay verified 230 artifacts and both historical instruments; exact-source robustness replay reproduced 27/36 -> 36/36, with zero regressions; the retained Day 5 diagnosis fallback replay passed. Logs and exact tested commit are in evidence/final/clean-checkout.json and evidence/final/clean-checkout/. No provider or live-cluster call was made by these clean-checkout checks.
 
 Added workflow concurrency by workflow/head branch so push and pull-request events do not run duplicate long-lived lab jobs. Current-release GitHub CI remains pending; no remote green result is claimed yet.
+
+
+## Bootstrap correction checkpoint — 25 October 2026
+
+PR4 publication CI40135721425 failed before recovery fault injection: the fresh-install scale-to-two server dry-run returned 200. Unit/replay checks and all six benchmark fault trials passed. The failed run, raw artifacts and error remain archived in evidence/final/ci-40135721425.
+
+Added a bounded real-token enforcement gate before executor configuration is written: two consecutive policy-specific 403 responses are required; 200, unrelated RBAC denial, transport errors and unproven enforcement cannot release configuration. Existing negative checks remain strict and no real recovery write is retried. Controlled-run enrollment also uses the gate and removes its private token on failure. CI now verifies recovery early, before the long fault batch.
+
+Thirteen new bootstrap safety tests; 107 focused recovery/experiment tests passed. Full Windows suite: **522 passed, 2 skipped, zero failed**. A live no-fault gate check passed with replicas unchanged at one, eight forbidden calls denied, and local token removed. Current-release CI must be rerun before merge; overall gates remain 9/10 until final publication checks pass. The 45/90-second experimental data and prior outcomes are unchanged.
+
+
+The first documentation-update helper used the Windows default text encoding and stopped with UnicodeDecodeError. Restored the two touched documents from their committed UTF-8 source, reapplied the intended additions once, and used explicit UTF-8. Experimental raw data and source-test outcomes were unchanged.

@@ -63,7 +63,7 @@ def setup_prometheus():
     print(lab.kubectl("-n",lab.NAMESPACE,"rollout","status","deployment/prometheus","--timeout=180s",timeout=190))
 
 
-def enroll(private, baseline):
+def enroll(private, baseline, record):
     recovery.private_directory(private)
     view = json.loads(lab.kubectl("config","view","--minify","--raw","-o","json"))["clusters"][0]["cluster"]
     (private/"ca.crt").write_bytes(base64.b64decode(view["certificate-authority-data"]))
@@ -71,8 +71,16 @@ def enroll(private, baseline):
     cfg = {"server":view["server"],"ca_file":str(private/"ca.crt"),"token_file":str(private/"executor.token"),
            "journal":str(private/"audit.sqlite3"),"autonomous_enabled":True,
            "enrollment":{"deployment_uid":baseline["metadata"]["uid"],"template_sha256":template_digest(baseline)}}
-    recovery.save(private/"controller.json",cfg)
-    return KubernetesAPI(view["server"],cfg["ca_file"],cfg["token_file"])
+    api = None
+    try:
+        api = KubernetesAPI(view["server"],cfg["ca_file"],cfg["token_file"])
+        recovery.enroll_executor(api,private/"controller.json",cfg,record)
+        return api
+    except BaseException:
+        if api:
+            api.close()
+        (private/"executor.token").unlink(missing_ok=True)
+        raise
 
 
 def cleanup_state(baseline, live):
@@ -96,7 +104,12 @@ def trial(slot,plan,folder,backend,provider):
     baseline_check={"trial_id":row["trial_id"]}
     lab.wait_for_service_routes(baseline_check,timeout=60)
     private=ROOT/".local/day9"/row["trial_id"]
-    api=enroll(private,before)
+    try:
+        api=enroll(private,before,row)
+    except Exception as exc:
+        row.update(status="technical_failure",reason="executor_enrollment_failed",error_type=type(exc).__name__)
+        recovery.save(folder/"trial.json",row)
+        raise
     workload=None; platform=None; faulted=False; started=time.monotonic()
     try:
         row["denied_access"]=recovery.forbidden_checks(api)

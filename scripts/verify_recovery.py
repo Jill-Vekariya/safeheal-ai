@@ -7,6 +7,7 @@ import argparse
 import base64
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -14,7 +15,10 @@ import sys
 import time
 from uuid import uuid4
 
+import httpx
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import k8s as lab
 from services.recovery.controller import ACTION, Journal, template_digest
 from services.recovery.kubernetes import KubernetesAPI, DEPLOYMENT_PATH
@@ -81,6 +85,60 @@ def forbidden_checks(api, *, zero=False):
     return results
 
 
+def wait_for_admission(api, record, *, timeout=30, monotonic=time.monotonic, sleep=time.sleep):
+    """Operator bootstrap only: bounded server dry-runs, never a persisted write.
+
+    Applying a policy/binding is not proof that it is enforced. Require two
+    consecutive denials from this exact policy, not an unrelated RBAC denial.
+    The credential remains private and no executor configuration is released.
+    """
+    if type(timeout) not in (int, float) or not math.isfinite(timeout) or not 0 < timeout <= 60:
+        raise ValueError("Invalid admission readiness timeout")
+    record["admission_ready"] = False
+    attempts = record.setdefault("admission_readiness", [])
+    deadline, consecutive = monotonic()+timeout, 0
+    while (remaining := deadline-monotonic()) > 0:
+        attempt = {"at": lab.utc(), "status_code": None, "policy_denial": False, "server_dry_run": True}
+        attempts.append(attempt)
+        token = api.token_file.read_text(encoding="utf-8").strip()
+        lab.require(0 < len(token) <= 16384 and not any(c.isspace() for c in token), "Invalid readiness credential")
+        try:
+            with api.client.stream("PATCH", api.server+DEPLOYMENT_PATH+"/scale?dryRun=All",
+                    headers={"Authorization": "Bearer "+token, "Content-Type": "application/merge-patch+json"},
+                    json={"spec": {"replicas": 2}}, timeout=min(5., remaining)) as response:
+                attempt["status_code"] = response.status_code
+                content = bytearray()
+                for chunk in response.iter_bytes():
+                    lab.require(monotonic() < deadline and len(content)+len(chunk) <= 65536,
+                                "Admission readiness response bounds exceeded")
+                    content.extend(chunk)
+            try:
+                status = json.loads(content)
+            except (ValueError, TypeError):
+                status = {}
+            message = status.get("message") if isinstance(status, dict) else None
+            attempt["policy_denial"] = (attempt["status_code"] == 403 and isinstance(status, dict)
+                and status.get("reason") == "Forbidden" and status.get("code") == 403
+                and isinstance(message, str) and "safeheal-recovery-scale" in message
+                and "SafeHeal recovery permits only payment replicas 0 to 1 in safeheal-dev" in message)
+        except (httpx.HTTPError, OSError):
+            attempt["error"] = "admission_probe_transport"
+        consecutive = consecutive+1 if attempt["policy_denial"] else 0
+        if consecutive == 2:
+            record["admission_ready"] = True
+            return
+        sleep(min(.25, max(0, deadline-monotonic())))
+    raise RuntimeError("Recovery admission enforcement did not become ready")
+
+
+def enroll_executor(api, config, settings, record, **probe_options):
+    """Keep executable configuration absent until enforcement is demonstrated."""
+    config = Path(config)
+    lab.require(not config.exists(), "Executor configuration already exists")
+    wait_for_admission(api, record, **probe_options)
+    save(config, settings)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--execute", action="store_true")
@@ -134,10 +192,11 @@ def main():
                 token_file.chmod(0o600)
             config = private / "controller.json"
             enrollment = {"deployment_uid": before["metadata"]["uid"], "template_sha256": template_digest(before)}
-            save(config, {"server": cluster["server"], "ca_file": str(ca), "token_file": str(token_file),
+            settings = {"server": cluster["server"], "ca_file": str(ca), "token_file": str(token_file),
                           "journal": str(private/"audit.sqlite3"), "enrollment": enrollment,
-                          "autonomous_enabled": args.mode == "autonomous"})
+                          "autonomous_enabled": args.mode == "autonomous"}
             api = KubernetesAPI(cluster["server"], ca, token_file)
+            enroll_executor(api, config, settings, record)
             # Real token checks: no admin impersonation and no model credentials.
             record["denied_access"] = forbidden_checks(api)
             raw = {"schema_version": "day7-recovery-v1", "request_id": trial_id,

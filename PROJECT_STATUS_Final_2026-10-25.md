@@ -1,5 +1,13 @@
 # SafeHeal AI — local release handoff
 
+## Bootstrap correction checkpoint — 25 October 2026
+
+PR4 publication CI40135721425 failed before recovery fault injection: the fresh-install scale-to-two server dry-run returned 200. Unit/replay checks and all six benchmark fault trials passed. The failed run, raw artifacts and error remain archived in evidence/final/ci-40135721425.
+
+Added a bounded real-token enforcement gate before executor configuration is written: two consecutive policy-specific 403 responses are required; 200, unrelated RBAC denial, transport errors and unproven enforcement cannot release configuration. Existing negative checks remain strict and no real recovery write is retried. Controlled-run enrollment also uses the gate and removes its private token on failure. CI now verifies recovery early, before the long fault batch.
+
+Thirteen new bootstrap safety tests; 107 focused recovery/experiment tests passed. Full Windows suite: **522 passed, 2 skipped, zero failed**. A live no-fault gate check passed with replicas unchanged at one, eight forbidden calls denied, and local token removed. Current-release CI must be rerun before merge; overall gates remain 9/10 until final publication checks pass. The 45/90-second experimental data and prior outcomes are unchanged.
+
 ## Private publication update — 25 October 2026
 
 The user repeated authorization to complete the project with full access. Preserved the existing private-repository requirement: verified the exact owned repository had zero forks/stars and admin access, restored PRIVATE visibility, then rechecked it. No final source/evidence was uploaded publicly. The earlier privacy-decision checkpoint below is superseded; current next steps are private branch publication and GitHub Actions. The release candidate is locally committed at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de; clean-checkout verification identifies that exact commit. Current-release CI is not yet claimed.

@@ -36,3 +36,5 @@ evidence/final/** -text -whitespace
 docs/OPERATIONS_CHECKLIST.md text eol=lf
 docs/CONTROLLED_EXPERIMENTS.md text eol=lf
 examples/*.json text eol=lf
+tests/test_recovery_bootstrap.py text eol=lf
+docs/SAFE_RECOVERY.md text eol=lf

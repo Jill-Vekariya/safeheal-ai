@@ -104,3 +104,10 @@ References and the specific relationship to this implementation are recorded in 
 ## Reproducibility and future work
 
 See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for a clean checkout, dependency pins, offline evidence replay and guarded live lab commands; [DEMO.md](DEMO.md) for a 3–5 minute walkthrough. Future work includes held-out benign and ambiguous incidents, more independent fault types, blocked multi-host trials, calibrated uncertainty, provider outage experiments with real providers, external audit storage, protected operator enrollment and continuous-service rate-limit evaluation. Expand recovery actions only with separate invariants, least-privilege permissions, admission constraints and verification criteria.
+
+
+## Final CI failure handling
+
+The first publication CI run (40135721425, source f9a3073376657cab491baccd167b7d0e83b7d6b2) passed unit/replay checks and six fault trials, then failed its fresh-install recovery negative check: a scale-to-two server dry-run returned HTTP 200. It stopped before fault injection or controller invocation. The failure is retained, not replaced by a passing result. Applying a policy was insufficient evidence of enforcement at that instant.
+
+Operator bootstrap now requires two consecutive policy-specific denials using the real dedicated token, with only fixed server dry-runs, before writing controller configuration. Unrelated RBAC denials do not qualify. Thirteen new failure-path tests cover pending/absent enforcement, interrupted consecutive observations, transport/bounds failures and configuration release. The local real-token gate passed without injecting a fault or changing replicas; all eight strict forbidden checks still returned 403. Current full Windows tests: 522 passed, 2 skipped. The original experimental cohorts and as-run source remain unchanged; these bootstrap checks occur before their measurement clock begins. See evidence/final/ci-40135721425 and admission-gate-live.json.

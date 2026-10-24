@@ -1,0 +1,287 @@
+{
+  "conclusion": "failure",
+  "event": "pull_request",
+  "headSha": "f9a3073376657cab491baccd167b7d0e83b7d6b2",
+  "jobs": [
+    {
+      "completedAt": "2026-10-24T21:47:38Z",
+      "conclusion": "success",
+      "databaseId": 120996755946,
+      "name": "test",
+      "startedAt": "2026-10-24T21:47:11Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-24T21:47:13Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-24T21:47:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:14Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-24T21:47:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:14Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-10-24T21:47:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:21Z",
+          "conclusion": "success",
+          "name": "Run python -m pip install -r requirements.lock",
+          "number": 4,
+          "startedAt": "2026-10-24T21:47:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:23Z",
+          "conclusion": "success",
+          "name": "Run python -m pip install --no-deps -e .",
+          "number": 5,
+          "startedAt": "2026-10-24T21:47:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:32Z",
+          "conclusion": "success",
+          "name": "Run python -m pytest -q",
+          "number": 6,
+          "startedAt": "2026-10-24T21:47:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:33Z",
+          "conclusion": "success",
+          "name": "Compare fixed robustness cases against exact Day 7 source",
+          "number": 7,
+          "startedAt": "2026-10-24T21:47:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:33Z",
+          "conclusion": "success",
+          "name": "Replay retained benchmark with read-only diagnosis fallback",
+          "number": 8,
+          "startedAt": "2026-10-24T21:47:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:34Z",
+          "conclusion": "success",
+          "name": "Replay retained controlled experiment measurements",
+          "number": 9,
+          "startedAt": "2026-10-24T21:47:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:34Z",
+          "conclusion": "success",
+          "name": "Replay configured local-model cohort",
+          "number": 10,
+          "startedAt": "2026-10-24T21:47:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:35Z",
+          "conclusion": "success",
+          "name": "Verify final artifacts and read-only audit replay",
+          "number": 11,
+          "startedAt": "2026-10-24T21:47:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:36Z",
+          "conclusion": "success",
+          "name": "Preserve diagnosis and experiment replays",
+          "number": 12,
+          "startedAt": "2026-10-24T21:47:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 23,
+          "startedAt": "2026-10-24T21:47:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 24,
+          "startedAt": "2026-10-24T21:47:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:37Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 25,
+          "startedAt": "2026-10-24T21:47:36Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40135721425/job/120996755946"
+    },
+    {
+      "completedAt": "2026-10-24T22:10:32Z",
+      "conclusion": "failure",
+      "databaseId": 120996756098,
+      "name": "kubernetes",
+      "startedAt": "2026-10-24T21:47:11Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-24T21:47:14Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-24T21:47:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:15Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-24T21:47:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:15Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-10-24T21:47:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:23Z",
+          "conclusion": "success",
+          "name": "Install detector runtime",
+          "number": 4,
+          "startedAt": "2026-10-24T21:47:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:47:24Z",
+          "conclusion": "success",
+          "name": "Install pinned project-local kind",
+          "number": 5,
+          "startedAt": "2026-10-24T21:47:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:48:20Z",
+          "conclusion": "success",
+          "name": "Create isolated kind cluster",
+          "number": 6,
+          "startedAt": "2026-10-24T21:47:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:48:54Z",
+          "conclusion": "success",
+          "name": "Deploy and validate manifests",
+          "number": 7,
+          "startedAt": "2026-10-24T21:48:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:48:56Z",
+          "conclusion": "success",
+          "name": "Verify real service discovery and HTTP calls",
+          "number": 8,
+          "startedAt": "2026-10-24T21:48:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:49:16Z",
+          "conclusion": "success",
+          "name": "Check dry-run then native container recovery",
+          "number": 9,
+          "startedAt": "2026-10-24T21:48:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:50:41Z",
+          "conclusion": "success",
+          "name": "Deploy observability and verify actual traffic, dashboards and traces",
+          "number": 10,
+          "startedAt": "2026-10-24T21:49:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T21:53:13Z",
+          "conclusion": "success",
+          "name": "Verify deterministic incidents with real Prometheus and a scoped payment task failure",
+          "number": 11,
+          "startedAt": "2026-10-24T21:50:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T22:10:25Z",
+          "conclusion": "success",
+          "name": "Repeat three labelled faults and record native and rule baselines",
+          "number": 12,
+          "startedAt": "2026-10-24T21:53:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T22:10:27Z",
+          "conclusion": "failure",
+          "name": "Verify independent allowlisted recovery and approval gates",
+          "number": 13,
+          "startedAt": "2026-10-24T22:10:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T22:10:30Z",
+          "conclusion": "success",
+          "name": "Preserve verification evidence",
+          "number": 14,
+          "startedAt": "2026-10-24T22:10:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T22:10:30Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 27,
+          "startedAt": "2026-10-24T22:10:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T22:10:30Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 28,
+          "startedAt": "2026-10-24T22:10:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T22:10:30Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 29,
+          "startedAt": "2026-10-24T22:10:30Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40135721425/job/120996756098"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40135721425"
+}

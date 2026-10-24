@@ -147,3 +147,10 @@ handoff for measured results and environment failures.
 - https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/
 - https://kubernetes.io/docs/reference/using-api/api-concepts/
 - https://kubernetes.io/docs/concepts/security/service-accounts/
+
+
+## Admission enforcement readiness before enrollment
+
+Applying the policy and binding is not treated as evidence of active enforcement. The operator installer keeps the dedicated token private and withholds controller configuration until two consecutive server-side dry-run scale-to-two requests receive HTTP 403 with this exact policy's denial message. RBAC denial, HTTP 200, malformed/oversized responses, transport errors or absence of the policy do not establish readiness. The bounded gate fails closed after 30 seconds, and failed enrollment removes the locally held token. No real controller call or fault fixture begins before the gate and the unchanged eight strict forbidden-operation checks pass. The probes always use the fixed `dryRun=All` endpoint and do not persist replica changes. They are installer checks, not retries of a recovery write or model tools.
+
+Fresh Linux CI40135721425 exposed the missing bootstrap condition: its scale-to-two server dry-run returned 200 before fault injection or controller invocation. The failed run and artifacts remain in evidence/final/ci-40135721425. The policy/value restriction was not weakened; operator enrollment now proves enforcement before releasing executable configuration. Cluster/OS administrators remain trusted, and this single-node lab check is not a distributed multi-API-server rollout guarantee.
