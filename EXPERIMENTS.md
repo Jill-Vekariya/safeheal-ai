@@ -228,3 +228,16 @@ The first after-evaluator attempt raised AttributeError while reading diagnosis=
 No real-provider call, cluster mutation, new fault trial, Docker reset or kubeconfig change was performed in Day 8. The notification journal is local; compromised same-user processes or dishonest telemetry instruments remain outside the guarantee. Pending/uncertain claims suppress automatic retry; operator investigation/maintenance is required. Direct incident/benchmark CLI calls remain intentional one-shot/replay interfaces.
 
 Canonical branch day8-ai-robustness continues the tested Day 7 history. Commit is local; no Day 8 GitHub publication, remote CI or main integration is claimed. Overall milestones 8/10 (80%); Day 9 matched controlled experiments next. Detailed handoff: PROJECT_STATUS_Day8_2026-10-24.md.
+
+
+## Day 9 controlled baseline study and pending AI arm — 2026-10-24
+
+Predeclared five matched blocks/seed 9, one payment scale-zero fault, same workload, eight-second decision delay and 45-second observation horizon. Actual lab run 17:54:55–18:06:55 UTC: five native and five fixed-rule/safe-policy trials. Native 0/5 recoveries within horizon (all censored); rule 5/5, mean business recovery 19.0378 s, median 18.063 s, range 17.359–21.907 s. Matched difference in 45-second restricted time 25.9622 s; exploratory paired bootstrap [24.2838,27.3438]. This is not observed native MTTR, generic recovery performance, population precision or an AI benefit.
+
+User selected A provider I configure. No active local profile was supplied; all five AI slots are retained as not_run, with no real-model accuracy/cost/recovery claim or mock substitute. Provider profile/credential/budget is the remaining dependency. Run a new matched cohort after configuration; do not fill old slots or pool silently.
+
+Saved 1,767 raw request completions, raw platform/Prometheus data and controller audit SQLite/JSON under evidence/day9/run-primary; verified the 60-file manifest and exact metric replay. Twenty audit events pass chain verification; all 80 forbidden probes denied, five controller actions verified, ten trial cleanups passed, and tokens removed locally. Five operator restorations happened after measurement only. Figures/CSV/findings under evidence/day9/analysis. Closed-loop valid-response fractions (17/345 native; 1219/1370 rule) are not time-weighted uptime.
+
+Nineteen new tests; final full suite 495 passed, 2 existing skips, one existing warning. An initial chart preparation error assumed an unrun metrics field could not be null; null-safe rendering/CSV regression added. Numerical findings and raw measurements did not change; the earlier 494-pass test log remains. Added pinned optional plotting requirements and CI raw replay. Production controller/RBAC/admission unchanged; per-trial fresh operator enrollment/journals are documented and do not establish continuous-production budgeting across resets.
+
+Only the existing isolated safeheal-day7 lab was used; pinned Prometheus added, app image unchanged, old stopped cluster/default context/prior evidence preserved. No paid/model call, Docker reset, GitHub publication, merge or remote Day 9 CI. Local branch day9-controlled-experiments. Day 9 remains partial; overall completed milestones 8/10 (80%). See PROJECT_STATUS_Day9_Partial_2026-10-24.md.

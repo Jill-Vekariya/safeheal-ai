@@ -13,3 +13,11 @@ scripts/evaluate_robustness.py text eol=lf
 scripts/compare_robustness.py text eol=lf
 tests/test_diagnosis_robustness.py text eol=lf
 evidence/day8/** -text
+
+# Controlled experiment measurements and source hashes.
+scripts/controlled_core.py text eol=lf
+scripts/controlled_experiment.py text eol=lf
+scripts/analyze_controlled.py text eol=lf
+scripts/finalize_controlled.py text eol=lf
+tests/test_controlled_experiments.py text eol=lf
+evidence/day9/** -text -whitespace

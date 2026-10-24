@@ -1,0 +1,62 @@
+{
+  "at": 1792864656.4458954,
+  "services": {
+    "gateway": {
+      "up": null,
+      "up_at": null,
+      "requests": null,
+      "errors": null,
+      "p95": null,
+      "metrics_at": null,
+      "problems": [
+        "up:missing_stale_or_invalid"
+      ]
+    },
+    "order": {
+      "up": null,
+      "up_at": null,
+      "requests": null,
+      "errors": null,
+      "p95": null,
+      "metrics_at": null,
+      "problems": [
+        "up:missing_stale_or_invalid"
+      ]
+    },
+    "payment": {
+      "up": null,
+      "up_at": null,
+      "requests": null,
+      "errors": null,
+      "p95": null,
+      "metrics_at": null,
+      "problems": [
+        "up:missing_stale_or_invalid"
+      ]
+    }
+  },
+  "raw": {
+    "up": {
+      "status": "success",
+      "data": {
+        "resultType": "matrix",
+        "result": []
+      }
+    },
+    "requests": {
+      "status": "success",
+      "data": {
+        "resultType": "matrix",
+        "result": []
+      }
+    },
+    "buckets": {
+      "status": "success",
+      "data": {
+        "resultType": "matrix",
+        "result": []
+      }
+    }
+  },
+  "errors": {}
+}

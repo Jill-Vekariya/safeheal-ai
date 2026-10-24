@@ -1,5 +1,20 @@
 # SafeHeal AI — portable project status
 
+## Current Day 9 partial checkpoint — 2026-10-24
+
+**DAY 9 PARTIAL: controlled baseline study, raw data, charts and analysis completed; real AI-assisted cohort pending provider configuration. Completed milestones remain 8/10 (80%). Do not mark Day 9 complete.**
+
+Ran five matched blocks in the isolated safeheal-day7 Kubernetes lab: five native-only and five fixed-rule-plus-independent-policy trials. Five planned AI slots are explicitly not_run because the user-selected provider profile was not configured; no mock/fallback/cloud model was substituted. Protocol, randomized arm order (seed 9), eight-second decision delay and 45-second horizon were recorded before injection.
+
+Native: 0/5 recoveries within 45 seconds, all right-censored (actual recovery unknown). Rule-policy: 5/5 business recoveries, mean 19.0378 s, median 18.063 s. Mean matched difference in 45-second restricted time: 25.9622 s; this is not unrestricted MTTR improvement. One deliberately policy-addressable scale-zero fault on one cluster, n=5, shared caches/telemetry and closed-loop workload limit generalization. AI accuracy, benefit and monetary cost remain unmeasured.
+
+Retained 1,767 raw request completions, platform/Prometheus observations, trial records and policy audits; all 60 raw-file hashes and replayed metrics verified. All 80 forbidden API probes returned 403; five controller actions verified, ten attempted trials passed cleanup, five native fixtures restored only after measurement, and no trial executor token files remain. Two visually checked comparison charts are retained as PNG/SVG. No original Day 5-8 evidence was changed.
+
+Final full suite: 495 passed, 2 existing skips, 0 failed; one existing warning. Nineteen experiment/analysis tests include censoring, raw integrity, incomplete observations, provider/unsafe bridge handling and the null-unrun-metrics renderer regression. CI includes numerical replay; no remote CI run is claimed.
+
+Next: configure .local/day9/provider.json from the local example, with endpoint, model, credential file and capped request budget (at least five for the AI slots). Then run a new full matched cohort in a new directory; do not fill old slots out of order or pool cohorts silently. See PROJECT_STATUS_Day9_Partial_2026-10-24.md, docs/CONTROLLED_EXPERIMENTS.md and evidence/day9/analysis/FINDINGS.md. Branch day9-controlled-experiments is committed locally; no GitHub push/merge was performed.
+
+
 ## Current Day 8 checkpoint — 2026-10-24
 
 **DAY 8 COMPLETE: documented AI failure handling and automated robustness acceptance passed. Overall milestones: 8/10 (80%). Next: Day 9 controlled experiments. The full project is not complete.** Previous checkpoint counts below are historical.

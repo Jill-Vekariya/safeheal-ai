@@ -1,0 +1,16 @@
+trial_id,block,arm,status,eligible,recovery_seconds,restricted_seconds,censored,provider_calls
+d9-01-native-17c645,1,native,observed,True,,45.0,True,0
+d9-02-ai_policy-b40058,1,ai_policy,not_run,,,,,0
+d9-03-rule_policy-5ec7eb,1,rule_policy,observed,True,21.906999999999243,21.906999999999243,False,0
+d9-04-ai_policy-4a8350,2,ai_policy,not_run,,,,,0
+d9-05-native-288a6a,2,native,observed,True,,45.0,True,0
+d9-06-rule_policy-dbe51f,2,rule_policy,observed,True,18.062999999994645,18.062999999994645,False,0
+d9-07-rule_policy-e22cd7,3,rule_policy,observed,True,17.75,17.75,False,0
+d9-08-ai_policy-ad72c5,3,ai_policy,not_run,,,,,0
+d9-09-native-fb256e,3,native,observed,True,,45.0,True,0
+d9-10-native-476db0,4,native,observed,True,,45.0,True,0
+d9-11-ai_policy-50a733,4,ai_policy,not_run,,,,,0
+d9-12-rule_policy-57a661,4,rule_policy,observed,True,20.110000000000582,20.110000000000582,False,0
+d9-13-rule_policy-7ae2ed,5,rule_policy,observed,True,17.35899999999674,17.35899999999674,False,0
+d9-14-native-10da61,5,native,observed,True,,45.0,True,0
+d9-15-ai_policy-1a96d4,5,ai_policy,not_run,,,,,0

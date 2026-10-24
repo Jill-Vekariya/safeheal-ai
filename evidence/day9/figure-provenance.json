@@ -1,0 +1,13 @@
+{
+  "source_analysis_sha256": "37d4de88cbf303f3e30fd8160aa0dbd894b4b5d843359efe743a7b3460169797",
+  "renderer_sha256": "7fd2642b2ab9d2b0e971f6b708e62d00cd4e91d09227531f27632cbca1845f94",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "visual_review": "Both PNG charts inspected; censored markers/unrun AI clearly labelled.",
+  "sha256": {
+    "business_responses.png": "bd7faa34514770475dbdd6a799db5af43bc678301c706907ad49c882a62a7729",
+    "business_responses.svg": "268990db0679c06a3099a9b09182b353baae6fc5160a70fe4d49b6d43522ce8c",
+    "recovery_comparison.png": "fe17b9d41273b11805cd25bf7b50f2d5d0b6f206fb93e6930348439ee321c96a",
+    "recovery_comparison.svg": "e344a5e9df3a9ee9d4f09e21a716fbae503e19580ce458eda621857545b11212"
+  }
+}
