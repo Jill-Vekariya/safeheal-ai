@@ -20,7 +20,7 @@ the fixed rule when both use the same recovery controller?
 Five matched blocks each contain all three arms, shuffled within block by seed 9.
 The operator induces the same payment scale-zero condition. Decision timing is
 fixed at eight seconds after the host injection request. The observation horizon
-is 45 seconds for every attempted arm, including early recoveries. Two closed-loop
+is recorded in each protocol for every attempted arm, including early recoveries: 45 seconds in the original missing-provider cohort, and 90 seconds in the separate local-model cohort. The longer horizon was selected before the new run to accommodate bounded inference plus controller verification; the cohorts are not pooled. Two closed-loop
 workers submit real order requests with a .2-second post-completion delay and a
 four-second HTTP timeout. Every completion is retained.
 
@@ -69,9 +69,7 @@ the independently verified fault impact. Timing uses host monotonic offsets from
 the injection request and includes API, fixed observation and instrumentation
 overhead; it is not exact physical downtime.
 
-Primary descriptive outcome is restricted time `min(T, 45 s)`. When recovery is
-not observed by 45 seconds, actual recovery time is unknown: report a censored
-trial, never an observed 45-second MTTR. Partial technical observations cannot be
+Primary descriptive outcome is restricted time `min(T, H)` for that cohort's declared horizon. When recovery is not observed by H, actual recovery time is unknown: report a censored trial, never an observed H-second MTTR. Partial technical observations cannot be
 imputed to a full horizon. Report observed-only means/medians, all individual
 points, success/censor counts and matched restricted-time differences separately.
 The paired bootstrap interval is exploratory resampling of only five blocks, not
@@ -91,12 +89,9 @@ total compute/operating cost is still unmeasured.
 
 ## Provider configuration
 
-No provider, credential or paid-call budget is selected silently. The user chose
-to configure a provider. Until the active profile exists, preserve planned AI
-slots as `not_run`, with missing recovery/accuracy/cost values. A baseline-only
-conclusion cannot complete the requested AI-assisted comparison.
+The original cohort retained five `not_run` AI slots while the user-selected provider was unconfigured. A later instruction delegated completion of the project. Automatic review rejected the proposed cloud destination before execution, so the follow-up study uses actual local model weights and loopback inference instead. No cloud diagnosis was sent. The original missing-provider records remain unchanged; they are not filled later or silently pooled with the new study.
 
-Copy `.local/day9/provider.example.json` to `.local/day9/provider.json` and supply
+For local inference, copy tracked `examples/provider.local.json` to the ignored `.local/day9/provider-local.json`. For another explicitly authorized endpoint, create `.local/day9/provider.json` with the same exact fields and supply
 the endpoint, model, explicit maximum calls/output tokens/timeout/token-field and
 credential-file location. Keep the credential in the referenced local file rather
 than source, command arguments, reports or chat. The profile supports the existing
@@ -109,12 +104,14 @@ fill old slots out of order, overwrite records, or pool cohorts silently. Five A
 slots require a budget of at least five requests. No real-model claim is made for
 a fallback or HTTP failure.
 
+For the retained local cohort, the explicit profile uses base URL `http://127.0.0.1:11434/v1`, model `qwen2.5:1.5b-instruct-q4_K_M`, `max_calls: 5`, `max_output_tokens: 800`, `timeout_seconds: 30`, `token_field: "max_tokens"`, and `api_key_file: ""`. The loader removes the empty key-file field before constructing the provider; it is not passed as extra authority/configuration. Local model digest and Ollama version are recorded in `evidence/day9/local-model-environment.json`. Provider settings are frozen before the run; cold/warm loading and low available host memory can affect measured latency. A timeout consumes its one request and does not trigger a retry or action.
+
 ## Reproduce
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/controlled_experiment.py plan
+.\.venv\Scripts\python.exe scripts/controlled_experiment.py plan --horizon 90
 .\.venv\Scripts\python.exe scripts/controlled_experiment.py setup --execute
-.\.venv\Scripts\python.exe scripts/controlled_experiment.py run --execute --output evidence/day9/new-run
+.\.venv\Scripts\python.exe scripts/controlled_experiment.py run --execute --horizon 90 --provider-profile .local/day9/provider-local.json --output evidence/day9/new-run
 .\.venv\Scripts\python.exe scripts/finalize_controlled.py evidence/day9/new-run
 .\.venv\Scripts\python.exe scripts/analyze_controlled.py evidence/day9/new-run --output .local/day9-new-analysis --no-plots
 ```
@@ -139,5 +136,4 @@ cluster, with five sequential matched blocks. It favors explicit restoration of
 a desired replica count that native reconciliation does not automatically change.
 It does not compare generic crash recovery, all existing fault scenarios, benign
 false-positive behavior or production safety. Conclusions must remain within that
-scope. Real AI benefit remains inconclusive until the configured-provider cohort
-has actually run.
+scope. Real AI benefit must be judged from the separately retained configured local-model cohort, including failures and censored outcomes; completion of an experiment does not imply an AI advantage.

@@ -1,0 +1,79 @@
+{
+  "schema_version": "day9-local-verification-v1",
+  "passed": true,
+  "as_run_commit": "79270ecf1fbd4b515591f6f478346657cfa0ebc4",
+  "completed_slots": 15,
+  "provider_calls": 5,
+  "summary": {
+    "arms": {
+      "native": {
+        "planned": 5,
+        "attempted": 5,
+        "eligible": 5,
+        "recovered_within_horizon": 0,
+        "censored": 5,
+        "technical_failures": 0,
+        "not_run": 0,
+        "mean_observed_recovery_seconds": null,
+        "median_observed_recovery_seconds": null,
+        "mean_restricted_seconds": 90.0,
+        "real_provider_requests": 0,
+        "llm_validated_diagnoses": 0,
+        "policy_verified": 0
+      },
+      "rule_policy": {
+        "planned": 5,
+        "attempted": 5,
+        "eligible": 5,
+        "recovered_within_horizon": 5,
+        "censored": 0,
+        "technical_failures": 0,
+        "not_run": 0,
+        "mean_observed_recovery_seconds": 30.543599999998698,
+        "median_observed_recovery_seconds": 28.125,
+        "mean_restricted_seconds": 30.543599999998698,
+        "real_provider_requests": 0,
+        "llm_validated_diagnoses": 0,
+        "policy_verified": 5
+      },
+      "ai_policy": {
+        "planned": 5,
+        "attempted": 5,
+        "eligible": 5,
+        "recovered_within_horizon": 0,
+        "censored": 5,
+        "technical_failures": 0,
+        "not_run": 0,
+        "mean_observed_recovery_seconds": null,
+        "median_observed_recovery_seconds": null,
+        "mean_restricted_seconds": 90.0,
+        "real_provider_requests": 5,
+        "llm_validated_diagnoses": 0,
+        "policy_verified": 0
+      }
+    },
+    "paired_native_minus_rule_restricted_seconds": [
+      69.0,
+      64.625,
+      61.875,
+      55.14100000000326,
+      46.64100000000326
+    ],
+    "mean_paired_restricted_difference": 59.4564000000013,
+    "ai_comparison_complete": true,
+    "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+  },
+  "raw_manifest_sha256": "2a1b6d423b0bf311f923bf24ec597531462c948d11c34a2ee48acdf912019e60",
+  "raw_request_rows": 4035,
+  "audit_events": 20,
+  "forbidden_probe_count": 120,
+  "all_forbidden_denied": true,
+  "cleanup_passed": 15,
+  "operator_restorations_after_observation": 10,
+  "remaining_trial_token_files": 0,
+  "provider_status_counts": {
+    "provider_timeout": 5
+  },
+  "original_evidence_git_diff": [],
+  "as_run_sources_verified_against_git": true
+}

@@ -21,3 +21,18 @@ scripts/analyze_controlled.py text eol=lf
 scripts/finalize_controlled.py text eol=lf
 tests/test_controlled_experiments.py text eol=lf
 evidence/day9/** -text -whitespace
+
+# Final reproduction sources and immutable verification artifacts.
+scripts/reproduce.py text eol=lf
+tests/test_reproduce.py text eol=lf
+README.md text eol=lf
+ARCHITECTURE.md text eol=lf
+docs/RESEARCH_REPORT.md text eol=lf
+docs/RELATED_WORK.md text eol=lf
+docs/DEMO.md text eol=lf
+docs/PORTFOLIO.md text eol=lf
+docs/REPRODUCIBILITY.md text eol=lf
+evidence/final/** -text -whitespace
+docs/OPERATIONS_CHECKLIST.md text eol=lf
+docs/CONTROLLED_EXPERIMENTS.md text eol=lf
+examples/*.json text eol=lf

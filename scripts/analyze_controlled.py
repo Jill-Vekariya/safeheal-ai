@@ -76,9 +76,27 @@ def analyze(directory):
             errors.append({"trial_id":r.get("trial_id"),"block":r["block"],"arm":r["arm"],"status":r.get("status"),
                            "reason":r.get("reason",r.get("error_type",reason or "no_recovery_within_horizon")),
                            "censored":(r.get("metrics") or {}).get("censored")})
+    comparisons={}
+    for left,right in (("native","ai_policy"),("rule_policy","ai_policy")):
+        differences=[]
+        for block in sorted({r["block"] for r in rows}):
+            group={r["arm"]:r for r in rows if r["block"]==block}
+            if all((group.get(a,{}).get("metrics") or {}).get("eligible") for a in (left,right)):
+                differences.append(group[left]["metrics"]["restricted_seconds"]-group[right]["metrics"]["restricted_seconds"])
+        bootstrap_rng=random.Random(9)
+        samples=sorted(statistics.mean(bootstrap_rng.choices(differences,k=len(differences))) for _ in range(10000)) if len(differences)>=2 else []
+        comparisons[left+"_minus_"+right]={"paired_restricted_differences_seconds":differences,
+            "mean_seconds":statistics.mean(differences) if differences else None,
+            "exploratory_bootstrap_95":[samples[249],samples[9749]] if samples else None}
+    usage={k:sum(r.get("provider_usage",{}).get(k,0) for r in rows) for k in ("input_tokens","output_tokens")}
+    model_times=[r["model_elapsed_seconds"] for r in rows if "model_elapsed_seconds" in r]
     return {"schema_version":"day9-analysis-v1","protocol":plan,"summary":summary,
             "bootstrap_paired_restricted_difference_95": [bootstrap[249],bootstrap[9749]] if bootstrap else None,
             "bootstrap_note":"Exploratory resampling of matched blocks; n=5/shared cluster do not establish population precision.",
+            **({"ai_paired_comparisons":comparisons,"reported_provider_usage":usage,
+                "provider_status_counts":{status:sum(r.get("diagnosis",{}).get("provider_status")==status for r in rows) for status in sorted({r["diagnosis"]["provider_status"] for r in rows if "diagnosis" in r})},
+                "mean_model_elapsed_seconds":statistics.mean(model_times) if model_times else None,
+                "usage_note":"Reported usage only; failed/incomplete requests may consume compute without returning usage."} if sum(r.get("provider_calls",0) for r in rows) else {}),
             "diagnostic_accuracy":accuracy if accuracy["real_llm_diagnoses"] else None,
             "actual_monetary_cost_usd":None,"cost_note":"No model prices/account billing supplied. Zero model requests in baseline arms is not zero total compute cost.",
             "error_analysis":errors,"trials":rows,
@@ -90,14 +108,14 @@ def findings(data):
     s=data["summary"]; arms=s["arms"]
     lines=["# Day 9 controlled experiment findings","",
            "The study concerns one operator-induced payment Deployment scale-zero outage in the isolated Kubernetes lab.",
-           "The 45-second horizon, five matched blocks, randomized arm order, workload and decision rules were recorded before fault injection.","",
+           f"The {data['protocol']['horizon_seconds']}-second horizon, {data['protocol']['repeats']} matched blocks, randomized arm order, workload and decision rules were recorded before fault injection.","",
            "| Arm | Attempted / planned | Recovered within horizon | Censored | Mean observed recovery (s) | Mean restricted time (s) | Real provider requests |",
            "|---|---:|---:|---:|---:|---:|---:|"]
     def value(v): return "Not measured" if v is None else f"{v:.3f}"
     for arm in ARMS:
         r=arms[arm]
         lines.append(f"| {arm} | {r['attempted']} / {r['planned']} | {r['recovered_within_horizon']} | {r['censored']} | {value(r['mean_observed_recovery_seconds'])} | {value(r['mean_restricted_seconds'])} | {r['real_provider_requests']} |")
-    lines += ["", "Censored trials did not recover during observation. Their actual recovery time is unknown; 45 seconds is a restricted-horizon value, not observed MTTR.","",
+    lines += ["", f"Censored trials did not recover during observation. Their actual recovery time is unknown; {data['protocol']['horizon_seconds']} seconds is a restricted-horizon value, not observed MTTR.","",
               f"Matched native-minus-rule restricted-time differences (seconds): {s['paired_native_minus_rule_restricted_seconds']}.",
               f"Mean matched difference: {value(s['mean_paired_restricted_difference'])} seconds.",
               f"Exploratory 95% paired bootstrap interval: {data['bootstrap_paired_restricted_difference_95']}. This is conditional small-sample resampling, not production precision.","",
@@ -109,6 +127,14 @@ def findings(data):
         lines += ["**The real AI-assisted comparison is incomplete.** "+reason+" No mock, deterministic fallback or LLM from this chat was substituted. AI accuracy, recovery benefit, token usage and monetary cost cannot be inferred from these baseline data.",""]
     else:
         lines += ["The AI arm used the configured real provider. Distinguish validated model outputs, abstentions, provider failures and policy denials in the raw diagnosis records; source fallback is never model success.",""]
+    if "ai_paired_comparisons" in data:
+        lines += ["## AI-specific measurements","",
+                  f"Paired restricted-time comparisons (left minus AI; negative means the AI path took longer): {data['ai_paired_comparisons']}.",
+                  "Equal restricted times for two censored arms mean neither recovered within the horizon; they do not establish equal actual recovery time.",
+                  f"Provider status counts: {data['provider_status_counts']}.",
+                  f"Reported provider tokens: {data['reported_provider_usage']}. {data['usage_note']}",
+                  f"Mean measured model-call interval: {data['mean_model_elapsed_seconds']} seconds. This includes cold/warm runtime and host contention.",
+                  f"Validated-output target/symptom agreement counts: {data['diagnostic_accuracy']}. These counts exclude fallback and do not establish causal accuracy.",""]
     lines += ["## Limitations and error analysis","",
               "Only one scenario and five blocks on one shared cluster/machine were studied. Sequential order, shared caches, telemetry windows and host instrumentation can affect timing. The runtime waits eight seconds before decisions and samples business responses; measured times include those choices and API overhead.",
               "The workload is closed-loop: slow failures reduce request throughput. Valid-response percentages are weighted by completed requests, not elapsed-time uptime or a fixed offered-load reliability estimate.",
@@ -125,6 +151,9 @@ def render(data,output):
     import matplotlib.pyplot as plt
     plt.rcParams.update({"font.family":"DejaVu Sans","font.size":10,"axes.spines.top":False,"axes.spines.right":False,"svg.fonttype":"none"})
     labels=["Native only","Rule + safe policy","AI + safe policy"]
+    timeouts=data.get("provider_status_counts",{}).get("provider_timeout",0)
+    if timeouts:
+        labels[2]+=f"\n({timeouts} provider timeouts)"
     colors=["#64748b","#087f8c","#7c3aed"]
     fig,ax=plt.subplots(figsize=(8.5,4.7))
     horizon=data["protocol"]["horizon_seconds"]
@@ -141,7 +170,7 @@ def render(data,output):
     ax.set(xticks=range(3),xticklabels=labels,ylim=(0,horizon*1.18),xlim=(-.5,2.5),ylabel="Time to verified business recovery (seconds)",title="Isolated scale-zero outage: all trial outcomes")
     ax.text(-.45,horizon*1.08,f"Open triangles: no recovery within {horizon:g} s (censored)",fontsize=9,color="#475569")
     ax.grid(axis="y",alpha=.2); fig.tight_layout()
-    fig.savefig(output/"recovery_comparison.png",dpi=180); fig.savefig(output/"recovery_comparison.svg"); plt.close(fig)
+    fig.savefig(output/"recovery_comparison.png",dpi=180,bbox_inches="tight",pad_inches=.16); fig.savefig(output/"recovery_comparison.svg",bbox_inches="tight",pad_inches=.16); plt.close(fig)
     fig,ax=plt.subplots(figsize=(8.5,4.7))
     for i,arm in enumerate(ARMS):
         rows=[r for r in data["trials"] if r["arm"]==arm and (r.get("metrics") or {}).get("eligible")]
@@ -155,7 +184,7 @@ def render(data,output):
             ax.text(i,48,"Not measured",ha="center",color="#64748b")
     ax.set(xticks=range(3),xticklabels=labels,ylim=(0,115),xlim=(-.5,2.5),ylabel="Valid confirmed order responses (%)",title=f"Observed business responses during the {horizon:g}-second horizon")
     ax.grid(axis="y",alpha=.2); ax.set_axisbelow(True); fig.tight_layout()
-    fig.savefig(output/"business_responses.png",dpi=180); fig.savefig(output/"business_responses.svg"); plt.close(fig)
+    fig.savefig(output/"business_responses.png",dpi=180,bbox_inches="tight",pad_inches=.16); fig.savefig(output/"business_responses.svg",bbox_inches="tight",pad_inches=.16); plt.close(fig)
 
 
 def main():

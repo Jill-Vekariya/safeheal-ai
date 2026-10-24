@@ -1,0 +1,210 @@
+[
+  {
+    "action": "restore_payment_replica",
+    "at": 1792868888.311798,
+    "code": "permitted",
+    "fingerprint": "3eff2b50bdf1e2f5b69c7d7434c1ad44faec81bf74551cbbab0e56b51b165571",
+    "mode": "autonomous",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "14655"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "9e6e1fbba85ff335250d50b9ac076248d3f5b8f0b958231198c071816486207e",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "at": 1792868888.3175762,
+    "code": "intent_durably_recorded",
+    "request_hash": "9e6e1fbba85ff335250d50b9ac076248d3f5b8f0b958231198c071816486207e",
+    "stage": "execution"
+  },
+  {
+    "at": 1792868888.382443,
+    "code": "api_acknowledged",
+    "request_hash": "9e6e1fbba85ff335250d50b9ac076248d3f5b8f0b958231198c071816486207e",
+    "stage": "execution"
+  },
+  {
+    "at": 1792868916.1112535,
+    "code": "recovery_verified",
+    "observations": [
+      {
+        "at": 1792868888.4396834,
+        "generation": 57,
+        "observed_generation": 56,
+        "ready": false
+      },
+      {
+        "at": 1792868889.5527427,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868890.6006353,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868891.6459348,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868892.6765873,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868893.7380114,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868894.7623355,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868896.336406,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868897.459466,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868898.7340288,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868899.9456618,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868901.1630414,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868902.2242417,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868903.2563927,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868904.293981,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868905.6412518,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868906.6692028,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868907.7592654,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868908.7981377,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868909.8866916,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868910.9135754,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868911.936103,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868912.9744532,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": false
+      },
+      {
+        "at": 1792868913.993479,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": true
+      },
+      {
+        "at": 1792868915.0132084,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": true
+      },
+      {
+        "at": 1792868916.0974407,
+        "generation": 57,
+        "observed_generation": 57,
+        "ready": true
+      }
+    ],
+    "request_hash": "9e6e1fbba85ff335250d50b9ac076248d3f5b8f0b958231198c071816486207e",
+    "stage": "verification"
+  }
+]

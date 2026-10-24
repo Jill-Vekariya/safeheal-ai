@@ -113,6 +113,26 @@ def test_profile_rejects_unbudgeted_or_extra_authority_fields(tmp_path):
         provider_profile(path)
 
 
+def test_explicit_keyless_loopback_profile_keeps_authority_fields_out(tmp_path):
+    from scripts.controlled_experiment import provider_profile
+    path=tmp_path/"provider.json"
+    path.write_text(json.dumps({"base_url":"http://127.0.0.1:11434/v1","model":"explicit-model",
+        "max_calls":5,"max_output_tokens":2048,"timeout_seconds":30,
+        "token_field":"max_tokens","api_key_file":""}))
+    provider,metadata=provider_profile(path)
+    assert provider.config.api_key=="" and provider.config.max_calls==5
+    assert "api_key_file" not in metadata and not metadata["credential_present"]
+
+
+def test_findings_use_the_recorded_horizon_instead_of_a_fixed_value():
+    from scripts.analyze_controlled import findings
+    rows=[{**row(),"arm":arm,"trial_id":arm,"metrics":metrics(row(end=92),[sample(3,False)],90)} for arm in ARMS]
+    data={"protocol":protocol(repeats=1,horizon=90),"summary":summarize(rows),
+          "bootstrap_paired_restricted_difference_95":None,"error_analysis":[]}
+    report=findings(data)
+    assert "90-second horizon, 1 matched blocks" in report and "45 seconds" not in report
+
+
 def test_raw_manifest_refuses_running_trials_and_overwrite(tmp_path):
     from scripts.finalize_controlled import finalize
     (tmp_path/"run.json").write_text(json.dumps({"completed":True}))
@@ -171,3 +191,59 @@ def test_chart_input_with_null_unrun_metrics_writes_empty_csv_fields(tmp_path,mo
     with (output/"trials.csv").open() as stream:
         records=list(csv.DictReader(stream))
     assert records[-1]["recovery_seconds"]=="" and records[-1]["restricted_seconds"]==""
+
+
+def test_real_call_analysis_separates_paired_times_usage_and_validated_output(tmp_path):
+    from scripts.analyze_controlled import analyze,findings
+    from scripts.finalize_controlled import finalize
+    (tmp_path/"protocol.json").write_text(json.dumps(protocol(repeats=1)))
+    (tmp_path/"run.json").write_text(json.dumps({"completed":True}))
+    for arm in ARMS:
+        folder=tmp_path/("d9-"+arm); folder.mkdir()
+        r={**row(),"arm":arm,"trial_id":folder.name}
+        at=7 if arm=="rule_policy" else 12
+        samples=[sample(3,False),sample(44,False)] if arm=="native" else [sample(3,False),sample(at-2),sample(at-1),sample(at)]
+        if arm=="ai_policy":
+            r.update(provider_calls=1,provider_usage={"input_tokens":10,"output_tokens":20},model_elapsed_seconds=4,
+                diagnosis={"source":"llm","provider_status":"validated","hypotheses":[{"service":"payment","classification":"endpoint_unavailable"}]})
+        r["metrics"]=metrics(r,samples,45)
+        (folder/"requests.jsonl").write_text("\n".join(json.dumps(s) for s in samples)+"\n")
+        (folder/"trial.json").write_text(json.dumps(r))
+    finalize(tmp_path)
+    data=analyze(tmp_path)
+    assert data["ai_paired_comparisons"]["rule_policy_minus_ai_policy"]["mean_seconds"]==-5
+    assert data["ai_paired_comparisons"]["native_minus_ai_policy"]["mean_seconds"]==35
+    assert data["reported_provider_usage"]=={"input_tokens":10,"output_tokens":20}
+    assert data["diagnostic_accuracy"]["target_matches"]==1
+    assert data["provider_status_counts"]=={"validated":1}
+    assert "AI-specific measurements" in findings(data)
+
+
+@pytest.mark.parametrize("count",[2,-1,True,None])
+def test_operator_cleanup_refuses_unexpected_replica_state(count):
+    from scripts.controlled_experiment import cleanup_state
+    baseline={"metadata":{"uid":"enrolled"},"spec":{"replicas":1,"template":{"image":"pinned"}}}
+    live=deepcopy(baseline); live["spec"]["replicas"]=count
+    with pytest.raises(RuntimeError,match="outside fixture"):
+        cleanup_state(baseline,live)
+
+
+@pytest.mark.parametrize("change",["uid","template"])
+def test_operator_cleanup_refuses_replaced_or_changed_target(change):
+    from scripts.controlled_experiment import cleanup_state
+    baseline={"metadata":{"uid":"enrolled"},"spec":{"replicas":1,"template":{"image":"pinned"}}}
+    live=deepcopy(baseline)
+    if change=="uid":
+        live["metadata"]["uid"]="replacement"
+    else:
+        live["spec"]["template"]["image"]="different"
+    with pytest.raises(RuntimeError,match="identity"):
+        cleanup_state(baseline,live)
+
+
+def test_operator_cleanup_accepts_only_the_enrolled_zero_or_one_fixture():
+    from scripts.controlled_experiment import cleanup_state
+    baseline={"metadata":{"uid":"enrolled"},"spec":{"replicas":1,"template":{"image":"pinned"}}}
+    assert cleanup_state(baseline,baseline)==1
+    live=deepcopy(baseline); live["spec"]["replicas"]=0
+    assert cleanup_state(baseline,live)==0

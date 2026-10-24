@@ -1,0 +1,29 @@
+{
+  "model": "qwen2.5:1.5b-instruct-q4_K_M",
+  "before": [
+    {
+      "name": "qwen2.5:1.5b-instruct-q4_K_M",
+      "model": "qwen2.5:1.5b-instruct-q4_K_M",
+      "size": 2128934338,
+      "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "1.5B",
+        "quantization_level": "Q4_K_M"
+      },
+      "expires_at": "2026-10-25T00:47:01.1774693+05:30",
+      "size_vram": 0,
+      "context_length": 32768,
+      "runner": "llamacpp"
+    }
+  ],
+  "after": [],
+  "stop_exit_code": 0,
+  "passed": true,
+  "scope": "Only the model installed and used for this study; weights and Ollama service preserved; after observation."
+}

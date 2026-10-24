@@ -1,10 +1,10 @@
 # SafeHeal AI — 10-day execution plan
 
-**Day 9 is PARTIAL as of 2026-10-24: verified completed gates remain 8/10 (80%).** Baseline study: five native trials censored at 45 s; five rule-policy trials recovered, mean 19.04 s. Raw data, charts, analysis and 19 tests completed; full suite 495 passed, 2 skipped. Five real-AI slots not run because the user-selected provider was not configured. Next: configure the local provider and run a fresh full matched cohort. See PROJECT_STATUS_Day9_Partial_2026-10-24.md. No Day 9 complete/90% claim.
+**25 October 2026: Days 1–9 complete (9/10); Day 10 local deliverables and verification prepared. Publication/current-release Actions pending repository-privacy authorization. Do not claim 100%.**
 
-**Current verified progress: Days 1–8 complete, 8/10 milestones (80%), 2026-10-24.** Day 8: exact-Git paired synthetic robustness cases 27/36 -> 36/36, no regressions; 74 new safety tests; full suite 476 passed, 2 skipped. No real-model quality or MTTR claim. Next: Day 9 matched controlled experiments; Day 10 finalization remains incomplete. GitHub publication/remote CI remain separate. See PROJECT_STATUS_Day8_2026-10-24.md.
+All 15 fresh local-model cohort slots ran; failures/censoring are retained and no AI advantage is claimed. Final report, reproducibility, architecture, demo and 20 interview answers are present. The current GitHub destination reports PUBLIC, unlike the earlier private instruction; no upload or visibility change was attempted.
 
-**Current verified progress: Days 1–7 complete, 7/10 gates (70%), 2026-10-24.** Day 7 passed both real Kubernetes recovery modes with independent policy, narrow RBAC/admission, dry-run/approval, audit and verification. Final suite: 402 passed, 2 skipped. Next: Day 8 robustness. Prior checkpoint counts below are historical. Publication/remote CI remain outstanding. See PROJECT_STATUS_Day7_2026-10-24.md.
+## Planning contract and historical context
 
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 

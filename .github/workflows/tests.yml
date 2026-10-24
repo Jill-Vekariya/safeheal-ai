@@ -21,7 +21,11 @@ jobs:
         run: python scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
       - name: Replay retained controlled experiment measurements
         run: python scripts/analyze_controlled.py evidence/day9/run-primary --output .local/day9-replay --no-plots
-      - name: Preserve Day 6 replay
+      - name: Replay configured local-model cohort
+        run: python scripts/analyze_controlled.py evidence/day9/run-local-20261025 --output .local/day9-local-replay --no-plots
+      - name: Verify final artifacts and read-only audit replay
+        run: python scripts/reproduce.py --output .local/final-replay
+      - name: Preserve diagnosis and experiment replays
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -30,6 +34,8 @@ jobs:
             .local/day6-replay.json
             .local/day8-paired/
             .local/day9-replay/
+            .local/day9-local-replay/
+            .local/final-replay/
           retention-days: 7
   kubernetes:
     runs-on: ubuntu-latest

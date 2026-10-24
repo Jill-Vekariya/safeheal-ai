@@ -1,0 +1,15 @@
+{
+  "full_analysis_sha256": "5f29e9660d282e5e963fe6f255a2d62b70cfbb792589a1884688e8237b3e8535",
+  "renderer_sha256": "efb0597573f03cb734714143f453fb6a67fbb2645d7a5eba30aa691bbd8f8f68",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "figures": {
+    "recovery_comparison.svg": "48831b2d6dd27dda1101095401918635f4e88271460514eef25d3a2375825244",
+    "recovery_comparison.png": "f604ab5dead10110c4d14113ddd54f673496bc2b18c544449dfc5a0192cbdb49",
+    "business_responses.svg": "b470e274ba649a86d435eaa78c9daa14f334d0a65e7a97b9b8c1bdbc7cb21d78",
+    "business_responses.png": "83282e3a505183ace30ed6e58ddfd32c547678ad064b4fbdc8a5039a3fc9f017"
+  },
+  "visually_reviewed": true,
+  "rendered_on": "Python 3.12 Linux primary runtime; numeric analysis replayed on canonical Windows host",
+  "layout_note": "Explicit timeout labels and tight export bounds; original raw data and numerical analysis unchanged."
+}

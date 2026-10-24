@@ -1,147 +1,85 @@
 # SafeHeal AI
 
-## Current Day 9 partial checkpoint — 2026-10-24
+An inspectable Kubernetes incident-response testbed that separates model diagnosis from recovery authority.
 
-**DAY 9 PARTIAL: controlled baseline study, raw data, charts and analysis completed; real AI-assisted cohort pending provider configuration. Completed milestones remain 8/10 (80%). Do not mark Day 9 complete.**
+SafeHeal observes a synthetic gateway → order → payment application, validates bounded evidence, and compares native behavior, a fixed symptom rule and real-model diagnosis. A separate deterministic controller permits only one enrolled action: restore the payment Deployment from desired replicas zero to one. The model receives no shell or Kubernetes credential.
 
-Ran five matched blocks in the isolated safeheal-day7 Kubernetes lab: five native-only and five fixed-rule-plus-independent-policy trials. Five planned AI slots are explicitly not_run because the user-selected provider profile was not configured; no mock/fallback/cloud model was substituted. Protocol, randomized arm order (seed 9), eight-second decision delay and 45-second horizon were recorded before injection.
+**Status — 25 October 2026:** Days 1–9 verified. Day 10 local implementation and validation are prepared; final publication and current-release GitHub Actions await a repository-privacy decision (9/10 gates). No AI advantage is claimed. See [project status](PROJECT_STATUS.md).
 
-Native: 0/5 recoveries within 45 seconds, all right-censored (actual recovery unknown). Rule-policy: 5/5 business recoveries, mean 19.0378 s, median 18.063 s. Mean matched difference in 45-second restricted time: 25.9622 s; this is not unrestricted MTTR improvement. One deliberately policy-addressable scale-zero fault on one cluster, n=5, shared caches/telemetry and closed-loop workload limit generalization. AI accuracy, benefit and monetary cost remain unmeasured.
+## Start with the evidence
 
-Retained 1,767 raw request completions, platform/Prometheus observations, trial records and policy audits; all 60 raw-file hashes and replayed metrics verified. All 80 forbidden API probes returned 403; five controller actions verified, ten attempted trials passed cleanup, five native fixtures restored only after measurement, and no trial executor token files remain. Two visually checked comparison charts are retained as PNG/SVG. No original Day 5-8 evidence was changed.
+| Material | What it establishes |
+|---|---|
+| [Research report](docs/RESEARCH_REPORT.md) | Question, methodology, results, threats to validity and future work |
+| [Original controlled findings](evidence/day9/analysis/FINDINGS.md) | Five native and five fixed-rule trials; explicit missing AI slots |
+| [Configured local-model findings](evidence/day9/analysis-local/FINDINGS.md) | Fifteen live trials including five actual local-provider attempts; failures remain explicit |
+| [Raw original cohort](evidence/day9/run-primary) | Request measurements, telemetry, audits and integrity manifest |
+| [Robustness evaluation](docs/AI_ROBUSTNESS.md) | Exact-source before/after synthetic failure handling; 27/36 → 36/36 development cases |
+| [Safe recovery contract](docs/SAFE_RECOVERY.md) | Allowlist, approval/dry-run modes, least privilege, claims and verification |
+| [Reproduction guide](docs/REPRODUCIBILITY.md) | Clean checkout, offline replay and guarded live lab commands |
+| [Four-minute demo](docs/DEMO.md) | A reviewable walkthrough with explicit limitations |
+| [Portfolio and interview preparation](docs/PORTFOLIO.md) | Evidence-based resume/SOP wording and 20 technical questions |
 
-Final full suite: 495 passed, 2 existing skips, 0 failed; one existing warning. Nineteen experiment/analysis tests include censoring, raw integrity, incomplete observations, provider/unsafe bridge handling and the null-unrun-metrics renderer regression. CI includes numerical replay; no remote CI run is claimed.
-
-Next: configure .local/day9/provider.json from the local example, with endpoint, model, credential file and capped request budget (at least five for the AI slots). Then run a new full matched cohort in a new directory; do not fill old slots out of order or pool cohorts silently. See PROJECT_STATUS_Day9_Partial_2026-10-24.md, docs/CONTROLLED_EXPERIMENTS.md and evidence/day9/analysis/FINDINGS.md. Branch day9-controlled-experiments is committed locally; no GitHub push/merge was performed.
-
-
-## Current Day 8 checkpoint — 2026-10-24
-
-**DAY 8 COMPLETE: documented AI failure handling and automated robustness acceptance passed. Overall milestones: 8/10 (80%). Next: Day 9 controlled experiments. The full project is not complete.** Previous checkpoint counts below are historical.
-
-Fixed paired development evaluation: **27/36 cases before -> 36/36 after; nine improved, zero regressions**. The runner exports exact Day 7 d10575a source and uses identical evaluator/cases for both arms, with source/hash verification. This is synthetic evidence and mocked-provider engineering acceptance, not real-model accuracy or MTTR improvement. Simulated calls for five duplicate notifications fell from five to one; stale notification calls fell from one to zero. No real-model call or cluster mutation occurred.
-
-Added actual-sample freshness, all-record normalized-schema/hash/support validation before model use, detached provider inputs, malformed-platform exclusion and secret-free unexpected-adapter fallback. Added durable local notification intake with strict event/time schema, repeated-ID/evidence deduplication across restarts/concurrent consumers, claim-before-call, collision/capacity checks, audit and fail-closed interrupted/persistence handling. Existing diagnosis outputs remain non-executable; Day 7 recovery code/policy is unchanged.
-
-Final Windows suite: **476 passed, 2 skipped, 0 failed**, one existing warning; **74 new robustness tests**, combined diagnosis-focused suite 123 passed. Existing symlink privilege and real-provider opt-in skips remain. Initial evaluator null-result bug and early reports are retained/described; both final paired arms use the corrected evaluator. Original Day 5/6/7 evidence is unchanged.
-
-Canonical local branch: day8-ai-robustness, based on d10575a79781eda91f942aef56ee5a90fa5e1aba. This milestone is committed locally; inspect git log for the final SHA. No Day 8 push, merge or remote CI is claimed. CI wiring includes full baseline history, paired evaluation and retained reports. See PROJECT_STATUS_Day8_2026-10-24.md, docs/AI_ROBUSTNESS.md and evidence/day8/acceptance.json. Prior GitHub publication/account-feature blockers remain separate.
+In the original 45-second baseline cohort, fixed-rule recovery succeeded in 5/5 trials (observed mean 19.04 s); native behavior did not recover within the horizon in 5/5 trials. Native actual recovery times are unknown. Desired replicas zero is valid Kubernetes state, so this fixture deliberately favors an explicit restore policy. It is not proof of generic crash-recovery improvement or an AI advantage.
 
 
-## Current Day 7 checkpoint — 2026-10-24
+The separate 90-second local-model cohort recorded rule recovery in 5/5 trials (mean 30.544 s), native 0/5 and AI arm 0/5. Provider outcomes: `{'provider_timeout': 5}`. Failed/fallback diagnoses did not authorize recovery. These results do not establish model diagnostic accuracy or general performance. The two cohorts are not pooled.
 
-**DAY 7 COMPLETE: independent safe autonomous recovery acceptance passed. Overall milestones: 7/10 (70%). Next: Day 8 robustness. The full project remains incomplete.** Earlier checkpoint counts below are historical and superseded.
+![Configured local-model cohort outcomes](evidence/day9/analysis-local/recovery_comparison.png)
 
-The immutable catalog permits only restoration of the enrolled safeheal-dev/payment Deployment from zero to one replica. A separate deterministic controller validates live UID/spec/generation and typed proposals; default dry-run, expiring single-use operator approval and explicitly opted-in autonomous modes are implemented. The model receives no shell, Kubernetes credential, approval/configuration authority or arbitrary execution interface. The dedicated token has named scale-only RBAC; fail-closed admission independently restricts replica values. Durable audit/claims, duplicate/single-flight protection, rate limits, no write retries and consecutive generation-aware readiness checks are enforced.
+## Offline review
 
-Final Windows suite: **402 passed, 2 skipped, 0 failed**, one existing warning; **65 new recovery tests**. Both actual Kubernetes acceptance trials passed in the separate safeheal-day7 lab: autonomous d7-autonomous-5ba20e9e0e and approval d7-approval-324fc2fcfe. Real-token forbidden calls returned 403; dry-run preserved zero, unapproved/replayed requests were denied, controller recovery and separate business checks passed, and no operator restoration was needed for either successful trial. All 27 retained audit events verified; accepted source manifests have zero mismatches. No real-model call or comparative MTTR claim.
-
-Four unsuccessful engineering live attempts and the initial fixture-test failure are retained/described. Original Day 5/6 evidence is unchanged. The original safeheal-dev node could not start because Windows blocks its reserved API port; it was preserved. The fresh pinned safeheal-day7 cluster uses only .local/day7/kubeconfig and kind-safeheal-day7 context, with the existing verified application image. No global Docker reset/default-context change.
-
-Local review branch: day7-safe-recovery, continuing canonical e8f2522. Changes are committed locally for this milestone; inspect actual git log for the final SHA. No Day 7 GitHub push, merge or remote CI was performed. The earlier publication blocker remains separate. See PROJECT_STATUS_Day7_2026-10-24.md, docs/SAFE_RECOVERY.md and evidence/day7/verification.json.
-
-
-An isolated research testbed for evidence-grounded AI diagnosis and policy-controlled recovery of distributed services.
-
-**Current scope:** Synthetic gateway/order/payment services, scoped Kubernetes deployment, Prometheus/Grafana observability, a deterministic incident detector, a reproducible three-scenario fault benchmark, and bounded evidence-grounded diagnosis with a configurable LLM provider. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for verified acceptance results. Policy-controlled remediation and matched approach comparisons remain future work. Real-model performance is unmeasured until explicit provider credentials and a call budget are configured.
-
-## Run on Windows
-
-From this folder with Python 3.12, Docker Desktop (Linux containers) and Docker Compose:
+Python 3.12 is the tested runtime. From a checked-out release:
 
 ```powershell
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.lock
 .\.venv\Scripts\python.exe -m pip install --no-deps -e .
 .\.venv\Scripts\python.exe -m pytest -q
-docker compose up --build -d --wait --wait-timeout 180
+.\.venv\Scripts\python.exe scripts/reproduce.py --output .local/reviewer-replay
+```
+
+On Linux/macOS use `.venv/bin/python`. Choose a new replay directory. Offline reproduction checks byte integrity, replays raw recovery metrics and reads audit chains without model calls or cluster access. Live data collection and figure rendering have separate dependencies and explicit commands in the [guide](docs/REPRODUCIBILITY.md). Default provider tests use mocks; real-provider integration is opt-in.
+
+## Run the application
+
+With Docker Desktop using Linux containers:
+
+```powershell
+docker compose up --build -d --wait
 .\.venv\Scripts\python.exe scripts/smoke.py
-docker compose ps
+docker compose down
 ```
 
-Linux/macOS: use `python3 -m venv .venv` and `.venv/bin/python` in place of the Windows Python path. Docker commands are the same.
+The gateway binds only to loopback `127.0.0.1:18080`. The synthetic application makes no real payment. Docker/Kubernetes resources for other projects are not managed by these commands.
 
-API: http://127.0.0.1:18080/docs. Gateway liveness: `/healthz`; full dependency readiness: `/readyz`. Only gateway is published, on loopback only. Order/payment remain on the Compose network.
+For a dedicated kind lab, follow [Kubernetes setup](docs/KUBERNETES.md). The guarded scripts always use project-specific kubeconfigs and context. Fault execution requires `--execute`; default recovery/experiment commands are read-only plans or preflight. The current Windows acceptance lab is separately named `safeheal-day7` because the original node's API port was blocked by Windows; no global Docker reset or default-context change was used.
 
-`POST /orders` accepts `{"item_id":"demo","quantity":2}`. The synthetic catalogue charges 1000 cents per item and creates a simulated payment receipt. No real payment, persistence or production authentication is provided. Requests create fresh IDs; POSTs are not retried because idempotency has not been implemented.
+## How authority is bounded
 
-For logs: `docker compose logs --tail 100`. To stop only this project's containers without deleting them: `docker compose stop`.
-
-## Run in Kubernetes (Day 2)
-
-From the same project directory:
-
-```powershell
-.\.venv\Scripts\python.exe scripts/k8s.py install-kind
-.\.venv\Scripts\python.exe scripts/k8s.py setup
-.\.venv\Scripts\python.exe scripts/k8s.py deploy
-.\.venv\Scripts\python.exe scripts/k8s.py verify
-.\.venv\Scripts\python.exe scripts/k8s.py recovery
-.\.venv\Scripts\python.exe scripts/k8s.py recovery --execute
+```mermaid
+flowchart TD
+  T["Telemetry"] --> V["Freshness, schema and support validation"]
+  V --> D["Read-only rule or model diagnosis"]
+  D --> B["One typed proposal"]
+  B --> C["Independent controller and durable journal"]
+  C --> K["Named scale-only RBAC and admission"]
+  K --> R["Readiness and business verification"]
 ```
 
-The last command deliberately stops the isolated payment container and verifies
-native recovery. Omit `--execute` for a dry run. It does not delete a Pod or perform
-a manual restart. Evidence is saved in `evidence/day2/`. Use
-`python scripts/k8s.py port-forward` to reach the Kubernetes gateway at
-http://127.0.0.1:18081/docs; the Compose gateway stays on 18080.
+The controller checks enrolled identity/spec and exact live state before one conditional zero-to-one write. Default dry-run, expiring approval and operator-enabled autonomous modes are independent of model output. Ambiguous writes block retry; duplicate/single-flight/rate limits and audit records persist. API-server admission restricts the executor identity separately from host controller checks. The model cannot approve itself, reset the journal, select commands or expand the allowlist.
 
-See [Kubernetes architecture and runbook](docs/KUBERNETES.md) for prerequisites,
-probe semantics, safeguards, troubleshooting, limitations, and interview concepts.
-The scripts always use a project-local kubeconfig and the dedicated `safeheal-dev`
-cluster/namespace. Applications have no Kubernetes API token or RoleBinding.
+## Repository map
 
-## Design and learning
+- `services/`: application, deterministic incident detection, bounded diagnosis and independent recovery.
+- `infrastructure/`: pinned kind/Kubernetes, observability, RBAC and admission policy.
+- `scripts/`: guarded operator harnesses, experiments, analysis and offline reproduction.
+- `tests/`: application, evidence, provider, recovery and failure-path checks.
+- `evidence/`: retained successful, failed, censored and unrun measurements.
+- `docs/`: operational contracts, research report, architecture context and reviewer materials.
 
-- Three processes expose partial failure and inter-service HTTP, unlike one in-process application.
-- Liveness answers whether a process responds; readiness checks its dependency chain. Dependency failures should not trigger liveness restart cascades.
-- Bounded HTTP timeouts prevent indefinite waits. The gateway has a longer timeout than the order service.
-- Integer cents avoid floating-point monetary arithmetic; all payments are synthetic.
-- Structured request logs propagate a correlation ID; basic OpenTelemetry spans link the gateway, order and payment calls.
-- Tests use HTTPX transport mocks for repeatable failure paths; a separate live smoke test exercises actual networking.
-- A shared app factory keeps Day 1 small; separate modules can follow when service behaviour grows.
+[Architecture](ARCHITECTURE.md) explains trust boundaries. [Roadmap](ROADMAP.md), [experiments](EXPERIMENTS.md) and [worklog](WORKLOG.md) preserve progress and engineering corrections. Historical handoffs describe their own checkpoints; current status supersedes their progress counts.
 
-Interview question: Why can restarting a healthy gateway make a payment outage worse? Explain cascading failure, readiness versus liveness, and retry amplification.
+## Limits
 
-## Research objective
-
-Compare native Kubernetes recovery, deterministic rule-based recovery and evidence-grounded LLM assistance under matched failures. No claim of AI superiority is made until measured. This is a portfolio/research project, not an admission guarantee.
-
-See ROADMAP.md, ARCHITECTURE.md, EXPERIMENTS.md and WORKLOG.md. The original user specification is retained in docs/MASTER_SPEC.txt.
-
-Official implementation references: https://fastapi.tiangolo.com/tutorial/testing/ and https://docs.docker.com/compose/how-tos/startup-order/.
-
-
-## Observability (Day 3)
-
-Prometheus metrics, correlated JSON logs, basic OpenTelemetry distributed spans and an
-8-panel provisioned Grafana dashboard are implemented. See [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md)
-for deployment, loopback access, the actual-traffic acceptance verifier and research limitations.
-The optional developer fault check uses the existing guarded payment-container-stop procedure.
-
-## Deterministic incident detector (Day 4)
-
-Run `python scripts/detect.py serve` in the project environment while the local Prometheus forward is active. The read-only API is at `http://127.0.0.1:18082/docs`; SQLite evidence defaults to `.local/incidents.sqlite3`. No LLM or cluster-write access is used. Rules, thresholds, lifecycle, correlation, bounded collection, tests and current acceptance limits are in [docs/INCIDENT_DETECTION.md](docs/INCIDENT_DETECTION.md).
-
-## Fault injection and benchmark harness (Day 5)
-
-```powershell
-.\.venv\Scripts\python.exe scripts/benchmark.py run
-.\.venv\Scripts\python.exe scripts/benchmark.py run --execute --backend kubernetes --repeats 2 --baseline-seconds 30
-```
-
-The first command prints the seeded plan without touching the cluster. After deploying the current image, the second executes two repetitions each of a payment process crash, HTTP 500 responses and bounded added latency. Every trial persists independent ground-truth labels, real HTTP samples, raw Prometheus observations, rule incidents, native recovery evidence and timestamped results under `evidence/day5/`. Failed attempts remain available; the run stops before injecting another fault after an unsuccessful trial.
-
-See [docs/BENCHMARKS.md](docs/BENCHMARKS.md) for prerequisites, exact workload and reset conditions, timestamp definitions, summaries and interpretation. The rule detector observes the experiments without executing recovery. Application fault expiration and native Kubernetes recovery have separate attribution.
-
-Initial acceptance passed in [CI39774736343](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/39774736343): six real Kubernetes trials, two per scenario, with stored raw evidence and verified final health. Read the [initial benchmark results](evidence/day5/README.md) for individual detection/recovery timings, recovery attribution, audit and limitations.
-
-
-## Evidence-grounded diagnosis (Day 6)
-
-```text
-python scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
-python scripts/diagnose.py incident --database .local/incidents.sqlite3 --incident-id INCIDENT_ID
-```
-
-The default provider is disabled, so these commands need no model credentials. Enable an explicit OpenAI-compatible endpoint/model and call budget only when intended. The agent accepts only grounded hypotheses with matching evidence IDs, adds uncertainty and conservative confidence handling, and falls back on provider failure. It exposes no recovery actions. [Provider setup, schema, limits and live-test instructions](docs/AI_DIAGNOSIS.md); [retained acceptance evidence](evidence/day6/README.md). Mocked and fallback replay passed all six stored trials; real-model performance remains unmeasured.
+This is a single-machine research prototype with a narrow action and small exploratory studies. It does not establish calibrated confidence, causal diagnosis, production reliability, general MTTR improvement or a safe-execution probability. Local administrators can rewrite audit files. Continuous-production rate limits across experimental episode resets are not measured. A model failure, abstention or policy denial remains a distinct outcome. Credentials and local kubeconfigs are ignored and must never be committed.

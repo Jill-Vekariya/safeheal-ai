@@ -75,6 +75,15 @@ def enroll(private, baseline):
     return KubernetesAPI(view["server"],cfg["ca_file"],cfg["token_file"])
 
 
+def cleanup_state(baseline, live):
+    """Refuse to call an externally changed replica count a clean fixture."""
+    lab.require(live["metadata"]["uid"]==baseline["metadata"]["uid"] and
+                template_digest(live)==template_digest(baseline),"Cleanup identity mismatch")
+    replicas=live["spec"].get("replicas")
+    lab.require(type(replicas) is int and replicas in (0,1),"Cleanup replica count outside fixture")
+    return replicas
+
+
 def trial(slot,plan,folder,backend,provider):
     folder.mkdir(parents=True,exist_ok=False)
     row = {**slot,"trial_id":folder.name,"attempted":False,"status":"not_run","provider_calls":0}
@@ -170,16 +179,18 @@ def trial(slot,plan,folder,backend,provider):
             if faulted:
                 try:
                     d=api.deployment()
-                    lab.require(d["metadata"]["uid"]==before["metadata"]["uid"] and template_digest(d)==template_digest(before),"Cleanup identity mismatch")
-                    if d["spec"]["replicas"]==0:
+                    if cleanup_state(before,d)==0:
                         patch=[{"op":"test","path":"/metadata/uid","value":before["metadata"]["uid"]},
                                {"op":"test","path":"/spec/replicas","value":0},{"op":"replace","path":"/spec/replicas","value":1}]
                         lab.kubectl("-n",lab.NAMESPACE,"patch","deployment","payment","--type=json","-p",json.dumps(patch))
                         row["operator_cleanup_restore"]=True
                     lab.kubectl("-n",lab.NAMESPACE,"rollout","status","deployment/payment","--timeout=120s",timeout=130)
                     lab.wait_for_service_routes(row,timeout=60)
+                    after=api.deployment()
+                    lab.require(cleanup_state(before,after)==1 and after.get("status",{}).get("readyReplicas")==1,
+                                "Cleanup did not confirm exactly one ready replica")
                     row["cleanup_passed"]=True
-                    platform.write({"at":lab.utc(),"elapsed":time.monotonic()-started,"deployment":api.deployment(),"phase":"after_measurement_cleanup"})
+                    platform.write({"at":lab.utc(),"elapsed":time.monotonic()-started,"deployment":after,"phase":"after_measurement_cleanup"})
                 except Exception as exc:
                     row.update(status="technical_failure",cleanup_passed=False,cleanup_error_type=type(exc).__name__)
                     raise
