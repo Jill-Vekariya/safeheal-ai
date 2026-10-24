@@ -1,0 +1,10 @@
+{
+  "block": 2,
+  "arm": "ai_policy",
+  "scenario": "payment_scale_zero",
+  "trial_id": "d9-04-ai_policy-4a8350",
+  "attempted": false,
+  "status": "not_run",
+  "provider_calls": 0,
+  "reason": "real_provider_not_configured"
+}

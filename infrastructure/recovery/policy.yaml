@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: safeheal-recovery
+  namespace: safeheal-dev
+  labels:
+    app.kubernetes.io/part-of: safeheal-ai
+automountServiceAccountToken: false
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: safeheal-recovery
+  namespace: safeheal-dev
+  labels:
+    app.kubernetes.io/part-of: safeheal-ai
+rules:
+  - apiGroups: [apps]
+    resources: [deployments]
+    resourceNames: [payment]
+    verbs: [get]
+  - apiGroups: [apps]
+    resources: [deployments/scale]
+    resourceNames: [payment]
+    verbs: [get, patch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: safeheal-recovery
+  namespace: safeheal-dev
+  labels:
+    app.kubernetes.io/part-of: safeheal-ai
+subjects:
+  - kind: ServiceAccount
+    name: safeheal-recovery
+    namespace: safeheal-dev
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: safeheal-recovery
+---
+# RBAC cannot constrain replica values. Admission independently restricts 0 -> 1.
+# Installation is operator-only, separate from the unprivileged controller.
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: safeheal-recovery-scale
+  labels:
+    app.kubernetes.io/part-of: safeheal-ai
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [apps]
+        apiVersions: [v1]
+        operations: [UPDATE]
+        resources: [deployments/scale]
+  matchConditions:
+    - name: recovery-identity
+      expression: "request.userInfo.username == 'system:serviceaccount:safeheal-dev:safeheal-recovery'"
+  validations:
+    - expression: "request.namespace == 'safeheal-dev' && object.metadata.name == 'payment' && oldObject != null && (!has(oldObject.spec.replicas) || oldObject.spec.replicas == 0) && object.spec.replicas == 1"
+      reason: Forbidden
+      message: "SafeHeal recovery permits only payment replicas 0 to 1 in safeheal-dev"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: safeheal-recovery-scale
+  labels:
+    app.kubernetes.io/part-of: safeheal-ai
+spec:
+  policyName: safeheal-recovery-scale
+  validationActions: [Deny]

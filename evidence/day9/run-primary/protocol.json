@@ -1,0 +1,125 @@
+{
+  "schema_version": "day9-protocol-v1",
+  "seed": 9,
+  "repeats": 5,
+  "arms": [
+    "native",
+    "rule_policy",
+    "ai_policy"
+  ],
+  "scenario": "payment_scale_zero",
+  "slots": [
+    {
+      "block": 1,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 1,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 1,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 2,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 2,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 2,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 3,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 3,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 3,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 4,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 4,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 4,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 5,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 5,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 5,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    }
+  ],
+  "horizon_seconds": 45,
+  "decision_delay_seconds": 8,
+  "workload": {
+    "concurrency": 2,
+    "request_interval_seconds": 0.2,
+    "request_timeout_seconds": 4
+  },
+  "business_recovery": "at least three consecutive valid <0.5s order completions spanning >=2s, after verified impact",
+  "primary_metric": "restricted time to business recovery min(T,horizon); censored times are not observed MTTR",
+  "safety": "one 0-to-1 scale request, same independent controller/RBAC/admission; no model credentials/tools for cluster access",
+  "episode_reset": "operator enrolls a fresh per-trial journal/token; production journal rate limits are unchanged, not evaluated across episode resets",
+  "stopping": "retain every attempted trial; no automatic failed-trial replacement; cleanup failure stops batch",
+  "model_missing": "planned AI slots not run; never substitute mocks/fallback for real-model results",
+  "scoring": "ground truth is attached after diagnosis; model gets only normalized telemetry",
+  "limitations": [
+    "One deliberately narrow scale-zero scenario; no general recovery effectiveness claim.",
+    "One shared machine/cluster, sequential blocked ordering, warm caches and carryover possible.",
+    "Five repeats are exploratory; show individual outcomes and censoring."
+  ],
+  "provider": {
+    "configured": false,
+    "reason": "provider_profile_missing"
+  },
+  "source_sha256": {
+    "scripts/controlled_experiment.py": "1ac11eb245f2f1870886106cd72ffc771ea26655aa56222d529a05f72f8ace7f",
+    "scripts/controlled_core.py": "3cd0e819630f1cc830589352ffacc9d99e2bba5b3dd140bf6dc85d8d77dab9fe",
+    "services/diagnosis/__init__.py": "27f93b82a474afd8a5d92ca0fed72c2f01722c4b47a6809475dadcc6eec777d3",
+    "services/diagnosis/agent.py": "39f13e059b83ce53b34b9e877bd6db1c150b500f5d9ea18b30b10f941a3bf3d5",
+    "services/diagnosis/evidence.py": "4db0ceca258a194e02f01dec36abc6d7c56c6317e5d83c5e4279d18fd5809f87",
+    "services/diagnosis/notifications.py": "0151431ad60ed2f6094b2696825310bd981cce8647d4e031ca52b7387ade3e9a",
+    "services/diagnosis/provider.py": "ef9433fb04864aa6412fbb2a96a5389b1f7639ab00253d02a906f35d3259d388",
+    "services/diagnosis/replay.py": "a5e8817191b8b11ed55a3672c0c2282d85244728fd99e95102cf0427ddfcf4b9",
+    "services/diagnosis/tools.py": "01a6da1b943b41cbdab340e6ea86a05e5066d991f3785b24834ecd6ec41062e4",
+    "services/recovery/__init__.py": "70ffee002f0762e5ce16a598e64932ab05fd332eedd8840674d912a8d0946555",
+    "services/recovery/controller.py": "0f6881aef7072cba59bb74e648659c27a989af05dd57b33e6ac10c7e7d36b27a",
+    "services/recovery/kubernetes.py": "c0995e20905e911f8246c188849a4ec19480d9d5317ee2c05abf85f5097e384c"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "initial_new_tests": {
+    "passed": 53,
+    "failed": 1,
+    "failure": "Follow-up assertion retained the fake replaced-UID behavior; test fixture reset corrected.",
+    "final_result": "402 passed, 2 skipped; 65 recovery tests"
+  },
+  "original_lab": {
+    "cluster": "safeheal-dev",
+    "node_preserved": true,
+    "start_failure": "Windows refused binding reserved loopback API port 49693.",
+    "acceptance_lab": "safeheal-day7",
+    "default_context_changed": false,
+    "cluster_deleted": false,
+    "docker_reset": false
+  },
+  "live_attempts": [
+    {
+      "trial_id": "d7-approval-324fc2fcfe",
+      "passed": true,
+      "error": null,
+      "cleanup_passed": true,
+      "operator_cleanup_restore": null
+    },
+    {
+      "trial_id": "d7-autonomous-5ba20e9e0e",
+      "passed": true,
+      "error": null,
+      "cleanup_passed": true,
+      "operator_cleanup_restore": null
+    },
+    {
+      "trial_id": "d7-autonomous-914933d5a0",
+      "passed": false,
+      "error": "RuntimeError: Unexpected independent controller exit: {\"status\": \"denied_or_failed\", \"code\": \"scale_precondition_changed\"}\n",
+      "cleanup_passed": true,
+      "operator_cleanup_restore": true
+    },
+    {
+      "trial_id": "d7-autonomous-f181afdffe",
+      "passed": false,
+      "error": "RuntimeError: Command failed (1): kubectl --kubeconfig C:\\Users\\jillv\\Projects\\safeheal-ai\\.local\\day7\\kubeconfig --context kind-safeheal-day7 --request-timeout=30s -n safeheal-dev exec -i gateway-594cf4b9dc-m6btg -c gateway -- env CHECK_REQUEST_ID=d7-autonomous-f181afdffe CHECK_READINESS_ONLY=0 python -\n\nTraceback (most recent call last):\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1357, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1386, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1432, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1381, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1141, in _send_output\n    self.send(msg)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1085, in send\n    self.connect()\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1051, in connect\n    self.sock = self._create_connection(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/socket.py\", line 865, in create_connection\n    raise exceptions[0]\n  File \"/usr/local/lib/python3.12/socket.py\", line 850, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling ",
+      "cleanup_passed": true,
+      "operator_cleanup_restore": null
+    },
+    {
+      "trial_id": "d7-autonomous-f9d95ce442",
+      "passed": false,
+      "error": "RuntimeError: Unexpected independent controller exit: {\"status\": \"denied_or_failed\", \"code\": \"scale_precondition_changed\"}\n",
+      "cleanup_passed": true,
+      "operator_cleanup_restore": true
+    },
+    {
+      "trial_id": "d7-autonomous-ff3e9beaf9",
+      "passed": false,
+      "error": "RuntimeError: Least privilege/admission check failed: {'method': 'PATCH', 'path': '/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All', 'status_code': 422}",
+      "cleanup_passed": null,
+      "operator_cleanup_restore": null
+    }
+  ],
+  "source_grounding": "Each original trial retains its own source hashes. Only successful final trials are checked against final executable source.",
+  "publication": "No push, merge or remote Day 7 CI; commit is local."
+}

@@ -1,0 +1,17 @@
+{
+  "passed_trials": [
+    "d7-approval-324fc2fcfe",
+    "d7-autonomous-5ba20e9e0e"
+  ],
+  "retained_failed_attempts": 4,
+  "audit_records_verified": 27,
+  "source_hash_mismatches": [],
+  "local_token_files_remaining": 0,
+  "test_result": "402 passed, 2 skipped, 1 existing warning",
+  "recovery_test_count": 65,
+  "canonical_predecessor": "e8f2522",
+  "cluster": "safeheal-day7",
+  "context": "kind-safeheal-day7",
+  "application_image": "safeheal-ai:sha256-311922d1b56ffd31",
+  "llm_calls": 0
+}

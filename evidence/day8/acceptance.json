@@ -1,0 +1,71 @@
+{
+  "schema_version": "day8-acceptance-v1",
+  "passed": true,
+  "baseline_commit": "d10575a79781eda91f942aef56ee5a90fa5e1aba",
+  "paired_before": {
+    "attempted": 36,
+    "passed": 27,
+    "failed": 9,
+    "real_llm_calls": 0
+  },
+  "paired_after": {
+    "attempted": 36,
+    "passed": 36,
+    "failed": 0,
+    "real_llm_calls": 0
+  },
+  "improved_cases": [
+    "stale_samples_fresh_envelope",
+    "malformed_platform_shape",
+    "tampered_uncited_record",
+    "injected_normalized_prose",
+    "provider_mutates_input",
+    "unexpected_provider_exception",
+    "repeated_notification",
+    "different_ids_same_evidence",
+    "stale_notification"
+  ],
+  "regressed_cases": [],
+  "identical_evaluator": true,
+  "identical_cases": true,
+  "baseline_source_verified": true,
+  "source_hash_mismatches": [],
+  "tests": {
+    "passed": 476,
+    "skipped": 2,
+    "failed": 0,
+    "new_robustness_tests": 74,
+    "diagnosis_focused_passed": 123
+  },
+  "original_day5_day6_day7_evidence_unchanged": true,
+  "real_llm_calls": 0,
+  "cluster_writes": 0,
+  "source_sha256": {
+    "services/diagnosis/__init__.py": "27f93b82a474afd8a5d92ca0fed72c2f01722c4b47a6809475dadcc6eec777d3",
+    "services/diagnosis/agent.py": "39f13e059b83ce53b34b9e877bd6db1c150b500f5d9ea18b30b10f941a3bf3d5",
+    "services/diagnosis/evidence.py": "4db0ceca258a194e02f01dec36abc6d7c56c6317e5d83c5e4279d18fd5809f87",
+    "services/diagnosis/notifications.py": "0151431ad60ed2f6094b2696825310bd981cce8647d4e031ca52b7387ade3e9a",
+    "services/diagnosis/provider.py": "ef9433fb04864aa6412fbb2a96a5389b1f7639ab00253d02a906f35d3259d388",
+    "services/diagnosis/replay.py": "a5e8817191b8b11ed55a3672c0c2282d85244728fd99e95102cf0427ddfcf4b9",
+    "services/diagnosis/tools.py": "01a6da1b943b41cbdab340e6ea86a05e5066d991f3785b24834ecd6ec41062e4",
+    "scripts/diagnose.py": "ad887db537c817e44235dbad92c3c561d542accbe48a5c4bba45446eced336f0",
+    "scripts/evaluate_robustness.py": "d4ca730d390da2fa19a7212441c2835ca0dcf10bcadd68fe12153eb084ca199f",
+    "scripts/compare_robustness.py": "b07de147426fb70877fe071c88a17c51ebf5504dea9a73824312b789720f799c",
+    "tests/test_diagnosis_robustness.py": "d00a741b66fdd484318b8ebd6874da56b545695639a01984bd41660527b36beb",
+    ".github/workflows/tests.yml": "7a88c26f4b633c34836724e19c444c64f0c18731811e4660eaece78331afb6d2",
+    ".gitattributes": "eadc78f1cc61c5bd3a4d615ea07e7813d627659259553704d5966a72765edb35"
+  },
+  "evidence_sha256": {
+    "evidence/day8/after-initial.json": "5f1b329313442ab127fdbfd5f4c2a68325b4ed21e6cdb50a89b82a013d243395",
+    "evidence/day8/before.json": "cd254cfd00c5e992ba8d489a89d669dbb05a5eb8a7a373ea315bc98416d86b7b",
+    "evidence/day8/diagnosis-tests.txt": "8fc5a1e533cf9dbe6e83ba90947b6fbea16308d9a4e893eba8b3395fe6587dce",
+    "evidence/day8/engineering-notes.json": "462d50922e638ba7a70928bf0c6fec1943322f9f6cb7147452270877cd36b6e4",
+    "evidence/day8/evaluator-null-fix.py": "2df8005a70d3b528d132ba1d24e22f79c8a7cd59637cb2c8c36ed3024e419102",
+    "evidence/day8/evaluator-original.py": "210f6f7d023f0f78bf1a4f04d41f71da54945c680d2e381efe9604f71d2df7c8",
+    "evidence/day8/initial-robustness-tests.txt": "9f91767a4f9e3641807a07c29da68722cdecf6ecc444e16123121320fe9d80ef",
+    "evidence/day8/paired/after.json": "509f70cdbb8085a2b2eea1b0aea0c543b518ed7b569db4a2c9227a4caf94c07e",
+    "evidence/day8/paired/before.json": "8320cbfd69f7f833025ac57b670f88f9cdb8a85d4dde4dcb005e19cee656cc13",
+    "evidence/day8/paired/comparison.json": "5dc6866616249729b65383327affac907fb607af8a02389778c0906bc4c0287e",
+    "evidence/day8/windows-tests.txt": "cda7921b83459af49389e2b3bd4b9d575e8161127dc0758444b1de8e888c2e18"
+  }
+}

@@ -1,0 +1,40 @@
+# Preserve Day 7 executable hashes and raw trial evidence across checkouts.
+services/recovery/*.py text eol=lf
+scripts/recover.py text eol=lf
+scripts/verify_recovery.py text eol=lf
+infrastructure/recovery/*.yaml text eol=lf
+tests/test_safe_recovery.py text eol=lf
+evidence/day7/** -text
+
+# Day 8 source and retained paired reports.
+services/diagnosis/*.py text eol=lf
+scripts/diagnose.py text eol=lf
+scripts/evaluate_robustness.py text eol=lf
+scripts/compare_robustness.py text eol=lf
+tests/test_diagnosis_robustness.py text eol=lf
+evidence/day8/** -text
+
+# Controlled experiment measurements and source hashes.
+scripts/controlled_core.py text eol=lf
+scripts/controlled_experiment.py text eol=lf
+scripts/analyze_controlled.py text eol=lf
+scripts/finalize_controlled.py text eol=lf
+tests/test_controlled_experiments.py text eol=lf
+evidence/day9/** -text -whitespace
+
+# Final reproduction sources and immutable verification artifacts.
+scripts/reproduce.py text eol=lf
+tests/test_reproduce.py text eol=lf
+README.md text eol=lf
+ARCHITECTURE.md text eol=lf
+docs/RESEARCH_REPORT.md text eol=lf
+docs/RELATED_WORK.md text eol=lf
+docs/DEMO.md text eol=lf
+docs/PORTFOLIO.md text eol=lf
+docs/REPRODUCIBILITY.md text eol=lf
+evidence/final/** -text -whitespace
+docs/OPERATIONS_CHECKLIST.md text eol=lf
+docs/CONTROLLED_EXPERIMENTS.md text eol=lf
+examples/*.json text eol=lf
+tests/test_recovery_bootstrap.py text eol=lf
+docs/SAFE_RECOVERY.md text eol=lf

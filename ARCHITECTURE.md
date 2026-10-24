@@ -1,49 +1,54 @@
-# Architecture
+# SafeHeal AI architecture
 
-## Implemented application data plane
+## Application data plane
 
-The gateway forwards validated orders to the order service. The order service creates an order ID, calculates a fixed synthetic price, calls payment and verifies the returned receipt. The payment service issues a simulated receipt. Each runs in its own container using the same app factory selected with SERVICE_ROLE.
+The gateway validates a synthetic order, the order service calculates its value, and payment returns a simulated receipt. The order service validates the receipt before returning a confirmed result. Services run independently from one shared app factory. HTTP POST operations have no automatic retries. Request IDs correlate JSON logs; they are not authenticated identities. Orders and payments are synthetic and not durably persisted.
 
-HTTP POST operations have no retries. Order/payment data is not persisted. A request ID is propagated in headers and JSON request logs. These IDs are correlation identifiers, not authenticated caller identities.
+```mermaid
+flowchart TD
+  C["Closed-loop workload"] --> G["Gateway"]
+  G --> O["Order"]
+  O --> P["Payment"]
+  G --> M["Prometheus"]
+  O --> M
+  P --> M
+```
 
-## Planned control plane (not implemented)
+Each service is a one-replica Deployment behind a ClusterIP Service in `safeheal-dev`. CoreDNS provides names; probes and native Kubernetes controllers manage ordinary container/Pod lifecycle. The local kind node shares control-plane and workloads on one developer machine. This is not node-level high availability. Workloads use non-root execution, dropped capabilities, read-only roots, resource bounds and no automatic API token. No public ingress or network-policy enforcement is claimed.
 
-Telemetry collectors -> deterministic incident detection -> bounded evidence aggregation -> rule or LLM diagnosis -> independent policy validation -> typed recovery executor -> health verification -> incident history.
+## Evidence and diagnosis
 
-The control plane will be separate from the monitored application. No model will receive arbitrary shell execution or unrestricted Kubernetes credentials. Policies will enforce an action allowlist, namespace/target scope, approval mode, rate limits, duplicate suppression and audit records.
+Prometheus supplies bounded request/error/latency and scrape-availability samples. The deterministic detector tracks incident transitions and stores timestamps/evidence in SQLite. Read-only diagnosis tools use fixed queries. Aggregation validates actual sample freshness, supported normalized fields and content-addressed record references. Arbitrary log prose and labels are not passed as instructions.
 
-## Trade-offs
+The bounded OpenAI-compatible provider returns only hypotheses over fixed service/class choices. The validator rejects unknown fields, unsupported references, invalid confidence and unsafe proposals. Confidence is capped and remains uncalibrated. Provider timeouts/outages and invalid evidence yield documented abstention or low-confidence fallback. Durable notification claims suppress repeated IDs/evidence and fail closed after ambiguous interrupted work.
 
-Compose proves the application baseline before Kubernetes adds orchestration complexity. A shared service factory reduces boilerplate; services remain independently deployed. Recursive readiness is suitable for this small dependency chain but can amplify probes in a larger graph, where cached/local readiness decisions should be evaluated.
+## Authority and recovery
 
-Day 2 adds a dedicated kind cluster, Kubernetes Deployments/Services/probes, and a guarded native container recovery demonstration. An incident detector, AI agent and policy-controlled executor remain separate acceptance gates.
+```mermaid
+flowchart TD
+  E["Validated normalized evidence"] --> D["Read-only model or rule diagnosis"]
+  D --> B["Fixed typed proposal bridge"]
+  B --> C["Independent controller"]
+  OP["Trusted operator enrollment and mode"] --> C
+  C --> K["Named Kubernetes scale endpoint"]
+  K --> V["Fail-closed admission policy"]
+  V --> P["Enrolled payment: zero to one"]
+  C --> A["Claims, approvals and audit"]
+  P --> H["Generation-aware readiness and separate order verification"]
+```
 
+The immutable recovery catalog contains one action, `restore_payment_replica`. The independent controller pins Deployment UID/template, verifies ownership and live desired-zero state, and atomically tests identity/version/scale spec before adding replicas one. A separate short-lived executor token has named-resource scale-only permissions. API-server admission independently restricts the dedicated service account's allowed transition. The model has no token, shell, kubeconfig, approval authority or recovery executor.
 
-## Kubernetes orchestration
+Dry-run is default. Operator approval expires, binds the request/spec/generation and is single-use. Autonomous mode requires trusted operator opt-in. Journal claims precede writes; duplicate, single-flight, cooldown and hourly limits persist per journal. A running/uncertain write blocks future execution instead of being retried. Three consecutive exact-generation readiness observations verify controller success. The operator harness separately verifies Service routing and real confirmed orders.
 
-Each service has one Deployment and a ClusterIP Service in `safeheal-dev`.
-CoreDNS provides service names; the kubelet manages container lifecycle and probes.
-Deployment/ReplicaSet controllers maintain Pod count, while the kubelet restarts
-containers within existing Pods under `restartPolicy: Always`.
+## Experiment boundary
 
-The single kind node shares control-plane and application workloads on the developer
-machine. It demonstrates real process and HTTP boundaries but not node-level high
-availability. Each workload has resource requests/limits, a non-root user, dropped
-capabilities, read-only root filesystem, bounded temporary storage and no API token.
-No network policy enforcement or public ingress is configured.
+The trusted lab harness has administrative credentials to introduce a recorded fixture and clean it up after measurement. It is never a model tool. Every trial uses a fresh operator-enrolled journal/token and retains its audit. Rate-limit behavior across these episode resets is not evaluated. Cleanup is excluded from recovery metrics. Native reconciliation, fixed-rule decisions and genuine model diagnosis are separate arms; fallback cannot count as model success.
 
-[Day 2 architecture, diagram, deployment and recovery runbook](docs/KUBERNETES.md)
-contains the full implementation, exact commands and limitations.
+Raw business measurements, telemetry, platform observations, trial records and hash manifests support offline replay. Censored times remain unknown beyond the horizon. Shared-host contention, closed-loop throughput, carryover and a single scale-zero scenario limit conclusions.
 
+## Trust assumptions and limits
 
-## Observability extension
+The OS operator, provider endpoint configuration, enrollment files and fixture harness are trusted. Admission/RBAC do not protect against the cluster administrator changing policy. Audit chaining detects corruption but an OS administrator can rewrite local records. No production multi-user isolation, remote tamper-proof service, causal root-cause proof or general autonomous remediation is established.
 
-Each service exposes bounded request/status counters and duration histograms to a local
-Prometheus instance. Grafana queries Prometheus through a provisioned datasource. W3C trace
-context links manual OpenTelemetry server/client spans, exported as JSON container logs.
-Request logs carry the same request, trace and span IDs. No external telemetry sink or model
-call is involved. See docs/OBSERVABILITY.md for precise semantics, resource limits and verification.
-
-## Day 4 detector boundary
-
-The standalone incident service reads only three fixed Prometheus matrix queries. Pure deterministic verdicts feed a transactional SQLite lifecycle and rule-based diagnosis controller. A loopback-only GET API exposes incidents and evidence. This service cannot execute recovery or access Kubernetes credentials. Fixed dependency topology can correlate upstream server errors with a suspected downstream outage while preserving both evidence references. See docs/INCIDENT_DETECTION.md.
+See [safe recovery](docs/SAFE_RECOVERY.md), [robustness](docs/AI_ROBUSTNESS.md), [experiments](docs/CONTROLLED_EXPERIMENTS.md) and the [research report](docs/RESEARCH_REPORT.md) for exact contracts and retained limitations.

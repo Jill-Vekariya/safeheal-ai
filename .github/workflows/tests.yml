@@ -2,25 +2,43 @@ name: tests
 on: [push, pull_request]
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements.lock
       - run: python -m pip install --no-deps -e .
       - run: python -m pytest -q
+      - name: Compare fixed robustness cases against exact Day 7 source
+        run: python scripts/compare_robustness.py --output-dir .local/day8-paired
       - name: Replay retained benchmark with read-only diagnosis fallback
         run: python scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
-      - name: Preserve Day 6 replay
+      - name: Replay retained controlled experiment measurements
+        run: python scripts/analyze_controlled.py evidence/day9/run-primary --output .local/day9-replay --no-plots
+      - name: Replay configured local-model cohort
+        run: python scripts/analyze_controlled.py evidence/day9/run-local-20261025 --output .local/day9-local-replay --no-plots
+      - name: Verify final artifacts and read-only audit replay
+        run: python scripts/reproduce.py --output .local/final-replay
+      - name: Preserve diagnosis and experiment replays
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: day6-diagnosis-replay
-          path: .local/day6-replay.json
+          path: |
+            .local/day6-replay.json
+            .local/day8-paired/
+            .local/day9-replay/
+            .local/day9-local-replay/
+            .local/final-replay/
           retention-days: 7
   kubernetes:
     runs-on: ubuntu-latest
@@ -46,6 +64,11 @@ jobs:
         run: |
           python scripts/k8s.py recovery
           python scripts/k8s.py recovery --execute
+      - name: Verify independent allowlisted recovery and approval gates
+        run: |
+          python scripts/verify_recovery.py
+          python scripts/verify_recovery.py --execute --mode autonomous
+          python scripts/verify_recovery.py --execute --mode approval
       - name: Deploy observability and verify actual traffic, dashboards and traces
         run: |
           python scripts/observe.py deploy
@@ -71,4 +94,5 @@ jobs:
             evidence/day3/
             evidence/day4/
             evidence/day5/
+            evidence/day7/
           retention-days: 7

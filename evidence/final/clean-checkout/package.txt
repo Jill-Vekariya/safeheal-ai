@@ -1,0 +1,20 @@
+Obtaining file:///C:/Users/jillv/Projects/safeheal-ai/.local/day10-clean-20261025
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: safeheal-ai
+  Building editable for safeheal-ai (pyproject.toml): started
+  Building editable for safeheal-ai (pyproject.toml): finished with status 'done'
+  Created wheel for safeheal-ai: filename=safeheal_ai-0.1.0-0.editable-py3-none-any.whl size=2903 sha256=ee1a3bf7fe28364820df28b249750748e3e054fc4ac6491e975cb49bd3e3c9ac
+  Stored in directory: C:\Users\jillv\AppData\Local\Temp\pip-ephem-wheel-cache-2n15cmfx\wheels\57\b0\f7\e4c961e86ae6e0f3cf509ca1232cd4afb4d03e8506f322a162
+Successfully built safeheal-ai
+Installing collected packages: safeheal-ai
+Successfully installed safeheal-ai-0.1.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.2
+[notice] To update, run: C:\Users\jillv\Projects\safeheal-ai\.local\day10-clean-20261025\.venv\Scripts\python.exe -m pip install --upgrade pip

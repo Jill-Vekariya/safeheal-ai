@@ -1,0 +1,2046 @@
+{
+  "at": 1792864685.8112283,
+  "services": {
+    "gateway": {
+      "up": true,
+      "up_at": 1792864681.577,
+      "requests": 10.0,
+      "errors": 10.0,
+      "p95": null,
+      "metrics_at": 1792864681.577,
+      "problems": []
+    },
+    "order": {
+      "up": true,
+      "up_at": 1792864685.222,
+      "requests": 20.0,
+      "errors": 20.0,
+      "p95": 2.6666666666666665,
+      "metrics_at": 1792864685.222,
+      "problems": []
+    },
+    "payment": {
+      "up": false,
+      "up_at": 1792864682.669,
+      "requests": null,
+      "errors": null,
+      "p95": null,
+      "metrics_at": null,
+      "problems": []
+    }
+  },
+  "raw": {
+    "up": {
+      "status": "success",
+      "data": {
+        "resultType": "matrix",
+        "result": [
+          {
+            "metric": {
+              "__name__": "up",
+              "instance": "gateway:8000",
+              "job": "safeheal"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "1"
+              ],
+              [
+                1792864666.581,
+                "1"
+              ],
+              [
+                1792864671.581,
+                "1"
+              ],
+              [
+                1792864676.581,
+                "1"
+              ],
+              [
+                1792864681.577,
+                "1"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "up",
+              "instance": "order:8000",
+              "job": "safeheal"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "1"
+              ],
+              [
+                1792864670.227,
+                "1"
+              ],
+              [
+                1792864675.226,
+                "1"
+              ],
+              [
+                1792864680.222,
+                "1"
+              ],
+              [
+                1792864685.222,
+                "1"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "up",
+              "instance": "payment:8000",
+              "job": "safeheal"
+            },
+            "values": [
+              [
+                1792864662.674,
+                "0"
+              ],
+              [
+                1792864667.674,
+                "0"
+              ],
+              [
+                1792864672.674,
+                "1"
+              ],
+              [
+                1792864677.674,
+                "1"
+              ],
+              [
+                1792864682.669,
+                "0"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "requests": {
+      "status": "success",
+      "data": {
+        "resultType": "matrix",
+        "result": [
+          {
+            "metric": {
+              "__name__": "safeheal_http_requests_total",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_requests_total",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "30"
+              ],
+              [
+                1792864666.581,
+                "30"
+              ],
+              [
+                1792864671.581,
+                "30"
+              ],
+              [
+                1792864676.581,
+                "30"
+              ],
+              [
+                1792864681.577,
+                "40"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_requests_total",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_requests_total",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "30"
+              ],
+              [
+                1792864670.227,
+                "30"
+              ],
+              [
+                1792864675.226,
+                "30"
+              ],
+              [
+                1792864680.222,
+                "40"
+              ],
+              [
+                1792864685.222,
+                "50"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "buckets": {
+      "status": "success",
+      "data": {
+        "resultType": "matrix",
+        "result": [
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "+Inf",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "+Inf",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "30"
+              ],
+              [
+                1792864666.581,
+                "30"
+              ],
+              [
+                1792864671.581,
+                "30"
+              ],
+              [
+                1792864676.581,
+                "30"
+              ],
+              [
+                1792864681.577,
+                "40"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.005",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "0"
+              ],
+              [
+                1792864666.581,
+                "0"
+              ],
+              [
+                1792864671.581,
+                "0"
+              ],
+              [
+                1792864676.581,
+                "0"
+              ],
+              [
+                1792864681.577,
+                "0"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.005",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "0"
+              ],
+              [
+                1792864666.581,
+                "0"
+              ],
+              [
+                1792864671.581,
+                "0"
+              ],
+              [
+                1792864676.581,
+                "0"
+              ],
+              [
+                1792864681.577,
+                "0"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.01",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "0"
+              ],
+              [
+                1792864666.581,
+                "0"
+              ],
+              [
+                1792864671.581,
+                "0"
+              ],
+              [
+                1792864676.581,
+                "0"
+              ],
+              [
+                1792864681.577,
+                "0"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.01",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "3"
+              ],
+              [
+                1792864666.581,
+                "3"
+              ],
+              [
+                1792864671.581,
+                "3"
+              ],
+              [
+                1792864676.581,
+                "3"
+              ],
+              [
+                1792864681.577,
+                "3"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.025",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "6"
+              ],
+              [
+                1792864666.581,
+                "6"
+              ],
+              [
+                1792864671.581,
+                "6"
+              ],
+              [
+                1792864676.581,
+                "6"
+              ],
+              [
+                1792864681.577,
+                "6"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.025",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "17"
+              ],
+              [
+                1792864666.581,
+                "17"
+              ],
+              [
+                1792864671.581,
+                "17"
+              ],
+              [
+                1792864676.581,
+                "17"
+              ],
+              [
+                1792864681.577,
+                "22"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.05",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "10"
+              ],
+              [
+                1792864666.581,
+                "10"
+              ],
+              [
+                1792864671.581,
+                "10"
+              ],
+              [
+                1792864676.581,
+                "10"
+              ],
+              [
+                1792864681.577,
+                "10"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.05",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "20"
+              ],
+              [
+                1792864666.581,
+                "20"
+              ],
+              [
+                1792864671.581,
+                "20"
+              ],
+              [
+                1792864676.581,
+                "20"
+              ],
+              [
+                1792864681.577,
+                "28"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.1",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.1",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "21"
+              ],
+              [
+                1792864666.581,
+                "21"
+              ],
+              [
+                1792864671.581,
+                "21"
+              ],
+              [
+                1792864676.581,
+                "21"
+              ],
+              [
+                1792864681.577,
+                "31"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.25",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.25",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "22"
+              ],
+              [
+                1792864666.581,
+                "22"
+              ],
+              [
+                1792864671.581,
+                "22"
+              ],
+              [
+                1792864676.581,
+                "22"
+              ],
+              [
+                1792864681.577,
+                "32"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.5",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "0.5",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "22"
+              ],
+              [
+                1792864666.581,
+                "22"
+              ],
+              [
+                1792864671.581,
+                "22"
+              ],
+              [
+                1792864676.581,
+                "22"
+              ],
+              [
+                1792864681.577,
+                "32"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "1.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "1.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "22"
+              ],
+              [
+                1792864666.581,
+                "22"
+              ],
+              [
+                1792864671.581,
+                "22"
+              ],
+              [
+                1792864676.581,
+                "22"
+              ],
+              [
+                1792864681.577,
+                "32"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "10.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "10.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "30"
+              ],
+              [
+                1792864666.581,
+                "30"
+              ],
+              [
+                1792864671.581,
+                "30"
+              ],
+              [
+                1792864676.581,
+                "30"
+              ],
+              [
+                1792864681.577,
+                "40"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "2.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "2.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "24"
+              ],
+              [
+                1792864666.581,
+                "24"
+              ],
+              [
+                1792864671.581,
+                "24"
+              ],
+              [
+                1792864676.581,
+                "24"
+              ],
+              [
+                1792864681.577,
+                "34"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "3.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "3.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "30"
+              ],
+              [
+                1792864666.581,
+                "30"
+              ],
+              [
+                1792864671.581,
+                "30"
+              ],
+              [
+                1792864676.581,
+                "30"
+              ],
+              [
+                1792864681.577,
+                "40"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "5.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "11"
+              ],
+              [
+                1792864666.581,
+                "11"
+              ],
+              [
+                1792864671.581,
+                "11"
+              ],
+              [
+                1792864676.581,
+                "11"
+              ],
+              [
+                1792864681.577,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "gateway:8000",
+              "job": "safeheal",
+              "le": "5.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "gateway",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864661.582,
+                "30"
+              ],
+              [
+                1792864666.581,
+                "30"
+              ],
+              [
+                1792864671.581,
+                "30"
+              ],
+              [
+                1792864676.581,
+                "30"
+              ],
+              [
+                1792864681.577,
+                "40"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "+Inf",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "+Inf",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "30"
+              ],
+              [
+                1792864670.227,
+                "30"
+              ],
+              [
+                1792864675.226,
+                "30"
+              ],
+              [
+                1792864680.222,
+                "40"
+              ],
+              [
+                1792864685.222,
+                "50"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.005",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "0"
+              ],
+              [
+                1792864670.227,
+                "0"
+              ],
+              [
+                1792864675.226,
+                "0"
+              ],
+              [
+                1792864680.222,
+                "0"
+              ],
+              [
+                1792864685.222,
+                "0"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.005",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "3"
+              ],
+              [
+                1792864670.227,
+                "3"
+              ],
+              [
+                1792864675.226,
+                "3"
+              ],
+              [
+                1792864680.222,
+                "3"
+              ],
+              [
+                1792864685.222,
+                "3"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.01",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "4"
+              ],
+              [
+                1792864670.227,
+                "4"
+              ],
+              [
+                1792864675.226,
+                "4"
+              ],
+              [
+                1792864680.222,
+                "4"
+              ],
+              [
+                1792864685.222,
+                "4"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.01",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "16"
+              ],
+              [
+                1792864670.227,
+                "16"
+              ],
+              [
+                1792864675.226,
+                "16"
+              ],
+              [
+                1792864680.222,
+                "19"
+              ],
+              [
+                1792864685.222,
+                "22"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.025",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "9"
+              ],
+              [
+                1792864670.227,
+                "9"
+              ],
+              [
+                1792864675.226,
+                "9"
+              ],
+              [
+                1792864680.222,
+                "9"
+              ],
+              [
+                1792864685.222,
+                "9"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.025",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "21"
+              ],
+              [
+                1792864670.227,
+                "21"
+              ],
+              [
+                1792864675.226,
+                "21"
+              ],
+              [
+                1792864680.222,
+                "30"
+              ],
+              [
+                1792864685.222,
+                "35"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.05",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.05",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "21"
+              ],
+              [
+                1792864670.227,
+                "21"
+              ],
+              [
+                1792864675.226,
+                "21"
+              ],
+              [
+                1792864680.222,
+                "31"
+              ],
+              [
+                1792864685.222,
+                "36"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.1",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.1",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "22"
+              ],
+              [
+                1792864670.227,
+                "22"
+              ],
+              [
+                1792864675.226,
+                "22"
+              ],
+              [
+                1792864680.222,
+                "32"
+              ],
+              [
+                1792864685.222,
+                "37"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.25",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.25",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "22"
+              ],
+              [
+                1792864670.227,
+                "22"
+              ],
+              [
+                1792864675.226,
+                "22"
+              ],
+              [
+                1792864680.222,
+                "32"
+              ],
+              [
+                1792864685.222,
+                "37"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.5",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "0.5",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "22"
+              ],
+              [
+                1792864670.227,
+                "22"
+              ],
+              [
+                1792864675.226,
+                "22"
+              ],
+              [
+                1792864680.222,
+                "32"
+              ],
+              [
+                1792864685.222,
+                "37"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "1.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "1.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "22"
+              ],
+              [
+                1792864670.227,
+                "22"
+              ],
+              [
+                1792864675.226,
+                "22"
+              ],
+              [
+                1792864680.222,
+                "32"
+              ],
+              [
+                1792864685.222,
+                "37"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "10.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "10.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "30"
+              ],
+              [
+                1792864670.227,
+                "30"
+              ],
+              [
+                1792864675.226,
+                "30"
+              ],
+              [
+                1792864680.222,
+                "40"
+              ],
+              [
+                1792864685.222,
+                "50"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "2.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "2.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "24"
+              ],
+              [
+                1792864670.227,
+                "24"
+              ],
+              [
+                1792864675.226,
+                "24"
+              ],
+              [
+                1792864680.222,
+                "34"
+              ],
+              [
+                1792864685.222,
+                "41"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "3.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "3.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "30"
+              ],
+              [
+                1792864670.227,
+                "30"
+              ],
+              [
+                1792864675.226,
+                "30"
+              ],
+              [
+                1792864680.222,
+                "40"
+              ],
+              [
+                1792864685.222,
+                "50"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "5.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "2xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "11"
+              ],
+              [
+                1792864670.227,
+                "11"
+              ],
+              [
+                1792864675.226,
+                "11"
+              ],
+              [
+                1792864680.222,
+                "11"
+              ],
+              [
+                1792864685.222,
+                "11"
+              ]
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "safeheal_http_request_duration_seconds_bucket",
+              "instance": "order:8000",
+              "job": "safeheal",
+              "le": "5.0",
+              "method": "POST",
+              "route": "/orders",
+              "service": "order",
+              "status_class": "5xx"
+            },
+            "values": [
+              [
+                1792864665.227,
+                "30"
+              ],
+              [
+                1792864670.227,
+                "30"
+              ],
+              [
+                1792864675.226,
+                "30"
+              ],
+              [
+                1792864680.222,
+                "40"
+              ],
+              [
+                1792864685.222,
+                "50"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "errors": {}
+}

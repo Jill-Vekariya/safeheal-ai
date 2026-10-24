@@ -1,0 +1,13 @@
+{
+  "batch": "run-primary",
+  "measurement_start": "2026-10-24T17:54:55.010841+00:00",
+  "batch_finished": "2026-10-24T18:06:55.964519+00:00",
+  "renderer_issue": "An explicitly null metrics field for unrun AI rows initially raised AttributeError in CSV/render preparation. Raw data and numerical results unchanged; null-safe handling and a regression test added.",
+  "initial_full_suite": "494 passed, 2 skipped",
+  "final_full_suite": "495 passed, 2 skipped",
+  "provider_choice": "User selected A provider I configure; active local profile absent at launch and final check.",
+  "ai_slots": "All five retained as not_run; no mock or fallback substituted.",
+  "experimental_episode_reset": "Fresh operator-enrolled journal/token per trial. Existing production controller limits unchanged; cross-episode production budgeting not evaluated.",
+  "limitations": "One scope-limited fault; n=5 shared cluster; restricted-horizon metric; closed-loop response proportions; no real-AI inference.",
+  "publication": "Local commit only; no GitHub push/merge or remote Day 9 CI."
+}

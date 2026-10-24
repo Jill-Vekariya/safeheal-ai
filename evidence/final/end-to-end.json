@@ -1,0 +1,181 @@
+{
+  "trial_id": "final-16090cc585",
+  "checked_at": "2026-10-24T19:15:16.492008+00:00",
+  "cluster": "safeheal-day7",
+  "context": "kind-safeheal-day7",
+  "passed": true,
+  "route_readiness_attempts": [
+    {
+      "at": "2026-10-24T19:15:16.492008+00:00",
+      "passed": true,
+      "check": {
+        "request_id": "final-16090cc585-routes-1",
+        "dns": {
+          "gateway": {
+            "short": "10.96.7.191",
+            "fqdn": "10.96.7.191"
+          },
+          "order": {
+            "short": "10.96.193.219",
+            "fqdn": "10.96.193.219"
+          },
+          "payment": {
+            "short": "10.96.183.54",
+            "fqdn": "10.96.183.54"
+          }
+        },
+        "health": {
+          "gateway": {
+            "healthz": {
+              "status": "ok",
+              "service": "gateway"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "gateway"
+            }
+          },
+          "order": {
+            "healthz": {
+              "status": "ok",
+              "service": "order"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "order"
+            }
+          },
+          "payment": {
+            "healthz": {
+              "status": "ok",
+              "service": "payment"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "payment"
+            }
+          }
+        },
+        "readiness_only": true,
+        "passed": true
+      }
+    }
+  ],
+  "business_check": {
+    "request_id": "final-16090cc585",
+    "dns": {
+      "gateway": {
+        "short": "10.96.7.191",
+        "fqdn": "10.96.7.191"
+      },
+      "order": {
+        "short": "10.96.193.219",
+        "fqdn": "10.96.193.219"
+      },
+      "payment": {
+        "short": "10.96.183.54",
+        "fqdn": "10.96.183.54"
+      }
+    },
+    "health": {
+      "gateway": {
+        "healthz": {
+          "status": "ok",
+          "service": "gateway"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "gateway"
+        }
+      },
+      "order": {
+        "healthz": {
+          "status": "ok",
+          "service": "order"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "order"
+        }
+      },
+      "payment": {
+        "healthz": {
+          "status": "ok",
+          "service": "payment"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "payment"
+        }
+      }
+    },
+    "order": {
+      "order_id": "6e77c0d1-9390-4e1e-83e4-fb79f926da39",
+      "item_id": "day2-demo",
+      "quantity": 2,
+      "amount_cents": 2000,
+      "payment_id": "80cdeeb8-444c-4b9d-b770-d214a1cb6a63",
+      "status": "confirmed"
+    },
+    "http_status": 201,
+    "passed": true
+  },
+  "pods": {
+    "payment": {
+      "pod": "payment-c8557699d-mj2tv",
+      "uid": "42a630a1-9202-40e1-9727-09296dc01895",
+      "node": "safeheal-day7-control-plane",
+      "container": "payment",
+      "container_id": "containerd://a89a2608ec6afb046058c7dbeab107b4674f66b3b7bf9ed570865f4cf7ba22dd",
+      "image_id": "docker.io/library/import-2026-10-24@sha256:3cc7978807c49ed160bf24d5453b0506e4d56deaccd76ab7004d0c283ed87642",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-24T19:12:53Z"
+        }
+      },
+      "last_state": {}
+    },
+    "order": {
+      "pod": "order-544f565d8c-q9d4l",
+      "uid": "5f51377c-e6d6-4bae-9a06-c998e5c52a90",
+      "node": "safeheal-day7-control-plane",
+      "container": "order",
+      "container_id": "containerd://7764178f7cace591818b76140dbfe61d9fe3ff78f49b520a1a9350602cef9c10",
+      "image_id": "docker.io/library/import-2026-10-24@sha256:3cc7978807c49ed160bf24d5453b0506e4d56deaccd76ab7004d0c283ed87642",
+      "restart_count": 2,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-24T19:00:00Z"
+        }
+      },
+      "last_state": {
+        "terminated": {
+          "containerID": "containerd://fe63be946bd54f1f847cc080717e5d9bbf5a5f3b21e731d825894fb7d4f79c91",
+          "exitCode": 137,
+          "finishedAt": "2026-10-24T18:59:53Z",
+          "reason": "Error",
+          "startedAt": "2026-10-24T18:44:11Z"
+        }
+      }
+    },
+    "gateway": {
+      "pod": "gateway-594cf4b9dc-m6btg",
+      "uid": "7396470d-23b8-44b2-813e-ca742a922517",
+      "node": "safeheal-day7-control-plane",
+      "container": "gateway",
+      "container_id": "containerd://df9502e57a68b67e15707cbeffa16a097ed69b3799cff14607aadba9ee1a72e7",
+      "image_id": "docker.io/library/import-2026-10-24@sha256:3cc7978807c49ed160bf24d5453b0506e4d56deaccd76ab7004d0c283ed87642",
+      "restart_count": 0,
+      "ready": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-24T16:37:55Z"
+        }
+      },
+      "last_state": {}
+    }
+  }
+}

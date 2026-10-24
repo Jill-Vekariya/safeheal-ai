@@ -1,0 +1,79 @@
+{
+  "trial_id": "d7-autonomous-f9d95ce442",
+  "started_at": "2026-10-24T16:40:22.434260+00:00",
+  "passed": false,
+  "lab": "safeheal-day7",
+  "context": "kind-safeheal-day7",
+  "namespace": "safeheal-dev",
+  "controller_mode": "autonomous",
+  "llm_calls": 0,
+  "baseline_uid": "5c0e6110-4456-4725-8036-3aedc7fd5707",
+  "baseline_spec_sha256": "935302939e3b68df0042c08105a52b1061494cfe7833565e83abe54af1bc935e",
+  "denied_access": [
+    {
+      "method": "GET",
+      "path": "/api/v1/namespaces/safeheal-dev/secrets",
+      "status_code": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/namespaces/safeheal-dev/pods",
+      "status_code": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/namespaces/safeheal-dev/pods/payment/exec?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/order/scale?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "GET",
+      "path": "/apis/apps/v1/namespaces/default/deployments/payment",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All",
+      "status_code": 403
+    }
+  ],
+  "rejected_proposal": {
+    "status": "denied_or_failed",
+    "code": "invalid_schema"
+  },
+  "fault_intent_at": "2026-10-24T16:40:25.343564+00:00",
+  "zero_observed_at": "2026-10-24T16:40:26.555189+00:00",
+  "admission_denied_from_zero": [
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All",
+      "status_code": 403
+    }
+  ],
+  "error": "RuntimeError: Unexpected independent controller exit: {\"status\": \"denied_or_failed\", \"code\": \"scale_precondition_changed\"}\n",
+  "operator_cleanup_restore": true,
+  "cleanup_passed": true,
+  "finished_at": "2026-10-24T16:40:32.145955+00:00",
+  "source_sha256": {
+    "services/recovery/__init__.py": "70ffee002f0762e5ce16a598e64932ab05fd332eedd8840674d912a8d0946555",
+    "services/recovery/controller.py": "5be92fdedcc078361441e4ead83a51f5647be6e73644c4cee7d562999f0f18d6",
+    "services/recovery/kubernetes.py": "c0995e20905e911f8246c188849a4ec19480d9d5317ee2c05abf85f5097e384c",
+    "scripts/recover.py": "5545343d162d149d79dc931e1e9627e9f07373b36e4d045aceab15024e47db6c",
+    "scripts/verify_recovery.py": "b4557984436d015046d3ae3f88ff9ec936a06e653e7da606bcb1c987a38ce32b",
+    "infrastructure/recovery/policy.yaml": "fc40d1dd8be5ab690cc4e364d77e2b039ca6b61cbffcbbbd21e67d584cdad19f"
+  }
+}

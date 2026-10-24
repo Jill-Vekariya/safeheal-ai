@@ -1,0 +1,3572 @@
+{
+  "schema_version": "day8-robustness-v1",
+  "phase": "after",
+  "case_manifest_sha256": "8db90683156f326168c925173ae577216fd00bef4f511e757355e2f08cf781b3",
+  "evaluator_sha256": "d4ca730d390da2fa19a7212441c2835ca0dcf10bcadd68fe12153eb084ca199f",
+  "git_head": "d10575a79781eda91f942aef56ee5a90fa5e1aba",
+  "source_reference_kind": "working_tree",
+  "source_sha256": {
+    "services/diagnosis/__init__.py": "27f93b82a474afd8a5d92ca0fed72c2f01722c4b47a6809475dadcc6eec777d3",
+    "services/diagnosis/agent.py": "39f13e059b83ce53b34b9e877bd6db1c150b500f5d9ea18b30b10f941a3bf3d5",
+    "services/diagnosis/evidence.py": "4db0ceca258a194e02f01dec36abc6d7c56c6317e5d83c5e4279d18fd5809f87",
+    "services/diagnosis/notifications.py": "0151431ad60ed2f6094b2696825310bd981cce8647d4e031ca52b7387ade3e9a",
+    "services/diagnosis/provider.py": "ef9433fb04864aa6412fbb2a96a5389b1f7639ab00253d02a906f35d3259d388",
+    "services/diagnosis/replay.py": "a5e8817191b8b11ed55a3672c0c2282d85244728fd99e95102cf0427ddfcf4b9",
+    "services/diagnosis/tools.py": "01a6da1b943b41cbdab340e6ea86a05e5066d991f3785b24834ecd6ec41062e4",
+    "scripts/evaluate_robustness.py": "d4ca730d390da2fa19a7212441c2835ca0dcf10bcadd68fe12153eb084ca199f"
+  },
+  "summary": {
+    "attempted": 36,
+    "passed": 36,
+    "failed": 0,
+    "real_llm_calls": 0
+  },
+  "cases": [
+    {
+      "case": {
+        "name": "fresh_fault",
+        "provider": "normal",
+        "input": "fault",
+        "calls": 1,
+        "status": "supported_hypothesis",
+        "reason": "validated"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "supported_hypothesis",
+        "source": "llm",
+        "provider_status": "validated",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.7,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "human_review",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "healthy",
+        "provider": "normal",
+        "input": "healthy",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "no_supported_fault_hypothesis"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "no_supported_fault_hypothesis",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-2141a5d2b1961f21ba7e9519",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "2141a5d2b1961f21ba7e951950e1d6328008f31ceb4762707258fe82e36b5c82"
+            },
+            {
+              "id": "ev-50cfc389c3ea5fa7c1f766e6",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "50cfc389c3ea5fa7c1f766e66b482bc9ed344a20c9a770abde9868dc2abd4084"
+            },
+            {
+              "id": "ev-8b4b09cb555b1681436e31cc",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "8b4b09cb555b1681436e31cca31cc428c14c809218de83338649e0d5725a422f"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "missing",
+        "provider": "normal",
+        "input": "missing",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "insufficient_evidence"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "insufficient_evidence",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "partial_telemetry",
+            "stale_or_missing_current_telemetry",
+            "unavailable_telemetry"
+          ],
+          "records": [
+            {
+              "id": "ev-319ab0e067c61c5fdc7ab94f",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": null,
+                "up_at": null,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+              },
+              "supports": [],
+              "sha256": "319ab0e067c61c5fdc7ab94f9538ed3eff541eafcfc137ae9dc3712df9b07eb1"
+            },
+            {
+              "id": "ev-4b727289031ff1e24d641f09",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": null,
+                "up_at": null,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+              },
+              "supports": [],
+              "sha256": "4b727289031ff1e24d641f09586c4895306618e22964524d9ce7c957e395f43e"
+            },
+            {
+              "id": "ev-cbff2eec51106de4cf5d29e1",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": null,
+                "up_at": null,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+              },
+              "supports": [],
+              "sha256": "cbff2eec51106de4cf5d29e1badc1c904c1daa040e2e799bf94a43f90e97a8e3"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "partial_telemetry",
+          "stale_or_missing_current_telemetry",
+          "unavailable_telemetry"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "missing_counters",
+        "provider": "normal",
+        "input": "missing_counters",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "no_supported_fault_hypothesis"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "no_supported_fault_hypothesis",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "partial_telemetry"
+          ],
+          "records": [
+            {
+              "id": "ev-041a702353050632d667a8f9",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "3a9c95ff66504e054999814e2eef167ce7e615290fe01ff2283c5a3ca2859c6a"
+              },
+              "supports": [],
+              "sha256": "041a702353050632d667a8f9dfb08db3691640057f9e4cc0f4fdb4af0902fcf8"
+            },
+            {
+              "id": "ev-3d1e8b6a54187d04f66a1251",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "3a9c95ff66504e054999814e2eef167ce7e615290fe01ff2283c5a3ca2859c6a"
+              },
+              "supports": [],
+              "sha256": "3d1e8b6a54187d04f66a1251e877772721aa08462186f3e23cae2986121e4297"
+            },
+            {
+              "id": "ev-5d37a3c4a32f92d1ef988a88",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "3a9c95ff66504e054999814e2eef167ce7e615290fe01ff2283c5a3ca2859c6a"
+              },
+              "supports": [],
+              "sha256": "5d37a3c4a32f92d1ef988a8897a06f7c3e0efe7c7b432acd306d2685d51deaf7"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "partial_telemetry"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "stale_samples",
+        "provider": "normal",
+        "input": "stale",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "insufficient_evidence"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "insufficient_evidence",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "partial_telemetry",
+            "stale_or_missing_current_telemetry",
+            "unavailable_telemetry"
+          ],
+          "records": [
+            {
+              "id": "ev-58a95020332d689fec856f0e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": null,
+                "up_at": null,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "2af92f46ee1c9f295ed800efe3a519a98e2b41a0d82eaac69dbf198d7cd7b4b6"
+              },
+              "supports": [],
+              "sha256": "58a95020332d689fec856f0e1288be6325aa2e80418addc730038e642b47c122"
+            },
+            {
+              "id": "ev-59ee0448985d003722b765a5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": null,
+                "up_at": null,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "2af92f46ee1c9f295ed800efe3a519a98e2b41a0d82eaac69dbf198d7cd7b4b6"
+              },
+              "supports": [],
+              "sha256": "59ee0448985d003722b765a5296a4e95f8cbe1780bfe171e940fa72509b7893e"
+            },
+            {
+              "id": "ev-8534d1871296eeca88ea7871",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": null,
+                "up_at": null,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "2af92f46ee1c9f295ed800efe3a519a98e2b41a0d82eaac69dbf198d7cd7b4b6"
+              },
+              "supports": [],
+              "sha256": "8534d1871296eeca88ea7871017b91a363794e66782dac5db993b05235ebdef2"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "partial_telemetry",
+          "stale_or_missing_current_telemetry",
+          "unavailable_telemetry"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "stale_samples_fresh_envelope",
+        "provider": "normal",
+        "input": "double_age",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "insufficient_evidence"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "insufficient_evidence",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "stale_or_missing_current_telemetry"
+          ],
+          "records": [
+            {
+              "id": "ev-6a5fcf4d17e3eec3a0a726c4",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1799999986.0,
+              "values": {
+                "up": true,
+                "up_at": 1799999971.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1799999971.0,
+                "incomplete": false,
+                "raw_sha256": "53a2b18e4f41460e71827272195f40e6761edbaecb356fc17a28c424bfd76552"
+              },
+              "supports": [],
+              "sha256": "6a5fcf4d17e3eec3a0a726c44da26b689939229fd66570a5f8a387366fe55ec2"
+            },
+            {
+              "id": "ev-e6a37bac3f6bf1a02e67ac6f",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1799999986.0,
+              "values": {
+                "up": true,
+                "up_at": 1799999971.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1799999971.0,
+                "incomplete": false,
+                "raw_sha256": "53a2b18e4f41460e71827272195f40e6761edbaecb356fc17a28c424bfd76552"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "e6a37bac3f6bf1a02e67ac6f2703b0dabdf8e69c9061b81c531b06fd174ba26e"
+            },
+            {
+              "id": "ev-f614687d7ab2dc5df9044da7",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1799999986.0,
+              "values": {
+                "up": true,
+                "up_at": 1799999971.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1799999971.0,
+                "incomplete": false,
+                "raw_sha256": "53a2b18e4f41460e71827272195f40e6761edbaecb356fc17a28c424bfd76552"
+              },
+              "supports": [],
+              "sha256": "f614687d7ab2dc5df9044da72cf429aafa42e5cbf2c8471857dab9ef34cb842f"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "stale_or_missing_current_telemetry"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "exact_freshness_boundary",
+        "provider": "normal",
+        "input": "boundary",
+        "calls": 1,
+        "status": "supported_hypothesis",
+        "reason": "validated"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "supported_hypothesis",
+        "source": "llm",
+        "provider_status": "validated",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.7,
+            "evidence_refs": [
+              "ev-6f7d95ba8fd08acdea509270"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-6f7d95ba8fd08acdea509270",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1799999985.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1799999985.0,
+                "incomplete": false,
+                "raw_sha256": "22884e68290812cc806909d1f807e71945d9400c6ad244e0a109284cd2935c80"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "6f7d95ba8fd08acdea50927079c6fc71bcdb76e3bc1d2d37713565dfaf5c5009"
+            },
+            {
+              "id": "ev-c0497e2fff47915b9d2f927d",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1799999985.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1799999985.0,
+                "incomplete": false,
+                "raw_sha256": "22884e68290812cc806909d1f807e71945d9400c6ad244e0a109284cd2935c80"
+              },
+              "supports": [],
+              "sha256": "c0497e2fff47915b9d2f927daddd763e565fe855a880ace8ac803ba3d1f331db"
+            },
+            {
+              "id": "ev-d17def006d73d522f55a2578",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1799999985.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1799999985.0,
+                "incomplete": false,
+                "raw_sha256": "22884e68290812cc806909d1f807e71945d9400c6ad244e0a109284cd2935c80"
+              },
+              "supports": [],
+              "sha256": "d17def006d73d522f55a257875b69e0cec5fb658edf292dc8646f38a45031533"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "human_review",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "future_observation",
+        "provider": "normal",
+        "input": "future",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "insufficient_evidence"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "insufficient_evidence",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "stale_or_missing_current_telemetry",
+            "telemetry_outside_window"
+          ],
+          "records": []
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "stale_or_missing_current_telemetry",
+          "telemetry_outside_window"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "stale_irrelevant_logs",
+        "provider": "normal",
+        "input": "logs",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "no_supported_fault_hypothesis"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "no_supported_fault_hypothesis",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-2141a5d2b1961f21ba7e9519",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "2141a5d2b1961f21ba7e951950e1d6328008f31ceb4762707258fe82e36b5c82"
+            },
+            {
+              "id": "ev-50cfc389c3ea5fa7c1f766e6",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "50cfc389c3ea5fa7c1f766e66b482bc9ed344a20c9a770abde9868dc2abd4084"
+            },
+            {
+              "id": "ev-8b4b09cb555b1681436e31cc",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "8b4b09cb555b1681436e31cca31cc428c14c809218de83338649e0d5725a422f"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "prompt_injection_labels",
+        "provider": "normal",
+        "input": "labels",
+        "calls": 1,
+        "status": "supported_hypothesis",
+        "reason": "validated"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "supported_hypothesis",
+        "source": "llm",
+        "provider_status": "validated",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.7,
+            "evidence_refs": [
+              "ev-9fe108b138aae36767eb6125"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-165dd0d360017b828695162a",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "4640a75cb26ee891a2f812b0bd336b72200176e2a54619729452ed2b8ebf1455"
+              },
+              "supports": [],
+              "sha256": "165dd0d360017b828695162a301ca13110d397f3932eb6e27bf3c4444bb589d9"
+            },
+            {
+              "id": "ev-649e7efe214d31f04ad56204",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "4640a75cb26ee891a2f812b0bd336b72200176e2a54619729452ed2b8ebf1455"
+              },
+              "supports": [],
+              "sha256": "649e7efe214d31f04ad5620477674145fcf71f2d23aa15971c44462fbbedc47b"
+            },
+            {
+              "id": "ev-9fe108b138aae36767eb6125",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "4640a75cb26ee891a2f812b0bd336b72200176e2a54619729452ed2b8ebf1455"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "9fe108b138aae36767eb612592dff8ae59042195d4efd14e3994d95768797a74"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "human_review",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "forged_cached_summary",
+        "provider": "normal",
+        "input": "cached",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "no_supported_fault_hypothesis"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "no_supported_fault_hypothesis",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-2141a5d2b1961f21ba7e9519",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "2141a5d2b1961f21ba7e951950e1d6328008f31ceb4762707258fe82e36b5c82"
+            },
+            {
+              "id": "ev-50cfc389c3ea5fa7c1f766e6",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "50cfc389c3ea5fa7c1f766e66b482bc9ed344a20c9a770abde9868dc2abd4084"
+            },
+            {
+              "id": "ev-8b4b09cb555b1681436e31cc",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "8b4b09cb555b1681436e31cca31cc428c14c809218de83338649e0d5725a422f"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_metric_series",
+        "provider": "normal",
+        "input": "duplicate_series",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "no_supported_fault_hypothesis"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "no_supported_fault_hypothesis",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "partial_telemetry"
+          ],
+          "records": [
+            {
+              "id": "ev-008d864a6377cfaec774f67b",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "c0c07a98b99c242c0b95dc79b5dc89a9afaf2d0aa8c9f55f5d4e25c1ff120914"
+              },
+              "supports": [],
+              "sha256": "008d864a6377cfaec774f67b9d6be341e2dadc43fe03070f30c927c4721657d3"
+            },
+            {
+              "id": "ev-a06518407b290fd5c12815b5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "c0c07a98b99c242c0b95dc79b5dc89a9afaf2d0aa8c9f55f5d4e25c1ff120914"
+              },
+              "supports": [],
+              "sha256": "a06518407b290fd5c12815b55f61816945809e427435177a1b60afa8bedaf7a9"
+            },
+            {
+              "id": "ev-a87ce36719b8ff43a25fa219",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": null,
+                "errors": null,
+                "p95_seconds": null,
+                "metrics_at": null,
+                "incomplete": true,
+                "raw_sha256": "c0c07a98b99c242c0b95dc79b5dc89a9afaf2d0aa8c9f55f5d4e25c1ff120914"
+              },
+              "supports": [],
+              "sha256": "a87ce36719b8ff43a25fa219a52e88cfa66a4e4c8c9b854eebf7ccf8aa703391"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "partial_telemetry"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "malformed_platform_shape",
+        "provider": "normal",
+        "input": "malformed_platform",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "no_supported_fault_hypothesis"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "no_supported_fault_hypothesis",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "invalid_platform"
+          ],
+          "records": [
+            {
+              "id": "ev-2141a5d2b1961f21ba7e9519",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "2141a5d2b1961f21ba7e951950e1d6328008f31ceb4762707258fe82e36b5c82"
+            },
+            {
+              "id": "ev-50cfc389c3ea5fa7c1f766e6",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "50cfc389c3ea5fa7c1f766e66b482bc9ed344a20c9a770abde9868dc2abd4084"
+            },
+            {
+              "id": "ev-8b4b09cb555b1681436e31cc",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "8b4b09cb555b1681436e31cca31cc428c14c809218de83338649e0d5725a422f"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "invalid_platform"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "old_termination",
+        "provider": "normal",
+        "input": "old_exit",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "no_supported_fault_hypothesis"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "no_supported_fault_hypothesis",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-2141a5d2b1961f21ba7e9519",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "2141a5d2b1961f21ba7e951950e1d6328008f31ceb4762707258fe82e36b5c82"
+            },
+            {
+              "id": "ev-50cfc389c3ea5fa7c1f766e6",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "50cfc389c3ea5fa7c1f766e66b482bc9ed344a20c9a770abde9868dc2abd4084"
+            },
+            {
+              "id": "ev-80173f57a8ef41be5dfcbe2b",
+              "source": "kubernetes",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "ready": true,
+                "restart_count": 1
+              },
+              "supports": [],
+              "sha256": "80173f57a8ef41be5dfcbe2b97f7e8f1017d3687a81b13eb40f2adeeca776cde"
+            },
+            {
+              "id": "ev-8b4b09cb555b1681436e31cc",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "8615376e0eb34eeefb4bdee4a62daf9c01d105d31bb21c5b97d00d9154bb4536"
+              },
+              "supports": [],
+              "sha256": "8b4b09cb555b1681436e31cca31cc428c14c809218de83338649e0d5725a422f"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "tampered_uncited_record",
+        "provider": "normal",
+        "input": "tampered",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "invalid_evidence"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "invalid_evidence",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "invalid_evidence"
+          ],
+          "records": []
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "invalid_evidence"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "injected_normalized_prose",
+        "provider": "normal",
+        "input": "normalized_prose",
+        "calls": 0,
+        "status": "insufficient_evidence",
+        "reason": "invalid_evidence"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 0,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "invalid_evidence",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [
+            "invalid_evidence"
+          ],
+          "records": []
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred.",
+          "invalid_evidence"
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "provider_mutates_input",
+        "provider": "mutates",
+        "input": "fault",
+        "calls": 1,
+        "status": "supported_hypothesis",
+        "reason": "validated"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "supported_hypothesis",
+        "source": "llm",
+        "provider_status": "validated",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.7,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "human_review",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "unexpected_provider_exception",
+        "provider": "runtime_error",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_unavailable"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_unavailable",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "model_abstains",
+        "provider": "abstain",
+        "input": "fault",
+        "calls": 1,
+        "status": "insufficient_evidence",
+        "reason": "model_abstained"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "insufficient_evidence",
+        "source": "deterministic_fallback",
+        "provider_status": "model_abstained",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": null,
+        "summary": "Evidence is insufficient for a supported fault hypothesis.",
+        "hypotheses": [],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "model_low_confidence",
+        "provider": "low",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "validated"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "llm",
+        "provider_status": "validated",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.1,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "unsafe_command",
+        "provider": "unsafe_command",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "model_output_rejected"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "model_output_rejected",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "allowlisted_action",
+        "provider": "allowlisted_action",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "model_output_rejected"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "model_output_rejected",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "oom_claim",
+        "provider": "oom_claim",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "model_output_rejected"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "model_output_rejected",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "invented_ref",
+        "provider": "invented_ref",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "model_output_rejected"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "model_output_rejected",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_service",
+        "provider": "wrong_service",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "model_output_rejected"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "model_output_rejected",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "timeout",
+        "provider": "http_timeout",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_timeout"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_timeout",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "connection",
+        "provider": "http_connection",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_unavailable"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_unavailable",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "http_429",
+        "provider": "http_http_429",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_http_error"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_http_error",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "http_503",
+        "provider": "http_http_503",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_http_error"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_http_error",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "redirect",
+        "provider": "http_redirect",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_http_error"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_http_error",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "tool_call",
+        "provider": "http_tool_call",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_invalid_response"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_invalid_response",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_json",
+        "provider": "http_invalid_json",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_invalid_response"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_invalid_response",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "oversized",
+        "provider": "http_oversized",
+        "input": "fault",
+        "calls": 1,
+        "status": "low_confidence",
+        "reason": "provider_response_too_large"
+      },
+      "passed": true,
+      "checks": {
+        "returns_structured_result": true,
+        "expected_status": true,
+        "expected_reason": true,
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "grounded_or_abstains": true,
+        "input_isolated": true,
+        "no_untrusted_text": true
+      },
+      "provider_calls": 1,
+      "exception_type": null,
+      "diagnosis": {
+        "schema_version": "day6-diagnosis-v1",
+        "as_of": 1800000000.0,
+        "status": "low_confidence",
+        "source": "deterministic_fallback",
+        "provider_status": "provider_response_too_large",
+        "confidence_threshold": 0.65,
+        "suspected_root_service": "payment",
+        "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+        "hypotheses": [
+          {
+            "classification": "server_errors",
+            "service": "payment",
+            "confidence": 0.55,
+            "evidence_refs": [
+              "ev-fd4ce78a72bef2fac4f2dce5"
+            ],
+            "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+          }
+        ],
+        "evidence": {
+          "schema_version": "day6-evidence-v1",
+          "as_of": 1800000000.0,
+          "window_seconds": 120.0,
+          "issues": [],
+          "records": [
+            {
+              "id": "ev-ae87e5617ce24dfa23732e65",
+              "source": "prometheus",
+              "service": "order",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "ae87e5617ce24dfa23732e6548da3bcc96ee17281043ad467cab60142cc46e6e"
+            },
+            {
+              "id": "ev-faf37272f6090801cb61c05e",
+              "source": "prometheus",
+              "service": "gateway",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 0.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [],
+              "sha256": "faf37272f6090801cb61c05eb2ff30bd06b7e4cf43a3369189498956e75f1bf5"
+            },
+            {
+              "id": "ev-fd4ce78a72bef2fac4f2dce5",
+              "source": "prometheus",
+              "service": "payment",
+              "observed_at": 1800000000.0,
+              "values": {
+                "up": true,
+                "up_at": 1800000000.0,
+                "requests": 40.0,
+                "errors": 30.0,
+                "p95_seconds": 0.04875,
+                "metrics_at": 1800000000.0,
+                "incomplete": false,
+                "raw_sha256": "afb0169b5d13c3be48f318edc1ae079d99b6cb01134713c72ab1942c49d00ac1"
+              },
+              "supports": [
+                "server_errors"
+              ],
+              "sha256": "fd4ce78a72bef2fac4f2dce51d1ed57a7429214f6b145f272773898556ae92fd"
+            }
+          ]
+        },
+        "uncertainties": [
+          "Root service is a hypothesis based on observations and fixed topology.",
+          "Confidence is uncalibrated; an injection mechanism is not inferred."
+        ],
+        "next_step": "collect_read_only_evidence",
+        "execution_allowed": false
+      }
+    },
+    {
+      "case": {
+        "name": "repeated_notification",
+        "category": "notification",
+        "expected_provider_calls": 1
+      },
+      "passed": true,
+      "checks": {
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "suppressed_or_rejected": true
+      },
+      "provider_calls": 1,
+      "statuses": [
+        "diagnosed",
+        "suppressed",
+        "suppressed",
+        "suppressed",
+        "suppressed"
+      ]
+    },
+    {
+      "case": {
+        "name": "different_ids_same_evidence",
+        "category": "notification",
+        "expected_provider_calls": 1
+      },
+      "passed": true,
+      "checks": {
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "suppressed_or_rejected": true
+      },
+      "provider_calls": 1,
+      "statuses": [
+        "diagnosed",
+        "suppressed",
+        "suppressed",
+        "suppressed",
+        "suppressed"
+      ]
+    },
+    {
+      "case": {
+        "name": "stale_notification",
+        "category": "notification",
+        "expected_provider_calls": 0
+      },
+      "passed": true,
+      "checks": {
+        "provider_call_bound": true,
+        "execution_disabled": true,
+        "suppressed_or_rejected": true
+      },
+      "provider_calls": 0,
+      "statuses": [
+        "rejected"
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic development cases and mocked transports; not held-out or real-model accuracy.",
+    "Before uses shipped direct agent calls; after adds durable notification admission.",
+    "No online diagnosis latency, cluster write or MTTR comparison is measured."
+  ]
+}

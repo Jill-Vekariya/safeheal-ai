@@ -1,0 +1,14 @@
+{
+  "cloud_proposal_rejected_before_execution": true,
+  "safer_alternative": "local GGUF inference; five-request cap",
+  "as_run_commit": "79270ecf1fbd4b515591f6f478346657cfa0ebc4",
+  "post_study_cleanup_guard_added": true,
+  "cleanup_regression_cases": 7,
+  "recorded_outcomes_rewritten": false,
+  "primary_runtime_pytest": "not run: pytest unavailable",
+  "primary_runtime_stdlib_smoke": "PASS; not full suite",
+  "github_public_observed": true,
+  "github_visibility_changed": false,
+  "pushed": false,
+  "remote_current_release_ci": false
+}

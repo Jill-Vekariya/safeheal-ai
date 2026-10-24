@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "passed": true,
+  "tests_passed": 522,
+  "tests_skipped": 2,
+  "new_bootstrap_tests": 13,
+  "source_sha256": {
+    "scripts/verify_recovery.py": "caa8f3af63e3010d107e9a167178086807bada64963db26a021db1966a8d39fd",
+    "scripts/controlled_experiment.py": "50c2e5eb11abb3b5b803cd53a60ca66d1031307f55bfb6aa4dc3143ef5016664",
+    "tests/test_recovery_bootstrap.py": "4ab2c58ed9f40997d48b5b0538eb3f80d4efb48dc7fdc9aa6bf7a27b1ba5dbbf"
+  }
+}

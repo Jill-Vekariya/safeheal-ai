@@ -1,5 +1,7 @@
 # Day 6: bounded evidence-grounded diagnosis
 
+**Day 8 update:** Current sample-time freshness, pre-provider evidence validation, adapter input isolation, exception fallback and durable notification intake are documented in [AI_ROBUSTNESS.md](AI_ROBUSTNESS.md). Those strengthened contracts supersede the earlier implementation notes below. The prompt and non-executable diagnosis schema remain unchanged.
+
 The agent returns versioned JSON containing hypotheses, service, subjective confidence,
 evidence references, uncertainty, source/fallback reason, next read-only step, and the
 complete normalized evidence bundle. `execution_allowed` is always false. It does not

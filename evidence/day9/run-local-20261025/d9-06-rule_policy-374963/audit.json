@@ -1,0 +1,138 @@
+[
+  {
+    "action": "restore_payment_replica",
+    "at": 1792868130.586282,
+    "code": "permitted",
+    "fingerprint": "601140e71a5e8a5895f40b75767567cca44d2daea4c0cc2575d4769565bcd741",
+    "mode": "autonomous",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "13113"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "3dc2ec996a4a83bd2d52ef7b1b5e57d172ce38a8630d5adacd1722e75f1bfef0",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "at": 1792868130.5903022,
+    "code": "intent_durably_recorded",
+    "request_hash": "3dc2ec996a4a83bd2d52ef7b1b5e57d172ce38a8630d5adacd1722e75f1bfef0",
+    "stage": "execution"
+  },
+  {
+    "at": 1792868130.6390538,
+    "code": "api_acknowledged",
+    "request_hash": "3dc2ec996a4a83bd2d52ef7b1b5e57d172ce38a8630d5adacd1722e75f1bfef0",
+    "stage": "execution"
+  },
+  {
+    "at": 1792868144.067415,
+    "code": "recovery_verified",
+    "observations": [
+      {
+        "at": 1792868130.678662,
+        "generation": 43,
+        "observed_generation": 42,
+        "ready": false
+      },
+      {
+        "at": 1792868131.7079031,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868132.7941256,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868133.8253434,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868134.8556275,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868135.8730824,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868136.899104,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868137.9331539,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868138.9560642,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868139.9780345,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868141.00598,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": false
+      },
+      {
+        "at": 1792868142.021504,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": true
+      },
+      {
+        "at": 1792868143.0403466,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": true
+      },
+      {
+        "at": 1792868144.0610085,
+        "generation": 43,
+        "observed_generation": 43,
+        "ready": true
+      }
+    ],
+    "request_hash": "3dc2ec996a4a83bd2d52ef7b1b5e57d172ce38a8630d5adacd1722e75f1bfef0",
+    "stage": "verification"
+  }
+]

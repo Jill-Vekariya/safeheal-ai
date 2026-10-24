@@ -1,0 +1,18 @@
+{
+  "run": 40135721425,
+  "outcome": "failure retained",
+  "source_commit": "f9a3073376657cab491baccd167b7d0e83b7d6b2",
+  "failure": "Fresh-install forbidden scale-to-two server dry-run returned HTTP 200 before fault injection.",
+  "new_recovery_trials": [
+    {
+      "trial_id": "d7-autonomous-09d904471d",
+      "passed": false,
+      "error": "RuntimeError: Least privilege/admission check failed: {'method': 'PATCH', 'path': '/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All', 'status_code': 200}",
+      "fault_intent_present": false,
+      "controller_invoked": false
+    }
+  ],
+  "artifact_files": 166,
+  "recorded_outcomes_replaced": false,
+  "correction": "Require two consecutive policy-specific forbidden dry-run responses before writing executor configuration; retain strict negative checks."
+}

@@ -1,12 +1,14 @@
 """Validate model hypotheses against independently derived support; never execute actions."""
 import math
+from copy import deepcopy
 
-from services.diagnosis.evidence import CAUSES, EXPLANATIONS, encoded
+from services.diagnosis.evidence import Bundle, CAUSES, EXPLANATIONS, encoded, timestamp, validate_bundle
 from services.diagnosis.provider import ProviderError
 from services.incidents.telemetry import SERVICES
 
 
 def validate_proposal(proposal, bundle):
+    validate_bundle(bundle)
     if not isinstance(proposal, dict) or set(proposal) != {"hypotheses"}:
         raise ValueError("Invalid proposal schema")
     items = proposal["hypotheses"]
@@ -46,13 +48,26 @@ class DiagnosisAgent:
 
     def diagnose(self, bundle):
         hypotheses, source, reason = [], "deterministic_fallback", "provider_disabled"
-        if not bundle.eligible:
+        invalid = False
+        try:
+            bundle = deepcopy(validate_bundle(bundle))
+        except (ValueError, TypeError, KeyError, AttributeError, OverflowError, RecursionError):
+            try:
+                at = timestamp(bundle.as_of)
+            except (ValueError, TypeError, AttributeError, OverflowError):
+                at = 0.
+            bundle = Bundle(at, issues=["invalid_evidence"])
+            invalid = True
+        if invalid:
+            reason = "invalid_evidence"
+        elif not bundle.eligible:
             reason = "insufficient_evidence"
         elif not bundle.candidates():
             reason = "no_supported_fault_hypothesis"
         elif self.provider is not None:
             try:
-                proposal = self.provider.propose(bundle)
+                # An adapter gets a detached copy, never the trusted validator input.
+                proposal = self.provider.propose(deepcopy(bundle))
                 hypotheses = validate_proposal(proposal, bundle)
                 if hypotheses:
                     source, reason = "llm", "validated"
@@ -67,6 +82,9 @@ class DiagnosisAgent:
                 reason = str(exc) if str(exc) in allowed else "provider_unavailable"
             except (ValueError, TypeError):
                 reason = "model_output_rejected"
+            except Exception:
+                # Unexpected adapter exceptions degrade without exposing text or retry.
+                reason = "provider_unavailable"
         if not hypotheses and bundle.eligible and reason != "model_abstained":
             candidates = bundle.candidates()[:3]
             hypotheses = validate_proposal({"hypotheses": [{**c, "confidence": .55} for c in candidates]}, bundle)

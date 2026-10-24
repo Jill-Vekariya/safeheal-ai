@@ -1,5 +1,11 @@
 # SafeHeal AI — 10-day execution plan
 
+**25 October 2026: Days 1–9 complete (9/10); Day 10 local deliverables and verification prepared. Private publication/current-release Actions are in progress. Do not claim 100%.**
+
+All 15 fresh local-model cohort slots ran; failures/censoring are retained and no AI advantage is claimed. Final report, reproducibility, architecture, demo and 20 interview answers are present. The current GitHub destination reports PUBLIC, unlike the earlier private instruction; that historical checkpoint is superseded: PRIVATE visibility has been restored under the existing project requirement, with current-release upload/CI still pending.
+
+## Planning contract and historical context
+
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
 **Verified progress: Days 1–6 complete, 6/10 gates (60%), as of 2026-10-23. Next: Day 7 independent safe recovery.** Day 6 engineering acceptance: all six retained Kubernetes benchmark incidents produce structured, evidence-grounded diagnoses in mocked-provider and deterministic-fallback replay. Windows: 337 passed, two environment/configuration skips. Real-provider tests exist but are not executed without credentials and explicit model/budget opt-in. See PROJECT_STATUS.md, docs/AI_DIAGNOSIS.md and evidence/day6.

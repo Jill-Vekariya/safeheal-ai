@@ -238,3 +238,89 @@ Publication boundary: automatic approval review rejected the combined local comm
 ## Day 6 delivery and repository-state recheck - 2026-10-23
 
 Implementation remains 33b27a43b18f808474e9778ce432aebc789d69e0. All retained source hashes match; both six-trial reports pass grounding recheck. Credentials remain unavailable. GitHub main remains Day 4 at156da54; Day5 branch e04a506 and PR2 are published, Day6 is local only. ADMIN access does not enable branch protection on this private repository plan: GitHub returns403 requiring an eligible upgrade or public visibility. Neither purchase nor visibility change was performed. The proposed docs/MAIN_BRANCH_PROTECTION.json is not applied or enforced. Automatic approval review rejected the source/documentation/benchmark-evidence push again after broad user authorization, requiring explicit destination-and-payload authorization; do not bypass it. No Day6 remote CI or main integration is claimed. See PROJECT_STATUS_Day6_2026-10-23.md and evidence/day6/publication-blockers.json.
+
+
+## Day 7 safe autonomous recovery — 2026-10-24
+
+Implemented services/recovery, operator CLI, guarded acceptance, resource-name-scoped RBAC plus admission, one immutable action (payment replicas 0 to 1), independently checked live preconditions, default dry-run, request/spec/generation-bound 180-second single-use approvals, opted-in autonomous mode, conditional one-shot JSON Patch, bounded read-only consistent snapshots, durable single-flight claims, cooldown/hourly budget, fail-closed uncertainty and chained audit. Verification requires three consecutive ready observations at the exact expected generation. No model shell/token/approval interface was added.
+
+Final Windows suite: 402 passed, 2 existing skips, one existing warning; 65 recovery tests. Actual autonomous d7-autonomous-5ba20e9e0e and approval d7-approval-324fc2fcfe both passed in safeheal-day7 with eight real-token access denials plus a zero-state admission denial each; all HTTP 403. Dry-run, unapproved request and replay gates passed. Both business checks and cleanup passed without operator restoration. All 27 available retained audit records verify and accepted source manifests match final executable code/policy. No local trial token files remain.
+
+Retained four failed live attempts: explicit denial-reason mismatch (422 instead of required 403, before injection), two safe zero-scale precondition denials (Kubernetes omitted zero ScaleSpec field), and one verified controller action whose separate business check hit Service route convergence. Corrected representation/conditional patch, added bounded read snapshots and reused existing GET-only route wait before one unretried order POST. The failed outcomes remain failed. Initial test-fixture reset failure (53 passed, one failed) is described in engineering notes; final full suite passes.
+
+Original safeheal-dev node remains preserved/stopped after Windows rejected its reserved API port. Created the separate pinned safeheal-day7 cluster with independent project kubeconfig and loaded the previously verified application image. No global reset, cluster deletion, default-context change or original benchmark rewrite. No paid model call, general reliability or A/B/C recovery gain claim.
+
+CI now includes both guarded recovery modes and artifact retention, but local branch day7-safe-recovery was not published; no remote CI or main integration is claimed. Overall gate count 7/10; Day 8 next. Detailed handoff: PROJECT_STATUS_Day7_2026-10-24.md.
+
+
+## Day 8 AI reliability and robustness — 2026-10-24
+
+Implemented fixed synthetic adversarial development evaluation and exact-Git baseline comparison; actual-sample freshness, normalized schema/hash/support validation of every record, detached provider input, malformed platform exclusion and generic adapter-exception fallback. Added local notification intake with strict time/ID schema, durable duplicate notification/evidence suppression, concurrency/restart persistence, claim-before-call, collision/capacity checks and fail-closed journal/crash behavior. Added CLI route, 74 tests, operational contract and paired CI/artifact wiring. No recovery authority or new model tool was exposed.
+
+Authoritative paired reports: evidence/day8/paired/{before,after,comparison}.json. Same evaluator/case manifest; baseline exported from d10575a79781eda91f942aef56ee5a90fa5e1aba and independently verified against Git. Before: 27/36 passed; after: 36/36 passed; nine improved, zero regressed. Five repeated notifications or new IDs for identical incident/evidence: five simulated calls -> one; stale notification: one -> zero. Complete case outcomes, diagnoses and source hashes retained. These are mocked/synthetic development safeguards, not held-out/real-model performance, production reliability or an MTTR result.
+
+The first after-evaluator attempt raised AttributeError while reading diagnosis=null for a suppressed notification. Corrected null handling, retained the description and exact early evaluator variants verified against their recorded SHA-256, then reran both paired arms using the same corrected evaluator. Early before.json/after-initial.json remain separate. Initial new tests: 71 passed; final new coverage: 74 passed. Final full Windows suite: 476 passed, two existing skips, one existing warning; focused diagnosis suite 123 passed. Original Day 5/6/7 evidence remains unchanged.
+
+No real-provider call, cluster mutation, new fault trial, Docker reset or kubeconfig change was performed in Day 8. The notification journal is local; compromised same-user processes or dishonest telemetry instruments remain outside the guarantee. Pending/uncertain claims suppress automatic retry; operator investigation/maintenance is required. Direct incident/benchmark CLI calls remain intentional one-shot/replay interfaces.
+
+Canonical branch day8-ai-robustness continues the tested Day 7 history. Commit is local; no Day 8 GitHub publication, remote CI or main integration is claimed. Overall milestones 8/10 (80%); Day 9 matched controlled experiments next. Detailed handoff: PROJECT_STATUS_Day8_2026-10-24.md.
+
+
+## Day 9 controlled baseline study and pending AI arm — 2026-10-24
+
+Predeclared five matched blocks/seed 9, one payment scale-zero fault, same workload, eight-second decision delay and 45-second observation horizon. Actual lab run 17:54:55–18:06:55 UTC: five native and five fixed-rule/safe-policy trials. Native 0/5 recoveries within horizon (all censored); rule 5/5, mean business recovery 19.0378 s, median 18.063 s, range 17.359–21.907 s. Matched difference in 45-second restricted time 25.9622 s; exploratory paired bootstrap [24.2838,27.3438]. This is not observed native MTTR, generic recovery performance, population precision or an AI benefit.
+
+User selected A provider I configure. No active local profile was supplied; all five AI slots are retained as not_run, with no real-model accuracy/cost/recovery claim or mock substitute. Provider profile/credential/budget is the remaining dependency. Run a new matched cohort after configuration; do not fill old slots or pool silently.
+
+Saved 1,767 raw request completions, raw platform/Prometheus data and controller audit SQLite/JSON under evidence/day9/run-primary; verified the 60-file manifest and exact metric replay. Twenty audit events pass chain verification; all 80 forbidden probes denied, five controller actions verified, ten trial cleanups passed, and tokens removed locally. Five operator restorations happened after measurement only. Figures/CSV/findings under evidence/day9/analysis. Closed-loop valid-response fractions (17/345 native; 1219/1370 rule) are not time-weighted uptime.
+
+Nineteen new tests; final full suite 495 passed, 2 existing skips, one existing warning. An initial chart preparation error assumed an unrun metrics field could not be null; null-safe rendering/CSV regression added. Numerical findings and raw measurements did not change; the earlier 494-pass test log remains. Added pinned optional plotting requirements and CI raw replay. Production controller/RBAC/admission unchanged; per-trial fresh operator enrollment/journals are documented and do not establish continuous-production budgeting across resets.
+
+Only the existing isolated safeheal-day7 lab was used; pinned Prometheus added, app image unchanged, old stopped cluster/default context/prior evidence preserved. No paid/model call, Docker reset, GitHub publication, merge or remote Day 9 CI. Local branch day9-controlled-experiments. Day 9 remains partial; overall completed milestones 8/10 (80%). See PROJECT_STATUS_Day9_Partial_2026-10-24.md.
+
+
+## 2026-10-25 — local release finalization (Asia/Kolkata; raw UTC timestamps remain dated 24 October)
+
+## Current release checkpoint — 25 October 2026 (Asia/Kolkata)
+
+**Days 1–9 complete; Day 10 local implementation and validation prepared. Overall completed gates: 9/10 (90%). Final GitHub publication and current-release Actions remain pending a repository-privacy decision. The full project is not yet published/complete.** Earlier progress counts below are historical.
+
+The fresh 90-second cohort executed 15 actual Kubernetes trials: native 0/5 recovered, rule 5/5 (mean 30.544 s), AI arm 0/5. Native/AI censored actual recovery times remain unknown. Five local-model requests were attempted; provider statuses: {'provider_timeout': 5}. No fallback is labelled model success and no AI benefit is established. The original 45-second cohort and missing-provider slots remain unchanged.
+
+All 120 forbidden probes returned 403; 20 audit events verified; 15/15 cleanups passed; 10 operator restorations after observation are excluded. Retained 4035 raw requests. Final Windows suite: **509 passed, 2 skipped, zero failed**. Existing skips are Windows symlink privilege and explicit real-provider integration opt-in. The local cohort is separate actual-provider evidence, not an assertion that that integration test ran.
+
+Added a research-style report with primary related-work sources, current architecture diagrams, a clean-checkout/reproduction guide, a 3–5 minute demo, grounded resume/SOP wording, 20 advanced interview answers and an operator checklist. Offline reproduction verifies artifact hashes, historical instrument source bytes, raw numerical replay and audit chains without provider/cluster calls. Post-study cleanup hardening has seven safety tests and does not rewrite measured records.
+
+Canonical branch: `day10-finalization`; inspect Git for the latest committed SHA. As-run local-study instrument commit: `79270ecf1fbd4b515591f6f478346657cfa0ebc4`. GitHub was freshly observed **PUBLIC**, with main at `1ae2e8f6a7dd8f95acb3cb395f26c562a0f3aff6` (through Day 6; CI39941985948 success). This session did not change visibility, push, merge or run current-release GitHub CI. The earlier private-only publication instruction does not resolve this changed destination. Final publication/privacy authorization is the remaining external decision.
+
+See `docs/RESEARCH_REPORT.md`, `docs/REPRODUCIBILITY.md`, `evidence/day9/analysis-local/FINDINGS.md` and `evidence/final/`. Clean-checkout evidence is recorded separately after committing this release candidate; it must identify its exact tested commit. No production readiness, calibrated accuracy, general MTTR improvement, population reliability or externally tamper-proof audit is claimed.
+
+
+The user delegated project completion. A proposed five-request cloud-backed Ollama study was rejected by automatic approval review before execution because the cloud destination was not explicitly authorized. Chose a materially safer alternative: downloaded local Qwen weights, confirmed GGUF metadata/digest and loopback serving, and ran a new predeclared matched cohort. No cloud diagnosis, unlimited paid call, global Docker reset, unrelated-container stop, visibility change or GitHub upload was performed.
+
+An optional primary Linux pytest invocation could not run because pytest was absent in that runtime. A separate Python 3.12 stdlib smoke passed read-only audit/source-binding/tamper checks; it is not called a Linux full-suite pass. Canonical Windows full-suite evidence is retained.
+
+
+## Private publication update — 25 October 2026
+
+The user repeated authorization to complete the project with full access. Preserved the existing private-repository requirement: verified the exact owned repository had zero forks/stars and admin access, restored PRIVATE visibility, then rechecked it. No final source/evidence was uploaded publicly. The earlier privacy-decision checkpoint below is superseded; current next steps are private branch publication and GitHub Actions. The release candidate is locally committed at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de; clean-checkout verification identifies that exact commit. Current-release CI is not yet claimed.
+
+
+
+## Clean checkout verified — 25 October 2026
+
+Fresh local clone at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de, new Python 3.12 virtual environment and pinned dependency installation all passed. Suite: 509 passed, 2 skipped. Offline replay verified 230 artifacts and both historical instruments; exact-source robustness replay reproduced 27/36 -> 36/36, with zero regressions; the retained Day 5 diagnosis fallback replay passed. Logs and exact tested commit are in evidence/final/clean-checkout.json and evidence/final/clean-checkout/. No provider or live-cluster call was made by these clean-checkout checks.
+
+Added workflow concurrency by workflow/head branch so push and pull-request events do not run duplicate long-lived lab jobs. Current-release GitHub CI remains pending; no remote green result is claimed yet.
+
+
+## Bootstrap correction checkpoint — 25 October 2026
+
+PR4 publication CI40135721425 failed before recovery fault injection: the fresh-install scale-to-two server dry-run returned 200. Unit/replay checks and all six benchmark fault trials passed. The failed run, raw artifacts and error remain archived in evidence/final/ci-40135721425.
+
+Added a bounded real-token enforcement gate before executor configuration is written: two consecutive policy-specific 403 responses are required; 200, unrelated RBAC denial, transport errors and unproven enforcement cannot release configuration. Existing negative checks remain strict and no real recovery write is retried. Controlled-run enrollment also uses the gate and removes its private token on failure. CI now verifies recovery early, before the long fault batch.
+
+Thirteen new bootstrap safety tests; 107 focused recovery/experiment tests passed. Full Windows suite: **522 passed, 2 skipped, zero failed**. A live no-fault gate check passed with replicas unchanged at one, eight forbidden calls denied, and local token removed. Current-release CI must be rerun before merge; overall gates remain 9/10 until final publication checks pass. The 45/90-second experimental data and prior outcomes are unchanged.
+
+
+The first documentation-update helper used the Windows default text encoding and stopped with UnicodeDecodeError. Restored the two touched documents from their committed UTF-8 source, reapplied the intended additions once, and used explicit UTF-8. Experimental raw data and source-test outcomes were unchanged.

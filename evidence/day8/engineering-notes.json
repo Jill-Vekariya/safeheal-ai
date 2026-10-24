@@ -1,0 +1,23 @@
+{
+  "evaluator_initial_failure": {
+    "exception": "AttributeError",
+    "cause": "A suppressed/rejected notification has diagnosis=null; the evaluator originally assumed a dictionary.",
+    "after_report_produced_by_failed_attempt": false,
+    "correction": "Null-safe inspection. Both paired arms rerun with the exact same corrected evaluator/cases.",
+    "archived_exact_evaluator_variants": [
+      "evaluator-original.py",
+      "evaluator-null-fix.py"
+    ],
+    "archive_identity": "Each variant was reconstructed and accepted only after its bytes matched its original recorded SHA-256."
+  },
+  "early_reports": [
+    "before.json",
+    "after-initial.json"
+  ],
+  "authoritative_reports": "paired/{before,after,comparison}.json",
+  "initial_new_tests": "71 passed; final new regressions bring count to 74",
+  "final_suite": "476 passed, 2 skipped, 1 existing warning",
+  "real_provider_test": "Not run; explicit opt-in/credentials unavailable. All new evaluation providers are mocked.",
+  "cluster_operations": "None during Day 8",
+  "publication": "Local commit only; no push/merge or remote Day 8 CI."
+}
