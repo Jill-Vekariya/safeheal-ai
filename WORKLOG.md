@@ -299,3 +299,16 @@ See `docs/RESEARCH_REPORT.md`, `docs/REPRODUCIBILITY.md`, `evidence/day9/analysi
 The user delegated project completion. A proposed five-request cloud-backed Ollama study was rejected by automatic approval review before execution because the cloud destination was not explicitly authorized. Chose a materially safer alternative: downloaded local Qwen weights, confirmed GGUF metadata/digest and loopback serving, and ran a new predeclared matched cohort. No cloud diagnosis, unlimited paid call, global Docker reset, unrelated-container stop, visibility change or GitHub upload was performed.
 
 An optional primary Linux pytest invocation could not run because pytest was absent in that runtime. A separate Python 3.12 stdlib smoke passed read-only audit/source-binding/tamper checks; it is not called a Linux full-suite pass. Canonical Windows full-suite evidence is retained.
+
+
+## Private publication update — 25 October 2026
+
+The user repeated authorization to complete the project with full access. Preserved the existing private-repository requirement: verified the exact owned repository had zero forks/stars and admin access, restored PRIVATE visibility, then rechecked it. No final source/evidence was uploaded publicly. The earlier privacy-decision checkpoint below is superseded; current next steps are private branch publication and GitHub Actions. The release candidate is locally committed at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de; clean-checkout verification identifies that exact commit. Current-release CI is not yet claimed.
+
+
+
+## Clean checkout verified — 25 October 2026
+
+Fresh local clone at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de, new Python 3.12 virtual environment and pinned dependency installation all passed. Suite: 509 passed, 2 skipped. Offline replay verified 230 artifacts and both historical instruments; exact-source robustness replay reproduced 27/36 -> 36/36, with zero regressions; the retained Day 5 diagnosis fallback replay passed. Logs and exact tested commit are in evidence/final/clean-checkout.json and evidence/final/clean-checkout/. No provider or live-cluster call was made by these clean-checkout checks.
+
+Added workflow concurrency by workflow/head branch so push and pull-request events do not run duplicate long-lived lab jobs. Current-release GitHub CI remains pending; no remote green result is claimed yet.

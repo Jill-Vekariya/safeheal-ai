@@ -1,5 +1,9 @@
 # SafeHeal AI — local release handoff
 
+## Private publication update — 25 October 2026
+
+The user repeated authorization to complete the project with full access. Preserved the existing private-repository requirement: verified the exact owned repository had zero forks/stars and admin access, restored PRIVATE visibility, then rechecked it. No final source/evidence was uploaded publicly. The earlier privacy-decision checkpoint below is superseded; current next steps are private branch publication and GitHub Actions. The release candidate is locally committed at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de; clean-checkout verification identifies that exact commit. Current-release CI is not yet claimed.
+
 ## Current release checkpoint — 25 October 2026 (Asia/Kolkata)
 
 **Days 1–9 complete; Day 10 local implementation and validation prepared. Overall completed gates: 9/10 (90%). Final GitHub publication and current-release Actions remain pending a repository-privacy decision. The full project is not yet published/complete.** Earlier progress counts below are historical.
@@ -15,3 +19,10 @@ Canonical branch: `day10-finalization`; inspect Git for the latest committed SHA
 See `docs/RESEARCH_REPORT.md`, `docs/REPRODUCIBILITY.md`, `evidence/day9/analysis-local/FINDINGS.md` and `evidence/final/`. Clean-checkout evidence is recorded separately after committing this release candidate; it must identify its exact tested commit. No production readiness, calibrated accuracy, general MTTR improvement, population reliability or externally tamper-proof audit is claimed.
 
 Reproduce from the canonical repository `C:\Users\jillv\Projects\safeheal-ai` on Jill-Vekariya10. Do not substitute this handoff for source code. Existing isolated lab: safeheal-day7, context kind-safeheal-day7, explicit kubeconfig .local/day7/kubeconfig. Original stopped cluster preserved; unrelated Docker resources unchanged. The newly installed local model weights remain available; its owned inference instance was unloaded after measurement. Keep credentials and kubeconfigs ignored.
+
+
+## Clean checkout verified — 25 October 2026
+
+Fresh local clone at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de, new Python 3.12 virtual environment and pinned dependency installation all passed. Suite: 509 passed, 2 skipped. Offline replay verified 230 artifacts and both historical instruments; exact-source robustness replay reproduced 27/36 -> 36/36, with zero regressions; the retained Day 5 diagnosis fallback replay passed. Logs and exact tested commit are in evidence/final/clean-checkout.json and evidence/final/clean-checkout/. No provider or live-cluster call was made by these clean-checkout checks.
+
+Added workflow concurrency by workflow/head branch so push and pull-request events do not run duplicate long-lived lab jobs. Current-release GitHub CI remains pending; no remote green result is claimed yet.

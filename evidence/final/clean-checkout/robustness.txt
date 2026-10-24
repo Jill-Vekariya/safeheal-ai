@@ -1,0 +1,38 @@
+{"attempted": 36, "passed": 27, "failed": 9, "real_llm_calls": 0}
+{"attempted": 36, "passed": 36, "failed": 0, "real_llm_calls": 0}
+{
+  "schema_version": "day8-paired-v1",
+  "baseline_commit": "d10575a79781eda91f942aef56ee5a90fa5e1aba",
+  "before": {
+    "attempted": 36,
+    "passed": 27,
+    "failed": 9,
+    "real_llm_calls": 0
+  },
+  "after": {
+    "attempted": 36,
+    "passed": 36,
+    "failed": 0,
+    "real_llm_calls": 0
+  },
+  "improved_cases": [
+    "stale_samples_fresh_envelope",
+    "malformed_platform_shape",
+    "tampered_uncited_record",
+    "injected_normalized_prose",
+    "provider_mutates_input",
+    "unexpected_provider_exception",
+    "repeated_notification",
+    "different_ids_same_evidence",
+    "stale_notification"
+  ],
+  "regressed_cases": [],
+  "unchanged_case_manifest": true,
+  "identical_evaluator": true,
+  "baseline_source_verified_against_git": true,
+  "report_sha256": {
+    "before.json": "8320cbfd69f7f833025ac57b670f88f9cdb8a85d4dde4dcb005e19cee656cc13",
+    "after.json": "4baae20c2ec47df456af42a8da02d7264dcad08fa372baf66fda9620243a160a"
+  },
+  "interpretation": "Fixed synthetic development safety cases; mocked providers, zero real-model calls. No statistical generalization or MTTR benefit."
+}

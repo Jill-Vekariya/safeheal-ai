@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-10-24T21:34:13.895496+00:00",
+  "tested_commit": "60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de",
+  "passed": true,
+  "steps": [
+    {
+      "step": "clone",
+      "exit_code": 0
+    },
+    {
+      "step": "venv",
+      "exit_code": 0
+    },
+    {
+      "step": "dependencies",
+      "exit_code": 0
+    },
+    {
+      "step": "package",
+      "exit_code": 0
+    },
+    {
+      "step": "tests",
+      "exit_code": 0
+    },
+    {
+      "step": "reproduction",
+      "exit_code": 0
+    },
+    {
+      "step": "robustness",
+      "exit_code": 0
+    },
+    {
+      "step": "diagnosis",
+      "exit_code": 0
+    }
+  ],
+  "tests_passed": 509,
+  "tests_skipped": 2,
+  "verified_artifacts": 230,
+  "robustness_before": {
+    "attempted": 36,
+    "passed": 27,
+    "failed": 9,
+    "real_llm_calls": 0
+  },
+  "robustness_after": {
+    "attempted": 36,
+    "passed": 36,
+    "failed": 0,
+    "real_llm_calls": 0
+  },
+  "finished_at": "2026-10-24T21:40:10.094583+00:00"
+}

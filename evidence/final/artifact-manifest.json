@@ -249,7 +249,7 @@
     "evidence/final/windows-tests.txt": "b918fcf72402ee52df2043d51fdc2ad5b98ed7b915eca6703688ff8ad9347620",
     "examples/provider.local.json": "4fd10383ec9be5c47ecf0e0f63cd5e105a7fada36f5980984d960a867535fbe4",
     "infrastructure/recovery/policy.yaml": "a28f2a181052b510b1c0e5bcd12c2135de6123aebd60d44c6d1942076a0c2b8f",
-    "README.md": "baf6fd93b3c9e4a4ed45cb1a78f17ceb0cc99a429216c582f39d1cdd5b97b415",
+    "README.md": "9583b6a47dbdb255b44e002ef21e9e11e4db4625083ef7aa78341a89ec813e7f",
     "scripts/analyze_controlled.py": "efb0597573f03cb734714143f453fb6a67fbb2645d7a5eba30aa691bbd8f8f68",
     "scripts/compare_robustness.py": "b07de147426fb70877fe071c88a17c51ebf5504dea9a73824312b789720f799c",
     "scripts/controlled_core.py": "3cd0e819630f1cc830589352ffacc9d99e2bba5b3dd140bf6dc85d8d77dab9fe",

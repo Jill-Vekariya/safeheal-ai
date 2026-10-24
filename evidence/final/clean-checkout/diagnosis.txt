@@ -1,0 +1,1 @@
+{"output": ".local\\day6-replay.json", "passed": true, "summary": {"attempted": 6, "grounded": 6, "target_match": 6, "observable_class_match": 6, "llm_diagnoses": 0, "fallback_diagnoses": 6, "structured_grounded_acceptance": true}}

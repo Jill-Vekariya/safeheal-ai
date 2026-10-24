@@ -1,5 +1,9 @@
 # SafeHeal AI — portable project status
 
+## Private publication update — 25 October 2026
+
+The user repeated authorization to complete the project with full access. Preserved the existing private-repository requirement: verified the exact owned repository had zero forks/stars and admin access, restored PRIVATE visibility, then rechecked it. No final source/evidence was uploaded publicly. The earlier privacy-decision checkpoint below is superseded; current next steps are private branch publication and GitHub Actions. The release candidate is locally committed at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de; clean-checkout verification identifies that exact commit. Current-release CI is not yet claimed.
+
 ## Current release checkpoint — 25 October 2026 (Asia/Kolkata)
 
 **Days 1–9 complete; Day 10 local implementation and validation prepared. Overall completed gates: 9/10 (90%). Final GitHub publication and current-release Actions remain pending a repository-privacy decision. The full project is not yet published/complete.** Earlier progress counts below are historical.
@@ -373,3 +377,10 @@ Day 4 loopback service smoke also passed: started the actual detector as an isol
 ## Day 6 delivery and repository-state recheck - 2026-10-23
 
 Implementation remains 33b27a43b18f808474e9778ce432aebc789d69e0. All retained source hashes match; both six-trial reports pass grounding recheck. Credentials remain unavailable. GitHub main remains Day 4 at156da54; Day5 branch e04a506 and PR2 are published, Day6 is local only. ADMIN access does not enable branch protection on this private repository plan: GitHub returns403 requiring an eligible upgrade or public visibility. Neither purchase nor visibility change was performed. The proposed docs/MAIN_BRANCH_PROTECTION.json is not applied or enforced. Automatic approval review rejected the source/documentation/benchmark-evidence push again after broad user authorization, requiring explicit destination-and-payload authorization; do not bypass it. No Day6 remote CI or main integration is claimed. See PROJECT_STATUS_Day6_2026-10-23.md and evidence/day6/publication-blockers.json.
+
+
+## Clean checkout verified — 25 October 2026
+
+Fresh local clone at 60f8b9d7bd7abe8d0a5d8ea0de36cd476e6f63de, new Python 3.12 virtual environment and pinned dependency installation all passed. Suite: 509 passed, 2 skipped. Offline replay verified 230 artifacts and both historical instruments; exact-source robustness replay reproduced 27/36 -> 36/36, with zero regressions; the retained Day 5 diagnosis fallback replay passed. Logs and exact tested commit are in evidence/final/clean-checkout.json and evidence/final/clean-checkout/. No provider or live-cluster call was made by these clean-checkout checks.
+
+Added workflow concurrency by workflow/head branch so push and pull-request events do not run duplicate long-lived lab jobs. Current-release GitHub CI remains pending; no remote green result is claimed yet.

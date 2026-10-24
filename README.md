@@ -4,7 +4,7 @@ An inspectable Kubernetes incident-response testbed that separates model diagnos
 
 SafeHeal observes a synthetic gateway → order → payment application, validates bounded evidence, and compares native behavior, a fixed symptom rule and real-model diagnosis. A separate deterministic controller permits only one enrolled action: restore the payment Deployment from desired replicas zero to one. The model receives no shell or Kubernetes credential.
 
-**Status — 25 October 2026:** Days 1–9 verified. Day 10 local implementation and validation are prepared; final publication and current-release GitHub Actions await a repository-privacy decision (9/10 gates). No AI advantage is claimed. See [project status](PROJECT_STATUS.md).
+**Status — 25 October 2026:** Days 1–9 verified. Day 10 local implementation and validation are prepared; private publication and current-release GitHub Actions are in progress (9/10 gates until final checks pass). No AI advantage is claimed. See [project status](PROJECT_STATUS.md).
 
 ## Start with the evidence
 
