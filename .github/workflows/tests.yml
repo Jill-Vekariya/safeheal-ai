@@ -61,6 +61,11 @@ jobs:
         run: |
           python scripts/benchmark.py run
           python scripts/benchmark.py run --execute --backend kubernetes --repeats 2 --baseline-seconds 30
+      - name: Verify independent allowlisted recovery and approval gates
+        run: |
+          python scripts/verify_recovery.py
+          python scripts/verify_recovery.py --execute --mode autonomous
+          python scripts/verify_recovery.py --execute --mode approval
       - name: Preserve verification evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -71,4 +76,5 @@ jobs:
             evidence/day3/
             evidence/day4/
             evidence/day5/
+            evidence/day7/
           retention-days: 7

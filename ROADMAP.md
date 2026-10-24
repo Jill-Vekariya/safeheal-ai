@@ -1,5 +1,7 @@
 # SafeHeal AI — 10-day execution plan
 
+**Current verified progress: Days 1–7 complete, 7/10 gates (70%), 2026-10-24.** Day 7 passed both real Kubernetes recovery modes with independent policy, narrow RBAC/admission, dry-run/approval, audit and verification. Final suite: 402 passed, 2 skipped. Next: Day 8 robustness. Prior checkpoint counts below are historical. Publication/remote CI remain outstanding. See PROJECT_STATUS_Day7_2026-10-24.md.
+
 Days are work milestones, not a promise that unfinished gates are complete on a calendar date. Progress uses 10 equally weighted daily gates; partial task counts are reported separately.
 
 **Verified progress: Days 1–6 complete, 6/10 gates (60%), as of 2026-10-23. Next: Day 7 independent safe recovery.** Day 6 engineering acceptance: all six retained Kubernetes benchmark incidents produce structured, evidence-grounded diagnoses in mocked-provider and deterministic-fallback replay. Windows: 337 passed, two environment/configuration skips. Real-provider tests exist but are not executed without credentials and explicit model/budget opt-in. See PROJECT_STATUS.md, docs/AI_DIAGNOSIS.md and evidence/day6.

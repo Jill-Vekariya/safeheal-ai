@@ -1,0 +1,14 @@
+[
+  {
+    "at": 1792860171.3135273,
+    "code": "invalid_schema",
+    "request_hash": "93b239013a50b379873d69289fdd836c77174ac1bde966571a4189a701515747",
+    "stage": "denial"
+  },
+  {
+    "at": 1792860173.3125384,
+    "code": "scale_precondition_changed",
+    "request_hash": "ea11f7494ad9f0210e22fe53a9387e5180a0e02057b9b3467f0bf98dd9376f5a",
+    "stage": "denial"
+  }
+]

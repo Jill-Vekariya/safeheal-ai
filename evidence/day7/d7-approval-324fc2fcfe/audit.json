@@ -1,0 +1,160 @@
+[
+  {
+    "at": 1792860372.530259,
+    "code": "invalid_schema",
+    "request_hash": "874171221784718083c56a2d2f0cf7b9e52a2510af6e32ec6861f8655ca5275d",
+    "stage": "denial"
+  },
+  {
+    "action": "restore_payment_replica",
+    "at": 1792860374.40998,
+    "code": "permitted",
+    "fingerprint": "a65393e7d6f1d5efc20e44e763f638225b855cca20214d76cea002561c0fe7c3",
+    "mode": "dry-run",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "1781"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "at": 1792860375.0321484,
+    "code": "approval_missing_stale_or_used",
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "denial"
+  },
+  {
+    "at": 1792860375.5568688,
+    "code": "operator_approved",
+    "expires": 1792860555.5568688,
+    "fingerprint": "a65393e7d6f1d5efc20e44e763f638225b855cca20214d76cea002561c0fe7c3",
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "approval"
+  },
+  {
+    "action": "restore_payment_replica",
+    "at": 1792860376.1435194,
+    "code": "permitted",
+    "fingerprint": "a65393e7d6f1d5efc20e44e763f638225b855cca20214d76cea002561c0fe7c3",
+    "mode": "approval",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "1781"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "at": 1792860376.144718,
+    "code": "intent_durably_recorded",
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "execution"
+  },
+  {
+    "at": 1792860376.1691232,
+    "code": "api_acknowledged",
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "execution"
+  },
+  {
+    "at": 1792860383.275955,
+    "code": "recovery_verified",
+    "observations": [
+      {
+        "at": 1792860376.1862986,
+        "generation": 11,
+        "observed_generation": 10,
+        "ready": false
+      },
+      {
+        "at": 1792860377.194477,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860378.2055964,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860379.2262912,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860380.2353015,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860381.2479546,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": true
+      },
+      {
+        "at": 1792860382.2596147,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": true
+      },
+      {
+        "at": 1792860383.2724693,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": true
+      }
+    ],
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "verification"
+  },
+  {
+    "at": 1792860383.866589,
+    "code": "live_precondition_not_zero",
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "stage": "denial"
+  }
+]

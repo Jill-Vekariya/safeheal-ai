@@ -1,0 +1,146 @@
+[
+  {
+    "at": 1792860298.9839437,
+    "code": "invalid_schema",
+    "request_hash": "c7f8fee042d91710ed4e2fc0c00f0ef3babe8c50da9c2df9d8fa6ffad2aac0d8",
+    "stage": "denial"
+  },
+  {
+    "action": "restore_payment_replica",
+    "at": 1792860300.7610269,
+    "code": "permitted",
+    "fingerprint": "2b1e5c5b008c739b2f0f258a9febcb3ec0a81a210e37fa8899cd27ff83fd67fd",
+    "mode": "dry-run",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "1531"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "77c9b0fcdf50feb3a272ff8ecc3f5388abfe5f52686019a89cc45b2a3ec8bc73",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "action": "restore_payment_replica",
+    "at": 1792860301.2164557,
+    "code": "permitted",
+    "fingerprint": "2b1e5c5b008c739b2f0f258a9febcb3ec0a81a210e37fa8899cd27ff83fd67fd",
+    "mode": "autonomous",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "1531"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "77c9b0fcdf50feb3a272ff8ecc3f5388abfe5f52686019a89cc45b2a3ec8bc73",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "at": 1792860301.2188132,
+    "code": "intent_durably_recorded",
+    "request_hash": "77c9b0fcdf50feb3a272ff8ecc3f5388abfe5f52686019a89cc45b2a3ec8bc73",
+    "stage": "execution"
+  },
+  {
+    "at": 1792860301.2307181,
+    "code": "api_acknowledged",
+    "request_hash": "77c9b0fcdf50feb3a272ff8ecc3f5388abfe5f52686019a89cc45b2a3ec8bc73",
+    "stage": "execution"
+  },
+  {
+    "at": 1792860308.3379009,
+    "code": "recovery_verified",
+    "observations": [
+      {
+        "at": 1792860301.245579,
+        "generation": 7,
+        "observed_generation": 6,
+        "ready": false
+      },
+      {
+        "at": 1792860302.2608707,
+        "generation": 7,
+        "observed_generation": 7,
+        "ready": false
+      },
+      {
+        "at": 1792860303.2690108,
+        "generation": 7,
+        "observed_generation": 7,
+        "ready": false
+      },
+      {
+        "at": 1792860304.281797,
+        "generation": 7,
+        "observed_generation": 7,
+        "ready": false
+      },
+      {
+        "at": 1792860305.2923625,
+        "generation": 7,
+        "observed_generation": 7,
+        "ready": false
+      },
+      {
+        "at": 1792860306.307231,
+        "generation": 7,
+        "observed_generation": 7,
+        "ready": true
+      },
+      {
+        "at": 1792860307.3198528,
+        "generation": 7,
+        "observed_generation": 7,
+        "ready": true
+      },
+      {
+        "at": 1792860308.3312151,
+        "generation": 7,
+        "observed_generation": 7,
+        "ready": true
+      }
+    ],
+    "request_hash": "77c9b0fcdf50feb3a272ff8ecc3f5388abfe5f52686019a89cc45b2a3ec8bc73",
+    "stage": "verification"
+  },
+  {
+    "at": 1792860308.8387825,
+    "code": "live_precondition_not_zero",
+    "request_hash": "77c9b0fcdf50feb3a272ff8ecc3f5388abfe5f52686019a89cc45b2a3ec8bc73",
+    "stage": "denial"
+  }
+]

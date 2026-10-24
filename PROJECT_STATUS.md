@@ -1,5 +1,18 @@
 # SafeHeal AI — portable project status
 
+## Current Day 7 checkpoint — 2026-10-24
+
+**DAY 7 COMPLETE: independent safe autonomous recovery acceptance passed. Overall milestones: 7/10 (70%). Next: Day 8 robustness. The full project remains incomplete.** Earlier checkpoint counts below are historical and superseded.
+
+The immutable catalog permits only restoration of the enrolled safeheal-dev/payment Deployment from zero to one replica. A separate deterministic controller validates live UID/spec/generation and typed proposals; default dry-run, expiring single-use operator approval and explicitly opted-in autonomous modes are implemented. The model receives no shell, Kubernetes credential, approval/configuration authority or arbitrary execution interface. The dedicated token has named scale-only RBAC; fail-closed admission independently restricts replica values. Durable audit/claims, duplicate/single-flight protection, rate limits, no write retries and consecutive generation-aware readiness checks are enforced.
+
+Final Windows suite: **402 passed, 2 skipped, 0 failed**, one existing warning; **65 new recovery tests**. Both actual Kubernetes acceptance trials passed in the separate safeheal-day7 lab: autonomous d7-autonomous-5ba20e9e0e and approval d7-approval-324fc2fcfe. Real-token forbidden calls returned 403; dry-run preserved zero, unapproved/replayed requests were denied, controller recovery and separate business checks passed, and no operator restoration was needed for either successful trial. All 27 retained audit events verified; accepted source manifests have zero mismatches. No real-model call or comparative MTTR claim.
+
+Four unsuccessful engineering live attempts and the initial fixture-test failure are retained/described. Original Day 5/6 evidence is unchanged. The original safeheal-dev node could not start because Windows blocks its reserved API port; it was preserved. The fresh pinned safeheal-day7 cluster uses only .local/day7/kubeconfig and kind-safeheal-day7 context, with the existing verified application image. No global Docker reset/default-context change.
+
+Local review branch: day7-safe-recovery, continuing canonical e8f2522. Changes are committed locally for this milestone; inspect actual git log for the final SHA. No Day 7 GitHub push, merge or remote CI was performed. The earlier publication blocker remains separate. See PROJECT_STATUS_Day7_2026-10-24.md, docs/SAFE_RECOVERY.md and evidence/day7/verification.json.
+
+
 ## Current Day 6 checkpoint — 2026-10-23
 
 **DAY 6 COMPLETE: bounded AI diagnosis engineering acceptance passed. Overall gates: 6/10 (60%). Next: Day 7 independent safe-recovery policy and executor.** Earlier status counts below are historical snapshots superseded by this checkpoint. The full project remains incomplete.

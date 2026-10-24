@@ -1,0 +1,742 @@
+{
+  "trial_id": "d7-approval-324fc2fcfe",
+  "started_at": "2026-10-24T16:46:09.667232+00:00",
+  "passed": true,
+  "lab": "safeheal-day7",
+  "context": "kind-safeheal-day7",
+  "namespace": "safeheal-dev",
+  "controller_mode": "approval",
+  "llm_calls": 0,
+  "baseline_uid": "5c0e6110-4456-4725-8036-3aedc7fd5707",
+  "baseline_spec_sha256": "935302939e3b68df0042c08105a52b1061494cfe7833565e83abe54af1bc935e",
+  "denied_access": [
+    {
+      "method": "GET",
+      "path": "/api/v1/namespaces/safeheal-dev/secrets",
+      "status_code": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/namespaces/safeheal-dev/pods",
+      "status_code": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/namespaces/safeheal-dev/pods/payment/exec?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/order/scale?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "GET",
+      "path": "/apis/apps/v1/namespaces/default/deployments/payment",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All",
+      "status_code": 403
+    }
+  ],
+  "rejected_proposal": {
+    "status": "denied_or_failed",
+    "code": "invalid_schema"
+  },
+  "fault_intent_at": "2026-10-24T16:46:12.569695+00:00",
+  "zero_observed_at": "2026-10-24T16:46:13.819869+00:00",
+  "scale_before_recovery": {
+    "kind": "Scale",
+    "apiVersion": "autoscaling/v1",
+    "metadata": {
+      "name": "payment",
+      "namespace": "safeheal-dev",
+      "uid": "5c0e6110-4456-4725-8036-3aedc7fd5707",
+      "resourceVersion": "1781",
+      "creationTimestamp": "2026-10-24T16:37:53Z"
+    },
+    "spec": {},
+    "status": {
+      "replicas": 0,
+      "selector": "app.kubernetes.io/name=payment,app.kubernetes.io/part-of=safeheal-ai"
+    }
+  },
+  "admission_denied_from_zero": [
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All",
+      "status_code": 403
+    }
+  ],
+  "dry_run": {
+    "status": "dry_run",
+    "execution_allowed": false,
+    "catalog": {
+      "namespace": "safeheal-dev",
+      "deployment": "payment",
+      "from_replicas": 0,
+      "to_replicas": 1,
+      "verification": "three_consecutive_deployment_ready_observations"
+    },
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "1781"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ]
+  },
+  "unapproved_denial": {
+    "status": "denied_or_failed",
+    "code": "approval_missing_stale_or_used"
+  },
+  "approval": {
+    "status": "approved",
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "expires_in_seconds": 180
+  },
+  "controller_result": {
+    "status": "verified",
+    "request_hash": "138314d30076b23b74f9ddc9c57bd9b619b1e56b602482a5bb56b9020c559ba8",
+    "action": "restore_payment_replica",
+    "observations": [
+      {
+        "at": 1792860376.1862986,
+        "generation": 11,
+        "observed_generation": 10,
+        "ready": false
+      },
+      {
+        "at": 1792860377.194477,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860378.2055964,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860379.2262912,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860380.2353015,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": false
+      },
+      {
+        "at": 1792860381.2479546,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": true
+      },
+      {
+        "at": 1792860382.2596147,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": true
+      },
+      {
+        "at": 1792860383.2724693,
+        "generation": 11,
+        "observed_generation": 11,
+        "ready": true
+      }
+    ],
+    "verification": "three_consecutive_deployment_ready_observations"
+  },
+  "replay_denial": {
+    "status": "denied_or_failed",
+    "code": "live_precondition_not_zero"
+  },
+  "after": {
+    "kind": "Deployment",
+    "apiVersion": "apps/v1",
+    "metadata": {
+      "name": "payment",
+      "namespace": "safeheal-dev",
+      "uid": "5c0e6110-4456-4725-8036-3aedc7fd5707",
+      "resourceVersion": "1836",
+      "generation": 11,
+      "creationTimestamp": "2026-10-24T16:37:53Z",
+      "labels": {
+        "app.kubernetes.io/name": "payment",
+        "app.kubernetes.io/part-of": "safeheal-ai"
+      },
+      "annotations": {
+        "deployment.kubernetes.io/revision": "1",
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"name\":\"payment\",\"namespace\":\"safeheal-dev\"},\"spec\":{\"progressDeadlineSeconds\":180,\"replicas\":1,\"revisionHistoryLimit\":3,\"selector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"}},\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"env\":[{\"name\":\"SERVICE_ROLE\",\"value\":\"payment\"},{\"name\":\"SAFEHEAL_FAULTS_ENABLED\",\"value\":\"local-test\"},{\"name\":\"PYTHONDONTWRITEBYTECODE\",\"value\":\"1\"}],\"image\":\"safeheal-ai:sha256-311922d1b56ffd31\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":\"http\"},\"periodSeconds\":10,\"timeoutSeconds\":2},\"name\":\"payment\",\"ports\":[{\"containerPort\":8000,\"name\":\"http\"}],\"readinessProbe\":{\"failureThreshold\":2,\"httpGet\":{\"path\":\"/readyz\",\"port\":\"http\"},\"periodSeconds\":5,\"timeoutSeconds\":4},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true},\"startupProbe\":{\"failureThreshold\":30,\"httpGet\":{\"path\":\"/healthz\",\"port\":\"http\"},\"periodSeconds\":2,\"timeoutSeconds\":2},\"volumeMounts\":[{\"mountPath\":\"/tmp\",\"name\":\"tmp\"}]}],\"restartPolicy\":\"Always\",\"securityContext\":{\"fsGroup\":10001,\"runAsGroup\":10001,\"runAsNonRoot\":true,\"runAsUser\":10001,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}},\"serviceAccountName\":\"safeheal-workload\",\"terminationGracePeriodSeconds\":15,\"volumes\":[{\"emptyDir\":{\"medium\":\"Memory\",\"sizeLimit\":\"16Mi\"},\"name\":\"tmp\"}]}}}}\n"
+      },
+      "managedFields": [
+        {
+          "manager": "python-httpx",
+          "operation": "Update",
+          "apiVersion": "apps/v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:spec": {
+              "f:replicas": {}
+            }
+          },
+          "subresource": "scale"
+        },
+        {
+          "manager": "kubectl-client-side-apply",
+          "operation": "Update",
+          "apiVersion": "apps/v1",
+          "time": "2026-10-24T16:37:53Z",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                ".": {},
+                "f:kubectl.kubernetes.io/last-applied-configuration": {}
+              },
+              "f:labels": {
+                ".": {},
+                "f:app.kubernetes.io/name": {},
+                "f:app.kubernetes.io/part-of": {}
+              }
+            },
+            "f:spec": {
+              "f:progressDeadlineSeconds": {},
+              "f:revisionHistoryLimit": {},
+              "f:selector": {},
+              "f:strategy": {
+                "f:rollingUpdate": {
+                  ".": {},
+                  "f:maxSurge": {},
+                  "f:maxUnavailable": {}
+                },
+                "f:type": {}
+              },
+              "f:template": {
+                "f:metadata": {
+                  "f:labels": {
+                    ".": {},
+                    "f:app.kubernetes.io/name": {},
+                    "f:app.kubernetes.io/part-of": {}
+                  }
+                },
+                "f:spec": {
+                  "f:automountServiceAccountToken": {},
+                  "f:containers": {
+                    "k:{\"name\":\"payment\"}": {
+                      ".": {},
+                      "f:env": {
+                        ".": {},
+                        "k:{\"name\":\"PYTHONDONTWRITEBYTECODE\"}": {
+                          ".": {},
+                          "f:name": {},
+                          "f:value": {}
+                        },
+                        "k:{\"name\":\"SAFEHEAL_FAULTS_ENABLED\"}": {
+                          ".": {},
+                          "f:name": {},
+                          "f:value": {}
+                        },
+                        "k:{\"name\":\"SERVICE_ROLE\"}": {
+                          ".": {},
+                          "f:name": {},
+                          "f:value": {}
+                        }
+                      },
+                      "f:image": {},
+                      "f:imagePullPolicy": {},
+                      "f:livenessProbe": {
+                        ".": {},
+                        "f:failureThreshold": {},
+                        "f:httpGet": {
+                          ".": {},
+                          "f:path": {},
+                          "f:port": {},
+                          "f:scheme": {}
+                        },
+                        "f:periodSeconds": {},
+                        "f:successThreshold": {},
+                        "f:timeoutSeconds": {}
+                      },
+                      "f:name": {},
+                      "f:ports": {
+                        ".": {},
+                        "k:{\"containerPort\":8000,\"protocol\":\"TCP\"}": {
+                          ".": {},
+                          "f:containerPort": {},
+                          "f:name": {},
+                          "f:protocol": {}
+                        }
+                      },
+                      "f:readinessProbe": {
+                        ".": {},
+                        "f:failureThreshold": {},
+                        "f:httpGet": {
+                          ".": {},
+                          "f:path": {},
+                          "f:port": {},
+                          "f:scheme": {}
+                        },
+                        "f:periodSeconds": {},
+                        "f:successThreshold": {},
+                        "f:timeoutSeconds": {}
+                      },
+                      "f:resources": {
+                        ".": {},
+                        "f:limits": {
+                          ".": {},
+                          "f:cpu": {},
+                          "f:memory": {}
+                        },
+                        "f:requests": {
+                          ".": {},
+                          "f:cpu": {},
+                          "f:memory": {}
+                        }
+                      },
+                      "f:securityContext": {
+                        ".": {},
+                        "f:allowPrivilegeEscalation": {},
+                        "f:capabilities": {
+                          ".": {},
+                          "f:drop": {}
+                        },
+                        "f:readOnlyRootFilesystem": {}
+                      },
+                      "f:startupProbe": {
+                        ".": {},
+                        "f:failureThreshold": {},
+                        "f:httpGet": {
+                          ".": {},
+                          "f:path": {},
+                          "f:port": {},
+                          "f:scheme": {}
+                        },
+                        "f:periodSeconds": {},
+                        "f:successThreshold": {},
+                        "f:timeoutSeconds": {}
+                      },
+                      "f:terminationMessagePath": {},
+                      "f:terminationMessagePolicy": {},
+                      "f:volumeMounts": {
+                        ".": {},
+                        "k:{\"mountPath\":\"/tmp\"}": {
+                          ".": {},
+                          "f:mountPath": {},
+                          "f:name": {}
+                        }
+                      }
+                    }
+                  },
+                  "f:dnsPolicy": {},
+                  "f:restartPolicy": {},
+                  "f:schedulerName": {},
+                  "f:securityContext": {
+                    ".": {},
+                    "f:fsGroup": {},
+                    "f:runAsGroup": {},
+                    "f:runAsNonRoot": {},
+                    "f:runAsUser": {},
+                    "f:seccompProfile": {
+                      ".": {},
+                      "f:type": {}
+                    }
+                  },
+                  "f:serviceAccount": {},
+                  "f:serviceAccountName": {},
+                  "f:terminationGracePeriodSeconds": {},
+                  "f:volumes": {
+                    ".": {},
+                    "k:{\"name\":\"tmp\"}": {
+                      ".": {},
+                      "f:emptyDir": {
+                        ".": {},
+                        "f:medium": {},
+                        "f:sizeLimit": {}
+                      },
+                      "f:name": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "manager": "kube-controller-manager",
+          "operation": "Update",
+          "apiVersion": "apps/v1",
+          "time": "2026-10-24T16:46:20Z",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                "f:deployment.kubernetes.io/revision": {}
+              }
+            },
+            "f:status": {
+              "f:availableReplicas": {},
+              "f:conditions": {
+                ".": {},
+                "k:{\"type\":\"Available\"}": {
+                  ".": {},
+                  "f:lastTransitionTime": {},
+                  "f:lastUpdateTime": {},
+                  "f:message": {},
+                  "f:reason": {},
+                  "f:status": {},
+                  "f:type": {}
+                },
+                "k:{\"type\":\"Progressing\"}": {
+                  ".": {},
+                  "f:lastTransitionTime": {},
+                  "f:lastUpdateTime": {},
+                  "f:message": {},
+                  "f:reason": {},
+                  "f:status": {},
+                  "f:type": {}
+                }
+              },
+              "f:observedGeneration": {},
+              "f:readyReplicas": {},
+              "f:replicas": {},
+              "f:terminatingReplicas": {},
+              "f:updatedReplicas": {}
+            }
+          },
+          "subresource": "status"
+        }
+      ]
+    },
+    "spec": {
+      "replicas": 1,
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "payment",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        }
+      },
+      "template": {
+        "metadata": {
+          "labels": {
+            "app.kubernetes.io/name": "payment",
+            "app.kubernetes.io/part-of": "safeheal-ai"
+          }
+        },
+        "spec": {
+          "volumes": [
+            {
+              "name": "tmp",
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              }
+            }
+          ],
+          "containers": [
+            {
+              "name": "payment",
+              "image": "safeheal-ai:sha256-311922d1b56ffd31",
+              "ports": [
+                {
+                  "name": "http",
+                  "containerPort": 8000,
+                  "protocol": "TCP"
+                }
+              ],
+              "env": [
+                {
+                  "name": "SERVICE_ROLE",
+                  "value": "payment"
+                },
+                {
+                  "name": "SAFEHEAL_FAULTS_ENABLED",
+                  "value": "local-test"
+                },
+                {
+                  "name": "PYTHONDONTWRITEBYTECODE",
+                  "value": "1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "volumeMounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                }
+              ],
+              "livenessProbe": {
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": "http",
+                  "scheme": "HTTP"
+                },
+                "timeoutSeconds": 2,
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "failureThreshold": 3
+              },
+              "readinessProbe": {
+                "httpGet": {
+                  "path": "/readyz",
+                  "port": "http",
+                  "scheme": "HTTP"
+                },
+                "timeoutSeconds": 4,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "failureThreshold": 2
+              },
+              "startupProbe": {
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": "http",
+                  "scheme": "HTTP"
+                },
+                "timeoutSeconds": 2,
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "failureThreshold": 30
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "imagePullPolicy": "IfNotPresent",
+              "securityContext": {
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "allowPrivilegeEscalation": false
+              }
+            }
+          ],
+          "restartPolicy": "Always",
+          "terminationGracePeriodSeconds": 15,
+          "dnsPolicy": "ClusterFirst",
+          "serviceAccountName": "safeheal-workload",
+          "serviceAccount": "safeheal-workload",
+          "automountServiceAccountToken": false,
+          "securityContext": {
+            "runAsUser": 10001,
+            "runAsGroup": 10001,
+            "runAsNonRoot": true,
+            "fsGroup": 10001,
+            "seccompProfile": {
+              "type": "RuntimeDefault"
+            }
+          },
+          "schedulerName": "default-scheduler"
+        }
+      },
+      "strategy": {
+        "type": "RollingUpdate",
+        "rollingUpdate": {
+          "maxUnavailable": "25%",
+          "maxSurge": "25%"
+        }
+      },
+      "revisionHistoryLimit": 3,
+      "progressDeadlineSeconds": 180
+    },
+    "status": {
+      "observedGeneration": 11,
+      "replicas": 1,
+      "updatedReplicas": 1,
+      "readyReplicas": 1,
+      "availableReplicas": 1,
+      "terminatingReplicas": 0,
+      "conditions": [
+        {
+          "type": "Progressing",
+          "status": "True",
+          "lastUpdateTime": "2026-10-24T16:38:00Z",
+          "lastTransitionTime": "2026-10-24T16:37:53Z",
+          "reason": "NewReplicaSetAvailable",
+          "message": "ReplicaSet \"payment-c8557699d\" has successfully progressed."
+        },
+        {
+          "type": "Available",
+          "status": "True",
+          "lastUpdateTime": "2026-10-24T16:46:20Z",
+          "lastTransitionTime": "2026-10-24T16:46:20Z",
+          "reason": "MinimumReplicasAvailable",
+          "message": "Deployment has minimum availability."
+        }
+      ]
+    }
+  },
+  "route_readiness_attempts": [
+    {
+      "at": "2026-10-24T16:46:23.954377+00:00",
+      "passed": false,
+      "error": "Command failed (1): kubectl --kubeconfig C:\\Users\\jillv\\Projects\\safeheal-ai\\.local\\day7\\kubeconfig --context kind-safeheal-day7 --request-timeout=30s -n safeheal-dev exec -i gateway-594cf4b9dc-m6btg -c gateway -- env CHECK_REQUEST_ID=d7-approval-324fc2fcfe-routes-1 CHECK_READINESS_ONLY=1 python -\n\nTraceback (most recent call last):\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1357, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1386, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1432, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1381, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1141, in _send_output\n    self.send(msg)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1085, in send\n    self.connect()\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1051, in connect\n    self.sock = self._create_connection(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/socket.py\", line 865, in create_connection\n    raise exceptions[0]\n  File \"/usr/local/lib/python3.12/socket.py\", line 850, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 44, in <module>\n  File \"<stdin>\", line 18, in main\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 215, in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 515, in open\n    response = self._open(req, data)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 532, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 492, in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1386, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1360, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\ncommand terminated with exit code 1\n"
+    },
+    {
+      "at": "2026-10-24T16:46:25.821955+00:00",
+      "passed": true,
+      "check": {
+        "request_id": "d7-approval-324fc2fcfe-routes-2",
+        "dns": {
+          "gateway": {
+            "short": "10.96.7.191",
+            "fqdn": "10.96.7.191"
+          },
+          "order": {
+            "short": "10.96.193.219",
+            "fqdn": "10.96.193.219"
+          },
+          "payment": {
+            "short": "10.96.183.54",
+            "fqdn": "10.96.183.54"
+          }
+        },
+        "health": {
+          "gateway": {
+            "healthz": {
+              "status": "ok",
+              "service": "gateway"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "gateway"
+            }
+          },
+          "order": {
+            "healthz": {
+              "status": "ok",
+              "service": "order"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "order"
+            }
+          },
+          "payment": {
+            "healthz": {
+              "status": "ok",
+              "service": "payment"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "payment"
+            }
+          }
+        },
+        "readiness_only": true,
+        "passed": true
+      }
+    }
+  ],
+  "business_check": {
+    "request_id": "d7-approval-324fc2fcfe",
+    "dns": {
+      "gateway": {
+        "short": "10.96.7.191",
+        "fqdn": "10.96.7.191"
+      },
+      "order": {
+        "short": "10.96.193.219",
+        "fqdn": "10.96.193.219"
+      },
+      "payment": {
+        "short": "10.96.183.54",
+        "fqdn": "10.96.183.54"
+      }
+    },
+    "health": {
+      "gateway": {
+        "healthz": {
+          "status": "ok",
+          "service": "gateway"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "gateway"
+        }
+      },
+      "order": {
+        "healthz": {
+          "status": "ok",
+          "service": "order"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "order"
+        }
+      },
+      "payment": {
+        "healthz": {
+          "status": "ok",
+          "service": "payment"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "payment"
+        }
+      }
+    },
+    "order": {
+      "order_id": "3185dcc2-6ec7-4dd2-bb50-26678a87ac78",
+      "item_id": "day2-demo",
+      "quantity": 2,
+      "amount_cents": 2000,
+      "payment_id": "0b214e6f-8a1c-457a-81fc-6c334697950a",
+      "status": "confirmed"
+    },
+    "http_status": 201,
+    "passed": true
+  },
+  "cleanup_passed": true,
+  "finished_at": "2026-10-24T16:46:27.902752+00:00",
+  "source_sha256": {
+    "services/recovery/__init__.py": "70ffee002f0762e5ce16a598e64932ab05fd332eedd8840674d912a8d0946555",
+    "services/recovery/controller.py": "0f6881aef7072cba59bb74e648659c27a989af05dd57b33e6ac10c7e7d36b27a",
+    "services/recovery/kubernetes.py": "c0995e20905e911f8246c188849a4ec19480d9d5317ee2c05abf85f5097e384c",
+    "scripts/recover.py": "5545343d162d149d79dc931e1e9627e9f07373b36e4d045aceab15024e47db6c",
+    "scripts/verify_recovery.py": "156b9a17a53a906db576b6f0c64b12adfda491d1aa8a87e2d3ffbe0bf044687a",
+    "infrastructure/recovery/policy.yaml": "a28f2a181052b510b1c0e5bcd12c2135de6123aebd60d44c6d1942076a0c2b8f"
+  }
+}

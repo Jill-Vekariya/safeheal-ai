@@ -1,0 +1,7 @@
+# Preserve Day 7 executable hashes and raw trial evidence across checkouts.
+services/recovery/*.py text eol=lf
+scripts/recover.py text eol=lf
+scripts/verify_recovery.py text eol=lf
+infrastructure/recovery/*.yaml text eol=lf
+tests/test_safe_recovery.py text eol=lf
+evidence/day7/** -text
