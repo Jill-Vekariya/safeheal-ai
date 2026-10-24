@@ -35,7 +35,10 @@ def provider_profile(path):
     required = {"base_url","model","max_calls","max_output_tokens","timeout_seconds","token_field","api_key_file"}
     if set(cfg) != required:
         raise ValueError("Provider profile must contain the exact documented fields")
-    key_path = Path(cfg.pop("api_key_file")) if cfg["api_key_file"] else None
+    key_file = cfg.pop("api_key_file")
+    if not isinstance(key_file, str):
+        raise ValueError("Provider key file must be a path string or empty for a keyless loopback endpoint")
+    key_path = Path(key_file) if key_file else None
     if key_path and not key_path.is_absolute():
         key_path = ROOT/key_path
     key = key_path.read_text(encoding="utf-8").strip() if key_path else ""
