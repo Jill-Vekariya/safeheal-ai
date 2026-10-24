@@ -1,8 +1,8 @@
-# SafeHeal AI — 10-day execution plan
+# SafeHeal AI - 10-day execution plan
 
-**25 October 2026: Days 1–9 complete (9/10); Day 10 local deliverables and verification prepared. Private publication/current-release Actions are in progress. Do not claim 100%.**
+**25 October 2026: all ten engineering gates complete (10/10).** Private publication, PR4 merge and current PR/main CI are verified. See PROJECT_STATUS.md and evidence/final/completion.json. Completion does not imply AI superiority or production readiness.
 
-All 15 fresh local-model cohort slots ran; failures/censoring are retained and no AI advantage is claimed. Final report, reproducibility, architecture, demo and 20 interview answers are present. The current GitHub destination reports PUBLIC, unlike the earlier private instruction; that historical checkpoint is superseded: PRIVATE visibility has been restored under the existing project requirement, with current-release upload/CI still pending.
+The dated checkpoints below are historical; final status supersedes pending-work statements. The original scope and acceptance table remain unchanged.
 
 ## Planning contract and historical context
 

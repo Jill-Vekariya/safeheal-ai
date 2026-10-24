@@ -1,15 +1,16 @@
 # Experiment register
 
-## Current release checkpoint — 25 October 2026 (Asia/Kolkata)
+## Verified final checkpoint - 25 October 2026
 
-**Days 1–9 complete; Day 10 local implementation and validation prepared. Overall completed gates: 9/10 (90%). Final GitHub publication and current-release Actions remain pending a repository-privacy decision. The full project is not yet published/complete.** Earlier progress counts below are historical.
+All ten engineering gates passed; private PR4/main CI are green. Windows: 522 passed, 2 skipped. Offline replay checks 235 artifacts and both cohorts. Methods, charts, trade-offs, error analysis and limitations: docs/RESEARCH_REPORT.md and evidence/day9/analysis-local/FINDINGS.md.
 
-The fresh 90-second cohort executed 15 actual Kubernetes trials: native 0/5 recovered, rule 5/5 (mean 30.544 s), AI arm 0/5. Native/AI censored actual recovery times remain unknown. Five local-model requests were attempted; provider statuses: {'provider_timeout': 5}. No fallback is labelled model success and no AI benefit is established. The original 45-second cohort and missing-provider slots remain unchanged.
+Actual 90-second cohort: 15 trials; native 0/5 recovery, fixed rule 5/5 (mean 30.5436 s), AI 0/5. Five local-model calls timed out, with no validated model output or AI action. Retained 4035 requests, 75-file manifest, 120 forbidden denials, 20 audit events and 15 cleanups. Censored actual recovery times, model accuracy and total cost are unknown. Original 45-second cohort remains separate: rule 5/5 (mean 19.0378 s), five missing-provider AI slots.
 
-All 120 forbidden probes returned 403; 20 audit events verified; 15/15 cleanups passed; 10 operator restorations after observation are excluded. Retained 4035 raw requests. Final Windows suite: **509 passed, 2 skipped, zero failed**. Existing skips are Windows symlink privilege and explicit real-provider integration opt-in. The local cohort is separate actual-provider evidence, not an assertion that that integration test ran.
+Initial publication CI failed before recovery fixture injection on unproven admission enforcement. Its raw evidence remains in evidence/final/ci-40135721425. A bounded real-token enforcement gate, thirteen safety tests and fresh PR/main success verify the correction without rewriting original data or allowing real-write retries.
 
-Added a research-style report with primary related-work sources, current architecture diagrams, a clean-checkout/reproduction guide, a 3–5 minute demo, grounded resume/SOP wording, 20 advanced interview answers and an operator checklist. Offline reproduction verifies artifact hashes, historical instrument source bytes, raw numerical replay and audit chains without provider/cluster calls. Post-study cleanup hardening has seven safety tests and does not rewrite measured records.
+## Historical protocol and checkpoints
 
+The original protocol and chronological records below describe their then-current scope; final outcomes above supersede pending-work statements. Original scope and failed outcomes are preserved.
 
 Status: Day 5 initial benchmark is complete: six real Kubernetes trials, two repetitions each of process crash, HTTP 500 and added latency, with verified labels, rule observations, recovery attribution and stored raw evidence. All six executions and the final run gate passed. The broader matched native/rule/AI intervention study remains a draft; no rule recovery executor or AI outcome has been measured.
 

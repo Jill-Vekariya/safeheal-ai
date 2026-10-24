@@ -1,0 +1,59 @@
+{
+  "schema_version": "safeheal-project-completion-v1",
+  "completed_gates": 10,
+  "overall_engineering_project_complete": true,
+  "release_branch_head": "34be70d4cf845c53e91dbffd1ba9cea7e47a2366",
+  "verified_main_implementation_commit": "990073fd5e2e3c0c6490d81c638e983c875924d1",
+  "repository": {
+    "url": "https://github.com/Jill-Vekariya/safeheal-ai",
+    "visibility": "PRIVATE"
+  },
+  "pull_request": {
+    "mergeCommit": {
+      "oid": "990073fd5e2e3c0c6490d81c638e983c875924d1"
+    },
+    "mergedAt": "2026-10-24T23:17:01Z",
+    "state": "MERGED",
+    "url": "https://github.com/Jill-Vekariya/safeheal-ai/pull/4"
+  },
+  "successful_ci": [
+    {
+      "run": 40140051368,
+      "source_commit": "34be70d4cf845c53e91dbffd1ba9cea7e47a2366",
+      "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40140051368",
+      "summary_sha256": "1a473b58541eeb9cf4d6c8bdceb879ccac6dd5eba482e0386d48e37af9c1a901"
+    },
+    {
+      "run": 40142094894,
+      "source_commit": "990073fd5e2e3c0c6490d81c638e983c875924d1",
+      "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40142094894",
+      "summary_sha256": "4cc5e68be17b75faf8b5a3651d685f110fda37a2d4fb55e34cd1864006af42e4"
+    }
+  ],
+  "windows_tests": {
+    "exit_code": 0,
+    "passed": true,
+    "tests_passed": 522,
+    "tests_skipped": 2,
+    "new_bootstrap_tests": 13,
+    "source_sha256": {
+      "scripts/verify_recovery.py": "caa8f3af63e3010d107e9a167178086807bada64963db26a021db1966a8d39fd",
+      "scripts/controlled_experiment.py": "50c2e5eb11abb3b5b803cd53a60ca66d1031307f55bfb6aa4dc3143ef5016664",
+      "tests/test_recovery_bootstrap.py": "4ab2c58ed9f40997d48b5b0538eb3f80d4efb48dc7fdc9aa6bf7a27b1ba5dbbf"
+    }
+  },
+  "verified_artifacts": 235,
+  "artifact_archive_integrity_checked": true,
+  "final_document_local_links_checked": true,
+  "artifact_manifest_sha256": "72ba18d2ba7db29276f256c7a7663060589928fc6e90736b9f69dc7ba0be8d71",
+  "local_trial_token_files": 0,
+  "failed_ci_preserved": 40135721425,
+  "original_study_data_changed": false,
+  "final_checkpoint_scope": "Documentation and CI archives only; no executable source/test/policy change after passing main CI.",
+  "limitations": [
+    "All five actual local-model requests timed out; no AI output/action or superiority.",
+    "Censored actual recovery times and failed-request usage/cost unknown.",
+    "One policy-addressable scenario, one host, five blocks.",
+    "OS administrators can rewrite local audit; no production reliability claim."
+  ]
+}

@@ -324,3 +324,9 @@ Thirteen new bootstrap safety tests; 107 focused recovery/experiment tests passe
 
 
 The first documentation-update helper used the Windows default text encoding and stopped with UnicodeDecodeError. Restored the two touched documents from their committed UTF-8 source, reapplied the intended additions once, and used explicit UTF-8. Experimental raw data and source-test outcomes were unchanged.
+
+## Final completion - 25 October 2026 (Asia/Kolkata)
+
+All ten original engineering milestones complete. Private PR CI 40140051368 passed; PR4 merged preserving history; main CI 40142094894 passed at 990073fd5e2e3c0c6490d81c638e983c875924d1. Both jobs/runs passed, including two live recovery modes and six fault trials. Duplicate push runs were cancelled, not counted as acceptance success/failure. Successful logs, raw artifacts and hashes archived; failed run 40135721425 unchanged.
+
+Final checkpoint updates documentation and CI evidence only and uses [skip ci]; no source/test/policy change follows passing main CI. Fresh offline replay verifies the updated inventory. Windows: 522 passed/2 skipped; historical fresh checkout: 509/2. Original cohorts/as-run sources unchanged; five actual local-model calls timed out and no AI benefit is claimed. Final publication checks private visibility, exact remote SHA, clean tree and zero local trial token files. No original milestone remains unfinished.
