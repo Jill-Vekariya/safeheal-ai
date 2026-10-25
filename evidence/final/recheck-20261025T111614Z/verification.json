@@ -1,0 +1,138 @@
+{
+  "schema_version": "safeheal-final-recheck-v1",
+  "checked_at": "2026-10-25T11:16:26.260837+00:00",
+  "tested_commit": "27c784769030822f08424237cfed0ef901ba570b",
+  "completed_gates": 10,
+  "project_engineering_complete": true,
+  "windows_tests": {
+    "passed": 536,
+    "skipped": 2,
+    "failed": 0,
+    "live_provider_opt_in": false
+  },
+  "verified_artifacts": 241,
+  "archives": [
+    {
+      "path": "evidence/demo/ci-40145365194",
+      "verified_files": 78,
+      "archive_sha256": "5990c59268fc497bff53f8868ced082742935a7d68a08ce69db2aa9ac2e3aed6"
+    },
+    {
+      "path": "evidence/final/ci-40145364797",
+      "verified_files": 171,
+      "archive_sha256": "60736044d4a14910e5d632625a9c790c4695dfa6694d0ac523431b5a0706e4e6"
+    }
+  ],
+  "repository": {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "nameWithOwner": "Jill-Vekariya/safeheal-ai",
+    "visibility": "PRIVATE"
+  },
+  "remote_main_before_checkpoint": "27c784769030822f08424237cfed0ef901ba570b",
+  "successful_runs": [
+    {
+      "id": 40145365194,
+      "conclusion": "success",
+      "headSha": "9f6e268d2b5daad8caaff87e1c2e6c8b457d74de",
+      "status": "completed",
+      "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194"
+    },
+    {
+      "id": 40145364797,
+      "conclusion": "success",
+      "headSha": "9f6e268d2b5daad8caaff87e1c2e6c8b457d74de",
+      "status": "completed",
+      "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797"
+    }
+  ],
+  "same_executable_sources_as_successful_ci": true,
+  "open_pull_requests": [],
+  "open_issues": [],
+  "runtime": {
+    "initial_api": "connection_refused",
+    "initial_docker": "Linux engine stopped",
+    "action": "Started installed Docker Desktop using docker desktop start; existing project node resumed",
+    "lab": "safeheal-day7",
+    "context": "kind-safeheal-day7",
+    "ready_deployments": [
+      "gateway",
+      "order",
+      "payment",
+      "prometheus"
+    ],
+    "recovery_preflight": {
+      "status": "dry_run",
+      "cluster": "safeheal-day7",
+      "context": "kind-safeheal-day7",
+      "action": "restore_payment_replica",
+      "fault": "payment replicas 1 -> 0",
+      "controller_mode": "autonomous"
+    },
+    "business_check": {
+      "request_id": "day10-final-recheck-508a16284b",
+      "dns": {
+        "gateway": {
+          "short": "10.96.7.191",
+          "fqdn": "10.96.7.191"
+        },
+        "order": {
+          "short": "10.96.193.219",
+          "fqdn": "10.96.193.219"
+        },
+        "payment": {
+          "short": "10.96.183.54",
+          "fqdn": "10.96.183.54"
+        }
+      },
+      "health": {
+        "gateway": {
+          "healthz": {
+            "status": "ok",
+            "service": "gateway"
+          },
+          "readyz": {
+            "status": "ready",
+            "service": "gateway"
+          }
+        },
+        "order": {
+          "healthz": {
+            "status": "ok",
+            "service": "order"
+          },
+          "readyz": {
+            "status": "ready",
+            "service": "order"
+          }
+        },
+        "payment": {
+          "healthz": {
+            "status": "ok",
+            "service": "payment"
+          },
+          "readyz": {
+            "status": "ready",
+            "service": "payment"
+          }
+        }
+      },
+      "order": {
+        "order_id": "c774e425-7171-4607-802d-20c8541c5293",
+        "item_id": "day2-demo",
+        "quantity": 2,
+        "amount_cents": 2000,
+        "payment_id": "c4ddcc77-e45e-4561-998f-d54aa9f816d0",
+        "status": "confirmed"
+      },
+      "http_status": 201,
+      "passed": true
+    },
+    "faults_injected_this_session": 0,
+    "model_calls_this_session": 0,
+    "local_executor_token_files": 0
+  },
+  "scientific_limit": "Five retained real local-model requests timed out. No validated AI recovery or superiority is established.",
+  "checkpoint_scope": "Verification logs and documentation only; original datasets and executable source unchanged."
+}
