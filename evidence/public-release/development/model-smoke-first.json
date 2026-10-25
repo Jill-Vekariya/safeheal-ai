@@ -1,0 +1,115 @@
+{
+  "scope": "Real local-provider retrospective one-snapshot smoke; no cluster action; not a comparative trial",
+  "model": "safeheal-qwen-cpu",
+  "provider_source_sha256": "ef9433fb04864aa6412fbb2a96a5389b1f7639ab00253d02a906f35d3259d388",
+  "system_prompt_sha256": "81585d548cc22e4bfc47bb226483710e09126869f43221f22f5e94a1f1b2d41e",
+  "input_artifact": "evidence\\day9\\run-local-20261025\\d9-01-native-494ad9\\telemetry.json",
+  "elapsed_seconds": 21.21900000000005,
+  "calls": 1,
+  "usage": {
+    "input_tokens": 1149,
+    "output_tokens": 113
+  },
+  "diagnosis": {
+    "schema_version": "day6-diagnosis-v1",
+    "as_of": 1792867539.6862924,
+    "status": "low_confidence",
+    "source": "deterministic_fallback",
+    "provider_status": "model_output_rejected",
+    "confidence_threshold": 0.65,
+    "suspected_root_service": "gateway",
+    "summary": "Fresh eligible counters show a server-error spike; application mechanism is unknown.",
+    "hypotheses": [
+      {
+        "classification": "server_errors",
+        "service": "gateway",
+        "confidence": 0.55,
+        "evidence_refs": [
+          "ev-9330576ebfe1a899c06286f4"
+        ],
+        "explanation": "Fresh eligible counters show a server-error spike; application mechanism is unknown."
+      },
+      {
+        "classification": "endpoint_unavailable",
+        "service": "payment",
+        "confidence": 0.55,
+        "evidence_refs": [
+          "ev-65de7718646588e8e04ab454"
+        ],
+        "explanation": "Scrapes failed; this alone does not prove a process crash."
+      }
+    ],
+    "evidence": {
+      "schema_version": "day6-evidence-v1",
+      "as_of": 1792867539.6862924,
+      "window_seconds": 120.0,
+      "issues": [],
+      "records": [
+        {
+          "id": "ev-1d2562423979776e64573175",
+          "source": "prometheus",
+          "service": "order",
+          "observed_at": 1792867539.6862924,
+          "values": {
+            "up": true,
+            "up_at": 1792867539.28,
+            "requests": null,
+            "errors": null,
+            "p95_seconds": null,
+            "metrics_at": null,
+            "incomplete": false,
+            "raw_sha256": "77868b8121902122cc9951fab951c24194692e5abbd40e0675fdea79f4edfd45"
+          },
+          "supports": [],
+          "sha256": "1d2562423979776e6457317562a60df9bfb86a7e5e9c2ec4e4c86932bf77f76d"
+        },
+        {
+          "id": "ev-65de7718646588e8e04ab454",
+          "source": "prometheus",
+          "service": "payment",
+          "observed_at": 1792867539.6862924,
+          "values": {
+            "up": false,
+            "up_at": 1792867536.728,
+            "requests": null,
+            "errors": null,
+            "p95_seconds": null,
+            "metrics_at": null,
+            "incomplete": false,
+            "raw_sha256": "77868b8121902122cc9951fab951c24194692e5abbd40e0675fdea79f4edfd45"
+          },
+          "supports": [
+            "endpoint_unavailable"
+          ],
+          "sha256": "65de7718646588e8e04ab454adac16f027eddf347d16f1091861cae34a14d5a6"
+        },
+        {
+          "id": "ev-9330576ebfe1a899c06286f4",
+          "source": "prometheus",
+          "service": "gateway",
+          "observed_at": 1792867539.6862924,
+          "values": {
+            "up": true,
+            "up_at": 1792867535.635,
+            "requests": 20.0,
+            "errors": 14.0,
+            "p95_seconds": 0.375,
+            "metrics_at": 1792867535.635,
+            "incomplete": false,
+            "raw_sha256": "77868b8121902122cc9951fab951c24194692e5abbd40e0675fdea79f4edfd45"
+          },
+          "supports": [
+            "server_errors"
+          ],
+          "sha256": "9330576ebfe1a899c06286f4252c19049180c876b2a87d84a68c429d9499089c"
+        }
+      ]
+    },
+    "uncertainties": [
+      "Root service is a hypothesis based on observations and fixed topology.",
+      "Confidence is uncalibrated; an injection mechanism is not inferred."
+    ],
+    "next_step": "collect_read_only_evidence",
+    "execution_allowed": false
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": "safeheal-public-release-verification-v1",
+  "verified_at": "2026-10-25T15:55:29.582668+00:00",
+  "source_commit": "fd809cae41b60c62b59bd2fc2e2377f5d487b163",
+  "normal_ci": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206669554",
+  "demo_and_model_ci": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248",
+  "linux_tests": {
+    "passed": 559,
+    "skipped": 1
+  },
+  "windows_tests": {
+    "passed": 558,
+    "skipped": 2
+  },
+  "fresh_demo_passed": true,
+  "fresh_recovery_modes": [
+    "approval",
+    "autonomous"
+  ],
+  "model_study": {
+    "schema_version": "safeheal-cpu-study-check-v1",
+    "run": {
+      "attempted_slots": 15,
+      "planned_slots": 15,
+      "finished_at": "2026-10-25T15:50:32.127465+00:00",
+      "completed": true
+    },
+    "attempted": 15,
+    "cleanup_passed": 15,
+    "statuses": {
+      "observed": 15
+    },
+    "ai_provider_requests": 5,
+    "ai_provider_statuses": {
+      "provider_invalid_response": 1,
+      "validated": 4
+    },
+    "ai_controller_verified": 2,
+    "ai_business_recovered": 2,
+    "forbidden_probes_denied": 120,
+    "audit_events": 28,
+    "reported_provider_usage": {
+      "input_tokens": 2106,
+      "output_tokens": 134
+    },
+    "scope": "One scale-zero cohort; censored outcomes and prior failed cohorts are not replaced or pooled.",
+    "passed": true
+  },
+  "raw_manifest_sha256": "b4b394bff171330aabe984f139112f260491849069b5d48df7e784fa112c3668",
+  "provider_status_counts": {
+    "provider_invalid_response": 1,
+    "validated": 4
+  },
+  "separate_cohort_summaries": {
+    "arms": {
+      "native": {
+        "planned": 5,
+        "attempted": 5,
+        "eligible": 5,
+        "recovered_within_horizon": 0,
+        "censored": 5,
+        "technical_failures": 0,
+        "not_run": 0,
+        "mean_observed_recovery_seconds": null,
+        "median_observed_recovery_seconds": null,
+        "mean_restricted_seconds": 90.0,
+        "real_provider_requests": 0,
+        "llm_validated_diagnoses": 0,
+        "policy_verified": 0
+      },
+      "rule_policy": {
+        "planned": 5,
+        "attempted": 5,
+        "eligible": 5,
+        "recovered_within_horizon": 5,
+        "censored": 0,
+        "technical_failures": 0,
+        "not_run": 0,
+        "mean_observed_recovery_seconds": 14.107455388200014,
+        "median_observed_recovery_seconds": 13.82646626099995,
+        "mean_restricted_seconds": 14.107455388200014,
+        "real_provider_requests": 0,
+        "llm_validated_diagnoses": 0,
+        "policy_verified": 5
+      },
+      "ai_policy": {
+        "planned": 5,
+        "attempted": 5,
+        "eligible": 5,
+        "recovered_within_horizon": 2,
+        "censored": 3,
+        "technical_failures": 0,
+        "not_run": 0,
+        "mean_observed_recovery_seconds": 14.835603702499952,
+        "median_observed_recovery_seconds": 14.835603702499952,
+        "mean_restricted_seconds": 59.93424148099998,
+        "real_provider_requests": 5,
+        "llm_validated_diagnoses": 4,
+        "policy_verified": 2
+      }
+    },
+    "paired_native_minus_rule_restricted_seconds": [
+      74.94637831700004,
+      76.36082816500004,
+      76.17353373900005,
+      75.5787209739999,
+      76.40326186399989
+    ],
+    "mean_paired_restricted_difference": 75.89254461179999,
+    "ai_comparison_complete": true,
+    "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+  },
+  "scope": "One fresh Linux CPU scale-zero study. Historical and interrupted cohorts stay distinct; no superiority or production reliability claim.",
+  "linked_ai_recovery_trials": [
+    "d9-04-ai_policy-0a6aa7",
+    "d9-08-ai_policy-baa945"
+  ],
+  "release_verifier_sha256": "dca754cbaa8eff8aa9aeac84d5753cb72ffa98ad8b1a200de92985510cad9535",
+  "release_windows_tests": {
+    "passed": 559,
+    "skipped": 2,
+    "original_console_sha256": "9baddac41d825e36c9419bc0f95e903b4d926662fe622a3079c2621903fa582e",
+    "note": "One new regression test rejects disjoint AI outcomes and missing audit evidence. The measurement instruments and trial outcomes are unchanged."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "source_commit": "56d8e8a944b4dd31a60516b891c91cee7ebaafd7",
+  "model": "safeheal-qwen-cpu",
+  "selection_mode": "candidate_index",
+  "prompt_version": "safeheal-candidate-index-v2",
+  "repeats": 5,
+  "seed": 9,
+  "horizon_seconds": 90,
+  "max_diagnostic_requests": 5,
+  "run": "evidence/day9/run-cpu-20261025"
+}

@@ -1,0 +1,145 @@
+{
+  "pin": {
+    "image": "ollama/ollama:0.40.11@sha256:459985308d740b99071719baec2740a60f5b2b2d9b835c171991ae25690203da",
+    "tag": "0.40.11",
+    "platform": "linux/amd64",
+    "model": "qwen2.5:0.5b-instruct-q4_K_M",
+    "model_digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+    "registry": "https://registry-1.docker.io/v2/ollama/ollama/manifests/0.40.11",
+    "verified_at": "2026-10-25T13:03:50.165145+00:00",
+    "official_documentation": "https://github.com/ollama/ollama/blob/main/README.md"
+  },
+  "version": {
+    "version": "0.40.11"
+  },
+  "models": {
+    "models": [
+      {
+        "name": "safeheal-qwen-cpu:latest",
+        "model": "safeheal-qwen-cpu:latest",
+        "modified_at": "2026-10-25T15:26:08.319157759Z",
+        "size": 397821004,
+        "digest": "86d3aa33623e0061da45aca26ab78723ebbe7e9f5ae6a2e611a4f8f9164e81fe",
+        "details": {
+          "parent_model": "qwen2.5:0.5b-instruct-q4_K_M",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "494.03M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 896,
+          "runner": "llamacpp"
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "qwen2.5:0.5b-instruct-q4_K_M",
+        "model": "qwen2.5:0.5b-instruct-q4_K_M",
+        "modified_at": "2026-10-25T15:26:08.110167775Z",
+        "size": 397821319,
+        "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "494.03M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 896,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      }
+    ]
+  },
+  "resident": {
+    "models": [
+      {
+        "name": "safeheal-qwen-cpu:latest",
+        "model": "safeheal-qwen-cpu:latest",
+        "size": 486067403,
+        "digest": "86d3aa33623e0061da45aca26ab78723ebbe7e9f5ae6a2e611a4f8f9164e81fe",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "494.03M",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-10-25T15:56:09.609810778Z",
+        "size_vram": 0,
+        "context_length": 4096,
+        "runner": "llamacpp"
+      }
+    ]
+  },
+  "warmup": {
+    "model": "safeheal-qwen-cpu",
+    "created_at": "2026-10-25T15:26:09.60890925Z",
+    "response": "Ready.",
+    "done": true,
+    "done_reason": "stop",
+    "context": [
+      151644,
+      8948,
+      198,
+      2610,
+      525,
+      1207,
+      16948,
+      11,
+      3465,
+      553,
+      54364,
+      14817,
+      13,
+      1446,
+      525,
+      264,
+      10950,
+      17847,
+      13,
+      151645,
+      198,
+      151644,
+      872,
+      198,
+      5598,
+      279,
+      3409,
+      5527,
+      13,
+      151645,
+      198,
+      151644,
+      77091,
+      198,
+      19202,
+      13
+    ],
+    "total_duration": 1054699477,
+    "load_duration": 790533856,
+    "prompt_eval_count": 34,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 203328000,
+    "eval_count": 3,
+    "eval_duration": 57909000
+  },
+  "warmup_seconds": 1.058544482000002,
+  "warmup_scope": "Outside measured trials"
+}

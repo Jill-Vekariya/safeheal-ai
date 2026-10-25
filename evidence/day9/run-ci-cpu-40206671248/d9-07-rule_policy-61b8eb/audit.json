@@ -1,0 +1,90 @@
+[
+  {
+    "action": "restore_payment_replica",
+    "at": 1792942567.4550521,
+    "code": "permitted",
+    "fingerprint": "e53984fb39f1d526991c5a9ec06ce1f9285ebca147b709fba492f604fd4a4410",
+    "mode": "autonomous",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "e38e3f3d-1907-4b5a-847b-4d2c46d08e0d"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "2123"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "4b39a0078d8f2d1345da25624b3f7887461446571d569edfc40336356b6af0c6",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "at": 1792942567.4551961,
+    "code": "intent_durably_recorded",
+    "request_hash": "4b39a0078d8f2d1345da25624b3f7887461446571d569edfc40336356b6af0c6",
+    "stage": "execution"
+  },
+  {
+    "at": 1792942567.461587,
+    "code": "api_acknowledged",
+    "request_hash": "4b39a0078d8f2d1345da25624b3f7887461446571d569edfc40336356b6af0c6",
+    "stage": "execution"
+  },
+  {
+    "at": 1792942572.4852276,
+    "code": "recovery_verified",
+    "observations": [
+      {
+        "at": 1792942567.4658077,
+        "generation": 17,
+        "observed_generation": 16,
+        "ready": false
+      },
+      {
+        "at": 1792942568.470143,
+        "generation": 17,
+        "observed_generation": 17,
+        "ready": false
+      },
+      {
+        "at": 1792942569.4734106,
+        "generation": 17,
+        "observed_generation": 17,
+        "ready": false
+      },
+      {
+        "at": 1792942570.4769688,
+        "generation": 17,
+        "observed_generation": 17,
+        "ready": true
+      },
+      {
+        "at": 1792942571.4815202,
+        "generation": 17,
+        "observed_generation": 17,
+        "ready": true
+      },
+      {
+        "at": 1792942572.4849954,
+        "generation": 17,
+        "observed_generation": 17,
+        "ready": true
+      }
+    ],
+    "request_hash": "4b39a0078d8f2d1345da25624b3f7887461446571d569edfc40336356b6af0c6",
+    "stage": "verification"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "total_count": 2,
+  "artifacts": [
+    {
+      "id": 12604818049,
+      "node_id": "MDg6QXJ0aWZhY3QxMjYwNDgxODA0OQ==",
+      "name": "real-cpu-model-study",
+      "size_in_bytes": 519339,
+      "url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604818049",
+      "archive_download_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604818049/zip",
+      "expired": false,
+      "digest": "sha256:1a6e70ee95badaeeefcb95158ea2f2ad6683494cf51ad79920488afb123efac0",
+      "created_at": "2026-10-25T15:50:35Z",
+      "updated_at": "2026-10-25T15:50:35Z",
+      "expires_at": "2026-11-08T15:50:34Z",
+      "workflow_run": {
+        "id": 40206671248,
+        "repository_id": 1426786610,
+        "head_repository_id": 1426786610,
+        "head_branch": "public-release-20261025",
+        "head_sha": "fd809cae41b60c62b59bd2fc2e2377f5d487b163"
+      }
+    },
+    {
+      "id": 12604580456,
+      "node_id": "MDg6QXJ0aWZhY3QxMjYwNDU4MDQ1Ng==",
+      "name": "safeheal-demo-evidence",
+      "size_in_bytes": 555170,
+      "url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604580456",
+      "archive_download_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604580456/zip",
+      "expired": false,
+      "digest": "sha256:3a03869c0356cd1f5d3c12bbe8a8a247ba20eeae3ffe19f39b009b4be3a6dd9c",
+      "created_at": "2026-10-25T15:29:06Z",
+      "updated_at": "2026-10-25T15:29:06Z",
+      "expires_at": "2026-11-08T15:29:05Z",
+      "workflow_run": {
+        "id": 40206671248,
+        "repository_id": 1426786610,
+        "head_repository_id": 1426786610,
+        "head_branch": "public-release-20261025",
+        "head_sha": "fd809cae41b60c62b59bd2fc2e2377f5d487b163"
+      }
+    }
+  ]
+}

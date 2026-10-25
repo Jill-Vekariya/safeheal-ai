@@ -45,7 +45,7 @@ Read docs/KUBERNETES.md and docs/SAFE_RECOVERY.md first. Do not reuse a producti
 
 The historical Windows machine has a separately enrolled `safeheal-day7` lab because its original API port is reserved by Windows. Do not reproduce that workaround on a clean host unless needed. Its explicit kubeconfig is `.local/day7/kubeconfig`; `--lab safeheal-day7` selects it. The old stopped cluster was preserved.
 
-## 3. Fresh matched study on the existing Windows lab
+## 3. Historical larger-model study on the existing Windows lab
 
 The controlled runner is deliberately pinned to `safeheal-day7`. It does not silently repoint to arbitrary kubeconfigs. On a clean host, provision that separate pinned kind lab with the existing guarded helpers, then install/verify its policy using the acceptance harness:
 
@@ -65,7 +65,7 @@ New-Item -ItemType Directory -Force .local/day9
 Copy-Item examples/provider.local.json .local/day9/provider-local.json
 ```
 
-Configure an ignored local provider profile as described in CONTROLLED_EXPERIMENTS.md. The final local study uses Ollama at `http://127.0.0.1:11434/v1` with `qwen2.5:1.5b-instruct-q4_K_M`, key-file string empty, max five calls, max 800 output tokens and 30-second timeout. Compare the installed model digest against `evidence/day9/local-model-environment.json`. If an upstream tag resolves to a different digest, record it as a new configuration and do not call the result an exact model repeat. Downloading model weights is an external network action; inference for this selected model runs locally. A cloud-backed Ollama tag is a different destination and is not an equivalent local reproduction.
+Configure an ignored local provider profile as described in CONTROLLED_EXPERIMENTS.md. The historical larger-model study uses Ollama at `http://127.0.0.1:11434/v1` with `qwen2.5:1.5b-instruct-q4_K_M`, key-file string empty, max five calls, max 800 output tokens and 30-second timeout. Compare the installed model digest against `evidence/day9/local-model-environment.json`. If an upstream tag resolves to a different digest, record it as a new configuration and do not call the result an exact model repeat. Downloading model weights is an external network action; inference for this selected model runs locally. A cloud-backed Ollama tag is a different destination and is not an equivalent local reproduction.
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/controlled_experiment.py plan --horizon 90
@@ -82,3 +82,10 @@ Every arm in this new cohort uses the declared 90-second horizon; do not pool it
 An audit claim left running or uncertain blocks writes. Inspect the live identity/generation, saved request, audit history and actual business state before manual reconciliation. There is no automatic override/retry. A failed business check is not success merely because the Deployment became Ready. Operator cleanup is labelled and excluded from recovery time.
 
 Dependency downloads, Docker image pulls, model availability and CI runners depend on external services. Existing evidence can be replayed without them. No production SLO, billing estimate or population-level safety claim follows from these checks.
+
+
+## 4. Current CPU profile and complete CI study
+
+Use [LOCAL_CPU_MODEL.md](LOCAL_CPU_MODEL.md) for the current compact candidate-index profile. The manual demo workflow also runs a separate fresh Linux study with a pinned official model image, checked base-weight digest, two CPU limit, 1536 MiB memory cap, loopback-only serving, no provider key and no cloud inference. Warmup is recorded outside measurement.
+
+Reference implementation: fd809cae41b60c62b59bd2fc2e2377f5d487b163; completed run 40206671248. Retained raw data and findings are under evidence/day9/run-ci-cpu-40206671248 and analysis-ci-cpu-40206671248. scripts/verify_model_study.py independently finalizes/replays raw outcomes and checks all trial/cleanup/access/audit criteria. The ordinary reproduce command verifies this cohort alongside the prior cohorts and frozen as-run instruments. New live runs will have different times and may abstain or fail; keep their actual outcomes.

@@ -1,0 +1,45 @@
+{
+  "total_count": 2,
+  "artifacts": [
+    {
+      "id": 12604606794,
+      "node_id": "MDg6QXJ0aWZhY3QxMjYwNDYwNjc5NA==",
+      "name": "kubernetes-observability-evidence",
+      "size_in_bytes": 3937899,
+      "url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604606794",
+      "archive_download_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604606794/zip",
+      "expired": false,
+      "digest": "sha256:37d1078230ac84412db58be933ef2358e09e5fe1fcc5121b89038c72e0fd77ec",
+      "created_at": "2026-10-25T15:46:35Z",
+      "updated_at": "2026-10-25T15:46:35Z",
+      "expires_at": "2026-11-01T15:46:33Z",
+      "workflow_run": {
+        "id": 40206669554,
+        "repository_id": 1426786610,
+        "head_repository_id": 1426786610,
+        "head_branch": "public-release-20261025",
+        "head_sha": "fd809cae41b60c62b59bd2fc2e2377f5d487b163"
+      }
+    },
+    {
+      "id": 12604280135,
+      "node_id": "MDg6QXJ0aWZhY3QxMjYwNDI4MDEzNQ==",
+      "name": "day6-diagnosis-replay",
+      "size_in_bytes": 104953,
+      "url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604280135",
+      "archive_download_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/artifacts/12604280135/zip",
+      "expired": false,
+      "digest": "sha256:966af4a05c6805392fdc13cf6c485f5cb51721d768e2b0e482c37b166090746e",
+      "created_at": "2026-10-25T15:24:49Z",
+      "updated_at": "2026-10-25T15:24:49Z",
+      "expires_at": "2026-11-01T15:24:48Z",
+      "workflow_run": {
+        "id": 40206669554,
+        "repository_id": 1426786610,
+        "head_repository_id": 1426786610,
+        "head_branch": "public-release-20261025",
+        "head_sha": "fd809cae41b60c62b59bd2fc2e2377f5d487b163"
+      }
+    }
+  ]
+}

@@ -8,7 +8,7 @@ Use only statements that you can explain and substantiate. Adapt the wording to 
 - Developed safety tests for stale/misleading evidence, duplicate notifications, unsafe proposals, approval/replay controls and ambiguous write outcomes; retained raw incident data and reproducible numerical analysis rather than reporting unsupported AI performance gains.
 - Designed a seeded native/rule/AI experiment with sustained business-recovery checks, right-censoring, operator-cleanup separation and hash-verified raw data; measured five fixed-rule recoveries in five original scale-zero trials, with a 19.04-second observed mean.
 
-The third bullet describes only the original baseline cohort. The full project report contains the separate local-model study. Do not present 19.04 seconds as a general production MTTR or claim a percentage speedup against censored native observations.
+The third bullet describes only the original baseline cohort. The full project report contains the separate larger-model timeout study and the newer CPU study, where the rule recovered in 5/5 trials and the AI path in 2/5. These are distinct configurations and hosts. Do not present 19.04 seconds as a general production MTTR or claim a percentage speedup against censored native observations.
 
 ## Concise statement-of-purpose project narrative
 
@@ -20,7 +20,7 @@ This is a project narrative, not a claim of faculty collaboration, publication, 
 
 1. **What is the actual research question?** Whether model ranking improves a fixed symptom-to-action pipeline when both use the same independent controller, and what latency/failure costs it adds. A single permitted action makes the model's possible benefit small; that is a useful baseline.
 2. **Why does native recovery not restore replicas?** Kubernetes reconciles toward desired state. Desired zero is a valid configuration, so native behavior should preserve zero. This fixture tests an explicit restoration policy, not ordinary container restart quality.
-3. **What can the model execute?** Nothing directly. It returns a strict hypothesis document. A fixed bridge may construct one typed proposal; authority comes from operator enrollment and controller policy.
+3. **What can the model execute?** Nothing directly. It returns bounded diagnosis data. Candidate indices expand only into evidence-supported hypotheses. A fixed bridge may construct one typed proposal; authority comes from operator enrollment and controller policy.
 4. **Why are schema validation and RBAC both necessary?** Schema validation rejects malformed proposals but is not an authorization boundary. RBAC limits API operations and named resources, while admission independently limits old/new replica values.
 5. **What stops a time-of-check/time-of-use race?** Live identity/spec checks plus an atomic JSON Patch test of UID, resource version and scale spec. A changed precondition fails instead of blindly overwriting it.
 6. **Why no write retries?** A timeout can occur after the API accepted the write. Claim-before-write and a durable uncertain/running state avoid a second execution without reconciliation.

@@ -1,0 +1,10 @@
+{
+  "base_url": "http://127.0.0.1:11434/v1",
+  "model": "safeheal-qwen-cpu",
+  "max_calls": 5,
+  "max_output_tokens": 256,
+  "timeout_seconds": 30,
+  "token_field": "max_tokens",
+  "api_key_file": "",
+  "selection_mode": "candidate_index"
+}

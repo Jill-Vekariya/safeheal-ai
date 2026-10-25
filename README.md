@@ -4,17 +4,25 @@ An inspectable Kubernetes incident-response testbed that separates model diagnos
 
 SafeHeal observes a synthetic gateway → order → payment application, validates bounded evidence, and compares native behavior, a fixed symptom rule and real-model diagnosis. A separate deterministic controller permits only one enrolled action: restore the payment Deployment from desired replicas zero to one. The model receives no shell or Kubernetes credential.
 
-**Status - 25 October 2026:** All ten engineering milestones verified (10/10), committed and merged in the private repository. PR/main GitHub Actions passed; Windows: 536 passed, 2 skipped. No AI advantage is claimed. See [project status](PROJECT_STATUS.md).
+**Status - 25 October 2026:** The ten original engineering milestones and the CPU-model extension have verified implementation evidence. Public repository; protected main. [Validation by tested source](evidence/public-release/verification.json) · [CPU study](evidence/public-release/CPU_STUDY.md) · [Project status](PROJECT_STATUS.md). No general AI advantage is claimed.
+
+## Latest verified CPU study
+
+[Completed demo and real-model study](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) · [Normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206669554) · [Raw measurements](evidence/day9/run-ci-cpu-40206671248) · [Findings](evidence/day9/analysis-ci-cpu-40206671248/FINDINGS.md)
+
+The new CPU model produced 2/5 business recoveries within 90 seconds; the fixed rule produced 5/5 and native behavior 0/5. All five AI slots used the real model; all 15 cleanups passed. This is one narrow scale-zero scenario on a fresh Linux host. Earlier failures and incomplete Windows attempts remain separate, and no AI superiority or production reliability is claimed.
+
+![Fresh CPU study: all outcomes](evidence/day9/analysis-ci-cpu-40206671248/recovery_comparison.png)
 
 ## Run the end-to-end demo
 
-**Verified reference:** [Successful live demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Verified summary](evidence/demo/ci-40145365194/summary.md) · [Download GitHub artifact](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966) · [Permanent raw archive](evidence/demo/ci-40145365194/artifacts.zip)
+**Historical reference:** [Successful live demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Verified summary](evidence/demo/ci-40145365194/summary.md) · [Download GitHub artifact](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966) · [Permanent raw archive](evidence/demo/ci-40145365194/artifacts.zip)
 
 Source: 9f6e268d2b5d. Linux: **537 passed, 1 skipped**; Windows: **536 passed, 2 skipped**. Both fresh recovery modes, all twelve required stages and the downloaded artifact/audit checks passed. [Normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797) also passed, including six labelled fault repetitions.
 
 **[Open the GitHub Actions demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml)** and choose **Run workflow → main**. It creates a fresh isolated Docker-kind cluster, runs tests and replay, verifies real orders, demonstrates native/autonomous/approval recovery, checks observability and incidents, and publishes a verified summary plus downloadable evidence. No provider key is needed.
 
-[Step-by-step demo and four-minute presentation](docs/DEMO.md) includes expected results, Windows/Linux commands, the existing lab shortcut and investigation steps. Diagnosis is explicitly labelled historical fallback replay; recovery fixtures run live. The five retained real local-model attempts timed out.
+[Step-by-step demo and four-minute presentation](docs/DEMO.md) includes expected results, Windows/Linux commands, the existing lab shortcut and investigation steps. Diagnosis is explicitly labelled historical fallback replay; recovery fixtures run live. The five original larger-model requests timed out. A separate CPU profile produced six grounded diagnoses on six retained development incidents; two subsequent Windows studies were interrupted and remain explicit incomplete cohorts. The separate isolated Linux real-model study is now verified; its raw observations and limits are linked above. See [CPU profile and limitations](docs/LOCAL_CPU_MODEL.md).
 
 ## Start with the evidence
 

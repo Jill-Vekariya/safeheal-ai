@@ -1,0 +1,106 @@
+{
+  "scope": "Incomplete cohort retained separately; never pooled with a fresh run",
+  "run_completed": false,
+  "attempted_slots": 6,
+  "planned_slots": 15,
+  "unrun_slots": [
+    {
+      "block": 3,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 3,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 3,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 4,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 4,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 4,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 5,
+      "arm": "rule_policy",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 5,
+      "arm": "native",
+      "scenario": "payment_scale_zero"
+    },
+    {
+      "block": 5,
+      "arm": "ai_policy",
+      "scenario": "payment_scale_zero"
+    }
+  ],
+  "interruption": "Remote session was lost; all six retained attempts have passed cleanup. Exact termination cause was not established.",
+  "per_arm": {
+    "native": {
+      "attempted": 2,
+      "recovered": 0
+    },
+    "rule_policy": {
+      "attempted": 2,
+      "recovered": 2
+    },
+    "ai_policy": {
+      "attempted": 2,
+      "validated_model_diagnoses": 2,
+      "recovered": 1
+    }
+  },
+  "sha256": {
+    "d9-01-native-b7e367/platform.jsonl": "6565eec2547b6736c15f36398beb85055a12badfe4e8a0f6e2a114578baa4bf0",
+    "d9-01-native-b7e367/requests.jsonl": "850b6746d7d2c583569d48a2f8cf943ba61d709d4ca43d45d72bea8379497006",
+    "d9-01-native-b7e367/telemetry.json": "3532bc552173e261004b015923265386aff7db09221210c8cc5911347dcf9cd6",
+    "d9-01-native-b7e367/trial.json": "5c764a4085268c2f25c0028d2334197383aad22cc7a168be0d56391eb20b4b41",
+    "d9-02-ai_policy-6293fb/platform.jsonl": "2dbec0ca4b083ce2ea39f7bebbd4ce0f20e7da5ecaa959822e6eb76e67718db6",
+    "d9-02-ai_policy-6293fb/requests.jsonl": "8f348dc5dc2b5f60057e21b6acf04851f2f7ba18541dc4f24adfe39cc1eb163c",
+    "d9-02-ai_policy-6293fb/telemetry.json": "63d9d1956404d45f9ffda76a91146ea936c64e07852483f397b177ab6c664cf0",
+    "d9-02-ai_policy-6293fb/trial.json": "53399041ee9716834eb088c2f5461f2787297b5ec6c38d345c5498c52f96aa9e",
+    "d9-03-rule_policy-e571c8/audit.json": "f688c1562020ab2f54204501857e41a98207cd856698339539015da9ac8ec939",
+    "d9-03-rule_policy-e571c8/audit.sqlite3": "7bd5022dc5fa712e811ba3fcccf6a8c60dd545f02ec40564c8d4c1a00a3033db",
+    "d9-03-rule_policy-e571c8/platform.jsonl": "d7f20e2ce59c886ea5b72a8ad20aebf8eae685d47dbd67ad554abd9ccfc1c785",
+    "d9-03-rule_policy-e571c8/requests.jsonl": "10d6199c3200d637dd0bc02657a00886319ef5233a8a37c715b96c648d8a0185",
+    "d9-03-rule_policy-e571c8/telemetry.json": "74470031389f3f3c83966c5847d9aba6da0e9541328acc88b73dd9beb61ba40f",
+    "d9-03-rule_policy-e571c8/trial.json": "a8959624fcd286667f5e91a213b7b7905056bce80a531bfb08e4e585f6bf27d1",
+    "d9-04-ai_policy-4951b6/audit.json": "ff79e2c632298aa3b9aa7c8cd560ccdf925b1b351f04ee4dad17f1cd49c70290",
+    "d9-04-ai_policy-4951b6/audit.sqlite3": "2b1f1976165c53c72fc4fe4885d146fe9b8ca7f78a13cc5ad5cf03bdb6fe4ff4",
+    "d9-04-ai_policy-4951b6/platform.jsonl": "f2d6284cdc0581eb064d917bf15a5fa3239f3e08c7becd7e6662bf3741eb7d50",
+    "d9-04-ai_policy-4951b6/requests.jsonl": "b2a2a895b016a10fba95f92d8187f0cb0bf2f3388e84fb3bf3d3f38283cf4965",
+    "d9-04-ai_policy-4951b6/telemetry.json": "4579c79e9cf7ff6f14c0bca961715c48b23ce13a0c96d3e1d1c087c67aaff073",
+    "d9-04-ai_policy-4951b6/trial.json": "79d1743a8419d776a9522e0359cc428eee3578904244a9ca89b353412f5747b3",
+    "d9-05-native-0b7443/platform.jsonl": "dc58ffa3d4fca30e6d14cfa872b921e6ad72b65af7d74f763ebb0ceb01980df0",
+    "d9-05-native-0b7443/requests.jsonl": "12c362c30d6c104738fd719d9e396a02fddba3b7bda801f1a1175c71f26a058d",
+    "d9-05-native-0b7443/telemetry.json": "5072462ee5c28e26af3a5234fb4aae2ac7f9be7e82f9bfcf2174606b94a70a04",
+    "d9-05-native-0b7443/trial.json": "590997901954ff83679f675de212b126e67e43e12a7a308877560a4f024f802b",
+    "d9-06-rule_policy-02e692/audit.json": "cfcdff8be7da83d886ca1f3ea84650b1f8a859ccc3ad530d63574c804a06249d",
+    "d9-06-rule_policy-02e692/audit.sqlite3": "ba24268b0c738ef323ecc7f84bb2cb74112fe3a2ea7147b7613a7ef8461516ff",
+    "d9-06-rule_policy-02e692/platform.jsonl": "f1e5a32105eff85f4994621130ec7640a54bdb60cd5b2fbe27fab7a2fffb7a5f",
+    "d9-06-rule_policy-02e692/requests.jsonl": "03c138bd71d5c1421eeabbe88dda2e6d10f8e2ac3fb18b37b347fa0253774e32",
+    "d9-06-rule_policy-02e692/telemetry.json": "dc071944e67004d53feb08ecd3e3b676e834dd8fd147123dde124f151c25d352",
+    "d9-06-rule_policy-02e692/trial.json": "e05d23b8b1160c31d0db3d0110da9077a2967fefce8c9b58546caab55a160b84",
+    "port-forward-gateway.txt": "b568787ca54deace2cd2c3fb446409127ec0b92c8ab099f08f3d58b7b272b3e6",
+    "port-forward-prometheus.txt": "be6fda7e8f1ed5723ccbcf96fd0fe4bb8ffd9e840c7468fb4848f0d48c5a297d",
+    "protocol.json": "c0a11e1b1f5afda4b2fa89e9526426eb03ab32df4ba59d9f84f90ffa1f92eb8a",
+    "run.json": "af911856ab0552136c9ff2666d52b37e6e7b81357a619f01f61a5cac055b7b30",
+    "summary.json": "b971d99cc84bdcf9fed9cc02447ad833665a217982ae3b18369ef417db18ac1b"
+  }
+}

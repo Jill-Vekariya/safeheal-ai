@@ -1,36 +1,22 @@
-# SafeHeal AI - verified final project status
+# SafeHeal AI - public release status
 
-## Final completion recheck on 25 October 2026
+All ten original engineering milestones and the CPU-model extension have verified implementation evidence. The repository is public, main protection requires test/kubernetes/secrets checks and pull requests, and private vulnerability reporting is enabled. SafeHeal AI is listed in the Jill-Vekariya profile repository.
 
-Current main at 27c784769030822f08424237cfed0ef901ba570b was rechecked: **536 tests passed, 2 expected skips, 0 failures**. Offline reproduction verified **241 artifacts**, both controlled cohorts and their audit chains. The current private GitHub main matched the local checkout; both accepted CI/demo runs remain successful, and no executable source differs from their tested implementation. No open project pull requests or issues remain.
+Verified implementation: fd809cae41b60c62b59bd2fc2e2377f5d487b163. [Normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206669554) and the [two-job demo/model study](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) passed. Linux 559 passed, 1 opt-in skip; Windows 558 passed, 2 expected skips. The publication checkpoint is reviewed in [PR5](https://github.com/Jill-Vekariya/safeheal-ai/pull/5). Required checks on its final head remain the merge gate.
 
-Docker Desktop was stopped at the first local runtime check. Starting the installed application restored the existing safeheal-day7 node. Gateway, order, payment and Prometheus are each ready at one replica; guarded recovery preflight and a fresh confirmed synthetic order passed. No fault or model call was introduced. Fresh evidence: [evidence/final/recheck-20261025T111614Z/verification.json](evidence/final/recheck-20261025T111614Z/verification.json). All ten original engineering gates remain complete; the five historical local-model timeouts and research limitations remain explicit.
+| Arm | Attempts | Recovered / 5 | Censored | Observed mean (s) | Restricted mean (s) |
+|---|---:|---:|---:|---:|---:|
+| native | 5 | 0 | 5 | Not measured | 90.000 |
+| rule_policy | 5 | 5 | 0 | 14.107 | 14.107 |
+| ai_policy | 5 | 2 | 3 | 14.836 | 59.934 |
 
-**25 October 2026 (Asia/Kolkata): all ten defined engineering milestones complete, 10/10.** Implementation and evidence are published in the private [repository](https://github.com/Jill-Vekariya/safeheal-ai). This does not establish production readiness or AI superiority.
+The fresh CPU study made five real local-model requests, passed all fifteen cleanups and all 120 forbidden-operation checks, and verified 28 audit events. Earlier missing-provider, timeout, interrupted and failed-cleanup outcomes remain unchanged and separate. No general AI advantage, held-out accuracy or production safety claim is made. Full source/runtime/archive provenance: evidence/public-release/verification.json and CPU_STUDY.md.
 
-## Verified GitHub end-to-end demo - 25 October 2026
+Report, architecture, twenty interview answers, operations/reproduction guides, current demo instructions, all measured data and charts are retained. Original broader CPU/memory-fault extensions, replicated hosts, independent benign controls, calibrated uncertainty and external audit storage remain future research.
 
-**[Run demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml)** · [Successful reference run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Guide](docs/DEMO.md) · [Saved summary](evidence/demo/ci-40145365194/summary.md)
+The canonical Windows lab remains safeheal-day7 with its project kubeconfig and context. No unrelated Docker resources were reset or deleted. The model used for the fresh study ran in its isolated CI runner, with no user-PC inference or cloud provider.
 
-The manual workflow passed all twelve stages: pinned runtime/full tests, raw-data and robustness replay, labelled fallback diagnosis replay, fresh Docker-kind services/native recovery, autonomous and approval recovery, actual observability/detection and final confirmed business orders. Downloaded report/artifact hashes and both audit chains verified. It uses no provider credential and does not claim live-LLM diagnosis.
-
-Implementation source: 9f6e268d2b5daad8caaff87e1c2e6c8b457d74de. Dedicated demo 40145365194 and full normal CI 40145364797 passed. Linux: **537 passed, 1 skipped**. Windows: **536 passed, 2 skipped**; fourteen new reporter failure-path tests. Offline replay: **241 artifacts**. Original controller/RBAC/admission, application and Day 5-9 measurements remain unchanged.
-
-Permanent raw evidence/logs/manifests: evidence/demo/ci-40145365194/ and evidence/final/ci-40145364797/. Initial demo 40145170673 is preserved with workflow conclusion success and delivery verification True. Superseded automatic CI40145167231 concluded cancelled; it is not claimed as an acceptance pass.
-
-The original ten project gates remain complete. The original release proof below identifies its historical source/test counts; this extension and evidence/demo/verification.json provide the current demo proof. Final checkpoint changes documentation/evidence only and uses [skip ci] after both executable workflows passed.
-
-## Original release evidence (historical)
-
-- Tested branch head: 34be70d4cf845c53e91dbffd1ba9cea7e47a2366; [PR4](https://github.com/Jill-Vekariya/safeheal-ai/pull/4) merged with history preserved.
-- Verified main implementation commit: 990073fd5e2e3c0c6490d81c638e983c875924d1.
-- [PR CI 40140051368](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40140051368) and [main CI 40142094894](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40142094894): both unit/replay and fresh Kubernetes jobs passed, including autonomous/approval recovery and six fault repetitions.
-- Windows: **522 passed, 2 skipped**. Skips are Windows symlink privilege and the separate explicit provider integration opt-in. Actual local-model requests are recorded separately.
-- Offline replay: **235 artifacts**, both raw cohorts, numerical results, audit chains and exact historical instrument bytes.
-- Historical fresh checkout at 60f8b9d: 509 passed, 2 skipped. Later fixes have current Windows and Linux CI proof.
-- Successful raw CI archives/logs/hashes: evidence/final/ci-40140051368/ and evidence/final/ci-40142094894/. Initial failed CI40135721425 remains archived unchanged.
-
-## All ten engineering gates
+## Engineering milestones
 
 | Day | Verified deliverable |
 |---|---|
@@ -45,18 +31,7 @@ The original ten project gates remain complete. The original release proof below
 | 9 | Matched native/rule/local-model trials, raw measurements, charts, error analysis and limitations |
 | 10 | Fresh checkout, full CI/live checks, report, reproduction guide, demo and twenty interview answers |
 
-## Defensible conclusion and limitations
 
-Original 45-second cohort: native 0/5 recovered within the horizon; fixed rule 5/5, observed mean 19.0378 seconds; five AI slots explicitly not run. Separate 90-second cohort: all 15 actual trials ran; native 0/5, rule 5/5 (mean 30.5436 seconds), AI 0/5. All five local-model requests timed out, returned no validated output and caused no AI action. Actual censored recovery times and failed-request compute/token cost remain unknown. No model accuracy or AI benefit is established; cohorts are not pooled.
+## Historical records
 
-The latter cohort retains 4035 request rows, 75 raw files, 120/120 forbidden denials, 20 audit events, 15 passed cleanups and 10 operator restorations after measurement. One deliberately policy-addressable scale-zero scenario, five blocks and one shared host limit generalization. See [report](docs/RESEARCH_REPORT.md) and [findings](evidence/day9/analysis-local/FINDINGS.md).
-
-Only the enrolled safeheal-dev/payment desired-replica change zero to one is permitted. The model has no shell, cluster credential or approval authority. Independent policy, live-state checks, conditional writes, RBAC/admission, expiring approval, rate limits and durable claims bound execution. Ambiguous writes block retries. Local OS administrators can rewrite the audit; external tamper-proof storage, hostile same-user isolation, broad real-model reliability, production validation and repository-plan-dependent branch protection are not established.
-
-First publication CI failed on an unproven admission dry-run before fixture/controller execution. Bootstrap now requires two consecutive policy-specific 403 denials before releasing executor configuration. Thirteen safety tests and both fresh CI clusters verify the correction. Failed outcomes and as-run instruments remain unchanged.
-
-## Reproduction and continuation
-
-Canonical checkout: C:/Users/jillv/Projects/safeheal-ai on Jill-Vekariya10. Use the existing .venv and [reproduction guide](docs/REPRODUCIBILITY.md). Lab: safeheal-day7; context: kind-safeheal-day7; explicit kubeconfig: .local/day7/kubeconfig. All application Deployments were ready at the final local read-only check. Original stopped cluster preserved; unrelated Docker resources unchanged. No local trial executor-token files remain. Local model weights remain available; its owned inference instance was unloaded after measurement. No cloud model was called.
-
-Report, architecture, related work, four-minute demo, operations checklist and portfolio/interview materials are committed. No original project milestone remains unfinished. Future research is listed in the report. Historical progress/publication blockers in Git, WORKLOG.md and dated handoffs are superseded by this verified release.
+Earlier counts, private-publication state and dated handoffs are retained in Git history and the original CI evidence. The [earlier final handoff](https://github.com/Jill-Vekariya/safeheal-ai/blob/e501bbfeb2c82b0d80a5f03c03f504f9161bbbbf/PROJECT_STATUS_Final_2026-10-25.md) describes that earlier source; the current release is public. Final verifier regression: Windows 559 passed, 2 expected skips; the experimental measurement source remains fd809ca.

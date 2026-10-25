@@ -1,0 +1,89 @@
+{
+  "checked_at": "2026-10-25T13:02:39.850646+00:00",
+  "scope": "Post-failure read-only check; historical failed cleanup is unchanged.",
+  "deployments": [
+    {
+      "name": "gateway",
+      "uid": "566d6ebb-0f0f-43ea-9f16-8dd4ecc526bc",
+      "replicas": 1,
+      "ready": 1
+    },
+    {
+      "name": "order",
+      "uid": "f4866f11-409f-4a07-a48a-18a6f89195a9",
+      "replicas": 1,
+      "ready": 1
+    },
+    {
+      "name": "payment",
+      "uid": "5c0e6110-4456-4725-8036-3aedc7fd5707",
+      "replicas": 1,
+      "ready": 1
+    },
+    {
+      "name": "prometheus",
+      "uid": "d4d6e077-413f-4e51-8884-52b241deb7ac",
+      "replicas": 1,
+      "ready": 1
+    }
+  ],
+  "business_check": {
+    "request_id": "public-post-timeout-183240",
+    "dns": {
+      "gateway": {
+        "short": "10.96.7.191",
+        "fqdn": "10.96.7.191"
+      },
+      "order": {
+        "short": "10.96.193.219",
+        "fqdn": "10.96.193.219"
+      },
+      "payment": {
+        "short": "10.96.183.54",
+        "fqdn": "10.96.183.54"
+      }
+    },
+    "health": {
+      "gateway": {
+        "healthz": {
+          "status": "ok",
+          "service": "gateway"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "gateway"
+        }
+      },
+      "order": {
+        "healthz": {
+          "status": "ok",
+          "service": "order"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "order"
+        }
+      },
+      "payment": {
+        "healthz": {
+          "status": "ok",
+          "service": "payment"
+        },
+        "readyz": {
+          "status": "ready",
+          "service": "payment"
+        }
+      }
+    },
+    "order": {
+      "order_id": "c81edb4e-e3af-4b02-bcba-65f20653f1d9",
+      "item_id": "day2-demo",
+      "quantity": 2,
+      "amount_cents": 2000,
+      "payment_id": "6118355c-8c9f-4673-a499-e47f0141f159",
+      "status": "confirmed"
+    },
+    "http_status": 201,
+    "passed": true
+  }
+}
