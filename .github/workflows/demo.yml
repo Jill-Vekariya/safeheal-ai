@@ -94,5 +94,7 @@ jobs:
             evidence/day3/
             evidence/day4/
             evidence/day7/
+          # Only the explicitly listed report/evidence paths are selected.
+          include-hidden-files: true
           retention-days: 14
           if-no-files-found: warn

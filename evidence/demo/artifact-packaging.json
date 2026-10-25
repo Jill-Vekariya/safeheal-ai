@@ -1,0 +1,11 @@
+{
+  "reason": "Mixed artifact roots put .local/demo below a hidden directory; explicitly include that selected report subtree so result/summary/replay files are downloadable.",
+  "private_paths_not_selected": [
+    ".local/day7/",
+    ".local/kubeconfig",
+    ".local/day9/"
+  ],
+  "scope": "Artifact packaging only; reporter, controller, RBAC/admission and study data unchanged.",
+  "workflow_sha256": "01fa950571b3558b173bad3b16ef7e8a79740006895c4b1a8a3de86d58e9a32c",
+  "initial_run_retained": 40145170673
+}

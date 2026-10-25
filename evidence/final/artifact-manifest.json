@@ -279,8 +279,9 @@
     "tests/test_reproduce.py": "ac31539cf7e2029602343ba1219679ea1df46f34d0156fdcddbafcc05dfa90d7",
     "scripts/demo_report.py": "7b430556de5197e2f43456d5ef545bee6cff98ff0667851e82884894e2f75e73",
     "tests/test_demo_report.py": "87bd996071e258291b517d2c1bbf5b5263c6be253109227da937d443076036f9",
-    ".github/workflows/demo.yml": "51c69ac4e620df805ddced33245325a54d1e39831b1316b0800b14acc022ddc0",
+    ".github/workflows/demo.yml": "01fa950571b3558b173bad3b16ef7e8a79740006895c4b1a8a3de86d58e9a32c",
     "evidence/demo/local-verification.json": "bb4b4124c5d09e5f80b9210468a8cc04e627f0be653a6a625c2210e0bbc1c93e",
-    "evidence/demo/windows-tests.txt": "08b7fa12fb8490c4e52b51497559007c15315001be8fbaefd93c284b22bbbbbf"
+    "evidence/demo/windows-tests.txt": "08b7fa12fb8490c4e52b51497559007c15315001be8fbaefd93c284b22bbbbbf",
+    "evidence/demo/artifact-packaging.json": "100ab013d5abe46f9d8946d97943b883102cc97ddc8b6f5657976c0bfa755772"
   }
 }
