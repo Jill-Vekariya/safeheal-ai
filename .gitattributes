@@ -38,3 +38,9 @@ docs/CONTROLLED_EXPERIMENTS.md text eol=lf
 examples/*.json text eol=lf
 tests/test_recovery_bootstrap.py text eol=lf
 docs/SAFE_RECOVERY.md text eol=lf
+
+# End-to-end demo reporter and its failure-path checks.
+scripts/demo_report.py text eol=lf
+tests/test_demo_report.py text eol=lf
+.github/workflows/demo.yml text eol=lf
+evidence/demo/** -text -whitespace

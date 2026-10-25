@@ -1,0 +1,15 @@
+{
+  "exit_code": 0,
+  "passed": true,
+  "tests_passed": 536,
+  "tests_skipped": 2,
+  "reporter_tests": 14,
+  "scope": "Demo reporter/workflow/docs addition. Recovery controller, admission, application and study data unchanged.",
+  "source_sha256": {
+    "scripts/demo_report.py": "7b430556de5197e2f43456d5ef545bee6cff98ff0667851e82884894e2f75e73",
+    "tests/test_demo_report.py": "87bd996071e258291b517d2c1bbf5b5263c6be253109227da937d443076036f9",
+    ".github/workflows/demo.yml": "51c69ac4e620df805ddced33245325a54d1e39831b1316b0800b14acc022ddc0"
+  },
+  "command": "python -m pytest -q",
+  "runtime": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+}

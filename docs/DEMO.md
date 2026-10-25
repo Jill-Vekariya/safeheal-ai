@@ -1,31 +1,127 @@
-# Four-minute SafeHeal AI demonstration
+# SafeHeal AI: end-to-end GitHub demo
 
-Prepare dependencies and the retained evidence before recording. Use offline replay for a predictable demonstration. A live fault takes additional setup and runs only through the guarded operator harness. Do not expose that harness as a model tool.
+[Run the demo in GitHub Actions](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml) · [Research report](RESEARCH_REPORT.md) · [Recovery contract](SAFE_RECOVERY.md)
 
-| Time | Screen/action | Spoken explanation |
+Show a real synthetic order, a controlled lab failure, independently authorized recovery and a confirmed order after recovery. The GitHub run also replays diagnosis and the controlled experiments, checks raw-data integrity and verifies audit chains.
+
+## One-click demonstration
+
+1. Open **Actions → End-to-end safe recovery demo** in this private repository.
+2. Select **Run workflow**, choose **main**, and start the run.
+3. Open the run and expand the numbered stages below. Allow time for image pulls, cluster setup and the real observation windows.
+4. Open the run's **Summary**: it reports PASS only when all required stages and both fresh recovery trials passed.
+5. Download **safeheal-demo-evidence** from **Artifacts**. It contains a machine-readable result, summary, file hashes, diagnosis/robustness/raw-measurement replays, fresh acceptance records and audit databases. GitHub retains this download for 14 days; retained reference runs are archived separately in this repository.
+
+Repository write access is needed to start a manual run. See [GitHub's manual workflow instructions](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow). No provider key, model selection, cluster URL or shell-command input is requested.
+
+## What appears on screen
+
+| Stage | What actually runs | Evidence to show |
 |---|---|---|
-| 0:00–0:35 | README and architecture in RESEARCH_REPORT.md | “SafeHeal is a three-service synthetic application. I studied whether a bounded model diagnosis adds value beyond a fixed rule when a separate controller controls recovery authority.” |
-| 0:35–1:15 | services/diagnosis/agent.py and docs/AI_ROBUSTNESS.md | “The model ranks hypotheses supported by normalized evidence. Stale evidence, unsupported references, malformed output and unsafe fields cannot grant authority. Fallback remains low confidence. The fixed development robustness cases improved from 27 of 36 to 36 of 36; this is not held-out model accuracy.” |
-| 1:15–2:00 | infrastructure/recovery/policy.yaml and services/recovery/controller.py | “There is one permitted action: restore this enrolled payment Deployment from zero to one replica. The model has no token or shell. Conditional live-state checks, a dedicated named-resource Role and API-server admission constrain the write. Ambiguous outcomes block retries.” |
-| 2:00–2:50 | Run the offline reproduction command; inspect a trial, requests.jsonl and audit.json | “Measurements are replayed from raw business requests, and the integrity manifest is checked. Cleanup occurs after observation and does not count as recovery. Failed and censored outcomes remain visible.” |
-| 2:50–3:35 | Retained charts and FINDINGS.md for each cohort | “The original fixed-rule cohort recovered five of five scale-zero fixtures; native behavior was censored in all five. Native Kubernetes is expected to preserve desired zero. Inspect the separately retained local-model results rather than assuming an AI advantage.” |
-| 3:35–4:00 | Report limitations and future work | “This demonstrates bounded recovery engineering. It does not establish general root-cause accuracy, production safety or AI superiority. Next I would add benign controls, held-out ambiguous cases and independent multi-host trials.” |
+| 1. Tests | Application, evidence validation, provider failures, duplicate notifications and recovery safety tests | Pytest result in the stage log |
+| 2. Reproduction | Both retained cohorts and exact-source robustness comparison | Replay JSON; synthetic 27/36 → 36/36, labelled development evidence |
+| 3. Diagnosis | Deterministic fallback replay of six retained benchmark incidents | Grounded diagnoses and explicit fallback in diagnosis.json |
+| 4. Healthy application | Fresh Docker-kind cluster, gateway/order/payment Deployments, Service DNS and HTTP checks | Ready services and a confirmed synthetic order |
+| 5. Native recovery | Guarded payment-container failure and Kubernetes recovery | Native acceptance record |
+| 6. Autonomous recovery | Real executor token, policy-readiness gate, forbidden calls, scale-zero fixture, dry-run and operator-enabled controller | New autonomous acceptance record; verified result |
+| 7. Approval recovery | A second fixture, unapproved denial, expiring operator approval, recovery and replay denial | New approval acceptance record; verified result |
+| 8. Observability and detection | Actual traffic, Prometheus, dashboards, traces and a bounded payment-task failure | Observability and deterministic detector evidence |
+| 9. Final business verification | Service DNS, health/readiness and another confirmed order | Final service checks |
+| 10. Summary and audit | Only trials created after this run began; source hashes, three consecutive Ready observations and audit-chain integrity | result.json, summary.md and manifest.json |
 
-## Offline command
+The diagnosis replay uses historical evidence; the two recovery fixtures are freshly created by the trusted operator harness. They are distinct episodes. This demo makes no live-LLM closed-loop performance claim. The model receives no shell, cluster credential or approval authority. The independent action remains only the enrolled payment Deployment's desired-replica change **0 → 1**.
 
-```powershell
-.\.venv\Scripts\python.exe scripts/reproduce.py --output .local/demo-replay
-```
+A failed or missing step, a failed business check, operator restoration, an invalid audit or a missing mode produces **FAIL / INCOMPLETE**. Old trials cannot qualify as fresh success. Failed artifacts remain available for investigation.
 
-Choose a new output directory each time. Show the command's exit status and generated JSON. Never display `.local` credentials, token files, a raw kubeconfig or authorization headers on screen.
+## Four-minute presentation
 
-## Optional live controller demonstration
+Prepare a completed run before presenting. Executing the full workflow takes longer than the four-minute walkthrough.
 
-Only after the isolated lab is healthy and enrolled:
+| Time | Show | Explain |
+|---|---|---|
+| 0:00–0:30 | README and this page | “SafeHeal separates fallible diagnosis from independently authorized recovery.” |
+| 0:30–1:00 | Tests, reproduction and diagnosis stages | “Evidence must be fresh, attributable and supported. Fallback and mocked engineering tests are labelled.” |
+| 1:00–1:40 | Healthy application and native recovery logs | “Three real services communicate through Kubernetes DNS. A confirmed order verifies the business path.” |
+| 1:40–2:40 | Autonomous and approval acceptance records | “Eight forbidden calls are denied in each mode. Dry-run performs no action. Operator approval, conditional writes and admission bound the one permitted transition.” |
+| 2:40–3:15 | Summary, audit events and final order | “Recovery needs three consecutive Ready observations and a separate confirmed business order. Replays are denied and cleanup is checked.” |
+| 3:15–4:00 | Charts and limitations below | “The rule restored this deliberately policy-addressable fault. All five real local-model requests timed out. AI benefit and general reliability remain unproven.” |
 
-```powershell
+## Results to explain honestly
+
+| Separate study | Native | Fixed rule + independent policy | AI arm |
+|---|---|---|---|
+| Original, 45-second horizon | 0/5 within horizon; actual recovery time unknown | 5/5; observed mean 19.0378 s | Five slots explicitly not run without a provider |
+| Local-model, 90-second horizon | 0/5 within horizon; actual recovery time unknown | 5/5; observed mean 30.5436 s | Five actual requests timed out; no validated output or AI recovery |
+
+Do not pool the cohorts or label the horizon as observed MTTR. The demo's recovery checks are engineering evidence, not additional randomized study trials.
+
+![Separate 90-second local-model cohort](../evidence/day9/analysis-local/recovery_comparison.png)
+
+[Raw local-model cohort](../evidence/day9/run-local-20261025) · [Analysis and limitations](../evidence/day9/analysis-local/FINDINGS.md) · [Original cohort findings](../evidence/day9/analysis/FINDINGS.md)
+
+## Copy-paste local demonstration
+
+### Fast offline review
+
+From an installed checkout, choose a new output directory:
+
+~~~powershell
+.\.venv\Scripts\python.exe scripts/reproduce.py --output .local/demo-review-01
+.\.venv\Scripts\python.exe scripts/compare_robustness.py --output-dir .local/demo-robustness-01
+.\.venv\Scripts\python.exe scripts/diagnose.py --output .local/demo-diagnosis-01.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
+~~~
+
+Show the exit status and replay JSON. This route needs no Docker or provider. On Linux/macOS, use .venv/bin/python.
+
+### Existing verified Windows lab
+
+Use the canonical checkout and healthy safeheal-day7 lab:
+
+~~~powershell
+Set-Location C:\Users\jillv\Projects\safeheal-ai
 .\.venv\Scripts\python.exe scripts/verify_recovery.py --lab safeheal-day7
+.\.venv\Scripts\python.exe scripts/verify_recovery.py --lab safeheal-day7 --execute --mode autonomous
 .\.venv\Scripts\python.exe scripts/verify_recovery.py --lab safeheal-day7 --execute --mode approval
-```
+~~~
 
-The first command is read-only preflight. The second intentionally creates a scale-zero lab fixture and checks dry-run, approval denial/grant, recovery verification and replay denial. It is an operator acceptance test, not model-triggered fault injection. Inspect its saved acceptance record and cleanup outcome; do not replace a failed recording with a claim that it passed.
+The first command is read-only preflight. Each execute command intentionally creates one guarded scale-zero fixture, invokes the separate credential-limited controller, verifies a confirmed order and records cleanup. The returned trial ID locates evidence/day7/<trial-id>/acceptance.json and audit.sqlite3. Keep every outcome.
+
+### Fresh machine: Windows PowerShell (x86_64)
+
+Prerequisites: repository access, Git, Python 3.12, Docker using Linux containers, and kubectl. The setup installs pinned project-local kind and creates only the dedicated project cluster.
+
+~~~powershell
+git clone https://github.com/Jill-Vekariya/safeheal-ai.git
+Set-Location safeheal-ai
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.lock
+.\.venv\Scripts\python.exe -m pip install --no-deps -e .
+.\.venv\Scripts\python.exe scripts/k8s.py install-kind
+.\.venv\Scripts\python.exe scripts/k8s.py setup
+.\.venv\Scripts\python.exe scripts/k8s.py deploy
+.\.venv\Scripts\python.exe scripts/k8s.py verify
+.\.venv\Scripts\python.exe scripts/verify_recovery.py
+.\.venv\Scripts\python.exe scripts/verify_recovery.py --execute --mode autonomous
+.\.venv\Scripts\python.exe scripts/verify_recovery.py --execute --mode approval
+~~~
+
+### Fresh machine: Linux (x86_64)
+
+Use the same Git/Docker/kubectl prerequisites:
+
+~~~bash
+git clone https://github.com/Jill-Vekariya/safeheal-ai.git
+cd safeheal-ai
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.lock
+.venv/bin/python -m pip install --no-deps -e .
+.venv/bin/python scripts/k8s.py install-kind
+.venv/bin/python scripts/k8s.py setup
+.venv/bin/python scripts/k8s.py deploy
+.venv/bin/python scripts/k8s.py verify
+.venv/bin/python scripts/verify_recovery.py
+.venv/bin/python scripts/verify_recovery.py --execute --mode autonomous
+.venv/bin/python scripts/verify_recovery.py --execute --mode approval
+~~~
+
+See [reproduction](REPRODUCIBILITY.md) for the full observability, detector and matched-study protocol. Never expose the operator fixture harness as a model tool. Keep token files and kubeconfigs off screen and out of Git. Investigate a running/uncertain claim using [SAFE_RECOVERY.md](SAFE_RECOVERY.md); no automatic write retry or override exists.

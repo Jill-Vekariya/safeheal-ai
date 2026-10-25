@@ -43,9 +43,9 @@
   ],
   "sha256": {
     "ARCHITECTURE.md": "3d0fa1789ad47889112113823c2458eb6250df35728bf52e3a522e0af2c00e53",
-    "README.md": "5e42355d2b1ccb9c3d5586d12f4d95016013b16369669b76ae378c9a514f19ca",
+    "README.md": "2a63334fd0657677f3928ae52c05d7436ac4c51ec0b979c091e63e9663bbb1bd",
     "docs/CONTROLLED_EXPERIMENTS.md": "24f37bfd771826819a798234603bc5e916834b46f8faea7354759631d6cc2521",
-    "docs/DEMO.md": "7e79253c232e666e8b8271bb683c2b55b8f17c55b6eb202d940e5a59cd31119f",
+    "docs/DEMO.md": "fd68d6c3ad9e68d476897255596b5b9ffdfc1d983100d44607a2ca7127ff07ee",
     "docs/OPERATIONS_CHECKLIST.md": "66cc8912b7870fba8cb0b99e98e7b636303cd8704f2c54f87e02d4abe47fd754",
     "docs/PORTFOLIO.md": "53935eb017d06f7e452157d959a92185b6810ed91d86b597079ee0fc59309fa1",
     "docs/RELATED_WORK.md": "820c14ceb464d1c4bbf1e564fb6b04eb0de1bc677449fb4b8965876928407f8c",
@@ -276,6 +276,11 @@
     "services/recovery/kubernetes.py": "c0995e20905e911f8246c188849a4ec19480d9d5317ee2c05abf85f5097e384c",
     "tests/test_controlled_experiments.py": "482628e990efe854069ed6559cec09850ac1584f7ba2520dbeb4e041218cc506",
     "tests/test_recovery_bootstrap.py": "4ab2c58ed9f40997d48b5b0538eb3f80d4efb48dc7fdc9aa6bf7a27b1ba5dbbf",
-    "tests/test_reproduce.py": "ac31539cf7e2029602343ba1219679ea1df46f34d0156fdcddbafcc05dfa90d7"
+    "tests/test_reproduce.py": "ac31539cf7e2029602343ba1219679ea1df46f34d0156fdcddbafcc05dfa90d7",
+    "scripts/demo_report.py": "7b430556de5197e2f43456d5ef545bee6cff98ff0667851e82884894e2f75e73",
+    "tests/test_demo_report.py": "87bd996071e258291b517d2c1bbf5b5263c6be253109227da937d443076036f9",
+    ".github/workflows/demo.yml": "51c69ac4e620df805ddced33245325a54d1e39831b1316b0800b14acc022ddc0",
+    "evidence/demo/local-verification.json": "bb4b4124c5d09e5f80b9210468a8cc04e627f0be653a6a625c2210e0bbc1c93e",
+    "evidence/demo/windows-tests.txt": "08b7fa12fb8490c4e52b51497559007c15315001be8fbaefd93c284b22bbbbbf"
   }
 }

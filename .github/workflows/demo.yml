@@ -1,0 +1,98 @@
+name: End-to-end safe recovery demo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: safeheal-demo-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare pinned runtime
+        id: runtime
+        run: |
+          python -m pip install -r requirements.lock
+          python -m pip install --no-deps -e .
+          python scripts/demo_report.py begin --output .local/demo --source "$GITHUB_SHA"
+      - name: Run application, diagnosis and safety tests
+        id: checks
+        run: python -m pytest -q
+      - name: Verify raw measurements and before-after robustness
+        id: replay
+        run: |
+          python scripts/reproduce.py --output .local/demo/replay
+          python scripts/compare_robustness.py --output-dir .local/demo/robustness
+      - name: Replay grounded diagnosis with provider-independent fallback
+        id: diagnosis
+        run: python scripts/diagnose.py --output .local/demo/diagnosis.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
+      - name: Create and deploy the isolated Docker-kind lab
+        id: cluster
+        run: |
+          python scripts/k8s.py install-kind
+          python scripts/k8s.py setup
+          python scripts/k8s.py deploy
+      - name: Confirm Service DNS, readiness and a real synthetic order
+        id: services
+        run: python scripts/k8s.py verify
+      - name: Demonstrate native container recovery
+        id: native
+        run: |
+          python scripts/k8s.py recovery
+          python scripts/k8s.py recovery --execute
+      - name: Demonstrate dry-run and operator-enabled autonomous recovery
+        id: autonomous
+        run: |
+          python scripts/verify_recovery.py
+          python scripts/verify_recovery.py --execute --mode autonomous
+      - name: Demonstrate approval denial, operator approval and replay denial
+        id: approval
+        run: python scripts/verify_recovery.py --execute --mode approval
+      - name: Verify metrics, dashboards and traces using actual traffic
+        id: observability
+        run: |
+          python scripts/observe.py deploy
+          python scripts/observe.py verify
+      - name: Verify deterministic incident detection against real Prometheus
+        id: detector
+        run: |
+          kubectl --kubeconfig .local/kubeconfig --context kind-safeheal-dev -n safeheal-dev port-forward --address=127.0.0.1 service/prometheus 19090:9090 > .local/demo/prometheus-forward.txt 2>&1 &
+          safeheal_forward_pid=$!
+          trap 'kill "$safeheal_forward_pid" 2>/dev/null || true' EXIT
+          python scripts/verify_detector_pause.py
+          python scripts/verify_detector_pause.py --execute
+      - name: Confirm final healthy services and business path
+        id: final_services
+        run: python scripts/k8s.py verify
+      - name: Publish verified demo summary, including failed or incomplete outcomes
+        if: always()
+        env:
+          DEMO_STEP_OUTCOMES: ${{ toJSON(steps) }}
+        run: python scripts/demo_report.py finish --output .local/demo
+      - name: Preserve demo evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: safeheal-demo-evidence
+          path: |
+            .local/demo/
+            evidence/day2/
+            evidence/day3/
+            evidence/day4/
+            evidence/day7/
+          retention-days: 14
+          if-no-files-found: warn

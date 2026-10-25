@@ -2,6 +2,10 @@
 
 **25 October 2026 (Asia/Kolkata): all ten defined engineering milestones complete, 10/10.** Implementation and evidence are published in the private [repository](https://github.com/Jill-Vekariya/safeheal-ai). This does not establish production readiness or AI superiority.
 
+## End-to-end demo extension - 25 October 2026
+
+Added a manually triggered GitHub Actions demo: full tests/replay, fresh Docker-kind services, native recovery, both independent recovery modes, observability/detection, final orders and a verified evidence summary. Fourteen new reporter tests reject failed, missing, duplicated or old results. Full Windows suite: 536 passed, 2 existing skips. Publication/actual workflow verification is in progress; no new demo PASS is claimed yet. The original ten engineering gates and their historical CI proof remain complete.
+
 ## Release evidence
 
 - Tested branch head: 34be70d4cf845c53e91dbffd1ba9cea7e47a2366; [PR4](https://github.com/Jill-Vekariya/safeheal-ai/pull/4) merged with history preserved.

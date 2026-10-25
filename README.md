@@ -4,7 +4,13 @@ An inspectable Kubernetes incident-response testbed that separates model diagnos
 
 SafeHeal observes a synthetic gateway → order → payment application, validates bounded evidence, and compares native behavior, a fixed symptom rule and real-model diagnosis. A separate deterministic controller permits only one enrolled action: restore the payment Deployment from desired replicas zero to one. The model receives no shell or Kubernetes credential.
 
-**Status - 25 October 2026:** All ten engineering milestones verified (10/10), committed and merged in the private repository. PR/main GitHub Actions passed; Windows: 522 passed, 2 skipped. No AI advantage is claimed. See [project status](PROJECT_STATUS.md).
+**Status - 25 October 2026:** All ten engineering milestones verified (10/10), committed and merged in the private repository. PR/main GitHub Actions passed; Windows: 536 passed, 2 skipped. No AI advantage is claimed. See [project status](PROJECT_STATUS.md).
+
+## Run the end-to-end demo
+
+**[Open the GitHub Actions demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml)** and choose **Run workflow → main**. It creates a fresh isolated Docker-kind cluster, runs tests and replay, verifies real orders, demonstrates native/autonomous/approval recovery, checks observability and incidents, and publishes a verified summary plus downloadable evidence. No provider key is needed.
+
+[Step-by-step demo and four-minute presentation](docs/DEMO.md) includes expected results, Windows/Linux commands, the existing lab shortcut and investigation steps. Diagnosis is explicitly labelled historical fallback replay; recovery fixtures run live. The five retained real local-model attempts timed out.
 
 ## Start with the evidence
 
@@ -17,7 +23,7 @@ SafeHeal observes a synthetic gateway → order → payment application, validat
 | [Robustness evaluation](docs/AI_ROBUSTNESS.md) | Exact-source before/after synthetic failure handling; 27/36 → 36/36 development cases |
 | [Safe recovery contract](docs/SAFE_RECOVERY.md) | Allowlist, approval/dry-run modes, least privilege, claims and verification |
 | [Reproduction guide](docs/REPRODUCIBILITY.md) | Clean checkout, offline replay and guarded live lab commands |
-| [Four-minute demo](docs/DEMO.md) | A reviewable walkthrough with explicit limitations |
+| [End-to-end demo](docs/DEMO.md) | A reviewable walkthrough with explicit limitations |
 | [Portfolio and interview preparation](docs/PORTFOLIO.md) | Evidence-based resume/SOP wording and 20 technical questions |
 
 In the original 45-second baseline cohort, fixed-rule recovery succeeded in 5/5 trials (observed mean 19.04 s); native behavior did not recover within the horizon in 5/5 trials. Native actual recovery times are unknown. Desired replicas zero is valid Kubernetes state, so this fixture deliberately favors an explicit restore policy. It is not proof of generic crash-recovery improvement or an AI advantage.
