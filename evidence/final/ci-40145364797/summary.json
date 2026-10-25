@@ -1,0 +1,283 @@
+{
+  "linux_test_counts": [
+    {
+      "passed": 537,
+      "skipped": 1
+    }
+  ],
+  "verified_recovery_audit_events": {
+    "d7-approval-bca7cac8d8": 9,
+    "d7-autonomous-c446066e9a": 7
+  },
+  "run": 40145364797,
+  "source_commit": "9f6e268d2b5daad8caaff87e1c2e6c8b457d74de",
+  "outcome": "success",
+  "jobs": {
+    "kubernetes": "success",
+    "test": "success"
+  },
+  "new_recovery_trials": [
+    {
+      "trial_id": "d7-approval-bca7cac8d8",
+      "passed": true,
+      "mode": "approval",
+      "controller_status": "verified",
+      "admission_ready": true,
+      "admission_probes": [
+        {
+          "at": "2026-10-25T00:08:22.534426+00:00",
+          "status_code": 403,
+          "policy_denial": true,
+          "server_dry_run": true
+        },
+        {
+          "at": "2026-10-25T00:08:22.792472+00:00",
+          "status_code": 403,
+          "policy_denial": true,
+          "server_dry_run": true
+        }
+      ],
+      "denied_access": [
+        {
+          "method": "GET",
+          "path": "/api/v1/namespaces/safeheal-dev/secrets",
+          "status_code": 403
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/namespaces/safeheal-dev/pods",
+          "status_code": 403
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/namespaces/safeheal-dev/pods/payment/exec?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "DELETE",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "PATCH",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "PATCH",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/order/scale?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "GET",
+          "path": "/apis/apps/v1/namespaces/default/deployments/payment",
+          "status_code": 403
+        },
+        {
+          "method": "PATCH",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All",
+          "status_code": 403
+        }
+      ],
+      "business_check": {
+        "request_id": "d7-approval-bca7cac8d8",
+        "dns": {
+          "gateway": {
+            "short": "10.96.209.15",
+            "fqdn": "10.96.209.15"
+          },
+          "order": {
+            "short": "10.96.250.147",
+            "fqdn": "10.96.250.147"
+          },
+          "payment": {
+            "short": "10.96.226.242",
+            "fqdn": "10.96.226.242"
+          }
+        },
+        "health": {
+          "gateway": {
+            "healthz": {
+              "status": "ok",
+              "service": "gateway"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "gateway"
+            }
+          },
+          "order": {
+            "healthz": {
+              "status": "ok",
+              "service": "order"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "order"
+            }
+          },
+          "payment": {
+            "healthz": {
+              "status": "ok",
+              "service": "payment"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "payment"
+            }
+          }
+        },
+        "order": {
+          "order_id": "b6fbbaa3-3683-4fcc-a8de-e18aeb1d92a5",
+          "item_id": "day2-demo",
+          "quantity": 2,
+          "amount_cents": 2000,
+          "payment_id": "3e078744-d46c-4104-acf0-b04ea5e2b846",
+          "status": "confirmed"
+        },
+        "http_status": 201,
+        "passed": true
+      },
+      "operator_cleanup": null
+    },
+    {
+      "trial_id": "d7-autonomous-c446066e9a",
+      "passed": true,
+      "mode": "autonomous",
+      "controller_status": "verified",
+      "admission_ready": true,
+      "admission_probes": [
+        {
+          "at": "2026-10-25T00:08:11.400310+00:00",
+          "status_code": 200,
+          "policy_denial": false,
+          "server_dry_run": true
+        },
+        {
+          "at": "2026-10-25T00:08:11.658144+00:00",
+          "status_code": 200,
+          "policy_denial": false,
+          "server_dry_run": true
+        },
+        {
+          "at": "2026-10-25T00:08:11.912534+00:00",
+          "status_code": 403,
+          "policy_denial": true,
+          "server_dry_run": true
+        },
+        {
+          "at": "2026-10-25T00:08:12.168586+00:00",
+          "status_code": 403,
+          "policy_denial": true,
+          "server_dry_run": true
+        }
+      ],
+      "denied_access": [
+        {
+          "method": "GET",
+          "path": "/api/v1/namespaces/safeheal-dev/secrets",
+          "status_code": 403
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/namespaces/safeheal-dev/pods",
+          "status_code": 403
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/namespaces/safeheal-dev/pods/payment/exec?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "DELETE",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "PATCH",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "PATCH",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/order/scale?dryRun=All",
+          "status_code": 403
+        },
+        {
+          "method": "GET",
+          "path": "/apis/apps/v1/namespaces/default/deployments/payment",
+          "status_code": 403
+        },
+        {
+          "method": "PATCH",
+          "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All",
+          "status_code": 403
+        }
+      ],
+      "business_check": {
+        "request_id": "d7-autonomous-c446066e9a",
+        "dns": {
+          "gateway": {
+            "short": "10.96.209.15",
+            "fqdn": "10.96.209.15"
+          },
+          "order": {
+            "short": "10.96.250.147",
+            "fqdn": "10.96.250.147"
+          },
+          "payment": {
+            "short": "10.96.226.242",
+            "fqdn": "10.96.226.242"
+          }
+        },
+        "health": {
+          "gateway": {
+            "healthz": {
+              "status": "ok",
+              "service": "gateway"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "gateway"
+            }
+          },
+          "order": {
+            "healthz": {
+              "status": "ok",
+              "service": "order"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "order"
+            }
+          },
+          "payment": {
+            "healthz": {
+              "status": "ok",
+              "service": "payment"
+            },
+            "readyz": {
+              "status": "ready",
+              "service": "payment"
+            }
+          }
+        },
+        "order": {
+          "order_id": "5d8af771-1b61-40b2-b3e3-b39252dcc0bc",
+          "item_id": "day2-demo",
+          "quantity": 2,
+          "amount_cents": 2000,
+          "payment_id": "56325da7-c32b-4765-8806-96a31e9321fc",
+          "status": "confirmed"
+        },
+        "http_status": 201,
+        "passed": true
+      },
+      "operator_cleanup": null
+    }
+  ],
+  "artifact_files": 171,
+  "log_sha256": "2d1fd8694a18a050795ea3415781589732341722281a9a1ca479de23b2e1b2c1",
+  "original_failure_preserved": "evidence/final/ci-40135721425",
+  "raw_experimental_cohorts_modified": false
+}

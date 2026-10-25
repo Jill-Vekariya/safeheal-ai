@@ -2,7 +2,19 @@
 
 **25 October 2026 (Asia/Kolkata): all ten defined engineering milestones complete, 10/10.** Implementation and evidence are published in the private [repository](https://github.com/Jill-Vekariya/safeheal-ai). This does not establish production readiness or AI superiority.
 
-## Release evidence
+## Verified GitHub end-to-end demo - 25 October 2026
+
+**[Run demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml)** · [Successful reference run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Guide](docs/DEMO.md) · [Saved summary](evidence/demo/ci-40145365194/summary.md)
+
+The manual workflow passed all twelve stages: pinned runtime/full tests, raw-data and robustness replay, labelled fallback diagnosis replay, fresh Docker-kind services/native recovery, autonomous and approval recovery, actual observability/detection and final confirmed business orders. Downloaded report/artifact hashes and both audit chains verified. It uses no provider credential and does not claim live-LLM diagnosis.
+
+Implementation source: 9f6e268d2b5daad8caaff87e1c2e6c8b457d74de. Dedicated demo 40145365194 and full normal CI 40145364797 passed. Linux: **537 passed, 1 skipped**. Windows: **536 passed, 2 skipped**; fourteen new reporter failure-path tests. Offline replay: **241 artifacts**. Original controller/RBAC/admission, application and Day 5-9 measurements remain unchanged.
+
+Permanent raw evidence/logs/manifests: evidence/demo/ci-40145365194/ and evidence/final/ci-40145364797/. Initial demo 40145170673 is preserved with workflow conclusion success and delivery verification True. Superseded automatic CI40145167231 concluded cancelled; it is not claimed as an acceptance pass.
+
+The original ten project gates remain complete. The original release proof below identifies its historical source/test counts; this extension and evidence/demo/verification.json provide the current demo proof. Final checkpoint changes documentation/evidence only and uses [skip ci] after both executable workflows passed.
+
+## Original release evidence (historical)
 
 - Tested branch head: 34be70d4cf845c53e91dbffd1ba9cea7e47a2366; [PR4](https://github.com/Jill-Vekariya/safeheal-ai/pull/4) merged with history preserved.
 - Verified main implementation commit: 990073fd5e2e3c0c6490d81c638e983c875924d1.

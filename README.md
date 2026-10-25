@@ -8,6 +8,10 @@ SafeHeal observes a synthetic gateway → order → payment application, validat
 
 ## Run the end-to-end demo
 
+**Verified reference:** [Successful live demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Verified summary](evidence/demo/ci-40145365194/summary.md) · [Download GitHub artifact](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966) · [Permanent raw archive](evidence/demo/ci-40145365194/artifacts.zip)
+
+Source: 9f6e268d2b5d. Linux: **537 passed, 1 skipped**; Windows: **536 passed, 2 skipped**. Both fresh recovery modes, all twelve required stages and the downloaded artifact/audit checks passed. [Normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797) also passed, including six labelled fault repetitions.
+
 **[Open the GitHub Actions demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml)** and choose **Run workflow → main**. It creates a fresh isolated Docker-kind cluster, runs tests and replay, verifies real orders, demonstrates native/autonomous/approval recovery, checks observability and incidents, and publishes a verified summary plus downloadable evidence. No provider key is needed.
 
 [Step-by-step demo and four-minute presentation](docs/DEMO.md) includes expected results, Windows/Linux commands, the existing lab shortcut and investigation steps. Diagnosis is explicitly labelled historical fallback replay; recovery fixtures run live. The five retained real local-model attempts timed out.

@@ -340,3 +340,9 @@ Added fourteen failure-path/report tests; full Windows suite: 536 passed, 2 skip
 ### Demo artifact packaging review
 
 During the first manual run, review of upload-artifact's hidden-directory behavior identified that mixing .local/demo with evidence roots could omit the report subtree. Enabled hidden files only under the explicitly listed report/evidence paths; executor token/kubeconfig directories are not selected. This changes packaging only. The initial run 40145170673 is left to finish and will retain its actual outcome separately; the corrected workflow is dispatched as a new run. No original trial or failed result is overwritten.
+
+## GitHub demo verified and finalized - 25 October 2026
+
+Dedicated demo 40145365194 passed at 9f6e268d2b5daad8caaff87e1c2e6c8b457d74de, as did normal CI 40145364797, including all six labelled faults. Linux: 537 passed/1 skipped; Windows: 536 passed/2 skipped. The downloaded demo artifact verified against its fifteen-entry report manifest and its two audit chains. First demo 40145170673 also passed functional and delivery verification and remains separately retained; the explicit artifact-selection inclusion was precautionary hardening, not a relabelled failed outcome. Superseded automatic CI40145167231 concluded cancelled.
+
+Archived exact logs, metadata, raw artifact bytes and SHA256 manifests. Added direct README/DEMO links to the verified run, actual artifact download and permanent in-repository archive; synchronized current/final handoffs. Final evidence/docs-only checkpoint uses [skip ci]. Controller, RBAC/admission, application and original Day 5-9 study data are unchanged. No cloud/live-model inference is claimed by this workflow; its diagnosis is labelled retained fallback replay.

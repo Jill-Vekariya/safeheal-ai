@@ -1,0 +1,74 @@
+{
+  "schema_version": "safeheal-github-demo-verification-v1",
+  "passed": true,
+  "implementation_commit": "9f6e268d2b5daad8caaff87e1c2e6c8b457d74de",
+  "demo_run": {
+    "run": 40145365194,
+    "source_commit": "9f6e268d2b5daad8caaff87e1c2e6c8b457d74de",
+    "workflow_conclusion": "success",
+    "demo_delivery_verified": true,
+    "demo_result_present": true,
+    "artifact_files": 78,
+    "verified_demo_manifest_entries": 15,
+    "verified_audit_events": {
+      "d7-approval-e39fe50e97": 9,
+      "d7-autonomous-715ceda8e9": 7
+    },
+    "linux_tests": [
+      {
+        "passed": 537,
+        "skipped": 1
+      }
+    ],
+    "download_exit_code": 0,
+    "log_sha256": "84acade2ee65b737cbc31686583d8f249b1ffd9b13d16dbfbe8c2340bd7a400e",
+    "raw_study_data_changed": false
+  },
+  "normal_ci_run": 40145364797,
+  "normal_ci_url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797",
+  "initial_demo_run": {
+    "run": 40145170673,
+    "source_commit": "cbdce4d780925212c96d470bdc7a3de8627c926f",
+    "workflow_conclusion": "success",
+    "demo_delivery_verified": true,
+    "demo_result_present": true,
+    "artifact_files": 78,
+    "verified_demo_manifest_entries": 15,
+    "verified_audit_events": {
+      "d7-approval-389dd2fe49": 9,
+      "d7-autonomous-5dbb1f289d": 7
+    },
+    "linux_tests": [
+      {
+        "passed": 537,
+        "skipped": 1
+      }
+    ],
+    "download_exit_code": 0,
+    "log_sha256": "55c652dda680eb0722caf960dc594d119deb83493e684450037cedced5a38043",
+    "raw_study_data_changed": false
+  },
+  "superseded_ci": {
+    "conclusion": "cancelled",
+    "event": "push",
+    "headSha": "cbdce4d780925212c96d470bdc7a3de8627c926f",
+    "status": "completed",
+    "url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145167231"
+  },
+  "artifact_download": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966",
+  "private_repository": true,
+  "windows_tests": {
+    "passed": 536,
+    "skipped": 2
+  },
+  "linux_tests": {
+    "passed": 537,
+    "skipped": 1
+  },
+  "reporter_failure_tests": 14,
+  "verified_inventory": 241,
+  "artifact_manifest_sha256": "6f6c702e7766e13d9ec3d8e2f9ecc6bfaf11ec68a9213baa7fc3eee7530b3da7",
+  "source_and_original_studies_unchanged_since_implementation": true,
+  "final_checkpoint_scope": "Documentation and exact CI evidence only; no executable changes after successful demo/full CI.",
+  "model_scope": "Historical deterministic-fallback diagnosis replay; no live inference in this demo. Five retained real local-model study calls timed out."
+}

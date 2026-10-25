@@ -2,6 +2,14 @@
 
 [Run the demo in GitHub Actions](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml) · [Research report](RESEARCH_REPORT.md) · [Recovery contract](SAFE_RECOVERY.md)
 
+## Verified reference run
+
+[Open the successful demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Rendered result summary](../evidence/demo/ci-40145365194/summary.md) · [Download artifact](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966) · [Permanent archive](../evidence/demo/ci-40145365194/artifacts.zip)
+
+The run at 9f6e268d2b5daad8caaff87e1c2e6c8b457d74de passed all twelve required stages and both fresh recovery modes. Its downloaded manifest and audit chains verified; raw logs and artifact hashes are retained under evidence/demo/ci-40145365194. Linux tests: 537 passed, 1 opt-in skip. Windows: 536 passed, 2 existing skips. [Full normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797) also passed.
+
+The first demo (40145170673) retains its actual successful workflow and delivery verification separately. Explicit inclusion of the selected report paths was then added and verified in the reference run above. No original trial outcome was replaced.
+
 Show a real synthetic order, a controlled lab failure, independently authorized recovery and a confirmed order after recovery. The GitHub run also replays diagnosis and the controlled experiments, checks raw-data integrity and verifies audit chains.
 
 ## One-click demonstration

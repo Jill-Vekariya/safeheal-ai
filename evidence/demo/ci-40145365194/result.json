@@ -1,0 +1,68 @@
+{
+  "schema_version": "safeheal-demo-v1",
+  "passed": true,
+  "source_commit": "9f6e268d2b5daad8caaff87e1c2e6c8b457d74de",
+  "steps": {
+    "runtime": "success",
+    "checks": "success",
+    "replay": "success",
+    "diagnosis": "success",
+    "cluster": "success",
+    "services": "success",
+    "native": "success",
+    "autonomous": "success",
+    "approval": "success",
+    "observability": "success",
+    "detector": "success",
+    "final_services": "success"
+  },
+  "trials": [
+    {
+      "trial_id": "d7-approval-e39fe50e97",
+      "passed": true,
+      "mode": "approval",
+      "checks": {
+        "acceptance_and_cleanup": true,
+        "admission_ready": true,
+        "eight_forbidden_calls_denied": true,
+        "forbidden_scale_from_zero_denied": true,
+        "unsafe_proposal_denied": true,
+        "dry_run_no_authority": true,
+        "approval_gate": true,
+        "request_binding": true,
+        "verified_ready": true,
+        "business_order_confirmed": true,
+        "replay_denied": true,
+        "no_model_calls": true,
+        "current_recovery_sources": true,
+        "trial_identity": true,
+        "audit_chain": true
+      },
+      "audit_events": 9
+    },
+    {
+      "trial_id": "d7-autonomous-715ceda8e9",
+      "passed": true,
+      "mode": "autonomous",
+      "checks": {
+        "acceptance_and_cleanup": true,
+        "admission_ready": true,
+        "eight_forbidden_calls_denied": true,
+        "forbidden_scale_from_zero_denied": true,
+        "unsafe_proposal_denied": true,
+        "dry_run_no_authority": true,
+        "approval_gate": true,
+        "request_binding": true,
+        "verified_ready": true,
+        "business_order_confirmed": true,
+        "replay_denied": true,
+        "no_model_calls": true,
+        "current_recovery_sources": true,
+        "trial_identity": true,
+        "audit_chain": true
+      },
+      "audit_events": 7
+    }
+  ],
+  "scope": "Fresh isolated Kubernetes recovery; retained diagnosis/experiment replay. No live-model inference."
+}

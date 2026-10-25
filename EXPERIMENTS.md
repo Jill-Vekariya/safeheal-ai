@@ -1,6 +1,10 @@
 # Experiment register
 
-## Verified final checkpoint - 25 October 2026
+## Verified demo extension - 25 October 2026
+
+[Dedicated end-to-end demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) and [full normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797) passed at 9f6e268d2b5daad8caaff87e1c2e6c8b457d74de. Current tests: Windows 536 passed/2 skipped; Linux 537 passed/1 skipped. Replay verifies 241 artifacts. The demo's fresh controller episodes are engineering checks, not added randomized study trials. All original controlled measurements and their negative/inconclusive AI findings remain unchanged.
+
+## Original project-completion checkpoint - 25 October 2026
 
 All ten engineering gates passed; private PR4/main CI are green. Windows: 522 passed, 2 skipped. Offline replay checks 235 artifacts and both cohorts. Methods, charts, trade-offs, error analysis and limitations: docs/RESEARCH_REPORT.md and evidence/day9/analysis-local/FINDINGS.md.
 

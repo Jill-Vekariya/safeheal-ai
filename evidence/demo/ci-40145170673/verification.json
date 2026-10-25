@@ -1,0 +1,22 @@
+{
+  "run": 40145170673,
+  "source_commit": "cbdce4d780925212c96d470bdc7a3de8627c926f",
+  "workflow_conclusion": "success",
+  "demo_delivery_verified": true,
+  "demo_result_present": true,
+  "artifact_files": 78,
+  "verified_demo_manifest_entries": 15,
+  "verified_audit_events": {
+    "d7-approval-389dd2fe49": 9,
+    "d7-autonomous-5dbb1f289d": 7
+  },
+  "linux_tests": [
+    {
+      "passed": 537,
+      "skipped": 1
+    }
+  ],
+  "download_exit_code": 0,
+  "log_sha256": "55c652dda680eb0722caf960dc594d119deb83493e684450037cedced5a38043",
+  "raw_study_data_changed": false
+}
