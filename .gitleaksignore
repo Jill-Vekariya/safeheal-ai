@@ -92,3 +92,21 @@
 49fa2f3b53adfa7240f6c6f47aac7509c5a91709:evidence/final/ci-40142094894/artifacts.zip!kubernetes-observability-evidence/day5/run-4bcb4ad25537/d5-06-http_5xx-c65cd4ae/trial.json:generic-api-key:6698
 49fa2f3b53adfa7240f6c6f47aac7509c5a91709:evidence/final/ci-40142094894/artifacts.zip!kubernetes-observability-evidence/day5/run-4bcb4ad25537/run.json:generic-api-key:640
 49fa2f3b53adfa7240f6c6f47aac7509c5a91709:evidence/final/ci-40142094894/artifacts.zip!kubernetes-observability-evidence/day5/run-4bcb4ad25537/source.json:generic-api-key:38
+
+# Exact reviewed SHA-256 manifest lines in the retained CPU study and CI archives.
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/d5-01-http_5xx-d6b754b6/trial.json:generic-api-key:6655
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/d5-02-process_crash-41c49801/trial.json:generic-api-key:7611
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/d5-03-process_crash-d3a98bd4/trial.json:generic-api-key:6838
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/d5-04-latency-f3613d30/trial.json:generic-api-key:6596
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/d5-05-latency-caab66e3/trial.json:generic-api-key:6596
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/d5-06-http_5xx-bea84ddf/trial.json:generic-api-key:6688
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/run.json:generic-api-key:627
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/ci-39774736343/run-03a9072a24f8/source.json:generic-api-key:28
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/d5-01-http_5xx-8984ece0/trial.json:generic-api-key:6633
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/d5-02-process_crash-de357a7e/trial.json:generic-api-key:7326
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/d5-03-process_crash-d5b15806/trial.json:generic-api-key:6477
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/d5-04-latency-ea4b90a5/trial.json:generic-api-key:6607
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/d5-05-latency-3e2cc938/trial.json:generic-api-key:6607
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/d5-06-http_5xx-5c0eb918/trial.json:generic-api-key:6699
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/run.json:generic-api-key:641
+b465b9c28e3c3469286af68e03c1a38df13dc127:evidence/public-release/ci-40206669554/kubernetes-observability-evidence.zip!day5/run-6842621e2c5e/source.json:generic-api-key:39
