@@ -1,0 +1,23 @@
+{
+  "renderer": "scripts/analyze_controlled.py",
+  "renderer_sha256": "efb0597573f03cb734714143f453fb6a67fbb2645d7a5eba30aa691bbd8f8f68",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "dependency_lock": "requirements-analysis.txt",
+  "images": {
+    "recovery_comparison.png": {
+      "dimensions_pixels": [
+        1532,
+        846
+      ],
+      "sha256": "3c0ed6b38d3fa121162984c61af2bab0d095ebe158703dd15be5713a014594b5"
+    },
+    "business_responses.png": {
+      "dimensions_pixels": [
+        1532,
+        846
+      ],
+      "sha256": "f3d92c2ece811eec1b6cc190bb3a1033e475ce7b588f52b498da096fad94625c"
+    }
+  }
+}

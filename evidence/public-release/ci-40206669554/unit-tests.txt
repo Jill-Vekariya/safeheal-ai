@@ -1,0 +1,829 @@
+test	Set up job	﻿2026-10-25T15:24:30.1607618Z Current runner version: '2.338.0'
+test	Set up job	2026-10-25T15:24:30.1630050Z ##[group]Runner Image Provisioner
+test	Set up job	2026-10-25T15:24:30.1630691Z Hosted Compute Agent
+test	Set up job	2026-10-25T15:24:30.1631123Z Version: 20261021.618
+test	Set up job	2026-10-25T15:24:30.1631645Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+test	Set up job	2026-10-25T15:24:30.1632105Z Build Date: 2026-10-21T00:45:21Z
+test	Set up job	2026-10-25T15:24:30.1632615Z Worker ID: {d1158fab-0a08-40c0-8888-a179e1a2e31d}
+test	Set up job	2026-10-25T15:24:30.1633107Z Region: westus3
+test	Set up job	2026-10-25T15:24:30.1633486Z Cloud: Azure
+test	Set up job	2026-10-25T15:24:30.1633915Z ##[endgroup]
+test	Set up job	2026-10-25T15:24:30.1634969Z ##[group]Operating System
+test	Set up job	2026-10-25T15:24:30.1635437Z Ubuntu
+test	Set up job	2026-10-25T15:24:30.1635806Z 24.04.5
+test	Set up job	2026-10-25T15:24:30.1636277Z LTS
+test	Set up job	2026-10-25T15:24:30.1636696Z ##[endgroup]
+test	Set up job	2026-10-25T15:24:30.1637049Z ##[group]Runner Image
+test	Set up job	2026-10-25T15:24:30.1637524Z Image: ubuntu-24.04
+test	Set up job	2026-10-25T15:24:30.1638026Z Version: 20261012.334.1
+test	Set up job	2026-10-25T15:24:30.1638713Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+test	Set up job	2026-10-25T15:24:30.1639858Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+test	Set up job	2026-10-25T15:24:30.1640535Z ##[endgroup]
+test	Set up job	2026-10-25T15:24:30.1641258Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-10-25T15:24:30.1642917Z Contents: read
+test	Set up job	2026-10-25T15:24:30.1643279Z Metadata: read
+test	Set up job	2026-10-25T15:24:30.1643738Z ##[endgroup]
+test	Set up job	2026-10-25T15:24:30.1645315Z Secret source: Actions
+test	Set up job	2026-10-25T15:24:30.1645932Z Cache mode: write
+test	Set up job	2026-10-25T15:24:30.1646710Z Prepare workflow directory
+test	Set up job	2026-10-25T15:24:30.1866542Z Prepare all required actions
+test	Set up job	2026-10-25T15:24:30.1898742Z Getting action download info
+test	Set up job	2026-10-25T15:24:30.4897505Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+test	Set up job	2026-10-25T15:24:30.5941284Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+test	Set up job	2026-10-25T15:24:30.6813558Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+test	Set up job	2026-10-25T15:24:30.8749871Z Complete job name: test
+test	Run actions/checkout@v4	﻿2026-10-25T15:24:30.9302912Z ##[group]Run actions/checkout@v4
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9303361Z with:
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9303590Z   fetch-depth: 0
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9303846Z   repository: Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9305998Z   token: ***
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9306226Z   ssh-strict: true
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9306460Z   ssh-user: git
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9306702Z   persist-credentials: true
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9306963Z   clean: true
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9307231Z   sparse-checkout-cone-mode: true
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9307510Z   fetch-tags: false
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9307754Z   show-progress: true
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9308137Z   lfs: false
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9308361Z   submodules: false
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9308607Z   set-safe-directory: true
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9308882Z   allow-unsafe-pr-checkout: false
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9309236Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9977414Z Syncing repository: Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9979073Z ##[group]Getting Git version info
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9979495Z Working directory is '/home/runner/work/safeheal-ai/safeheal-ai'
+test	Run actions/checkout@v4	2026-10-25T15:24:30.9980182Z [command]/usr/bin/git version
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0073436Z git version 2.55.0
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0090129Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0102525Z Temporarily overriding HOME='/home/runner/work/_temp/e655e90b-fa27-4c56-9cc0-c7de9b463b0e' before making global git config changes
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0108592Z Adding repository directory to the temporary git global config as a safe directory
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0109221Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/safeheal-ai/safeheal-ai
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0162585Z Deleting the contents of '/home/runner/work/safeheal-ai/safeheal-ai'
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0170776Z ##[group]Initializing the repository
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0171597Z [command]/usr/bin/git init /home/runner/work/safeheal-ai/safeheal-ai
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0286850Z hint: Using 'master' as the name for the initial branch. This default branch name
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0288778Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0289790Z hint: to use in all of your new repositories, which will suppress this warning,
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0290559Z hint: call:
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0291517Z hint:
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0292128Z hint: 	git config --global init.defaultBranch <name>
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0292789Z hint:
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0293408Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0294337Z hint: 'development'. The just-created branch can be renamed via this command:
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0295088Z hint:
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0295566Z hint: 	git branch -m <name>
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0296338Z hint:
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0296997Z hint: Disable this message with "git config set advice.defaultBranchName false"
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0298256Z Initialized empty Git repository in /home/runner/work/safeheal-ai/safeheal-ai/.git/
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0300312Z [command]/usr/bin/git remote add origin https://github.com/Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0352456Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0353310Z ##[group]Disabling automatic garbage collection
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0355122Z [command]/usr/bin/git config --local gc.auto 0
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0386802Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0387437Z ##[group]Setting up auth
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0392953Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0426806Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0730495Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0761289Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0947266Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Run actions/checkout@v4	2026-10-25T15:24:31.0978485Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Run actions/checkout@v4	2026-10-25T15:24:31.1158848Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Run actions/checkout@v4	2026-10-25T15:24:31.1195745Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:31.1196472Z ##[group]Fetching the repository
+test	Run actions/checkout@v4	2026-10-25T15:24:31.1203950Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +33fa989b029cdb3445316e0e3050fd2a8710c379:refs/remotes/pull/5/merge
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0098682Z From https://github.com/Jill-Vekariya/safeheal-ai
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0100063Z  * [new branch]      day10-finalization                       -> origin/day10-finalization
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0101188Z  * [new branch]      day4-incident-baseline                   -> origin/day4-incident-baseline
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0102313Z  * [new branch]      day5-fault-benchmark                     -> origin/day5-fault-benchmark
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0103368Z  * [new branch]      day6-ai-diagnosis                        -> origin/day6-ai-diagnosis
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0104310Z  * [new branch]      main                                     -> origin/main
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0105213Z  * [new branch]      public-release-20261025                  -> origin/public-release-20261025
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0106167Z  * [new ref]         33fa989b029cdb3445316e0e3050fd2a8710c379 -> pull/5/merge
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0171184Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0172631Z ##[group]Determining the checkout info
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0173514Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0174570Z [command]/usr/bin/git sparse-checkout disable
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0176293Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0199879Z ##[group]Checking out the ref
+test	Run actions/checkout@v4	2026-10-25T15:24:33.0202237Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/5/merge
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1403523Z Note: switching to 'refs/remotes/pull/5/merge'.
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1404235Z 
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1404589Z You are in 'detached HEAD' state. You can look around, make experimental
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1405429Z changes and commit them, and you can discard any commits you make in this
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1406230Z state without impacting any branches by switching back to a branch.
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1406670Z 
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1406934Z If you want to create a new branch to retain commits you create, you may
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1407649Z do so (now or later) by using -c with the switch command. Example:
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1408276Z 
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1408421Z   git switch -c <new-branch-name>
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1408677Z 
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1408808Z Or undo this operation with:
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1409032Z 
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1409210Z   git switch -
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1409416Z 
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1409741Z Turn off this advice by setting config variable advice.detachedHead to false
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1410221Z 
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1410755Z HEAD is now at 33fa989 Merge fd809cae41b60c62b59bd2fc2e2377f5d487b163 into e501bbfeb2c82b0d80a5f03c03f504f9161bbbbf
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1432814Z ##[endgroup]
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1472922Z [command]/usr/bin/git log -1 --format=%H
+test	Run actions/checkout@v4	2026-10-25T15:24:33.1494842Z 33fa989b029cdb3445316e0e3050fd2a8710c379
+test	Run actions/setup-python@v5	﻿2026-10-25T15:24:33.1705187Z ##[group]Run actions/setup-python@v5
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1705599Z with:
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1705849Z   python-version: 3.12
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1706136Z   check-latest: false
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1709363Z   token: ***
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1709623Z   update-environment: true
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1709934Z   allow-prereleases: false
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1710231Z   freethreaded: false
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.1710504Z ##[endgroup]
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.2583501Z ##[group]Installed versions
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.2658703Z (node:2079) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.2659856Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.2660668Z Successfully set up CPython (3.12.15)
+test	Run actions/setup-python@v5	2026-10-25T15:24:33.2661499Z ##[endgroup]
+test	Run python -m pip install -r requirements.lock	﻿2026-10-25T15:24:33.2819860Z ##[group]Run python -m pip install -r requirements.lock
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.2820782Z ^[[36;1mpython -m pip install -r requirements.lock^[[0m
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3078731Z shell: /usr/bin/bash -e {0}
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3079236Z env:
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3079592Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3080193Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3080762Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3081269Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3081815Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3082333Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:33.3082776Z ##[endgroup]
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0046647Z Collecting annotated-doc==0.0.5 (from -r requirements.lock (line 1))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0429560Z   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0522666Z Collecting annotated-types==0.8.0 (from -r requirements.lock (line 2))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0553479Z   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0678695Z Collecting anyio==4.15.1 (from -r requirements.lock (line 3))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0708585Z   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0829388Z Collecting certifi==2026.10.19 (from -r requirements.lock (line 4))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0860824Z   Downloading certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0969013Z Collecting click==8.5.0 (from -r requirements.lock (line 5))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.0999993Z   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.1286689Z Collecting colorama==0.4.6 (from -r requirements.lock (line 6))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.1318109Z   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.1587211Z Collecting fastapi==0.151.0 (from -r requirements.lock (line 7))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.1619977Z   Downloading fastapi-0.151.0-py3-none-any.whl.metadata (26 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.1742264Z Collecting h11==0.16.0 (from -r requirements.lock (line 8))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.1771827Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2019028Z Collecting httpcore==1.0.9 (from -r requirements.lock (line 9))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2048754Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2180597Z Collecting httpx==0.28.1 (from -r requirements.lock (line 10))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2209623Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2308043Z Collecting idna==3.20 (from -r requirements.lock (line 11))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2337326Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2422864Z Collecting iniconfig==2.3.1 (from -r requirements.lock (line 12))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2450054Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2562726Z Collecting opentelemetry-api==1.45.1 (from -r requirements.lock (line 13))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2591521Z   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2706238Z Collecting opentelemetry-sdk==1.45.1 (from -r requirements.lock (line 14))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2737067Z   Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl.metadata (1.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2859358Z Collecting opentelemetry-semantic-conventions==0.66b1 (from -r requirements.lock (line 15))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2889741Z   Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl.metadata (2.4 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.2991783Z Collecting packaging==26.3 (from -r requirements.lock (line 16))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.3021378Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.3115724Z Collecting pluggy==1.7.0 (from -r requirements.lock (line 17))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.3146796Z   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.3244300Z Collecting prometheus_client==0.26.0 (from -r requirements.lock (line 18))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.3273700Z   Downloading prometheus_client-0.26.0-py3-none-any.whl.metadata (2.1 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.3856445Z Collecting pydantic==2.14.1 (from -r requirements.lock (line 19))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.3891177Z   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.8451332Z Collecting pydantic_core==2.50.1 (from -r requirements.lock (line 20))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.8483790Z   Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.8602726Z Collecting Pygments==2.21.0 (from -r requirements.lock (line 21))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.8633487Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.8791646Z Collecting pytest==9.1.1 (from -r requirements.lock (line 22))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.8825342Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.8983189Z Collecting starlette==1.9.0 (from -r requirements.lock (line 23))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9014371Z   Downloading starlette-1.9.0-py3-none-any.whl.metadata (6.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9103926Z Collecting typing-inspection==0.4.4 (from -r requirements.lock (line 24))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9136331Z   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9248663Z Collecting typing_extensions==4.16.0 (from -r requirements.lock (line 25))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9280246Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9419895Z Collecting uvicorn==0.54.0 (from -r requirements.lock (line 26))
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9448231Z   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9650150Z Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9700043Z Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9742884Z Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9801524Z Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9845401Z Downloading click-8.5.0-py3-none-any.whl (125 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9888008Z Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9928918Z Downloading fastapi-0.151.0-py3-none-any.whl (145 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:34.9979359Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0034544Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0078313Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0125033Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0171199Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0215777Z Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0261313Z Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl (140 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0308442Z Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl (206 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0352518Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0400247Z Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0451602Z Downloading prometheus_client-0.26.0-py3-none-any.whl (64 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0493892Z Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0563164Z Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0682168Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 193.4 MB/s  0:00:00
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0717648Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0781670Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 218.4 MB/s  0:00:00
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0818209Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0874874Z Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0935795Z Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.0983600Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.1028306Z Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:35.1935716Z Installing collected packages: typing_extensions, Pygments, prometheus_client, pluggy, packaging, iniconfig, idna, h11, colorama, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic_core, opentelemetry-api, httpcore, anyio, starlette, pydantic, opentelemetry-semantic-conventions, httpx, opentelemetry-sdk, fastapi
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:36.8577152Z 
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:36.8594183Z Successfully installed Pygments-2.21.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.19 click-8.5.0 colorama-0.4.6 fastapi-0.151.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 iniconfig-2.3.1 opentelemetry-api-1.45.1 opentelemetry-sdk-1.45.1 opentelemetry-semantic-conventions-0.66b1 packaging-26.3 pluggy-1.7.0 prometheus_client-0.26.0 pydantic-2.14.1 pydantic_core-2.50.1 pytest-9.1.1 starlette-1.9.0 typing-inspection-0.4.4 typing_extensions-4.16.0 uvicorn-0.54.0
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:36.8600736Z 
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:36.8600913Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+test	Run python -m pip install -r requirements.lock	2026-10-25T15:24:36.8601538Z [notice] To update, run: pip install --upgrade pip
+test	Run python -m pip install --no-deps -e .	﻿2026-10-25T15:24:37.0490111Z ##[group]Run python -m pip install --no-deps -e .
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0490389Z ^[[36;1mpython -m pip install --no-deps -e .^[[0m
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0550607Z shell: /usr/bin/bash -e {0}
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0550784Z env:
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0550965Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0551441Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0551678Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0551896Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0552111Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0552323Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.0552510Z ##[endgroup]
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.2844966Z Obtaining file:///home/runner/work/safeheal-ai/safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.2858016Z   Installing build dependencies: started
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.8066340Z   Installing build dependencies: finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:37.8071153Z   Checking if build backend supports build_editable: started
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.0678085Z   Checking if build backend supports build_editable: finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.0685188Z   Getting requirements to build editable: started
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.3193977Z   Getting requirements to build editable: finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.3202437Z   Preparing editable metadata (pyproject.toml): started
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.4587745Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.4619879Z Building wheels for collected packages: safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.4626149Z   Building editable for safeheal-ai (pyproject.toml): started
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6178554Z   Building editable for safeheal-ai (pyproject.toml): finished with status 'done'
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6184940Z   Created wheel for safeheal-ai: filename=safeheal_ai-0.1.0-0.editable-py3-none-any.whl size=2857 sha256=e564bdcb8360728fafe6dcb4a1807baff14d394aed8e241edd7425131c252534
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6185843Z   Stored in directory: /tmp/pip-ephem-wheel-cache-hd0ipd89/wheels/b8/5b/f9/34f274ba46cd26f94cb2e7932c38d04adeaab484d6c86e2aa4
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6203262Z Successfully built safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6289334Z Installing collected packages: safeheal-ai
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6360070Z Successfully installed safeheal-ai-0.1.0
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6368144Z 
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6368710Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+test	Run python -m pip install --no-deps -e .	2026-10-25T15:24:38.6369025Z [notice] To update, run: pip install --upgrade pip
+test	Run python -m pytest -q	﻿2026-10-25T15:24:38.6939026Z ##[group]Run python -m pytest -q
+test	Run python -m pytest -q	2026-10-25T15:24:38.6939246Z ^[[36;1mpython -m pytest -q^[[0m
+test	Run python -m pytest -q	2026-10-25T15:24:38.6992968Z shell: /usr/bin/bash -e {0}
+test	Run python -m pytest -q	2026-10-25T15:24:38.6993125Z env:
+test	Run python -m pytest -q	2026-10-25T15:24:38.6993290Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-25T15:24:38.6993532Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Run python -m pytest -q	2026-10-25T15:24:38.6993768Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-25T15:24:38.6993977Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-25T15:24:38.6994189Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Run python -m pytest -q	2026-10-25T15:24:38.6994402Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Run python -m pytest -q	2026-10-25T15:24:38.6994605Z ##[endgroup]
+test	Run python -m pytest -q	2026-10-25T15:24:40.3144346Z ........................................................................ [ 12%]
+test	Run python -m pytest -q	2026-10-25T15:24:40.4118145Z ........................................................................ [ 25%]
+test	Run python -m pytest -q	2026-10-25T15:24:40.8424694Z ........................................................................ [ 38%]
+test	Run python -m pytest -q	2026-10-25T15:24:43.1355578Z ........................................................................ [ 51%]
+test	Run python -m pytest -q	2026-10-25T15:24:43.4359259Z s....................................................................... [ 64%]
+test	Run python -m pytest -q	2026-10-25T15:24:44.3463496Z ........................................................................ [ 77%]
+test	Run python -m pytest -q	2026-10-25T15:24:44.8843247Z ........................................................................ [ 90%]
+test	Run python -m pytest -q	2026-10-25T15:24:45.4852131Z ........................................................                 [100%]
+test	Run python -m pytest -q	2026-10-25T15:24:45.4852635Z =============================== warnings summary ===============================
+test	Run python -m pytest -q	2026-10-25T15:24:45.4853675Z ../../../../../opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1
+test	Run python -m pytest -q	2026-10-25T15:24:45.4854534Z   /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+test	Run python -m pytest -q	2026-10-25T15:24:45.4855064Z     from starlette.testclient import TestClient as TestClient  # noqa
+test	Run python -m pytest -q	2026-10-25T15:24:45.4855219Z 
+test	Run python -m pytest -q	2026-10-25T15:24:45.4855370Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+test	Run python -m pytest -q	2026-10-25T15:24:45.4855634Z 559 passed, 1 skipped, 1 warning in 6.23s
+test	Compare fixed robustness cases against exact Day 7 source	﻿2026-10-25T15:24:45.7890792Z ##[group]Run python scripts/compare_robustness.py --output-dir .local/day8-paired
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7891165Z ^[[36;1mpython scripts/compare_robustness.py --output-dir .local/day8-paired^[[0m
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7946542Z shell: /usr/bin/bash -e {0}
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7946711Z env:
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7946904Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7947175Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7947441Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7947661Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7948099Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7948317Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.7948503Z ##[endgroup]
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:45.9838489Z {"attempted": 36, "passed": 27, "failed": 9, "real_llm_calls": 0}
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1696229Z {"attempted": 36, "passed": 36, "failed": 0, "real_llm_calls": 0}
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1884015Z {
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1884242Z   "schema_version": "day8-paired-v1",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1884478Z   "baseline_commit": "d10575a79781eda91f942aef56ee5a90fa5e1aba",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1884680Z   "before": {
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1884825Z     "attempted": 36,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1884946Z     "passed": 27,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885060Z     "failed": 9,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885177Z     "real_llm_calls": 0
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885295Z   },
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885399Z   "after": {
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885506Z     "attempted": 36,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885623Z     "passed": 36,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885730Z     "failed": 0,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885841Z     "real_llm_calls": 0
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1885954Z   },
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1886061Z   "improved_cases": [
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1886192Z     "stale_samples_fresh_envelope",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1886346Z     "malformed_platform_shape",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1886523Z     "tampered_uncited_record",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1886678Z     "injected_normalized_prose",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1886829Z     "provider_mutates_input",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1886980Z     "unexpected_provider_exception",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1887139Z     "repeated_notification",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1887286Z     "different_ids_same_evidence",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1887434Z     "stale_notification"
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1887557Z   ],
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1887663Z   "regressed_cases": [],
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1887929Z   "unchanged_case_manifest": true,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1888126Z   "identical_evaluator": true,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1888324Z   "baseline_source_verified_against_git": true,
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1888489Z   "report_sha256": {
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1888703Z     "before.json": "8320cbfd69f7f833025ac57b670f88f9cdb8a85d4dde4dcb005e19cee656cc13",
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1889022Z     "after.json": "c4abe3748509aaf5a391cc78ec98d5fcb35f7cec523edf9eec29e6f3f75057dd"
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1889422Z   },
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1889846Z   "interpretation": "Fixed synthetic development safety cases; mocked providers, zero real-model calls. No statistical generalization or MTTR benefit."
+test	Compare fixed robustness cases against exact Day 7 source	2026-10-25T15:24:46.1890207Z }
+test	Replay retained benchmark with read-only diagnosis fallback	﻿2026-10-25T15:24:46.1984483Z ##[group]Run python scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.1985121Z ^[[36;1mpython scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8^[[0m
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2038636Z shell: /usr/bin/bash -e {0}
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2038787Z env:
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2038940Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2039184Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2039423Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2039637Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2039869Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2040091Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.2040286Z ##[endgroup]
+test	Replay retained benchmark with read-only diagnosis fallback	2026-10-25T15:24:46.6950521Z {"output": ".local/day6-replay.json", "passed": true, "summary": {"attempted": 6, "grounded": 6, "target_match": 6, "observable_class_match": 6, "llm_diagnoses": 0, "fallback_diagnoses": 6, "structured_grounded_acceptance": true}}
+test	Replay retained controlled experiment measurements	﻿2026-10-25T15:24:46.7173742Z ##[group]Run python scripts/analyze_controlled.py evidence/day9/run-primary --output .local/day9-replay --no-plots
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7174206Z ^[[36;1mpython scripts/analyze_controlled.py evidence/day9/run-primary --output .local/day9-replay --no-plots^[[0m
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7228617Z shell: /usr/bin/bash -e {0}
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7228825Z env:
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7229004Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7229266Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7229509Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7229727Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7229954Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7230216Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.7230468Z ##[endgroup]
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8623398Z {
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8623694Z   "arms": {
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8623898Z     "native": {
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8624032Z       "planned": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8624177Z       "attempted": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8624316Z       "eligible": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8624448Z       "recovered_within_horizon": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8624602Z       "censored": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8624732Z       "technical_failures": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8624868Z       "not_run": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8625006Z       "mean_observed_recovery_seconds": null,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8625183Z       "median_observed_recovery_seconds": null,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8625353Z       "mean_restricted_seconds": 45.0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8625506Z       "real_provider_requests": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8625652Z       "llm_validated_diagnoses": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8625800Z       "policy_verified": 0
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8625925Z     },
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626031Z     "rule_policy": {
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626162Z       "planned": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626283Z       "attempted": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626409Z       "eligible": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626532Z       "recovered_within_horizon": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626670Z       "censored": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626790Z       "technical_failures": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8626919Z       "not_run": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8627062Z       "mean_observed_recovery_seconds": 19.037799999998242,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8627271Z       "median_observed_recovery_seconds": 18.062999999994645,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8627462Z       "mean_restricted_seconds": 19.037799999998242,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8627631Z       "real_provider_requests": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8627780Z       "llm_validated_diagnoses": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8628148Z       "policy_verified": 5
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8628274Z     },
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8628376Z     "ai_policy": {
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8628489Z       "planned": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8628605Z       "attempted": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8628722Z       "eligible": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8629087Z       "recovered_within_horizon": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8629228Z       "censored": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8629355Z       "technical_failures": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8629484Z       "not_run": 5,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8629613Z       "mean_observed_recovery_seconds": null,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8629788Z       "median_observed_recovery_seconds": null,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8629951Z       "mean_restricted_seconds": null,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8630103Z       "real_provider_requests": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8630251Z       "llm_validated_diagnoses": 0,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8630394Z       "policy_verified": 0
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8630519Z     }
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8630621Z   },
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8630748Z   "paired_native_minus_rule_restricted_seconds": [
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8630916Z     23.093000000000757,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8631037Z     26.937000000005355,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8631160Z     27.25,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8631290Z     24.889999999999418,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8631433Z     27.64100000000326
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8631707Z   ],
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8631853Z   "mean_paired_restricted_difference": 25.962200000001758,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8632225Z   "ai_comparison_complete": false,
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8632572Z   "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+test	Replay retained controlled experiment measurements	2026-10-25T15:24:46.8632892Z }
+test	Replay configured local-model cohort	﻿2026-10-25T15:24:46.8712919Z ##[group]Run python scripts/analyze_controlled.py evidence/day9/run-local-20261025 --output .local/day9-local-replay --no-plots
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8713438Z ^[[36;1mpython scripts/analyze_controlled.py evidence/day9/run-local-20261025 --output .local/day9-local-replay --no-plots^[[0m
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8768187Z shell: /usr/bin/bash -e {0}
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8768343Z env:
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8768497Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8768741Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8768979Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8769206Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8769420Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8769647Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Replay configured local-model cohort	2026-10-25T15:24:46.8769837Z ##[endgroup]
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1208154Z {
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1208440Z   "arms": {
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1208687Z     "native": {
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1208899Z       "planned": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1209102Z       "attempted": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1209294Z       "eligible": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1209489Z       "recovered_within_horizon": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1209720Z       "censored": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1209850Z       "technical_failures": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1209991Z       "not_run": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1210126Z       "mean_observed_recovery_seconds": null,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1210316Z       "median_observed_recovery_seconds": null,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1210504Z       "mean_restricted_seconds": 90.0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1210662Z       "real_provider_requests": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1210817Z       "llm_validated_diagnoses": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1210967Z       "policy_verified": 0
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211092Z     },
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211195Z     "rule_policy": {
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211315Z       "planned": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211433Z       "attempted": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211555Z       "eligible": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211677Z       "recovered_within_horizon": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211815Z       "censored": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1211934Z       "technical_failures": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1212063Z       "not_run": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1212207Z       "mean_observed_recovery_seconds": 30.543599999998698,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1212397Z       "median_observed_recovery_seconds": 28.125,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1212573Z       "mean_restricted_seconds": 30.543599999998698,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1212742Z       "real_provider_requests": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1213187Z       "llm_validated_diagnoses": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1213341Z       "policy_verified": 5
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1213469Z     },
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1213588Z     "ai_policy": {
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1213702Z       "planned": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1213820Z       "attempted": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1213936Z       "eligible": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1214058Z       "recovered_within_horizon": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1214203Z       "censored": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1214322Z       "technical_failures": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1214448Z       "not_run": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1214577Z       "mean_observed_recovery_seconds": null,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1214748Z       "median_observed_recovery_seconds": null,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1214913Z       "mean_restricted_seconds": 90.0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215064Z       "real_provider_requests": 5,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215209Z       "llm_validated_diagnoses": 0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215353Z       "policy_verified": 0
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215474Z     }
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215579Z   },
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215707Z   "paired_native_minus_rule_restricted_seconds": [
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215870Z     69.0,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1215975Z     64.625,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1216079Z     61.875,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1216188Z     55.14100000000326,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1216305Z     46.64100000000326
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1216416Z   ],
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1216552Z   "mean_paired_restricted_difference": 59.4564000000013,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1216901Z   "ai_comparison_complete": true,
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1217219Z   "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+test	Replay configured local-model cohort	2026-10-25T15:24:47.1217527Z }
+test	Verify final artifacts and read-only audit replay	﻿2026-10-25T15:24:47.1301091Z ##[group]Run python scripts/reproduce.py --output .local/final-replay
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1301418Z ^[[36;1mpython scripts/reproduce.py --output .local/final-replay^[[0m
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1353796Z shell: /usr/bin/bash -e {0}
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1353981Z env:
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1354147Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1354409Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1354640Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1354858Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1355067Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1355284Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.1355467Z ##[endgroup]
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9110147Z {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9111149Z   "schema_version": "safeheal-reproduction-result-v1",
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9111680Z   "passed": true,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9112065Z   "verified_artifacts": 387,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9112381Z   "cohorts": [
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9112693Z     {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9112999Z       "directory": "evidence/day9/run-primary",
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9113361Z       "raw_files": 60,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9113670Z       "instrument_files": 12,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9114003Z       "audit_events": 20,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9114298Z       "summary": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9114575Z         "arms": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9114847Z           "native": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9115135Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9115428Z             "attempted": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9115728Z             "eligible": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9116036Z             "recovered_within_horizon": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9116364Z             "censored": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9116666Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9116980Z             "not_run": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9117290Z             "mean_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9117663Z             "median_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9118364Z             "mean_restricted_seconds": 45.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9118697Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9119025Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9119644Z             "policy_verified": 0
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9119939Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9120211Z           "rule_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9120499Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9120787Z             "attempted": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9121077Z             "eligible": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9121379Z             "recovered_within_horizon": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9121694Z             "censored": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9121985Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9122295Z             "not_run": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9122620Z             "mean_observed_recovery_seconds": 19.037799999998242,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9123026Z             "median_observed_recovery_seconds": 18.062999999994645,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9123418Z             "mean_restricted_seconds": 19.037799999998242,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9123775Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9124118Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9124450Z             "policy_verified": 5
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9124774Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9125052Z           "ai_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9125348Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9125646Z             "attempted": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9125948Z             "eligible": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9126261Z             "recovered_within_horizon": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9126591Z             "censored": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9126899Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9127222Z             "not_run": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9127550Z             "mean_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9128081Z             "median_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9128702Z             "mean_restricted_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9129057Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9129400Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9129738Z             "policy_verified": 0
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9130049Z           }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9130322Z         },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9130617Z         "paired_native_minus_rule_restricted_seconds": [
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9130963Z           23.093000000000757,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9131265Z           26.937000000005355,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9131583Z           27.25,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9132054Z           24.889999999999418,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9132444Z           27.64100000000326
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9132826Z         ],
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9133478Z         "mean_paired_restricted_difference": 25.962200000001758,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9134012Z         "ai_comparison_complete": false,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9134792Z         "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9135548Z       }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9135888Z     },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9136291Z     {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9193160Z       "directory": "evidence/day9/run-local-20261025",
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9193501Z       "raw_files": 75,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9193745Z       "instrument_files": 12,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9193950Z       "audit_events": 20,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9194146Z       "summary": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9194317Z         "arms": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9194515Z           "native": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9194730Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9194959Z             "attempted": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9195180Z             "eligible": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9195377Z             "recovered_within_horizon": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9195592Z             "censored": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9195785Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9196002Z             "not_run": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9196210Z             "mean_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9196482Z             "median_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9196747Z             "mean_restricted_seconds": 90.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9196997Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9197241Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9198679Z             "policy_verified": 0
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9198995Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9199265Z           "rule_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9199495Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9199720Z             "attempted": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9200215Z             "eligible": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9200432Z             "recovered_within_horizon": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9200655Z             "censored": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9200844Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9201056Z             "not_run": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9201223Z             "mean_observed_recovery_seconds": 30.543599999998698,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9201424Z             "median_observed_recovery_seconds": 28.125,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9201607Z             "mean_restricted_seconds": 30.543599999998698,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9201826Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9201980Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9202142Z             "policy_verified": 5
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9202278Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9202391Z           "ai_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9202518Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9202646Z             "attempted": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9202779Z             "eligible": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9202925Z             "recovered_within_horizon": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9203083Z             "censored": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9203222Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9203379Z             "not_run": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9203542Z             "mean_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9203739Z             "median_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9204082Z             "mean_restricted_seconds": 90.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9204241Z             "real_provider_requests": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9204393Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9204549Z             "policy_verified": 0
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9204684Z           }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9204788Z         },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9204925Z         "paired_native_minus_rule_restricted_seconds": [
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9205092Z           69.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9205198Z           64.625,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9205305Z           61.875,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9205423Z           55.14100000000326,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9205553Z           46.64100000000326
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9205736Z         ],
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9205877Z         "mean_paired_restricted_difference": 59.4564000000013,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9206060Z         "ai_comparison_complete": true,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9206381Z         "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9206699Z       }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9206801Z     },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9206906Z     {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9207038Z       "directory": "evidence/day9/run-cpu-20261025",
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9207198Z       "raw_files": 35,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9207330Z       "instrument_files": 12,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9207470Z       "audit_events": 12,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9207589Z       "summary": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9207697Z         "arms": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9207989Z           "native": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9208135Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9208264Z             "attempted": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9208396Z             "eligible": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9208541Z             "recovered_within_horizon": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9208701Z             "censored": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9208917Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9209141Z             "not_run": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9209366Z             "mean_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9209655Z             "median_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9209832Z             "mean_restricted_seconds": 90.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9209989Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9210138Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9210393Z             "policy_verified": 0
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9210518Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9210626Z           "rule_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9210750Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9210874Z             "attempted": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9210997Z             "eligible": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9211126Z             "recovered_within_horizon": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9211267Z             "censored": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9211391Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9211527Z             "not_run": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9211673Z             "mean_observed_recovery_seconds": 20.624499999999898,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9211871Z             "median_observed_recovery_seconds": 20.624499999999898,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9212064Z             "mean_restricted_seconds": 20.624499999999898,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9212229Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9212378Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9212528Z             "policy_verified": 2
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9212652Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9212759Z           "ai_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9212879Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213002Z             "attempted": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213126Z             "eligible": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213253Z             "recovered_within_horizon": 1,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213395Z             "censored": 1,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213519Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213659Z             "not_run": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213792Z             "mean_observed_recovery_seconds": 30.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9213963Z             "median_observed_recovery_seconds": 30.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9214269Z             "mean_restricted_seconds": 60.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9214420Z             "real_provider_requests": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9214565Z             "llm_validated_diagnoses": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9214710Z             "policy_verified": 1
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9214841Z           }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9214940Z         },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9215069Z         "paired_native_minus_rule_restricted_seconds": [
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9215236Z           66.76600000000008,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9215366Z           71.98500000000013
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9215487Z         ],
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9215632Z         "mean_paired_restricted_difference": 69.3755000000001,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9215826Z         "ai_comparison_complete": false,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9216157Z         "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9216458Z       }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9216554Z     },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9216657Z     {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9216798Z       "directory": "evidence/day9/run-cpu-complete-20261025",
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9216976Z       "raw_files": 51,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9217101Z       "instrument_files": 12,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9217231Z       "audit_events": 20,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9217354Z       "summary": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9217462Z         "arms": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9217568Z           "native": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9217692Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9218028Z             "attempted": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9218182Z             "eligible": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9218327Z             "recovered_within_horizon": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9218469Z             "censored": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9218598Z             "technical_failures": 1,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9218733Z             "not_run": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9218867Z             "mean_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9219037Z             "median_observed_recovery_seconds": null,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9219204Z             "mean_restricted_seconds": 90.0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9219357Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9219503Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9219649Z             "policy_verified": 0
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9219776Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9219980Z           "rule_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9220105Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9220225Z             "attempted": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9220349Z             "eligible": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9220477Z             "recovered_within_horizon": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9220619Z             "censored": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9220748Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9220885Z             "not_run": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9221034Z             "mean_observed_recovery_seconds": 21.63000000000007,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9221244Z             "median_observed_recovery_seconds": 16.889999999999986,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9221443Z             "mean_restricted_seconds": 21.63000000000007,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9221612Z             "real_provider_requests": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9221758Z             "llm_validated_diagnoses": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9221902Z             "policy_verified": 3
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222030Z           },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222140Z           "ai_policy": {
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222260Z             "planned": 5,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222381Z             "attempted": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222504Z             "eligible": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222632Z             "recovered_within_horizon": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222773Z             "censored": 1,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9222902Z             "technical_failures": 0,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9223037Z             "not_run": 2,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9223184Z             "mean_observed_recovery_seconds": 39.827999999999975,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9223381Z             "median_observed_recovery_seconds": 39.827999999999975,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9223570Z             "mean_restricted_seconds": 56.551999999999985,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9223821Z             "real_provider_requests": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9223967Z             "llm_validated_diagnoses": 3,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224110Z             "policy_verified": 2
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224235Z           }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224332Z         },
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224466Z         "paired_native_minus_rule_restricted_seconds": [
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224630Z           73.11000000000001,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224754Z           56.312999999999874,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224875Z           75.6869999999999
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9224986Z         ],
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9225120Z         "mean_paired_restricted_difference": 68.36999999999993,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9225300Z         "ai_comparison_complete": false,
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9225627Z         "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9225948Z       }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9226055Z     }
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9226170Z   ],
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9226400Z   "scope": "Offline byte integrity, raw metric replay and read-only audit verification; not a new live experiment."
+test	Verify final artifacts and read-only audit replay	2026-10-25T15:24:47.9226668Z }
+test	Preserve diagnosis and experiment replays	﻿2026-10-25T15:24:47.9290932Z ##[group]Run actions/upload-artifact@v4
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9291112Z with:
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9291257Z   name: day6-diagnosis-replay
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9291544Z   path: .local/day6-replay.json
+test	Preserve diagnosis and experiment replays	.local/day8-paired/
+test	Preserve diagnosis and experiment replays	.local/day9-replay/
+test	Preserve diagnosis and experiment replays	.local/day9-local-replay/
+test	Preserve diagnosis and experiment replays	.local/final-replay/
+test	Preserve diagnosis and experiment replays	
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9291837Z   retention-days: 7
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9291962Z   if-no-files-found: warn
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9292092Z   compression-level: 6
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9292214Z   overwrite: false
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9292335Z   include-hidden-files: false
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9292471Z env:
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9292617Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9292858Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9293092Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9293302Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9293512Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9293749Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:47.9294045Z ##[endgroup]
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.0812678Z (node:2336) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.0813250Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.0914453Z Multiple search paths detected. Calculating the least common ancestor of all paths
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.0916732Z The least common ancestor is /home/runner/work/safeheal-ai/safeheal-ai/.local. This will be the root directory of the artifact
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.0917370Z With the provided path, there will be 11 files uploaded
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.0920463Z Artifact name is valid!
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.0920870Z Root directory input is valid!
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.4224522Z Beginning upload of artifact content to blob storage
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.4522881Z (node:2336) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.8421760Z Uploaded bytes 104953
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.9060941Z Finished uploading artifact content to blob storage!
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.9061572Z SHA256 digest of uploaded artifact zip is 966af4a05c6805392fdc13cf6c485f5cb51721d768e2b0e482c37b166090746e
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:48.9062693Z Finalizing artifact upload
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:49.3678512Z Artifact day6-diagnosis-replay.zip successfully finalized. Artifact ID 12604280135
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:49.3679236Z Artifact day6-diagnosis-replay has been successfully uploaded! Final size is 104953 bytes. Artifact ID is 12604280135
+test	Preserve diagnosis and experiment replays	2026-10-25T15:24:49.3683894Z Artifact download URL: https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206669554/artifacts/12604280135
+test	Post Run actions/setup-python@v5	﻿2026-10-25T15:24:49.3849424Z Post job cleanup.
+test	Post Run actions/setup-python@v5	2026-10-25T15:24:49.4700879Z (node:2348) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Post Run actions/setup-python@v5	2026-10-25T15:24:49.4701594Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Post Run actions/checkout@v4	﻿2026-10-25T15:24:49.4861279Z Post job cleanup.
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5503007Z [command]/usr/bin/git version
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5541006Z git version 2.55.0
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5568612Z Temporarily overriding HOME='/home/runner/work/_temp/ed49a4fa-c1bf-4d38-be83-f3c27c199586' before making global git config changes
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5569468Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5573560Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/safeheal-ai/safeheal-ai
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5616385Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5656166Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5880760Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5938727Z http.https://github.com/.extraheader
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.5939900Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.6019730Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.6261155Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Run actions/checkout@v4	2026-10-25T15:24:49.6298786Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Complete job	﻿2026-10-25T15:24:49.6642222Z Cleaning up orphan processes
+test	Complete job	2026-10-25T15:24:49.6899625Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

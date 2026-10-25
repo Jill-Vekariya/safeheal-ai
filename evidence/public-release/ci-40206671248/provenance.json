@@ -1,0 +1,8 @@
+{
+  "source_commit": "fd809cae41b60c62b59bd2fc2e2377f5d487b163",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "run_id": "40206671248",
+  "run_attempt": "1",
+  "started_at": "2026-10-25T15:23:18.240762+00:00",
+  "scope": "New five-block CPU cohort; never pooled with Windows or historical cohorts."
+}

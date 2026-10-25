@@ -1,0 +1,317 @@
+{
+  "total_count": 2,
+  "jobs": [
+    {
+      "id": 121209296187,
+      "run_id": 40206669554,
+      "workflow_name": "tests",
+      "head_branch": "public-release-20261025",
+      "run_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/runs/40206669554",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVQsJMs8AAAAcOKMVOw",
+      "head_sha": "fd809cae41b60c62b59bd2fc2e2377f5d487b163",
+      "url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/jobs/121209296187",
+      "html_url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206669554/job/121209296187",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-25T15:24:27Z",
+      "started_at": "2026-10-25T15:24:29Z",
+      "completed_at": "2026-10-25T15:46:37Z",
+      "name": "kubernetes",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-25T15:24:29Z",
+          "completed_at": "2026-10-25T15:24:31Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-25T15:24:31Z",
+          "completed_at": "2026-10-25T15:24:34Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-25T15:24:34Z",
+          "completed_at": "2026-10-25T15:24:34Z"
+        },
+        {
+          "name": "Install detector runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-25T15:24:34Z",
+          "completed_at": "2026-10-25T15:24:41Z"
+        },
+        {
+          "name": "Install pinned project-local kind",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-25T15:24:41Z",
+          "completed_at": "2026-10-25T15:24:41Z"
+        },
+        {
+          "name": "Create isolated kind cluster",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-25T15:24:41Z",
+          "completed_at": "2026-10-25T15:25:27Z"
+        },
+        {
+          "name": "Deploy and validate manifests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-25T15:25:27Z",
+          "completed_at": "2026-10-25T15:25:54Z"
+        },
+        {
+          "name": "Verify real service discovery and HTTP calls",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-25T15:25:54Z",
+          "completed_at": "2026-10-25T15:25:56Z"
+        },
+        {
+          "name": "Check dry-run then native container recovery",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-25T15:25:56Z",
+          "completed_at": "2026-10-25T15:26:07Z"
+        },
+        {
+          "name": "Verify independent allowlisted recovery and approval gates",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-25T15:26:07Z",
+          "completed_at": "2026-10-25T15:26:27Z"
+        },
+        {
+          "name": "Deploy observability and verify actual traffic, dashboards and traces",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-25T15:26:27Z",
+          "completed_at": "2026-10-25T15:27:38Z"
+        },
+        {
+          "name": "Verify deterministic incidents with real Prometheus and a scoped payment task failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-25T15:27:38Z",
+          "completed_at": "2026-10-25T15:30:10Z"
+        },
+        {
+          "name": "Repeat three labelled faults and record native and rule baselines",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-25T15:30:10Z",
+          "completed_at": "2026-10-25T15:46:33Z"
+        },
+        {
+          "name": "Preserve verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-25T15:46:33Z",
+          "completed_at": "2026-10-25T15:46:35Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-25T15:46:35Z",
+          "completed_at": "2026-10-25T15:46:35Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-25T15:46:35Z",
+          "completed_at": "2026-10-25T15:46:35Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-25T15:46:35Z",
+          "completed_at": "2026-10-25T15:46:35Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/check-runs/121209296187",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000275,
+      "runner_name": "GitHub Actions 1000000275",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 121209296351,
+      "run_id": 40206669554,
+      "workflow_name": "tests",
+      "head_branch": "public-release-20261025",
+      "run_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/runs/40206669554",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVQsJMs8AAAAcOKMV3w",
+      "head_sha": "fd809cae41b60c62b59bd2fc2e2377f5d487b163",
+      "url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/actions/jobs/121209296351",
+      "html_url": "https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206669554/job/121209296351",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-25T15:24:27Z",
+      "started_at": "2026-10-25T15:24:29Z",
+      "completed_at": "2026-10-25T15:24:52Z",
+      "name": "test",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-25T15:24:30Z",
+          "completed_at": "2026-10-25T15:24:30Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-25T15:24:30Z",
+          "completed_at": "2026-10-25T15:24:33Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-25T15:24:33Z",
+          "completed_at": "2026-10-25T15:24:33Z"
+        },
+        {
+          "name": "Run python -m pip install -r requirements.lock",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-25T15:24:33Z",
+          "completed_at": "2026-10-25T15:24:37Z"
+        },
+        {
+          "name": "Run python -m pip install --no-deps -e .",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-25T15:24:37Z",
+          "completed_at": "2026-10-25T15:24:38Z"
+        },
+        {
+          "name": "Run python -m pytest -q",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-25T15:24:38Z",
+          "completed_at": "2026-10-25T15:24:45Z"
+        },
+        {
+          "name": "Compare fixed robustness cases against exact Day 7 source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-25T15:24:45Z",
+          "completed_at": "2026-10-25T15:24:46Z"
+        },
+        {
+          "name": "Replay retained benchmark with read-only diagnosis fallback",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-25T15:24:46Z",
+          "completed_at": "2026-10-25T15:24:46Z"
+        },
+        {
+          "name": "Replay retained controlled experiment measurements",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-25T15:24:46Z",
+          "completed_at": "2026-10-25T15:24:46Z"
+        },
+        {
+          "name": "Replay configured local-model cohort",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-25T15:24:46Z",
+          "completed_at": "2026-10-25T15:24:47Z"
+        },
+        {
+          "name": "Verify final artifacts and read-only audit replay",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-25T15:24:47Z",
+          "completed_at": "2026-10-25T15:24:47Z"
+        },
+        {
+          "name": "Preserve diagnosis and experiment replays",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-25T15:24:47Z",
+          "completed_at": "2026-10-25T15:24:49Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-25T15:24:49Z",
+          "completed_at": "2026-10-25T15:24:49Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-25T15:24:49Z",
+          "completed_at": "2026-10-25T15:24:49Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-25T15:24:49Z",
+          "completed_at": "2026-10-25T15:24:49Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Jill-Vekariya/safeheal-ai/check-runs/121209296351",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000276,
+      "runner_name": "GitHub Actions 1000000276",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

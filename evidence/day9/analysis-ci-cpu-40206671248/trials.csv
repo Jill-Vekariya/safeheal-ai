@@ -1,0 +1,16 @@
+trial_id,block,arm,status,eligible,recovery_seconds,restricted_seconds,censored,provider_calls
+d9-01-native-2f81fb,1,native,observed,True,,90.0,True,0
+d9-02-ai_policy-e2b5ca,1,ai_policy,observed,True,,90.0,True,1
+d9-03-rule_policy-660cf1,1,rule_policy,observed,True,15.05362168299996,15.05362168299996,False,0
+d9-04-ai_policy-0a6aa7,2,ai_policy,observed,True,15.016910140999926,15.016910140999926,False,1
+d9-05-native-e0afe6,2,native,observed,True,,90.0,True,0
+d9-06-rule_policy-99d06c,2,rule_policy,observed,True,13.639171834999956,13.639171834999956,False,0
+d9-07-rule_policy-61b8eb,3,rule_policy,observed,True,13.82646626099995,13.82646626099995,False,0
+d9-08-ai_policy-baa945,3,ai_policy,observed,True,14.654297263999979,14.654297263999979,False,1
+d9-09-native-530407,3,native,observed,True,,90.0,True,0
+d9-10-native-c4c5c4,4,native,observed,True,,90.0,True,0
+d9-11-ai_policy-65d20c,4,ai_policy,observed,True,,90.0,True,1
+d9-12-rule_policy-d0fd20,4,rule_policy,observed,True,14.421279026000093,14.421279026000093,False,0
+d9-13-rule_policy-e5ae7c,5,rule_policy,observed,True,13.596738136000113,13.596738136000113,False,0
+d9-14-native-2c5e37,5,native,observed,True,,90.0,True,0
+d9-15-ai_policy-97495d,5,ai_policy,observed,True,,90.0,True,1

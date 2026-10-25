@@ -1,0 +1,85 @@
+{
+  "started_at": "2026-10-25T15:48:41.715792+00:00",
+  "passed": true,
+  "runs": {
+    "40206671248": {
+      "status": "completed",
+      "conclusion": "success",
+      "source": "fd809cae41b60c62b59bd2fc2e2377f5d487b163",
+      "jobs": [
+        {
+          "name": "demo",
+          "status": "completed",
+          "conclusion": "success",
+          "active": []
+        },
+        {
+          "name": "model-study",
+          "status": "completed",
+          "conclusion": "success",
+          "active": []
+        }
+      ]
+    },
+    "40206669554": {
+      "status": "completed",
+      "conclusion": "success",
+      "source": "fd809cae41b60c62b59bd2fc2e2377f5d487b163",
+      "jobs": [
+        {
+          "name": "kubernetes",
+          "status": "completed",
+          "conclusion": "success",
+          "active": []
+        },
+        {
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success",
+          "active": []
+        }
+      ]
+    }
+  },
+  "downloads": [
+    {
+      "run": 40206671248,
+      "name": "real-cpu-model-study",
+      "artifact_id": 12604818049,
+      "github_digest": "sha256:1a6e70ee95badaeeefcb95158ea2f2ad6683494cf51ad79920488afb123efac0",
+      "archive": "40206671248-real-cpu-model-study.zip",
+      "archive_sha256": "1a6e70ee95badaeeefcb95158ea2f2ad6683494cf51ad79920488afb123efac0",
+      "extracted": "40206671248-real-cpu-model-study"
+    },
+    {
+      "run": 40206671248,
+      "name": "safeheal-demo-evidence",
+      "artifact_id": 12604580456,
+      "github_digest": "sha256:3a03869c0356cd1f5d3c12bbe8a8a247ba20eeae3ffe19f39b009b4be3a6dd9c",
+      "archive": "40206671248-safeheal-demo-evidence.zip",
+      "archive_sha256": "3a03869c0356cd1f5d3c12bbe8a8a247ba20eeae3ffe19f39b009b4be3a6dd9c",
+      "extracted": "40206671248-safeheal-demo-evidence"
+    },
+    {
+      "run": 40206669554,
+      "name": "kubernetes-observability-evidence",
+      "artifact_id": 12604606794,
+      "github_digest": "sha256:37d1078230ac84412db58be933ef2358e09e5fe1fcc5121b89038c72e0fd77ec",
+      "archive": "40206669554-kubernetes-observability-evidence.zip",
+      "archive_sha256": "37d1078230ac84412db58be933ef2358e09e5fe1fcc5121b89038c72e0fd77ec",
+      "extracted": "40206669554-kubernetes-observability-evidence"
+    },
+    {
+      "run": 40206669554,
+      "name": "day6-diagnosis-replay",
+      "artifact_id": 12604280135,
+      "github_digest": "sha256:966af4a05c6805392fdc13cf6c485f5cb51721d768e2b0e482c37b166090746e",
+      "archive": "40206669554-day6-diagnosis-replay.zip",
+      "archive_sha256": "966af4a05c6805392fdc13cf6c485f5cb51721d768e2b0e482c37b166090746e",
+      "extracted": "40206669554-day6-diagnosis-replay"
+    }
+  ],
+  "temporary_thread_sleep_request": true,
+  "checked_at": "2026-10-25T15:51:17.467939+00:00",
+  "finished_at": "2026-10-25T15:52:42.348903+00:00"
+}

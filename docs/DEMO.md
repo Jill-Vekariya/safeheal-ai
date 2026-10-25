@@ -2,7 +2,7 @@
 
 [Run the demo in GitHub Actions](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml) · [Research report](RESEARCH_REPORT.md) · [Recovery contract](SAFE_RECOVERY.md)
 
-## Verified reference run
+## Earlier verified reference run
 
 [Open the successful demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Rendered result summary](../evidence/demo/ci-40145365194/summary.md) · [Download artifact](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966) · [Permanent archive](../evidence/demo/ci-40145365194/artifacts.zip)
 
@@ -12,13 +12,19 @@ The first demo (40145170673) retains its actual successful workflow and delivery
 
 Show a real synthetic order, a controlled lab failure, independently authorized recovery and a confirmed order after recovery. The GitHub run also replays diagnosis and the controlled experiments, checks raw-data integrity and verifies audit chains.
 
+## Current verified two-job demonstration
+
+[Verified current run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) completed both jobs at fd809cae41b60c62b59bd2fc2e2377f5d487b163. The original demo job verifies fresh native/autonomous/approval recovery and labels its historical diagnosis replay as fallback. The independent model-study job runs all fifteen matched trials with real loopback CPU inference, validates raw metrics/audits, checks final health and removes its owned model container. Both retain failed or incomplete outcomes. Allow roughly 30-45 minutes for a fresh run, including image/model pulls and 15 real observation windows.
+
+Download both safeheal-demo-evidence and real-cpu-model-study. The latter includes protocol, every raw trial, usage where reported, model/weight digests, warmup metadata, numerical findings and verification. See [current study](../evidence/public-release/CPU_STUDY.md). The two job reports have distinct scopes; the standard demo summary alone is not proof of the model study.
+
 ## One-click demonstration
 
-1. Open **Actions → End-to-end safe recovery demo** in this private repository.
+1. Open **Actions → End-to-end safe recovery demo** in this public repository.
 2. Select **Run workflow**, choose **main**, and start the run.
 3. Open the run and expand the numbered stages below. Allow time for image pulls, cluster setup and the real observation windows.
 4. Open the run's **Summary**: it reports PASS only when all required stages and both fresh recovery trials passed.
-5. Download **safeheal-demo-evidence** from **Artifacts**. It contains a machine-readable result, summary, file hashes, diagnosis/robustness/raw-measurement replays, fresh acceptance records and audit databases. GitHub retains this download for 14 days; retained reference runs are archived separately in this repository.
+5. Download **safeheal-demo-evidence** and **real-cpu-model-study** from **Artifacts**. It contains a machine-readable result, summary, file hashes, diagnosis/robustness/raw-measurement replays, fresh acceptance records and audit databases. GitHub retains this download for 14 days; retained reference runs are archived separately in this repository.
 
 Repository write access is needed to start a manual run. See [GitHub's manual workflow instructions](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow). No provider key, model selection, cluster URL or shell-command input is requested.
 
@@ -27,7 +33,7 @@ Repository write access is needed to start a manual run. See [GitHub's manual wo
 | Stage | What actually runs | Evidence to show |
 |---|---|---|
 | 1. Tests | Application, evidence validation, provider failures, duplicate notifications and recovery safety tests | Pytest result in the stage log |
-| 2. Reproduction | Both retained cohorts and exact-source robustness comparison | Replay JSON; synthetic 27/36 → 36/36, labelled development evidence |
+| 2. Reproduction | All retained cohorts and exact-source robustness comparison | Replay JSON; synthetic 27/36 → 36/36, labelled development evidence |
 | 3. Diagnosis | Deterministic fallback replay of six retained benchmark incidents | Grounded diagnoses and explicit fallback in diagnosis.json |
 | 4. Healthy application | Fresh Docker-kind cluster, gateway/order/payment Deployments, Service DNS and HTTP checks | Ready services and a confirmed synthetic order |
 | 5. Native recovery | Guarded payment-container failure and Kubernetes recovery | Native acceptance record |
@@ -37,7 +43,7 @@ Repository write access is needed to start a manual run. See [GitHub's manual wo
 | 9. Final business verification | Service DNS, health/readiness and another confirmed order | Final service checks |
 | 10. Summary and audit | Only trials created after this run began; source hashes, three consecutive Ready observations and audit-chain integrity | result.json, summary.md and manifest.json |
 
-The diagnosis replay uses historical evidence; the two recovery fixtures are freshly created by the trusted operator harness. They are distinct episodes. This demo makes no live-LLM closed-loop performance claim. The model receives no shell, cluster credential or approval authority. The independent action remains only the enrolled payment Deployment's desired-replica change **0 → 1**.
+The diagnosis replay uses historical evidence; the two recovery fixtures are freshly created by the trusted operator harness. They are distinct episodes. The standard demo job makes no live-LLM closed-loop performance claim; the separate model-study job retains its own measured outcomes. The model receives no shell, cluster credential or approval authority. The independent action remains only the enrolled payment Deployment's desired-replica change **0 → 1**.
 
 A failed or missing step, a failed business check, operator restoration, an invalid audit or a missing mode produces **FAIL / INCOMPLETE**. Old trials cannot qualify as fresh success. Failed artifacts remain available for investigation.
 
@@ -52,7 +58,7 @@ Prepare a completed run before presenting. Executing the full workflow takes lon
 | 1:00–1:40 | Healthy application and native recovery logs | “Three real services communicate through Kubernetes DNS. A confirmed order verifies the business path.” |
 | 1:40–2:40 | Autonomous and approval acceptance records | “Eight forbidden calls are denied in each mode. Dry-run performs no action. Operator approval, conditional writes and admission bound the one permitted transition.” |
 | 2:40–3:15 | Summary, audit events and final order | “Recovery needs three consecutive Ready observations and a separate confirmed business order. Replays are denied and cleanup is checked.” |
-| 3:15–4:00 | Charts and limitations below | “The rule restored this deliberately policy-addressable fault. All five real local-model requests timed out. AI benefit and general reliability remain unproven.” |
+| 3:15–4:00 | Charts and limitations below | “The rule restored this deliberately policy-addressable fault. The earlier larger-model requests timed out; the new CPU study records its actual outcomes separately. General AI benefit and reliability remain unproven.” |
 
 ## Results to explain honestly
 
@@ -60,6 +66,7 @@ Prepare a completed run before presenting. Executing the full workflow takes lon
 |---|---|---|---|
 | Original, 45-second horizon | 0/5 within horizon; actual recovery time unknown | 5/5; observed mean 19.0378 s | Five slots explicitly not run without a provider |
 | Local-model, 90-second horizon | 0/5 within horizon; actual recovery time unknown | 5/5; observed mean 30.5436 s | Five actual requests timed out; no validated output or AI recovery |
+| Fresh Linux CPU model, 90-second horizon | 0/5 within horizon | 5/5; observed mean 14.107 s | 2/5 recovered; four validated diagnoses, one invalid provider response; observed-only mean 14.836 s |
 
 Do not pool the cohorts or label the horizon as observed MTTR. The demo's recovery checks are engineering evidence, not additional randomized study trials.
 

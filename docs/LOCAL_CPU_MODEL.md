@@ -55,3 +55,6 @@ Run the existing End-to-end safe recovery demo workflow. Its separate model-stud
 The job attempts five randomized matched blocks with the unchanged 90-second horizon, one model request per AI slot and the same independent policy as the rule arm. It retains partial raw data on failures. scripts/verify_model_study.py independently replays metrics and audits; success requires all 15 trials and cleanups, 120 forbidden probes denied, five real model requests, and at least one controller-verified and business-observed AI recovery. Success does not require suppressing abstentions or censored outcomes and does not establish superiority. The owned model container is removed; no global Docker reset occurs. Download real-cpu-model-study from that run.
 
 The two Windows CPU studies are incomplete and retained separately in analysis-cpu-interrupted and analysis-cpu-rollout-failure. The latter records a cleanup timeout. A subsequent read-only business-path check passed; it does not retroactively change the failed cleanup.
+
+
+Verified reference: [CI run 40206671248](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248), [current results](../evidence/public-release/CPU_STUDY.md), and [all raw outcomes](../evidence/day9/run-ci-cpu-40206671248).

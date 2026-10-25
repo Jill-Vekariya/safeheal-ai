@@ -1,0 +1,59 @@
+{
+  "arms": {
+    "native": {
+      "planned": 5,
+      "attempted": 5,
+      "eligible": 5,
+      "recovered_within_horizon": 0,
+      "censored": 5,
+      "technical_failures": 0,
+      "not_run": 0,
+      "mean_observed_recovery_seconds": null,
+      "median_observed_recovery_seconds": null,
+      "mean_restricted_seconds": 90.0,
+      "real_provider_requests": 0,
+      "llm_validated_diagnoses": 0,
+      "policy_verified": 0
+    },
+    "rule_policy": {
+      "planned": 5,
+      "attempted": 5,
+      "eligible": 5,
+      "recovered_within_horizon": 5,
+      "censored": 0,
+      "technical_failures": 0,
+      "not_run": 0,
+      "mean_observed_recovery_seconds": 14.107455388200014,
+      "median_observed_recovery_seconds": 13.82646626099995,
+      "mean_restricted_seconds": 14.107455388200014,
+      "real_provider_requests": 0,
+      "llm_validated_diagnoses": 0,
+      "policy_verified": 5
+    },
+    "ai_policy": {
+      "planned": 5,
+      "attempted": 5,
+      "eligible": 5,
+      "recovered_within_horizon": 2,
+      "censored": 3,
+      "technical_failures": 0,
+      "not_run": 0,
+      "mean_observed_recovery_seconds": 14.835603702499952,
+      "median_observed_recovery_seconds": 14.835603702499952,
+      "mean_restricted_seconds": 59.93424148099998,
+      "real_provider_requests": 5,
+      "llm_validated_diagnoses": 4,
+      "policy_verified": 2
+    }
+  },
+  "paired_native_minus_rule_restricted_seconds": [
+    74.94637831700004,
+    76.36082816500004,
+    76.17353373900005,
+    75.5787209739999,
+    76.40326186399989
+  ],
+  "mean_paired_restricted_difference": 75.89254461179999,
+  "ai_comparison_complete": true,
+  "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+}

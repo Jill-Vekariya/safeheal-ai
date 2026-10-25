@@ -1,0 +1,29 @@
+{
+  "schema_version": "safeheal-cpu-study-check-v1",
+  "run": {
+    "attempted_slots": 15,
+    "planned_slots": 15,
+    "finished_at": "2026-10-25T15:50:32.127465+00:00",
+    "completed": true
+  },
+  "attempted": 15,
+  "cleanup_passed": 15,
+  "statuses": {
+    "observed": 15
+  },
+  "ai_provider_requests": 5,
+  "ai_provider_statuses": {
+    "provider_invalid_response": 1,
+    "validated": 4
+  },
+  "ai_controller_verified": 2,
+  "ai_business_recovered": 2,
+  "forbidden_probes_denied": 120,
+  "audit_events": 28,
+  "reported_provider_usage": {
+    "input_tokens": 2106,
+    "output_tokens": 134
+  },
+  "scope": "One scale-zero cohort; censored outcomes and prior failed cohorts are not replaced or pooled.",
+  "passed": true
+}

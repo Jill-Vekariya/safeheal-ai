@@ -24,6 +24,12 @@ def verify(directory):
     run = json.loads((directory / "run.json").read_text(encoding="utf-8"))
     ai = [r for r in rows if r["arm"] == "ai_policy"]
     denied = [d for r in rows for d in r.get("denied_access", [])]
+    linked = [r for r in ai if r.get("provider_calls") == 1
+              and r.get("diagnosis", {}).get("source") == "llm"
+              and r.get("diagnosis", {}).get("provider_status") == "validated"
+              and r.get("controller_result", {}).get("status") == "verified"
+              and (r.get("metrics") or {}).get("recovery_seconds") is not None
+              and (directory / r["trial_id"] / "audit.sqlite3").is_file()]
     report = {
         "schema_version": "safeheal-cpu-study-check-v1",
         "run": run,
@@ -45,6 +51,7 @@ def verify(directory):
         and report["statuses"] == {"observed": 15}
         and report["ai_provider_requests"] == 5
         and report["ai_controller_verified"] >= 1 and report["ai_business_recovered"] >= 1
+        and bool(linked) and report["audit_events"] > 0
         and len(denied) == report["forbidden_probes_denied"] == 120
     )
     return report, data

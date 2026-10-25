@@ -1,0 +1,32 @@
+{
+  "runtime": {
+    "outputs": {},
+    "outcome": "success",
+    "conclusion": "success"
+  },
+  "lab": {
+    "outputs": {},
+    "outcome": "success",
+    "conclusion": "success"
+  },
+  "model": {
+    "outputs": {},
+    "outcome": "success",
+    "conclusion": "success"
+  },
+  "trials": {
+    "outputs": {},
+    "outcome": "success",
+    "conclusion": "success"
+  },
+  "verification": {
+    "outputs": {},
+    "outcome": "success",
+    "conclusion": "success"
+  },
+  "health": {
+    "outputs": {},
+    "outcome": "success",
+    "conclusion": "success"
+  }
+}
