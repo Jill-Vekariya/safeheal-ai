@@ -44,3 +44,12 @@ scripts/demo_report.py text eol=lf
 tests/test_demo_report.py text eol=lf
 .github/workflows/demo.yml text eol=lf
 evidence/demo/** -text -whitespace
+
+# Public release raw evidence and portable study sources.
+evidence/public-release/** -text -whitespace
+scripts/verify_model_study.py text eol=lf
+examples/Modelfile.cpu text eol=lf
+tests/test_candidate_ranker.py text eol=lf
+.github/workflows/secrets.yml text eol=lf
+docs/LOCAL_CPU_MODEL.md text eol=lf
+SECURITY.md text eol=lf

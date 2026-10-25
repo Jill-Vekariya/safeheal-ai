@@ -1,0 +1,33 @@
+{
+  "started_at": "2026-10-25T12:29:08.004544+00:00",
+  "new_cohort": "evidence/day9/run-cpu-complete-20261025",
+  "steps": [
+    {
+      "name": "healthy_lab_preflight",
+      "exit_code": 0
+    },
+    {
+      "name": "matched_fifteen_trials",
+      "exit_code": 1
+    }
+  ],
+  "model_warmup_requests": 1,
+  "temporary_thread_sleep_request": true,
+  "source_commit": "56d8e8a944b4dd31a60516b891c91cee7ebaafd7",
+  "warmup": {
+    "elapsed_seconds": 2.937000000000012,
+    "done": true,
+    "scope": "Readiness only, outside trial metrics"
+  },
+  "models": [
+    {
+      "name": "safeheal-qwen-cpu:latest",
+      "digest": "86d3aa33623e0061da45aca26ab78723ebbe7e9f5ae6a2e611a4f8f9164e81fe",
+      "size": 397821004
+    }
+  ],
+  "passed": false,
+  "error_type": "RuntimeError",
+  "owned_model_unloaded": true,
+  "finished_at": "2026-10-25T12:46:59.059956+00:00"
+}

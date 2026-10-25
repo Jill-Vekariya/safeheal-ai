@@ -46,3 +46,12 @@ Use the existing enrolled safeheal-day7 lab and its explicit project kubeconfig.
 ```
 
 Choose a new cohort and analysis directory. Keep every attempted, failed, censored or unrun slot. Do not pool this profile with the original 45-second cohort or the larger-model 90-second cohort. Model confidence is uncalibrated; a supported symptom is not proof of the initiating fault. Resource limits, warm state, compact selection and shared-host contention limit generalization.
+
+
+## Isolated Linux CI study
+
+Run the existing End-to-end safe recovery demo workflow. Its separate model-study job creates a fresh safeheal-day7 lab, serves a checksum-pinned official Ollama image only on loopback with two CPUs and a 1536 MiB memory cap, checks the base weight digest from examples/ollama-runtime.json, and warms the model before measurement. It uses no provider credential or cloud inference. The model has no cluster credential or shell tool.
+
+The job attempts five randomized matched blocks with the unchanged 90-second horizon, one model request per AI slot and the same independent policy as the rule arm. It retains partial raw data on failures. scripts/verify_model_study.py independently replays metrics and audits; success requires all 15 trials and cleanups, 120 forbidden probes denied, five real model requests, and at least one controller-verified and business-observed AI recovery. Success does not require suppressing abstentions or censored outcomes and does not establish superiority. The owned model container is removed; no global Docker reset occurs. Download real-cpu-model-study from that run.
+
+The two Windows CPU studies are incomplete and retained separately in analysis-cpu-interrupted and analysis-cpu-rollout-failure. The latter records a cleanup timeout. A subsequent read-only business-path check passed; it does not retroactively change the failed cleanup.

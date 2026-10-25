@@ -1,5 +1,15 @@
 # SafeHeal AI - verified final project status
 
+## Public release extension - current status
+
+The repository is now public. Main protection is enforced for administrators with required test, kubernetes and secrets checks, current-branch validation, pull requests, resolved conversations, and disabled force pushes/deletion. Private vulnerability reporting is enabled. Proof: evidence/public-release/visibility.json and main-protection.json.
+
+The CPU profile adds a strictly bounded candidate-index transport while preserving independent evidence validation and all recovery authority boundaries. Windows verification: 558 passed, 2 expected skips. Six real retrospective development diagnoses were grounded, target matched and observable-class matched, without fallback; this is not held-out accuracy.
+
+Two new Windows studies remain incomplete: six of fifteen attempted before disconnection, then nine of fifteen before a rollout cleanup timeout. The second has eight passed cleanups and one failed cleanup, with six unrun slots. Original rows remain unchanged. A separate follow-up check found all four deployments ready and a confirmed business order. No partial cohort is resumed or pooled. Findings and exact-source snapshots are retained in the offline inventory.
+
+The new isolated CI CPU-model job is pending execution. Release extension merge remains pending until required checks pass. The original successful demo below continues to identify its historical source and does not claim to have tested this new transport.
+
 ## Final completion recheck on 25 October 2026
 
 Current main at 27c784769030822f08424237cfed0ef901ba570b was rechecked: **536 tests passed, 2 expected skips, 0 failures**. Offline reproduction verified **241 artifacts**, both controlled cohorts and their audit chains. The current private GitHub main matched the local checkout; both accepted CI/demo runs remain successful, and no executable source differs from their tested implementation. No open project pull requests or issues remain.

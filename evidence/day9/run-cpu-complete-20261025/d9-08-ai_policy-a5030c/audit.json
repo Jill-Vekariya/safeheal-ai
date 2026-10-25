@@ -1,0 +1,114 @@
+[
+  {
+    "action": "restore_payment_replica",
+    "at": 1792932093.4180925,
+    "code": "permitted",
+    "fingerprint": "250d655f4859f52995b8307dfce2cb1e40f33d3b663613cfb1da290ee70d994e",
+    "mode": "autonomous",
+    "patch": [
+      {
+        "op": "test",
+        "path": "/metadata/uid",
+        "value": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+      },
+      {
+        "op": "test",
+        "path": "/metadata/resourceVersion",
+        "value": "44344"
+      },
+      {
+        "op": "test",
+        "path": "/spec",
+        "value": {}
+      },
+      {
+        "op": "add",
+        "path": "/spec/replicas",
+        "value": 1
+      }
+    ],
+    "request_hash": "04c56aad2353b0c89296dd0cd43a1a3b9bc55604f718e5a46329ffde7fc6c274",
+    "stage": "policy",
+    "target": "payment"
+  },
+  {
+    "at": 1792932093.421748,
+    "code": "intent_durably_recorded",
+    "request_hash": "04c56aad2353b0c89296dd0cd43a1a3b9bc55604f718e5a46329ffde7fc6c274",
+    "stage": "execution"
+  },
+  {
+    "at": 1792932093.477588,
+    "code": "api_acknowledged",
+    "request_hash": "04c56aad2353b0c89296dd0cd43a1a3b9bc55604f718e5a46329ffde7fc6c274",
+    "stage": "execution"
+  },
+  {
+    "at": 1792932102.684934,
+    "code": "recovery_verified",
+    "observations": [
+      {
+        "at": 1792932093.5196302,
+        "generation": 89,
+        "observed_generation": 88,
+        "ready": false
+      },
+      {
+        "at": 1792932094.5367253,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": false
+      },
+      {
+        "at": 1792932095.5589042,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": false
+      },
+      {
+        "at": 1792932096.5824196,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": false
+      },
+      {
+        "at": 1792932097.6024625,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": false
+      },
+      {
+        "at": 1792932098.6227856,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": false
+      },
+      {
+        "at": 1792932099.6385438,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": false
+      },
+      {
+        "at": 1792932100.650608,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": true
+      },
+      {
+        "at": 1792932101.6678133,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": true
+      },
+      {
+        "at": 1792932102.6801264,
+        "generation": 89,
+        "observed_generation": 89,
+        "ready": true
+      }
+    ],
+    "request_hash": "04c56aad2353b0c89296dd0cd43a1a3b9bc55604f718e5a46329ffde7fc6c274",
+    "stage": "verification"
+  }
+]

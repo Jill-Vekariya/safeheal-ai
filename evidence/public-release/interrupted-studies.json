@@ -1,0 +1,135 @@
+{
+  "schema_version": "safeheal-interrupted-studies-v1",
+  "cohorts": [
+    {
+      "directory": "run-cpu-20261025",
+      "completed": false,
+      "summary": {
+        "arms": {
+          "native": {
+            "planned": 5,
+            "attempted": 2,
+            "eligible": 2,
+            "recovered_within_horizon": 0,
+            "censored": 2,
+            "technical_failures": 0,
+            "not_run": 3,
+            "mean_observed_recovery_seconds": null,
+            "median_observed_recovery_seconds": null,
+            "mean_restricted_seconds": 90.0,
+            "real_provider_requests": 0,
+            "llm_validated_diagnoses": 0,
+            "policy_verified": 0
+          },
+          "rule_policy": {
+            "planned": 5,
+            "attempted": 2,
+            "eligible": 2,
+            "recovered_within_horizon": 2,
+            "censored": 0,
+            "technical_failures": 0,
+            "not_run": 3,
+            "mean_observed_recovery_seconds": 20.624499999999898,
+            "median_observed_recovery_seconds": 20.624499999999898,
+            "mean_restricted_seconds": 20.624499999999898,
+            "real_provider_requests": 0,
+            "llm_validated_diagnoses": 0,
+            "policy_verified": 2
+          },
+          "ai_policy": {
+            "planned": 5,
+            "attempted": 2,
+            "eligible": 2,
+            "recovered_within_horizon": 1,
+            "censored": 1,
+            "technical_failures": 0,
+            "not_run": 3,
+            "mean_observed_recovery_seconds": 30.0,
+            "median_observed_recovery_seconds": 30.0,
+            "mean_restricted_seconds": 60.0,
+            "real_provider_requests": 2,
+            "llm_validated_diagnoses": 2,
+            "policy_verified": 1
+          }
+        },
+        "paired_native_minus_rule_restricted_seconds": [
+          66.76600000000008,
+          71.98500000000013
+        ],
+        "mean_paired_restricted_difference": 69.3755000000001,
+        "ai_comparison_complete": false,
+        "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+      },
+      "provider_status_counts": {
+        "validated": 2
+      },
+      "audit_events": 12
+    },
+    {
+      "directory": "run-cpu-complete-20261025",
+      "completed": false,
+      "summary": {
+        "arms": {
+          "native": {
+            "planned": 5,
+            "attempted": 3,
+            "eligible": 3,
+            "recovered_within_horizon": 0,
+            "censored": 3,
+            "technical_failures": 1,
+            "not_run": 2,
+            "mean_observed_recovery_seconds": null,
+            "median_observed_recovery_seconds": null,
+            "mean_restricted_seconds": 90.0,
+            "real_provider_requests": 0,
+            "llm_validated_diagnoses": 0,
+            "policy_verified": 0
+          },
+          "rule_policy": {
+            "planned": 5,
+            "attempted": 3,
+            "eligible": 3,
+            "recovered_within_horizon": 3,
+            "censored": 0,
+            "technical_failures": 0,
+            "not_run": 2,
+            "mean_observed_recovery_seconds": 21.63000000000007,
+            "median_observed_recovery_seconds": 16.889999999999986,
+            "mean_restricted_seconds": 21.63000000000007,
+            "real_provider_requests": 0,
+            "llm_validated_diagnoses": 0,
+            "policy_verified": 3
+          },
+          "ai_policy": {
+            "planned": 5,
+            "attempted": 3,
+            "eligible": 3,
+            "recovered_within_horizon": 2,
+            "censored": 1,
+            "technical_failures": 0,
+            "not_run": 2,
+            "mean_observed_recovery_seconds": 39.827999999999975,
+            "median_observed_recovery_seconds": 39.827999999999975,
+            "mean_restricted_seconds": 56.551999999999985,
+            "real_provider_requests": 3,
+            "llm_validated_diagnoses": 3,
+            "policy_verified": 2
+          }
+        },
+        "paired_native_minus_rule_restricted_seconds": [
+          73.11000000000001,
+          56.312999999999874,
+          75.6869999999999
+        ],
+        "mean_paired_restricted_difference": 68.36999999999993,
+        "ai_comparison_complete": false,
+        "note": "Descriptive small-sample results. Observed-only means exclude censored cases; restricted means stop at the declared horizon."
+      },
+      "provider_status_counts": {
+        "validated": 3
+      },
+      "audit_events": 20
+    }
+  ],
+  "scope": "Both incomplete attempts retained independently; neither resumed or pooled. Last timeout is an observed cleanup failure, followed by a separate healthy business-path check."
+}

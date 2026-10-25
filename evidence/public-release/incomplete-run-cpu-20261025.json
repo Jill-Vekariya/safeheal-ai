@@ -1,0 +1,14 @@
+{
+  "directory": "evidence/day9/run-cpu-20261025",
+  "source_commit": "56d8e8a944b4dd31a60516b891c91cee7ebaafd7",
+  "run": {
+    "attempted_slots": 6,
+    "planned_slots": 15,
+    "finished_at": "2026-10-25T11:51:53.322689+00:00",
+    "completed": false
+  },
+  "cleanup_passed": 6,
+  "technical_failures": 0,
+  "not_run_slots": 9,
+  "retention": "Finalized as incomplete; never resumed or pooled. Historical rows and cleanup outcomes unchanged."
+}

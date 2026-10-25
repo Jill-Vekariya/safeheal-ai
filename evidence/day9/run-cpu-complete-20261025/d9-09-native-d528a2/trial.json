@@ -1,0 +1,346 @@
+{
+  "block": 3,
+  "arm": "native",
+  "scenario": "payment_scale_zero",
+  "trial_id": "d9-09-native-d528a2",
+  "attempted": true,
+  "status": "technical_failure",
+  "provider_calls": 0,
+  "admission_ready": true,
+  "admission_readiness": [
+    {
+      "at": "2026-10-25T12:42:52.358368+00:00",
+      "status_code": 403,
+      "policy_denial": true,
+      "server_dry_run": true
+    },
+    {
+      "at": "2026-10-25T12:42:52.679292+00:00",
+      "status_code": 403,
+      "policy_denial": true,
+      "server_dry_run": true
+    }
+  ],
+  "denied_access": [
+    {
+      "method": "GET",
+      "path": "/api/v1/namespaces/safeheal-dev/secrets",
+      "status_code": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/namespaces/safeheal-dev/pods",
+      "status_code": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/namespaces/safeheal-dev/pods/payment/exec?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/order/scale?dryRun=All",
+      "status_code": 403
+    },
+    {
+      "method": "GET",
+      "path": "/apis/apps/v1/namespaces/default/deployments/payment",
+      "status_code": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/apis/apps/v1/namespaces/safeheal-dev/deployments/payment/scale?dryRun=All",
+      "status_code": 403
+    }
+  ],
+  "baseline": {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "annotations": {
+        "deployment.kubernetes.io/revision": "1",
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"},\"name\":\"payment\",\"namespace\":\"safeheal-dev\"},\"spec\":{\"progressDeadlineSeconds\":180,\"replicas\":1,\"revisionHistoryLimit\":3,\"selector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"}},\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"payment\",\"app.kubernetes.io/part-of\":\"safeheal-ai\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"env\":[{\"name\":\"SERVICE_ROLE\",\"value\":\"payment\"},{\"name\":\"SAFEHEAL_FAULTS_ENABLED\",\"value\":\"local-test\"},{\"name\":\"PYTHONDONTWRITEBYTECODE\",\"value\":\"1\"}],\"image\":\"safeheal-ai:sha256-311922d1b56ffd31\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":\"http\"},\"periodSeconds\":10,\"timeoutSeconds\":2},\"name\":\"payment\",\"ports\":[{\"containerPort\":8000,\"name\":\"http\"}],\"readinessProbe\":{\"failureThreshold\":2,\"httpGet\":{\"path\":\"/readyz\",\"port\":\"http\"},\"periodSeconds\":5,\"timeoutSeconds\":4},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true},\"startupProbe\":{\"failureThreshold\":30,\"httpGet\":{\"path\":\"/healthz\",\"port\":\"http\"},\"periodSeconds\":2,\"timeoutSeconds\":2},\"volumeMounts\":[{\"mountPath\":\"/tmp\",\"name\":\"tmp\"}]}],\"restartPolicy\":\"Always\",\"securityContext\":{\"fsGroup\":10001,\"runAsGroup\":10001,\"runAsNonRoot\":true,\"runAsUser\":10001,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}},\"serviceAccountName\":\"safeheal-workload\",\"terminationGracePeriodSeconds\":15,\"volumes\":[{\"emptyDir\":{\"medium\":\"Memory\",\"sizeLimit\":\"16Mi\"},\"name\":\"tmp\"}]}}}}\n"
+      },
+      "creationTimestamp": "2026-10-24T16:37:53Z",
+      "generation": 89,
+      "labels": {
+        "app.kubernetes.io/name": "payment",
+        "app.kubernetes.io/part-of": "safeheal-ai"
+      },
+      "name": "payment",
+      "namespace": "safeheal-dev",
+      "resourceVersion": "44419",
+      "uid": "5c0e6110-4456-4725-8036-3aedc7fd5707"
+    },
+    "spec": {
+      "progressDeadlineSeconds": 180,
+      "replicas": 1,
+      "revisionHistoryLimit": 3,
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "payment",
+          "app.kubernetes.io/part-of": "safeheal-ai"
+        }
+      },
+      "strategy": {
+        "rollingUpdate": {
+          "maxSurge": "25%",
+          "maxUnavailable": "25%"
+        },
+        "type": "RollingUpdate"
+      },
+      "template": {
+        "metadata": {
+          "labels": {
+            "app.kubernetes.io/name": "payment",
+            "app.kubernetes.io/part-of": "safeheal-ai"
+          }
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "SERVICE_ROLE",
+                  "value": "payment"
+                },
+                {
+                  "name": "SAFEHEAL_FAULTS_ENABLED",
+                  "value": "local-test"
+                },
+                {
+                  "name": "PYTHONDONTWRITEBYTECODE",
+                  "value": "1"
+                }
+              ],
+              "image": "safeheal-ai:sha256-311922d1b56ffd31",
+              "imagePullPolicy": "IfNotPresent",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": "http",
+                  "scheme": "HTTP"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "payment",
+              "ports": [
+                {
+                  "containerPort": 8000,
+                  "name": "http",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 2,
+                "httpGet": {
+                  "path": "/readyz",
+                  "port": "http",
+                  "scheme": "HTTP"
+                },
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 4
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true
+              },
+              "startupProbe": {
+                "failureThreshold": 30,
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": "http",
+                  "scheme": "HTTP"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 10001,
+            "runAsGroup": 10001,
+            "runAsNonRoot": true,
+            "runAsUser": 10001,
+            "seccompProfile": {
+              "type": "RuntimeDefault"
+            }
+          },
+          "serviceAccount": "safeheal-workload",
+          "serviceAccountName": "safeheal-workload",
+          "terminationGracePeriodSeconds": 15,
+          "volumes": [
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "tmp"
+            }
+          ]
+        }
+      }
+    },
+    "status": {
+      "availableReplicas": 1,
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-24T16:37:53Z",
+          "lastUpdateTime": "2026-10-24T16:38:00Z",
+          "message": "ReplicaSet \"payment-c8557699d\" has successfully progressed.",
+          "reason": "NewReplicaSetAvailable",
+          "status": "True",
+          "type": "Progressing"
+        },
+        {
+          "lastTransitionTime": "2026-10-25T12:41:40Z",
+          "lastUpdateTime": "2026-10-25T12:41:40Z",
+          "message": "Deployment has minimum availability.",
+          "reason": "MinimumReplicasAvailable",
+          "status": "True",
+          "type": "Available"
+        }
+      ],
+      "observedGeneration": 89,
+      "readyReplicas": 1,
+      "replicas": 1,
+      "terminatingReplicas": 0,
+      "updatedReplicas": 1
+    }
+  },
+  "started_at": "2026-10-25T12:42:55.038778+00:00",
+  "baseline_check": {
+    "trial_id": "d9-09-native-d528a2",
+    "route_readiness_attempts": [
+      {
+        "at": "2026-10-25T12:42:50.187193+00:00",
+        "passed": true,
+        "check": {
+          "request_id": "d9-09-native-d528a2-routes-1",
+          "dns": {
+            "gateway": {
+              "short": "10.96.7.191",
+              "fqdn": "10.96.7.191"
+            },
+            "order": {
+              "short": "10.96.193.219",
+              "fqdn": "10.96.193.219"
+            },
+            "payment": {
+              "short": "10.96.183.54",
+              "fqdn": "10.96.183.54"
+            }
+          },
+          "health": {
+            "gateway": {
+              "healthz": {
+                "status": "ok",
+                "service": "gateway"
+              },
+              "readyz": {
+                "status": "ready",
+                "service": "gateway"
+              }
+            },
+            "order": {
+              "healthz": {
+                "status": "ok",
+                "service": "order"
+              },
+              "readyz": {
+                "status": "ready",
+                "service": "order"
+              }
+            },
+            "payment": {
+              "healthz": {
+                "status": "ok",
+                "service": "payment"
+              },
+              "readyz": {
+                "status": "ready",
+                "service": "payment"
+              }
+            }
+          },
+          "readiness_only": true,
+          "passed": true
+        }
+      }
+    ]
+  },
+  "injection_elapsed": 2.311999999999898,
+  "injection_requested_at": "2026-10-25T12:42:55.038778+00:00",
+  "injection_verified": true,
+  "effect_verified": true,
+  "zero_replicas_observed_at": "2026-10-25T12:43:03.019082+00:00",
+  "decision_started_elapsed": 16.67100000000005,
+  "decision": {
+    "source": "native_no_intervention",
+    "supported": false
+  },
+  "decision_finished_elapsed": 16.67100000000005,
+  "ground_truth": {
+    "service": "payment",
+    "fault": "desired_replicas_zero",
+    "observable_class": "endpoint_unavailable",
+    "mechanism": "operator_scale_fixture",
+    "injection_verified": true,
+    "effect_verified": true
+  },
+  "observation_elapsed_end": 92.3119999999999,
+  "metrics": {
+    "eligible": true,
+    "recovery_seconds": null,
+    "restricted_seconds": 90.0,
+    "censored": true,
+    "successful_requests": 2,
+    "total_requests": 120
+  },
+  "operator_cleanup_restore": true,
+  "cleanup_passed": false,
+  "cleanup_error_type": "TimeoutExpired",
+  "finished_at": "2026-10-25T12:46:53.060532+00:00"
+}

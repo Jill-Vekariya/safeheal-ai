@@ -98,3 +98,140 @@ jobs:
           include-hidden-files: true
           retention-days: 14
           if-no-files-found: warn
+  model-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONIOENCODING: utf-8
+      SAFEHEAL_MODEL_CONTAINER: safeheal-model-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare study runtime and source provenance
+        id: runtime
+        run: |
+          python -m pip install -r requirements.lock
+          python -m pip install --no-deps -e .
+          mkdir -p .local/model-study
+          python - <<'PY'
+          import json, os, platform, subprocess
+          from pathlib import Path
+          from datetime import datetime, timezone
+          result = {'source_commit': subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+                    'platform': platform.platform(), 'run_id': os.environ['GITHUB_RUN_ID'],
+                    'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+                    'started_at': datetime.now(timezone.utc).isoformat(),
+                    'scope': 'New five-block CPU cohort; never pooled with Windows or historical cohorts.'}
+          Path('.local/model-study/provenance.json').write_text(json.dumps(result,indent=2)+'\n')
+          PY
+      - name: Create a fresh isolated lab and verify the business path
+        id: lab
+        run: |
+          python scripts/k8s.py install-kind
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, 'scripts')
+          import verify_recovery as r
+          r.configure_lab('safeheal-day7')
+          r.lab.setup()
+          r.lab.deploy()
+          r.lab.verify()
+          PY
+          python scripts/verify_recovery.py --lab safeheal-day7 --execute --mode approval
+          python scripts/controlled_experiment.py setup --execute
+      - name: Start the pinned loopback CPU model without credentials
+        id: model
+        run: |
+          safeheal_image=$(python -c "import json; print(json.load(open('examples/ollama-runtime.json'))['image'])")
+          docker pull --platform linux/amd64 "$safeheal_image"
+          docker run -d --name "$SAFEHEAL_MODEL_CONTAINER" --platform linux/amd64 --cpus=2 --memory=1536m \
+            --label "safeheal.ai.ci-run=$GITHUB_RUN_ID" --publish 127.0.0.1:11434:11434 \
+            --env OLLAMA_NUM_PARALLEL=1 --env OLLAMA_MAX_LOADED_MODELS=1 --env OLLAMA_NO_CLOUD=1 \
+            "$safeheal_image" > .local/model-study/container-id.txt
+          python - <<'PY'
+          import time, urllib.request
+          for _ in range(60):
+              try:
+                  with urllib.request.urlopen('http://127.0.0.1:11434/api/version',timeout=2) as response:
+                      assert response.status == 200
+                  break
+              except OSError:
+                  time.sleep(1)
+          else:
+              raise RuntimeError('Loopback model server readiness timed out')
+          PY
+          docker exec "$SAFEHEAL_MODEL_CONTAINER" ollama pull qwen2.5:0.5b-instruct-q4_K_M
+          docker cp examples/Modelfile.cpu "$SAFEHEAL_MODEL_CONTAINER:/tmp/Modelfile.cpu"
+          docker exec "$SAFEHEAL_MODEL_CONTAINER" ollama create safeheal-qwen-cpu -f /tmp/Modelfile.cpu
+          python - <<'PY'
+          import json, time, urllib.request
+          from pathlib import Path
+          def request(path, data=None):
+              req=urllib.request.Request('http://127.0.0.1:11434'+path,
+                  data=None if data is None else json.dumps(data).encode(),headers={'Content-Type':'application/json'})
+              with urllib.request.urlopen(req,timeout=120) as response: return json.load(response)
+          pin=json.loads(Path('examples/ollama-runtime.json').read_text())
+          tags=request('/api/tags')
+          assert any(m['name']==pin['model'] and m['digest']==pin['model_digest'] for m in tags['models']), 'Base model digest mismatch'
+          started=time.monotonic()
+          warmup=request('/api/generate',{'model':'safeheal-qwen-cpu','prompt':'Return the word ready.',
+              'stream':False,'options':{'num_predict':8},'keep_alive':'30m'})
+          assert warmup.get('done') is True
+          metadata={'pin':pin,'version':request('/api/version'),'models':tags,'resident':request('/api/ps'),
+                    'warmup':warmup,'warmup_seconds':time.monotonic()-started,'warmup_scope':'Outside measured trials'}
+          Path('.local/model-study/model.json').write_text(json.dumps(metadata,indent=2)+'\n')
+          PY
+      - name: Run all fifteen randomized matched trials with real model calls
+        id: trials
+        run: |
+          python scripts/controlled_experiment.py run --execute --repeats 5 --seed 9 --horizon 90 \
+            --provider-profile examples/provider.cpu.json --output .local/model-study/run
+      - name: Retain raw outcomes and verify complete study criteria
+        id: verification
+        if: always() && steps.trials.outcome != 'skipped'
+        run: python scripts/verify_model_study.py .local/model-study/run --output .local/model-study/analysis
+      - name: Confirm final healthy services and no retained executor tokens
+        id: health
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          import verify_recovery as r
+          r.configure_lab('safeheal-day7')
+          r.lab.verify()
+          assert not list(Path('.local/day9').glob('**/executor.token'))
+          PY
+      - name: Preserve model logs and remove only this job's model container
+        if: always()
+        run: |
+          mkdir -p .local/model-study
+          safeheal_owner=$(docker inspect --format '{{ index .Config.Labels "safeheal.ai.ci-run" }}' "$SAFEHEAL_MODEL_CONTAINER" 2>/dev/null || true)
+          if [ "$safeheal_owner" = "$GITHUB_RUN_ID" ]; then
+            docker logs "$SAFEHEAL_MODEL_CONTAINER" > .local/model-study/model-server.log 2>&1
+            docker inspect --format '{{.Image}}' "$SAFEHEAL_MODEL_CONTAINER" > .local/model-study/model-image-id.txt
+            docker rm -f "$SAFEHEAL_MODEL_CONTAINER"
+          fi
+      - name: Preserve study evidence including failures and unrun steps
+        if: always()
+        env:
+          SAFEHEAL_STUDY_STEPS: ${{ toJSON(steps) }}
+        run: |
+          mkdir -p .local/model-study
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          Path('.local/model-study/steps.json').write_text(os.environ['SAFEHEAL_STUDY_STEPS']+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-cpu-model-study
+          path: .local/model-study/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: warn

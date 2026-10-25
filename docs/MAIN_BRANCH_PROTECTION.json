@@ -3,7 +3,8 @@
     "strict": true,
     "contexts": [
       "test",
-      "kubernetes"
+      "kubernetes",
+      "secrets"
     ]
   },
   "enforce_admins": true,
