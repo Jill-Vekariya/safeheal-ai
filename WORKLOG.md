@@ -355,3 +355,12 @@ Current main at 27c784769030822f08424237cfed0ef901ba570b was rechecked: **536 te
 Docker Desktop was stopped at the first local runtime check. Starting the installed application restored the existing safeheal-day7 node. Gateway, order, payment and Prometheus are each ready at one replica; guarded recovery preflight and a fresh confirmed synthetic order passed. No fault or model call was introduced. Fresh evidence: [evidence/final/recheck-20261025T111614Z/verification.json](evidence/final/recheck-20261025T111614Z/verification.json). All ten original engineering gates remain complete; the five historical local-model timeouts and research limitations remain explicit.
 
 Read current repository state before mutation; the newer completed release superseded the older Day 9 Library handoff. Repeated the full suite and independent reproduction once, verified CI metadata and archived evidence hashes, and restored the stopped Docker application without reset, resource deletion, default-context changes, or an extra fault batch. No application, model, recovery-policy, test or workflow source changed. This checkpoint is documentation/evidence only and uses [skip ci].
+
+
+## Public release preparation on 25 October 2026
+
+The user explicitly requested an end-to-end completion review and PUBLIC visibility, superseding the earlier private-only preference. The repository remains private while release checks run. Added an optional bounded candidate-index local ranker, a smaller explicit CPU model profile and versioned prompt; full evidence validation and independent recovery authority remain unchanged. Legacy provider behavior is the default. Retained rejected and imperfect development attempts.
+
+Windows full suite passed: 558 tests, 2 expected skips. Checksum-pinned Gitleaks 8.30.1 scanned all 29 reachable commits and archived evidence (244.59 MB). Its 92 findings were individually reviewed as SHA-256 artifact digest lines, recorded by exact fingerprints; a repeat scan found no remaining findings. No broad path or rule suppression was added. Added a checksum-pinned redacted secret-scan workflow. Actual local-model replay and a new prospective controlled cohort are recorded separately after execution; no new successful outcome is claimed here.
+
+Real local-model replay: 6/6 model diagnoses, 6/6 grounded, target-matched and observable-class-matched, with zero fallback. The six retained trials are development data; no held-out accuracy or recovery benefit is claimed. CPU model and prompt hashes are retained in evidence/public-release/model-replay.

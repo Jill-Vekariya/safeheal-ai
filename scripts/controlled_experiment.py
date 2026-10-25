@@ -33,7 +33,7 @@ def provider_profile(path):
         return None, {"configured":False,"reason":"provider_profile_missing"}
     cfg = json.loads(path.read_text(encoding="utf-8"))
     required = {"base_url","model","max_calls","max_output_tokens","timeout_seconds","token_field","api_key_file"}
-    if set(cfg) != required:
+    if not required.issubset(cfg) or set(cfg)-required-{"selection_mode"}:
         raise ValueError("Provider profile must contain the exact documented fields")
     key_file = cfg.pop("api_key_file")
     if not isinstance(key_file, str):

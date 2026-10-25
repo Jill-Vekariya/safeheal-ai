@@ -1,0 +1,27 @@
+{
+  "scope": "Six real local-model retrospective diagnoses on retained development trials; not held-out accuracy or online recovery",
+  "model": "safeheal-qwen-cpu",
+  "models": [
+    {
+      "name": "safeheal-qwen-cpu:latest",
+      "digest": "86d3aa33623e0061da45aca26ab78723ebbe7e9f5ae6a2e611a4f8f9164e81fe",
+      "size": 397821004
+    },
+    {
+      "name": "qwen2.5:0.5b-instruct-q4_K_M",
+      "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+      "size": 397821319
+    }
+  ],
+  "selection_mode": "candidate_index",
+  "prompt_version": "safeheal-candidate-index-v2",
+  "max_calls": 6,
+  "max_output_tokens": 256,
+  "timeout_seconds": 30,
+  "actual_llm_diagnoses": 6,
+  "provider_source_sha256": "682f58e8d1f293ae10aa198908f761d4b244f16c80228d4f99131811c4b6db17",
+  "report_sha256": "93e9c8ebb47b43867bbdca44943ba333be2e3e70fadc80605ad9c9cfd3991aef",
+  "usage": "Per-request token usage was not retained by this CLI replay; prospective cohort records usage separately.",
+  "no_cluster_writes": true,
+  "no_cloud_calls": true
+}
