@@ -9,12 +9,13 @@ For a GitHub-hosted demonstration, use [the end-to-end demo](DEMO.md). It provis
 ```powershell
 git clone https://github.com/Jill-Vekariya/safeheal-ai.git
 Set-Location safeheal-ai
-# Check out the exact final tested commit identified in PROJECT_STATUS.md.
+# Current tests exercise this checkout; the recorded-release worktree below pins historical evidence.
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.lock
 .\.venv\Scripts\python.exe -m pip install --no-deps -e .
 .\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe scripts/reproduce.py --output .local/reviewer-replay
+git worktree add --detach ..\safeheal-recorded-release a95d0b5c216094052e0c37e7d99d1242dcea03d4
+.\.venv\Scripts\python.exe ..\safeheal-recorded-release\scripts\reproduce.py --output .local/reviewer-replay
 ```
 
 On Linux/macOS use `python3.12`, `.venv/bin/python` and the equivalent paths. Use a new replay output directory on each invocation. The reproduction command verifies the final artifact inventory, each raw-data manifest, the declared historical instrument bytes, numerical agreement with stored analysis and SQLite audit chains in read-only mode. Historical instruments are retained under evidence/final/instruments; later cleanup hardening is distinguished from as-run source. It writes only the selected output directory. Byte integrity is not proof of scientific validity; inspect the report's limitations as well.
@@ -89,3 +90,27 @@ Dependency downloads, Docker image pulls, model availability and CI runners depe
 Use [LOCAL_CPU_MODEL.md](LOCAL_CPU_MODEL.md) for the current compact candidate-index profile. The manual demo workflow also runs a separate fresh Linux study with a pinned official model image, checked base-weight digest, two CPU limit, 1536 MiB memory cap, loopback-only serving, no provider key and no cloud inference. Warmup is recorded outside measurement.
 
 Reference implementation: fd809cae41b60c62b59bd2fc2e2377f5d487b163; completed run 40206671248. Retained raw data and findings are under evidence/day9/run-ci-cpu-40206671248 and analysis-ci-cpu-40206671248. scripts/verify_model_study.py independently finalizes/replays raw outcomes and checks all trial/cleanup/access/audit criteria. The ordinary reproduce command verifies this cohort alongside the prior cohorts and frozen as-run instruments. New live runs will have different times and may abstain or fail; keep their actual outcomes.
+
+## Stage 3 source changes and historical evidence
+
+The retained `evidence/final/artifact-manifest.json` includes the recorded runtime
+source bytes. A later source change correctly fails its in-place integrity check.
+The commands above verify that unchanged historical inventory from the exact
+merged release worktree, while unit and boundary checks exercise current source.
+Keep historical manifests, data and instrument snapshots unchanged. This is not
+an assertion that the old live experiments used the newer hardened transport.
+Use a fresh worktree name if the suggested path already exists; do not reset or
+delete someone else's checkout. On Linux the historical script path is
+`../safeheal-recorded-release/scripts/reproduce.py`.
+
+Current synthetic boundary validation (no model or cluster calls):
+
+```sh
+.venv/bin/python scripts/evaluate_provider_boundary.py --arm treatment --output .local/boundary-01
+```
+
+See [preregistered protocol and amendments](STAGE3_PROTOCOL.md). The response
+accumulators reject overflow before appending and refuse unexpected compression.
+Elapsed checks run for each incoming uncoalesced chunk. HTTP phase timeouts and
+cooperative checks are not hard preemption of an arbitrary blocking transport.
+Real-model performance of this later source is not established by fixture tests.

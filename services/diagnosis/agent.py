@@ -78,7 +78,7 @@ class DiagnosisAgent:
                 allowed = {"provider_disabled", "input_budget_exceeded", "call_budget_exhausted",
                            "provider_http_error", "provider_response_too_large", "provider_timeout",
                            "provider_incomplete_response", "provider_invalid_response", "provider_unavailable",
-                           "provider_output_budget_exceeded"}
+                           "provider_output_budget_exceeded", "provider_unsupported_encoding"}
                 reason = str(exc) if str(exc) in allowed else "provider_unavailable"
             except (ValueError, TypeError):
                 reason = "model_output_rejected"

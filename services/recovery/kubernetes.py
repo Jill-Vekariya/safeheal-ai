@@ -33,18 +33,20 @@ class KubernetesAPI:
     def _request(self, method, path, patch=None):
         token = self.token_file.read_text(encoding="utf-8").strip()
         require(0 < len(token) <= 16384 and not any(c.isspace() for c in token), "invalid_executor_token")
-        headers = {"Authorization": "Bearer " + token, "Accept": "application/json"}
+        headers = {"Authorization": "Bearer " + token, "Accept": "application/json", "Accept-Encoding": "identity"}
         if patch is not None:
             headers["Content-Type"] = "application/json-patch+json"
         try:
             deadline = time.monotonic() + 10
             with self.client.stream(method, self.server+path, headers=headers, json=patch) as response:
                 require(response.status_code == 200, "kubernetes_request_rejected")
+                require(response.headers.get("content-encoding", "identity").strip().lower() == "identity",
+                        "kubernetes_response_encoding")
                 content = bytearray()
                 for chunk in response.iter_bytes():
                     require(time.monotonic() < deadline, "kubernetes_response_deadline")
+                    require(len(content) + len(chunk) <= 262144, "kubernetes_response_too_large")
                     content.extend(chunk)
-                    require(len(content) <= 262144, "kubernetes_response_too_large")
                 result = json.loads(content)
                 require(isinstance(result, dict), "invalid_kubernetes_response")
                 return result

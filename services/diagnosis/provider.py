@@ -168,7 +168,7 @@ class JsonProvider:
         payload = {"model": cfg.model, "messages": [{"role": "system", "content": system},
                     {"role": "user", "content": content}], "response_format": {"type": "json_object"},
                    cfg.token_field: cfg.max_output_tokens, "stream": False}
-        headers = {"Authorization": "Bearer " + cfg.api_key} if cfg.api_key else {}
+        headers = {"Accept-Encoding": "identity", **({"Authorization": "Bearer " + cfg.api_key} if cfg.api_key else {})}
         deadline = time.monotonic() + cfg.timeout_seconds
         try:
             with httpx.Client(timeout=cfg.timeout_seconds, trust_env=False, follow_redirects=False,
@@ -177,13 +177,15 @@ class JsonProvider:
                                    json=payload, headers=headers) as response:
                     if response.status_code != 200:
                         raise ProviderError("provider_http_error")
+                    if response.headers.get("content-encoding", "identity").strip().lower() != "identity":
+                        raise ProviderError("provider_unsupported_encoding")
                     body = bytearray()
                     for chunk in response.iter_bytes():
                         if time.monotonic() > deadline:
                             raise ProviderError("provider_timeout")
-                        body.extend(chunk)
-                        if len(body) > 65_536:
+                        if len(body) + len(chunk) > 65_536:
                             raise ProviderError("provider_response_too_large")
+                        body.extend(chunk)
             if time.monotonic() > deadline:
                 raise ProviderError("provider_timeout")
             data = parse_json(body)

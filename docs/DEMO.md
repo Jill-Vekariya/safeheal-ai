@@ -81,7 +81,8 @@ Do not pool the cohorts or label the horizon as observed MTTR. The demo's recove
 From an installed checkout, choose a new output directory:
 
 ~~~powershell
-.\.venv\Scripts\python.exe scripts/reproduce.py --output .local/demo-review-01
+git worktree add --detach ..\safeheal-recorded-release a95d0b5c216094052e0c37e7d99d1242dcea03d4
+.\.venv\Scripts\python.exe ..\safeheal-recorded-release\scripts\reproduce.py --output .local/demo-review-01
 .\.venv\Scripts\python.exe scripts/compare_robustness.py --output-dir .local/demo-robustness-01
 .\.venv\Scripts\python.exe scripts/diagnose.py --output .local/demo-diagnosis-01.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
 ~~~

@@ -1,103 +1,82 @@
 # SafeHeal AI
 
-An inspectable Kubernetes incident-response testbed that separates model diagnosis from recovery authority.
+**Kubernetes incident diagnosis with independent, tightly bounded recovery authority.**
 
-SafeHeal observes a synthetic gateway → order → payment application, validates bounded evidence, and compares native behavior, a fixed symptom rule and real-model diagnosis. A separate deterministic controller permits only one enrolled action: restore the payment Deployment from desired replicas zero to one. The model receives no shell or Kubernetes credential.
+SafeHeal observes a synthetic gateway → order → payment application, validates telemetry-backed hypotheses and compares native behavior, a fixed rule and model diagnosis. A separate deterministic controller permits one enrolled action: restore the payment Deployment from zero replicas to one. The model has no shell, Kubernetes credential or approval authority.
 
-**Status - 25 October 2026:** The ten original engineering milestones and the CPU-model extension have verified implementation evidence. Public repository; protected main. [Validation by tested source](evidence/public-release/verification.json) · [CPU study](evidence/public-release/CPU_STUDY.md) · [Project status](PROJECT_STATUS.md). No general AI advantage is claimed.
+[Research report](docs/RESEARCH_REPORT.md) · [Demo guide](docs/DEMO.md) · [Interview walkthrough](docs/INTERVIEW.md) · [Reproduction](docs/REPRODUCIBILITY.md)
 
-## Latest verified CPU study
+## What the evidence shows
 
-[Completed demo and real-model study](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) · [Normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206669554) · [Raw measurements](evidence/day9/run-ci-cpu-40206671248) · [Findings](evidence/day9/analysis-ci-cpu-40206671248/FINDINGS.md)
+| Evidence | Actual result | Scope |
+| --- | --- | --- |
+| [Historical CPU-model study](evidence/public-release/CPU_STUDY.md) | Native 0/5, fixed rule 5/5, AI 2/5 business recoveries within 90 seconds; 15/15 cleanups | One scale-zero scenario; as-run source `fd809cae41b60c62b59bd2fc2e2377f5d487b163` |
+| Same CPU study | Five real requests, four validated outputs; three AI trials did not recover within the horizon | Validated diagnosis and successful recovery are different outcomes |
+| [Local Stage 4 checks](docs/INTERVIEW.md) | 100 selected tests passed | Mocked controller/provider and experiment-integrity paths; no new model inference or cluster mutation |
+| [Earlier cohorts](docs/RESEARCH_REPORT.md) | Failed, interrupted, censored and unrun outcomes retained separately | Different hosts, horizons and prompt formats are not pooled |
 
-The new CPU model produced 2/5 business recoveries within 90 seconds; the fixed rule produced 5/5 and native behavior 0/5. All five AI slots used the real model; all 15 cleanups passed. This is one narrow scale-zero scenario on a fresh Linux host. Earlier failures and incomplete Windows attempts remain separate, and no AI superiority or production reliability is claimed.
+These results do not establish general AI superiority, calibrated confidence, production reliability or a universal MTTR improvement. The rule is deliberately well matched to the narrow restoration policy.
 
-![Fresh CPU study: all outcomes](evidence/day9/analysis-ci-cpu-40206671248/recovery_comparison.png)
-
-## Run the end-to-end demo
-
-**Historical reference:** [Successful live demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Verified summary](evidence/demo/ci-40145365194/summary.md) · [Download GitHub artifact](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966) · [Permanent raw archive](evidence/demo/ci-40145365194/artifacts.zip)
-
-Source: 9f6e268d2b5d. Linux: **537 passed, 1 skipped**; Windows: **536 passed, 2 skipped**. Both fresh recovery modes, all twelve required stages and the downloaded artifact/audit checks passed. [Normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797) also passed, including six labelled fault repetitions.
-
-**[Open the GitHub Actions demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml)** and choose **Run workflow → main**. It creates a fresh isolated Docker-kind cluster, runs tests and replay, verifies real orders, demonstrates native/autonomous/approval recovery, checks observability and incidents, and publishes a verified summary plus downloadable evidence. No provider key is needed.
-
-[Step-by-step demo and four-minute presentation](docs/DEMO.md) includes expected results, Windows/Linux commands, the existing lab shortcut and investigation steps. Diagnosis is explicitly labelled historical fallback replay; recovery fixtures run live. The five original larger-model requests timed out. A separate CPU profile produced six grounded diagnoses on six retained development incidents; two subsequent Windows studies were interrupted and remain explicit incomplete cohorts. The separate isolated Linux real-model study is now verified; its raw observations and limits are linked above. See [CPU profile and limitations](docs/LOCAL_CPU_MODEL.md).
-
-## Start with the evidence
-
-| Material | What it establishes |
-|---|---|
-| [Research report](docs/RESEARCH_REPORT.md) | Question, methodology, results, threats to validity and future work |
-| [Original controlled findings](evidence/day9/analysis/FINDINGS.md) | Five native and five fixed-rule trials; explicit missing AI slots |
-| [Configured local-model findings](evidence/day9/analysis-local/FINDINGS.md) | Fifteen live trials including five actual local-provider attempts; failures remain explicit |
-| [Raw original cohort](evidence/day9/run-primary) | Request measurements, telemetry, audits and integrity manifest |
-| [Robustness evaluation](docs/AI_ROBUSTNESS.md) | Exact-source before/after synthetic failure handling; 27/36 → 36/36 development cases |
-| [Safe recovery contract](docs/SAFE_RECOVERY.md) | Allowlist, approval/dry-run modes, least privilege, claims and verification |
-| [Reproduction guide](docs/REPRODUCIBILITY.md) | Clean checkout, offline replay and guarded live lab commands |
-| [End-to-end demo](docs/DEMO.md) | A reviewable walkthrough with explicit limitations |
-| [Portfolio and interview preparation](docs/PORTFOLIO.md) | Evidence-based resume/SOP wording and 20 technical questions |
-
-In the original 45-second baseline cohort, fixed-rule recovery succeeded in 5/5 trials (observed mean 19.04 s); native behavior did not recover within the horizon in 5/5 trials. Native actual recovery times are unknown. Desired replicas zero is valid Kubernetes state, so this fixture deliberately favors an explicit restore policy. It is not proof of generic crash-recovery improvement or an AI advantage.
-
-
-The separate 90-second local-model cohort recorded rule recovery in 5/5 trials (mean 30.544 s), native 0/5 and AI arm 0/5. Provider outcomes: `{'provider_timeout': 5}`. Failed/fallback diagnoses did not authorize recovery. These results do not establish model diagnostic accuracy or general performance. The two cohorts are not pooled.
-
-![Configured local-model cohort outcomes](evidence/day9/analysis-local/recovery_comparison.png)
-
-## Offline review
-
-Python 3.12 is the tested runtime. From a checked-out release:
-
-```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.lock
-.\.venv\Scripts\python.exe -m pip install --no-deps -e .
-.\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe scripts/reproduce.py --output .local/reviewer-replay
-```
-
-On Linux/macOS use `.venv/bin/python`. Choose a new replay directory. Offline reproduction checks byte integrity, replays raw recovery metrics and reads audit chains without model calls or cluster access. Live data collection and figure rendering have separate dependencies and explicit commands in the [guide](docs/REPRODUCIBILITY.md). Default provider tests use mocks; real-provider integration is opt-in.
-
-## Run the application
-
-With Docker Desktop using Linux containers:
-
-```powershell
-docker compose up --build -d --wait
-.\.venv\Scripts\python.exe scripts/smoke.py
-docker compose down
-```
-
-The gateway binds only to loopback `127.0.0.1:18080`. The synthetic application makes no real payment. Docker/Kubernetes resources for other projects are not managed by these commands.
-
-For a dedicated kind lab, follow [Kubernetes setup](docs/KUBERNETES.md). The guarded scripts always use project-specific kubeconfigs and context. Fault execution requires `--execute`; default recovery/experiment commands are read-only plans or preflight. The current Windows acceptance lab is separately named `safeheal-day7` because the original node's API port was blocked by Windows; no global Docker reset or default-context change was used.
-
-## How authority is bounded
+## Architecture
 
 ```mermaid
 flowchart TD
-  T["Telemetry"] --> V["Freshness, schema and support validation"]
-  V --> D["Read-only rule or model diagnosis"]
-  D --> B["One typed proposal"]
+  T["Application telemetry"] --> E["Freshness and evidence validation"]
+  E --> D["Read-only diagnosis and proposal validation"]
+  E --> P["Optional bounded model provider"]
+  P --> D
+  D --> B["Operator-controlled experiment bridge"]
   B --> C["Independent controller and durable journal"]
-  C --> K["Named scale-only RBAC and admission"]
-  K --> R["Readiness and business verification"]
+  C --> K["Fixed conditional scale write, RBAC and admission"]
+  K --> V["Readiness and separate business verification"]
 ```
 
-The controller checks enrolled identity/spec and exact live state before one conditional zero-to-one write. Default dry-run, expiring approval and operator-enabled autonomous modes are independent of model output. Ambiguous writes block retry; duplicate/single-flight/rate limits and audit records persist. API-server admission restricts the executor identity separately from host controller checks. The model cannot approve itself, reset the journal, select commands or expand the allowlist.
+The controller independently checks enrolled identity/spec, live state, approval or explicit operator-enabled autonomy, durable single-flight claims and rate limits. Dry-run is the default. An ambiguous write blocks automatic retry. The notification journal persists diagnosis; it does not dispatch recovery. [Recovery contract](docs/SAFE_RECOVERY.md).
 
-## Repository map
+## Quick start: offline inspection
 
-- `services/`: application, deterministic incident detection, bounded diagnosis and independent recovery.
-- `infrastructure/`: pinned kind/Kubernetes, observability, RBAC and admission policy.
-- `scripts/`: guarded operator harnesses, experiments, analysis and offline reproduction.
-- `tests/`: application, evidence, provider, recovery and failure-path checks.
-- `evidence/`: retained successful, failed, censored and unrun measurements.
-- `docs/`: operational contracts, research report, architecture context and reviewer materials.
+Requires Git, Python 3.12 and dependency-download access. Linux commands:
 
-[Architecture](ARCHITECTURE.md) explains trust boundaries. [Roadmap](ROADMAP.md), [experiments](EXPERIMENTS.md) and [worklog](WORKLOG.md) preserve progress and engineering corrections. Historical handoffs describe their own checkpoints; current status supersedes their progress counts.
+```bash
+git clone https://github.com/Jill-Vekariya/safeheal-ai.git
+cd safeheal-ai
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.lock
+.venv/bin/python -m pip install --no-deps -e .
+.venv/bin/python -m pytest -q
+```
 
-## Limits
+For Windows, use `py -3.12 -m venv .venv` and `.venv\Scripts\python.exe`; [the reproduction guide](docs/REPRODUCIBILITY.md) supplies complete PowerShell commands. Default tests use mocks; real-provider integration is opt-in.
 
-This is a single-machine research prototype with a narrow action and small exploratory studies. It does not establish calibrated confidence, causal diagnosis, production reliability, general MTTR improvement or a safe-execution probability. Local administrators can rewrite audit files. Continuous-production rate limits across experimental episode resets are not measured. A model failure, abstention or policy denial remains a distinct outcome. Credentials and local kubeconfigs are ignored and must never be committed.
+Historical evidence replay must use its recorded source rather than a later modified checkout:
+
+```bash
+git worktree add --detach ../safeheal-recorded-release a95d0b5c216094052e0c37e7d99d1242dcea03d4
+.venv/bin/python ../safeheal-recorded-release/scripts/reproduce.py --output .local/reviewer-replay-01
+```
+
+Choose unused worktree/output paths. Replay checks artifact integrity, numerical results and read-only audit chains; it makes no model call and needs no cluster. A source-hash mismatch on newer code must not be hidden by rewriting the historical inventory.
+
+## Run the application or recovery lab
+
+With a running Docker Linux engine and Compose v2, from the installed checkout:
+
+```bash
+docker compose up --build -d --wait
+.venv/bin/python scripts/smoke.py
+docker compose down
+```
+
+The gateway binds to `127.0.0.1:18080` and makes no real payment. Compose runs the application; it is distinct from the Kubernetes recovery experiment. [Kubernetes setup](docs/KUBERNETES.md) and [the end-to-end demo](docs/DEMO.md) cover the isolated kind lab, explicit execution guards and cleanup. The [recorded CPU study run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) is historical CI evidence, not a passing run of later local changes. Running a new workflow creates a new experiment with its own outcomes.
+
+## Verification and limits
+
+The local transport review adds pre-append response byte caps, identity-encoding checks and fixed failure codes; [its protocol](docs/STAGE3_PROTOCOL.md) distinguishes synthetic checks from historical model evidence. Fresh real-model and live Kubernetes validation of that transport remains open. Network phase timeouts and checks between chunks cannot forcibly preempt arbitrary synchronous code.
+
+This is a single-machine prototype with one action, small exploratory studies and local operator trust. A supported symptom is not an established physical cause. Hash-chained local logs are not externally immutable against a privileged host administrator. [Architecture](ARCHITECTURE.md) · [Full limitations](docs/RESEARCH_REPORT.md) · [Project history](PROJECT_STATUS.md).
+
+## Ownership and next work
+
+Implementation, experiments and preparation materials used AI assistance. The [contribution table](docs/INTERVIEW.md#personal-contribution-and-ai-assistance) marks personal claims requiring owner confirmation; automated checks do not establish independent authorship or understanding. [Portfolio preparation](docs/PORTFOLIO.md).
+
+Next: a preregistered live compatibility run, reviewed new incident families and calibrated diagnosis evaluation. A repository license has not been selected; licensing requires an explicit owner decision.

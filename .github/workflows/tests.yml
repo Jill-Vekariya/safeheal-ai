@@ -20,14 +20,18 @@ jobs:
       - run: python -m pytest -q
       - name: Compare fixed robustness cases against exact Day 7 source
         run: python scripts/compare_robustness.py --output-dir .local/day8-paired
+      - name: Verify synthetic provider and executor response boundaries
+        run: python scripts/evaluate_provider_boundary.py --arm treatment --output .local/stage3-boundary
       - name: Replay retained benchmark with read-only diagnosis fallback
         run: python scripts/diagnose.py --output .local/day6-replay.json benchmark evidence/day5/ci-39774736343/run-03a9072a24f8
       - name: Replay retained controlled experiment measurements
         run: python scripts/analyze_controlled.py evidence/day9/run-primary --output .local/day9-replay --no-plots
       - name: Replay configured local-model cohort
         run: python scripts/analyze_controlled.py evidence/day9/run-local-20261025 --output .local/day9-local-replay --no-plots
-      - name: Verify final artifacts and read-only audit replay
-        run: python scripts/reproduce.py --output .local/final-replay
+      - name: Verify recorded release artifacts at their exact source
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/safeheal-recorded-release" a95d0b5c216094052e0c37e7d99d1242dcea03d4
+          python "$RUNNER_TEMP/safeheal-recorded-release/scripts/reproduce.py" --output .local/final-replay
       - name: Preserve diagnosis and experiment replays
         if: always()
         uses: actions/upload-artifact@v4
@@ -36,6 +40,7 @@ jobs:
           path: |
             .local/day6-replay.json
             .local/day8-paired/
+            .local/stage3-boundary/
             .local/day9-replay/
             .local/day9-local-replay/
             .local/final-replay/
