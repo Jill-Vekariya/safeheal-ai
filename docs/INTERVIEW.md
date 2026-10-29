@@ -1,5 +1,7 @@
 # SafeHeal AI — technical interview guide
 
+[Working demo](https://jill-vekariya.github.io/safeheal-ai/) — live hosted simulation with synthetic evidence; it does not execute the recovery controller.
+
 Stage 4 review: 27 October 2026. Rehearsal material describes the implementation; it is not a personal contribution record.
 
 ## Evidence boundary

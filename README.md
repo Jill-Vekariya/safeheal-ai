@@ -4,13 +4,13 @@
 
 SafeHeal observes a synthetic gateway → order → payment application, validates telemetry-backed hypotheses and compares native behavior, a fixed rule and model diagnosis. A separate deterministic controller permits one enrolled action: restore the payment Deployment from zero replicas to one. The model has no shell, Kubernetes credential or approval authority.
 
-[Research report](docs/RESEARCH_REPORT.md) · [Demo guide](docs/DEMO.md) · [Interview walkthrough](docs/INTERVIEW.md) · [Reproduction](docs/REPRODUCIBILITY.md)
+[Research report](docs/RESEARCH_REPORT.md) · [Working demo](https://jill-vekariya.github.io/safeheal-ai/) · [Interview walkthrough](docs/INTERVIEW.md) · [Reproduction](docs/REPRODUCIBILITY.md)
 
-## Interactive browser demo
+## Live demo
 
-Explore the [Recovery Lab prototype](docs/demo/README.md): six synthetic scenarios, dry-run review, operator approval, evidence snapshots and audit export. It makes no live model calls or Kubernetes writes and does not reproduce benchmark results.
+Explore the [working SafeHeal AI demo](https://jill-vekariya.github.io/safeheal-ai/): six synthetic scenarios, dry-run review, operator approval, evidence snapshots and audit export. It makes no live model calls or Kubernetes writes and does not reproduce benchmark results.
 
-Run `python -m http.server 8080 --directory docs/demo` from the checkout, then open http://localhost:8080. No API keys or additional dependencies are needed.
+Run `python -m http.server 8080 --directory docs/demo` from the checkout, then open http://localhost:8080. No API keys or additional dependencies are needed. [Simulation details and local setup](docs/demo/README.md).
 
 ## What the evidence shows
 
@@ -73,7 +73,7 @@ docker compose up --build -d --wait
 docker compose down
 ```
 
-The gateway binds to `127.0.0.1:18080` and makes no real payment. Compose runs the application; it is distinct from the Kubernetes recovery experiment. [Kubernetes setup](docs/KUBERNETES.md) and [the end-to-end demo](docs/DEMO.md) cover the isolated kind lab, explicit execution guards and cleanup. The [recorded CPU study run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) is historical CI evidence, not a passing run of later local changes. Running a new workflow creates a new experiment with its own outcomes.
+The gateway binds to `127.0.0.1:18080` and makes no real payment. Compose runs the application; it is distinct from the Kubernetes recovery experiment. [Kubernetes setup](docs/KUBERNETES.md) and [the local/CI recovery walkthrough](docs/DEMO.md) cover the isolated kind lab, explicit execution guards and cleanup. The [recorded CPU study run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) is historical CI evidence, not a passing run of later local changes. Running a new workflow creates a new experiment with its own outcomes.
 
 ## Verification and limits
 

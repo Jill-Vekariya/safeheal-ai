@@ -2,7 +2,7 @@
 
 The fastest route is an offline numerical replay of retained raw data. It needs Python 3.12 and the pinned project dependencies; it does not call a provider or need Docker. A fresh live run additionally needs Docker Linux containers, kubectl, the pinned project-local kind binary, an isolated project cluster and an explicitly selected model. Timing and stochastic model output are not guaranteed to be identical.
 
-For a GitHub-hosted demonstration, use [the end-to-end demo](DEMO.md). It provisions a fresh isolated runner lab, verifies both recovery modes and publishes a checked summary plus raw evidence. The guide links the verified reference run and permanent artifact archive.
+Open [Working demo](https://jill-vekariya.github.io/safeheal-ai/) for the live hosted browser simulation. For an executed Kubernetes demonstration, use [the local/CI recovery walkthrough](DEMO.md). It provisions a fresh isolated runner lab, verifies both recovery modes and publishes a checked summary plus raw evidence. The guide links the verified reference run and permanent artifact archive.
 
 ## 1. Clean checkout and offline checks
 
