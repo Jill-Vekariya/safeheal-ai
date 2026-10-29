@@ -60,7 +60,11 @@ jobs:
       - name: Install pinned project-local kind
         run: python scripts/k8s.py install-kind
       - name: Create isolated kind cluster
-        run: python scripts/k8s.py setup
+        # This job's fresh runner must never reuse an already-running cluster.
+        # The broader comparison below runs only in the cluster created here.
+        run: |
+          test -z "$(docker ps -aq --filter label=io.x-k8s.kind.cluster=safeheal-dev)"
+          python scripts/k8s.py setup
       - name: Deploy and validate manifests
         run: python scripts/k8s.py deploy
       - name: Verify real service discovery and HTTP calls
@@ -89,6 +93,9 @@ jobs:
         run: |
           python scripts/benchmark.py run
           python scripts/benchmark.py run --execute --backend kubernetes --repeats 2 --baseline-seconds 30
+      - name: Compare three faults in this job's disposable lab
+        if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+        run: python scripts/controlled_suite.py --execute --lab safeheal-dev --repeats 2 --horizon 30 --output .local/stage4/comparison
       - name: Preserve verification evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -100,4 +107,5 @@ jobs:
             evidence/day4/
             evidence/day5/
             evidence/day7/
+            .local/stage4/comparison/
           retention-days: 7
