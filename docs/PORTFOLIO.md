@@ -1,5 +1,7 @@
 # Portfolio language grounded in the implementation
 
+[Working demo](https://jill-vekariya.github.io/safeheal-ai/) — the hosted browser simulation. The local Kubernetes application and retained experiments have separate execution and evidence requirements.
+
 Use only statements that you can explain and substantiate. Adapt the wording to your actual contribution and acknowledge implementation assistance where your application or institution asks for it. Do not claim independently authored work you cannot defend.
 
 ## Resume bullets

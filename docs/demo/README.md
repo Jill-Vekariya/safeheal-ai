@@ -1,6 +1,6 @@
-# SafeHeal AI — Recovery Lab demo
+# SafeHeal AI — Live demo
 
-Interactive browser-local prototype for [Jill-Vekariya/safeheal-ai](https://github.com/Jill-Vekariya/safeheal-ai).
+[Working demo](https://jill-vekariya.github.io/safeheal-ai/) — the public, hosted browser simulation for [Jill-Vekariya/safeheal-ai](https://github.com/Jill-Vekariya/safeheal-ai).
 
 Run `python -m http.server 8080 --directory docs/demo` from this directory, then open http://localhost:8080. Or open `docs/demo/index.html` directly. No installation, API key, model, database, or Kubernetes cluster is needed.
 
@@ -28,8 +28,12 @@ Checked against `safeheal-ai` main revision `97c9aedeace35bb9e7a639ffe129f932373
 
 This implementation used AI assistance. No independent human implementation, production usage, model quality, comparative performance gain, or completion of the portfolio's deployment stage is claimed. No license was selected or changed.
 
-## GitHub Pages handoff
+## Published working demo
 
-The demo is static and can be served by GitHub Pages or any static host. The dedicated CI workflow validates it but does not change Pages settings or publish a GitHub Pages site. Enabling Pages or merging this branch requires the owner’s separate authorization under the portfolio plan. Serve only this directory; do not expose project databases, credentials, raw traces, or SQL/provider endpoints.
+[Open Working demo](https://jill-vekariya.github.io/safeheal-ai/). GitHub Pages serves only the static simulation assets from the dedicated gh-pages branch.
 
-A private hosted preview is supplied in the pull request. The preview and this folder use the same five UI assets. To remove the demo, revert its commit; stop the optional local HTTP server to tear down a local preview.
+The application source is in docs/demo on main. The published branch is a selected snapshot: later source changes must be copied to that branch and its Pages build verified before claiming an updated deployment.
+
+The browser simulation does not expose the Python services, SQL endpoints, provider credentials, a database, or a Kubernetes cluster. The private preview is a separate deployment.
+
+To remove public hosting, disable Pages through a separately authorized repository-settings action. Local previews stop when their HTTP server stops. Keep historical experiment data and ownership disclosures intact.

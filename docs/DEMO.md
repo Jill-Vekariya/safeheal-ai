@@ -1,6 +1,10 @@
-# SafeHeal AI: end-to-end GitHub demo
+# SafeHeal AI: live demo and recovery lab
 
-[Run the demo in GitHub Actions](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml) · [Research report](RESEARCH_REPORT.md) · [Recovery contract](SAFE_RECOVERY.md)
+[Working demo](https://jill-vekariya.github.io/safeheal-ai/)
+
+The live hosted page uses synthetic browser-local scenarios. It makes no live model calls or Kubernetes requests. The executed recovery lab and recorded studies below remain separate.
+
+[Run the recovery lab in GitHub Actions](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/demo.yml) · [Research report](RESEARCH_REPORT.md) · [Recovery contract](SAFE_RECOVERY.md)
 
 ## Earlier verified reference run
 
