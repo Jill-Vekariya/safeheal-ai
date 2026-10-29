@@ -86,3 +86,7 @@ This is a single-machine prototype with one action, small exploratory studies an
 Implementation, experiments and preparation materials used AI assistance. The [contribution table](docs/INTERVIEW.md#personal-contribution-and-ai-assistance) marks personal claims requiring owner confirmation; automated checks do not establish independent authorship or understanding. [Portfolio preparation](docs/PORTFOLIO.md).
 
 Next: a preregistered live compatibility run, reviewed new incident families and calibrated diagnosis evaluation. A repository license has not been selected; licensing requires an explicit owner decision.
+
+## Broader fault comparison
+
+The [Stage 4 comparison](docs/STAGE4_COMPARISON.md) adds HTTP 5xx and latency negative controls to the scale-zero experiment. Its native/rule comparison runs in a fresh isolated CI lab; missing model arms stay visible and recovery authority remains independently constrained.

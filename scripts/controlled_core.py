@@ -59,7 +59,8 @@ def metrics(row, requests, horizon):
     end = start+horizon
     samples = sorted((r for r in requests if start <= r["started_elapsed_seconds"] and r["finished_elapsed_seconds"] <= end),
                      key=lambda r:r["finished_elapsed_seconds"])
-    impact = [r for r in samples if not r.get("valid_response")]
+    impact = [r for r in samples if not r.get("valid_response") or
+              (row.get("scenario") == "latency" and r["elapsed_seconds"] >= 1)]
     current, recovered = [], None
     for r in samples:
         if not impact or r["finished_elapsed_seconds"] < impact[0]["finished_elapsed_seconds"]:
