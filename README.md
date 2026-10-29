@@ -1,7 +1,7 @@
-# SafeHeal AI Recovery Lab
+# SafeHeal AI — Live Demo
 
-Static, synthetic browser demo published from source revision `86978521e90d0f053fa163062c72d8accc13beea`.
+[Working demo](https://jill-vekariya.github.io/safeheal-ai/)
 
-Only the six static demo files are served. No model endpoint, Kubernetes endpoint, database, credential, or backend is included.
+This branch publishes the selected static simulation assets from `docs/demo` on main at `647d3349f7c98f70b2c77253db0c70613b66a26f`. Application documentation and recovery-lab instructions remain on main.
 
-Canonical source: https://github.com/Jill-Vekariya/safeheal-ai/tree/main/docs/demo
+All scenarios and evidence in the browser are synthetic. This hosted page does not call a model, access a database, or execute Kubernetes recovery.
