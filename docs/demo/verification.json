@@ -1,0 +1,47 @@
+{
+  "source_base": "97c9aedeace35bb9e7a639ffe129f93237383afc",
+  "checked_on": "2026-10-29",
+  "environment": "Linux; Node v24.22.1; Chrome cloud browser",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "--test",
+        "tests/demo_engine.test.cjs"
+      ],
+      "status": "VERIFIED",
+      "exit_code": 0,
+      "passed": 9,
+      "skipped": 0
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "docs/demo/app.js"
+      ],
+      "status": "VERIFIED",
+      "exit_code": 0
+    }
+  ],
+  "browser_checks": {
+    "desktop": "VERIFIED",
+    "mobile_390px": "VERIFIED; embedded viewport, body width=scrollWidth=375 CSS px; full device emulation not performed",
+    "dry_run_zero_writes": "VERIFIED",
+    "approval_consent_gate": "VERIFIED",
+    "successful_simulation": "VERIFIED",
+    "provider_timeout": "VERIFIED",
+    "unsupported_target": "VERIFIED",
+    "stale_evidence": "VERIFIED",
+    "ambiguous_write_no_retry": "VERIFIED",
+    "readiness_failure": "VERIFIED; one simulated write, readiness failed, no recovery claimed",
+    "json_export": "VERIFIED; browser download observed",
+    "pause_reset": "VERIFIED"
+  },
+  "limits": [
+    "Simulation only; no live model or Kubernetes requests",
+    "Historical model experiments are not rerun",
+    "The simulator is not a security enforcement boundary"
+  ],
+  "browser_logs": "Only extension-origin metadata errors observed in sampled browser console; these are not application errors."
+}

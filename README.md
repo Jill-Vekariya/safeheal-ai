@@ -6,6 +6,12 @@ SafeHeal observes a synthetic gateway → order → payment application, validat
 
 [Research report](docs/RESEARCH_REPORT.md) · [Demo guide](docs/DEMO.md) · [Interview walkthrough](docs/INTERVIEW.md) · [Reproduction](docs/REPRODUCIBILITY.md)
 
+## Interactive browser demo
+
+Explore the [Recovery Lab prototype](docs/demo/README.md): six synthetic scenarios, dry-run review, operator approval, evidence snapshots and audit export. It makes no live model calls or Kubernetes writes and does not reproduce benchmark results.
+
+Run `python -m http.server 8080 --directory docs/demo` from the checkout, then open http://localhost:8080. No API keys or additional dependencies are needed.
+
 ## What the evidence shows
 
 | Evidence | Actual result | Scope |
