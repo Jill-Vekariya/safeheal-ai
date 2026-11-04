@@ -1,10 +1,26 @@
 # SafeHeal AI
 
-**Kubernetes incident diagnosis with independent, tightly bounded recovery authority.**
+**Kubernetes diagnosis with a separate controller deciding what may change.**
 
-SafeHeal observes a synthetic gateway → order → payment application, validates telemetry-backed hypotheses and compares native behavior, a fixed rule and model diagnosis. A separate deterministic controller permits one enrolled action: restore the payment Deployment from zero replicas to one. The model has no shell, Kubernetes credential or approval authority.
+SafeHeal observes a synthetic gateway → order → payment application and checks
+diagnosis proposals against telemetry. Recovery authority belongs to a
+deterministic controller with one enrolled action: restore the payment
+Deployment from zero replicas to one. The model has no shell, Kubernetes
+credential or approval authority.
 
-[Research report](docs/RESEARCH_REPORT.md) · [Working demo](https://jill-vekariya.github.io/safeheal-ai/) · [Interview walkthrough](docs/INTERVIEW.md) · [Reproduction](docs/REPRODUCIBILITY.md)
+[Explore the browser simulation](https://jill-vekariya.github.io/safeheal-ai/) · [Recorded CPU study](evidence/public-release/CPU_STUDY.md) · [Research report](docs/RESEARCH_REPORT.md) · [Reproduce](docs/REPRODUCIBILITY.md)
+
+## The useful comparison
+
+In one recorded scale-zero scenario, the fixed rule recovered **5/5** trials,
+AI recovered **2/5**, and native behavior recovered **0/5** within 90 seconds.
+All 15 cleanup checks passed. These small, scenario-specific results support
+examining the controller and baseline choice; they do not establish general
+AI superiority.
+
+## Further engineering checks
+
+[Multi-fault comparison](docs/STAGE4_COMPARISON.md) predeclares scenarios, preserves missing AI arms and uses the existing independent recovery controller.
 
 ## Live demo
 
@@ -86,7 +102,3 @@ This is a single-machine prototype with one action, small exploratory studies an
 Implementation, experiments and preparation materials used AI assistance. The [contribution table](docs/INTERVIEW.md#personal-contribution-and-ai-assistance) marks personal claims requiring owner confirmation; automated checks do not establish independent authorship or understanding. [Portfolio preparation](docs/PORTFOLIO.md).
 
 Next: a preregistered live compatibility run, reviewed new incident families and calibrated diagnosis evaluation. A repository license has not been selected; licensing requires an explicit owner decision.
-
-## Broader fault comparison
-
-The [Stage 4 comparison](docs/STAGE4_COMPARISON.md) adds HTTP 5xx and latency negative controls to the scale-zero experiment. Its native/rule comparison runs in a fresh isolated CI lab; missing model arms stay visible and recovery authority remains independently constrained.

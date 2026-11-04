@@ -1,5 +1,8 @@
 name: tests
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 permissions:
   contents: read
 concurrency:
@@ -17,6 +20,11 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r requirements.lock
       - run: python -m pip install --no-deps -e .
+      - name: Audit locked Python dependencies with an isolated tool
+        run: |
+          python -m venv "$RUNNER_TEMP/dependency-audit"
+          "$RUNNER_TEMP/dependency-audit/bin/python" -m pip install pip-audit==2.10.1
+          "$RUNNER_TEMP/dependency-audit/bin/pip-audit" -r requirements.lock --no-deps --disable-pip
       - run: python -m pytest -q
       - name: Compare fixed robustness cases against exact Day 7 source
         run: python scripts/compare_robustness.py --output-dir .local/day8-paired
