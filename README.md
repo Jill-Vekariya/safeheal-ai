@@ -1,10 +1,22 @@
 # SafeHeal AI
 
-**Kubernetes incident diagnosis with independent, tightly bounded recovery authority.**
+**Kubernetes diagnosis with a separate controller deciding what may change.**
 
-SafeHeal observes a synthetic gateway → order → payment application, validates telemetry-backed hypotheses and compares native behavior, a fixed rule and model diagnosis. A separate deterministic controller permits one enrolled action: restore the payment Deployment from zero replicas to one. The model has no shell, Kubernetes credential or approval authority.
+SafeHeal observes a synthetic gateway â†’ order â†’ payment application and checks
+diagnosis proposals against telemetry. Recovery authority belongs to a
+deterministic controller with one enrolled action: restore the payment
+Deployment from zero replicas to one. The model has no shell, Kubernetes
+credential or approval authority.
 
-[Research report](docs/RESEARCH_REPORT.md) · [Working demo](https://jill-vekariya.github.io/safeheal-ai/) · [Interview walkthrough](docs/INTERVIEW.md) · [Reproduction](docs/REPRODUCIBILITY.md)
+[Explore the browser simulation](https://jill-vekariya.github.io/safeheal-ai/) Â· [Recorded CPU study](evidence/public-release/CPU_STUDY.md) Â· [Research report](docs/RESEARCH_REPORT.md) Â· [Reproduce](docs/REPRODUCIBILITY.md)
+
+## The useful comparison
+
+In one recorded scale-zero scenario, the fixed rule recovered **5/5** trials,
+AI recovered **2/5**, and native behavior recovered **0/5** within 90 seconds.
+All 15 cleanup checks passed. These small, scenario-specific results support
+examining the controller and baseline choice; they do not establish general
+AI superiority.
 
 ## Live demo
 
@@ -79,7 +91,7 @@ The gateway binds to `127.0.0.1:18080` and makes no real payment. Compose runs t
 
 The local transport review adds pre-append response byte caps, identity-encoding checks and fixed failure codes; [its protocol](docs/STAGE3_PROTOCOL.md) distinguishes synthetic checks from historical model evidence. Fresh real-model and live Kubernetes validation of that transport remains open. Network phase timeouts and checks between chunks cannot forcibly preempt arbitrary synchronous code.
 
-This is a single-machine prototype with one action, small exploratory studies and local operator trust. A supported symptom is not an established physical cause. Hash-chained local logs are not externally immutable against a privileged host administrator. [Architecture](ARCHITECTURE.md) · [Full limitations](docs/RESEARCH_REPORT.md) · [Project history](PROJECT_STATUS.md).
+This is a single-machine prototype with one action, small exploratory studies and local operator trust. A supported symptom is not an established physical cause. Hash-chained local logs are not externally immutable against a privileged host administrator. [Architecture](ARCHITECTURE.md) Â· [Full limitations](docs/RESEARCH_REPORT.md) Â· [Project history](PROJECT_STATUS.md).
 
 ## Ownership and next work
 
