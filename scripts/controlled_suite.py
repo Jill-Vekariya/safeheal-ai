@@ -11,6 +11,7 @@ from pathlib import Path
 import random
 import statistics
 import sys
+from uuid import uuid4
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -78,35 +79,58 @@ def run(plan, folder):
     from benchmark_kubernetes import KubernetesBackend
     import k8s as lab
     import verify_recovery as recovery
+    from services.recovery.controller import template_digest
 
     folder.mkdir(parents=True, exist_ok=False)
     # Provider deliberately absent; configuring a profile cannot silently enable calls.
     plan["provider"] = {"configured": False, "reason": "separate_live_pilot_authorization_required"}
+    plan["execution_id"] = uuid4().hex[:12]
     plan["source_sha256"] = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                              for p in [Path(__file__), ROOT / "scripts/controlled_core.py",
                                        ROOT / "scripts/controlled_experiment.py"]}
     recovery.save(folder / "protocol.json", plan)
     rows = []
-    backend = KubernetesBackend(folder)
     with lab.recovery_lock():
         try:
-            recovery.save(folder / "preflight.json", backend.preflight())
-            backend.start()
+            initial = lab.kjson("-n", lab.NAMESPACE, "get", "deployment", "payment")
+            fixture = {"deployment_uid": initial["metadata"]["uid"],
+                       "template_sha256": template_digest(initial)}
+            recovery.save(folder / "fixture.json", fixture)
             for index, slot in enumerate(plan["slots"], 1):
-                name = f"s4-{index:02d}-{slot['scenario']}-{slot['arm']}"
+                name = f"s4-{plan['execution_id']}-{index:02d}-{slot['scenario']}-{slot['arm']}"
+                backend = None
                 try:
+                    if slot["arm"] != "ai_policy":
+                        current = lab.kjson("-n", lab.NAMESPACE, "get", "deployment", "payment")
+                        lab.require(current["metadata"]["uid"] == fixture["deployment_uid"] and
+                                    template_digest(current) == fixture["template_sha256"],
+                                    "Deployment identity or template changed between trials")
+                        # Scale-to-zero legitimately recreates the Pod. Bind a fresh
+                        # backend to that Pod while retaining the original Deployment
+                        # identity and source checks; never relax the backend's UID gate.
+                        backend = KubernetesBackend(folder / (name + "-backend"))
+                        recovery.save(folder / (name + "-preflight.json"), backend.preflight())
+                        backend.start()
                     row = trial(slot, plan, folder / name, backend, None)
                 except BaseException:
                     path = folder / name / "trial.json"
                     rows.append(json.loads(path.read_text()) if path.exists() else
                                 {**slot, "attempted": False, "status": "technical_failure"})
                     raise
-                rows.append(row)
+                else:
+                    rows.append(row)
+                finally:
+                    if backend is not None:
+                        try:
+                            backend.close()
+                        except BaseException:
+                            if rows:
+                                rows[-1].update(status="technical_failure", backend_cleanup_passed=False)
+                            raise
                 recovery.save(folder / "summary.json", summary(plan, rows))
                 if row.get("status") == "technical_failure":
                     raise RuntimeError("Stop after technical failure; retain all planned slots")
         finally:
-            backend.close()
             recovery.save(folder / "summary.json", summary(plan, rows))
             recovery.save(folder / "run.json", {"completed_slots": len(rows),
                           "planned_slots": len(plan["slots"]), "rows": rows})

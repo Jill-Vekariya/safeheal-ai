@@ -51,3 +51,22 @@ The suite deliberately cannot silently enable a configured provider profile.
 
 This is AI-assisted implementation. No independent user implementation, human
 review, production usage, new CI run or live model outcome is claimed.
+
+## 4 November 2026 integration follow-up
+
+[CI run 41877794579](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/41877794579)
+retains a successful, censored scale-zero/native observation and its verified
+cleanup, followed by a technical failure before the next latency injection.
+Scale restoration legitimately created a new payment Pod. The shared backend
+still bound its next target and payment port-forward to the previous Pod.
+
+Each attempted trial now gets a fresh, source-checked backend and owned forwards.
+The batch retains the original Deployment UID and template hash and refuses a
+replacement Deployment or changed template before another trial. The existing
+backend Pod-identity guard remains unchanged. Forward cleanup runs between trials;
+batch finalization still records every planned slot on failure. Execution IDs
+also keep successive runs' private trial paths distinct.
+
+Deterministic regression checks reproduce the stale-Pod failure and reject parent
+UID/template drift. The failed CI evidence remains separate; only a passing check
+on the amended source establishes the repaired live comparison.
