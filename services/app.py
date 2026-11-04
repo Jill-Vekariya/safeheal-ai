@@ -6,6 +6,8 @@ from uuid import uuid4
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from services.observability import Metrics, ObservabilityMiddleware, EXCLUDED
 from services.tracing import make_tracer, propagator
@@ -61,6 +63,12 @@ def create_app(role: str, downstream_url: str | None = None,
                 provider.shutdown()
 
     app = FastAPI(title=f"SafeHeal {role}", lifespan=lifespan)
+
+    @app.exception_handler(RequestValidationError)
+    async def invalid_request(request: Request, exc: RequestValidationError):
+        # NaN/Infinity in rejected JSON must not break the error response.
+        detail = [{key: error[key] for key in ("loc", "msg", "type")} for error in exc.errors()]
+        return JSONResponse({"detail": detail}, status_code=422)
 
     metrics = Metrics()
     app.state.metrics = metrics

@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT)); sys.path.insert(0,str(ROOT/"scripts"))
 import k8s as lab
 import verify_recovery as recovery
-from benchmark import Workload, Journal as MeasurementJournal
+from benchmark import Workload, Journal as MeasurementJournal, scenario_impact
 from benchmark_kubernetes import KubernetesBackend, _free_port
 from controlled_core import protocol, rule_support, ai_support, metrics, summarize, encoded
 from services.diagnosis.agent import DiagnosisAgent
@@ -123,20 +123,28 @@ def trial(slot,plan,folder,backend,provider):
         row["injection_requested_at"]=lab.utc()
         recovery.save(folder/"trial.json",row)  # Durable intent before operator fixture.
         faulted=True
-        patch=[{"op":"test","path":"/metadata/uid","value":before["metadata"]["uid"]},
-               {"op":"test","path":"/spec/replicas","value":1},{"op":"replace","path":"/spec/replicas","value":0}]
-        lab.kubectl("-n",lab.NAMESPACE,"patch","deployment","payment","--type=json","-p",json.dumps(patch))
+        if slot["scenario"] == "payment_scale_zero":
+            patch=[{"op":"test","path":"/metadata/uid","value":before["metadata"]["uid"]},
+                   {"op":"test","path":"/spec/replicas","value":1},{"op":"replace","path":"/spec/replicas","value":0}]
+            lab.kubectl("-n",lab.NAMESPACE,"patch","deployment","payment","--type=json","-p",json.dumps(patch))
+        else:
+            backend.validate_target()
+            row["injection_ack"] = backend.inject(slot["scenario"], row["trial_id"],
+                                                   plan["fault_duration_seconds"])
         deadline=started+row["injection_elapsed"]+plan["horizon_seconds"]
         next_collect=started+row["injection_elapsed"]+plan["decision_delay_seconds"]
         while time.monotonic()<next_collect:
             d=api.deployment()
             platform.write({"at":lab.utc(),"elapsed":time.monotonic()-started,"deployment":d})
-            row["injection_verified"]=d["metadata"]["uid"]==before["metadata"]["uid"] and d["spec"]["replicas"]==0
-            if row["injection_verified"] and d.get("status",{}).get("replicas",0)==0:
+            row["injection_verified"]=(d["metadata"]["uid"]==before["metadata"]["uid"] and d["spec"]["replicas"]==0
+                if slot["scenario"] == "payment_scale_zero" else row["injection_ack"].get("applied") is True)
+            if slot["scenario"] == "payment_scale_zero" and row["injection_verified"] and d.get("status",{}).get("replicas",0)==0:
                 row["zero_replicas_observed_at"]=lab.utc()
-            row["effect_verified"]=any(not s["valid_response"] and s["started_elapsed_seconds"]>=row["injection_elapsed"] for s in workload.rows())
+            row["effect_verified"]=any(scenario_impact(s, slot["scenario"]) and s["started_elapsed_seconds"]>=row["injection_elapsed"] for s in workload.rows())
             time.sleep(min(.5,max(0,next_collect-time.monotonic())))
-        lab.require(row.get("injection_verified") and row.get("effect_verified") and row.get("zero_replicas_observed_at"),"Fault/effect was not verified before decision")
+        lab.require(row.get("injection_verified") and row.get("effect_verified") and
+                    (slot["scenario"] != "payment_scale_zero" or row.get("zero_replicas_observed_at")),
+                    "Fault/effect was not verified before decision")
         snapshot=Collector(backend.prometheus_url).collect().document()
         recovery.save(folder/"telemetry.json",snapshot)
         agg=Aggregator(snapshot["at"]); agg.snapshot(snapshot); bundle=agg.finish()
@@ -158,8 +166,10 @@ def trial(slot,plan,folder,backend,provider):
             row["decision"]={"source":"native_no_intervention","supported":False}
         row["decision_finished_elapsed"]=time.monotonic()-started
         # Ground truth attaches after the decision; it is never part of the bundle.
-        row["ground_truth"]={"service":"payment","fault":"desired_replicas_zero","observable_class":"endpoint_unavailable",
-                             "mechanism":"operator_scale_fixture","injection_verified":row["injection_verified"],"effect_verified":row["effect_verified"]}
+        row["ground_truth"]={"service":"payment","fault":slot["scenario"],
+                             "observable_class":{"payment_scale_zero":"endpoint_unavailable", "http_5xx":"server_errors", "latency":"latency"}[slot["scenario"]],
+                             "mechanism":"operator_scale_fixture" if slot["scenario"] == "payment_scale_zero" else "expiring_application_fault",
+                             "injection_verified":row["injection_verified"],"effect_verified":row["effect_verified"]}
         if permit:
             request={"schema_version":"day7-recovery-v1","request_id":row["trial_id"],"incident_id":"observed-endpoint-outage","action":ACTION}
             recovery.save(private/"proposal.json",request)
@@ -191,6 +201,8 @@ def trial(slot,plan,folder,backend,provider):
                     row["metrics"]={"eligible":False,"recovery_seconds":None,"restricted_seconds":None,"censored":None}
             if faulted:
                 try:
+                    if slot["scenario"] != "payment_scale_zero":
+                        row["fault_cleanup"] = backend.cleanup(row["trial_id"], slot["scenario"])
                     d=api.deployment()
                     if cleanup_state(before,d)==0:
                         patch=[{"op":"test","path":"/metadata/uid","value":before["metadata"]["uid"]},

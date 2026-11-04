@@ -18,6 +18,10 @@ All 15 cleanup checks passed. These small, scenario-specific results support
 examining the controller and baseline choice; they do not establish general
 AI superiority.
 
+## Further engineering checks
+
+[Multi-fault comparison](docs/STAGE4_COMPARISON.md) predeclares scenarios, preserves missing AI arms and uses the existing independent recovery controller.
+
 ## Live demo
 
 Explore the [working SafeHeal AI demo](https://jill-vekariya.github.io/safeheal-ai/): six synthetic scenarios, dry-run review, operator approval, evidence snapshots and audit export. It makes no live model calls or Kubernetes writes and does not reproduce benchmark results.
