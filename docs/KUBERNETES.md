@@ -5,7 +5,7 @@ time and in Linux GitHub Actions run 39470648959. All three services were Ready;
 DNS, HTTP and correlated logs passed. A deliberate payment-container stop produced
 exit 137 and a native restart in the same Pod (restart count 0 -> 1), followed by
 three successful orders. Raw evidence is under `evidence/day2/`; see
-`EXPERIMENTS.md` for measurement limits and `PROJECT_STATUS.md` for the handoff.
+`EXPERIMENTS.md` for measurement limits.
 
 ## Run the local cluster
 

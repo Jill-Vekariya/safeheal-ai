@@ -15,6 +15,7 @@ import subprocess
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 from uuid import uuid4
 
@@ -74,6 +75,23 @@ def kind_path():
     return executable
 
 
+def download_with_retries(url, attempts=4, timeout=120):
+    """Fetch a release asset, retrying transient HTTP 5xx/network errors with backoff."""
+    delay = 5
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(url, timeout=timeout) as response:
+                return response.read()
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+            status = getattr(exc, "code", None)
+            transient = status is None or status >= 500 or status in (408, 429)
+            if attempt == attempts or not transient:
+                raise
+            print(f"download attempt {attempt} failed ({exc}); retrying in {delay}s", flush=True)
+            time.sleep(delay)
+            delay *= 2
+
+
 def install_kind():
     machine = platform.machine().lower()
     require(machine in ("amd64", "x86_64"), "Automatic installation supports x86_64 only.")
@@ -86,8 +104,7 @@ def install_kind():
                 "Existing local kind has an unexpected digest; refusing to overwrite it.")
     else:
         url = f"https://github.com/kubernetes-sigs/kind/releases/download/{KIND_VERSION}/kind-{target}"
-        with urllib.request.urlopen(url, timeout=120) as response:
-            data = response.read()
+        data = download_with_retries(url)
         require(hashlib.sha256(data).hexdigest() == KIND_HASHES[target], "kind checksum mismatch")
         destination.write_bytes(data)
         destination.chmod(0o755)

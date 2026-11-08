@@ -82,11 +82,8 @@ Browser simulation locally: `python -m http.server 8080 --directory docs/demo`. 
 - Hash-chained local logs are not immutable against a privileged host administrator.
 - Fresh real-model and live Kubernetes validation of the hardened transport is still open.
 
-[Full limitations](docs/RESEARCH_REPORT.md) · [Security](SECURITY.md) · [Project history](docs/history/README.md)
+[Full limitations](docs/RESEARCH_REPORT.md) · [Security](SECURITY.md) · [Architecture](ARCHITECTURE.md)
 
-## How this was built
-
-I used AI coding assistants throughout this project. [HOW_THIS_WAS_BUILT.md](docs/HOW_THIS_WAS_BUILT.md) explains what was assisted, what I verified myself, and what I am still working through. The contribution table is in [INTERVIEW.md](docs/INTERVIEW.md#personal-contribution-and-ai-assistance).
 
 ## License
 
