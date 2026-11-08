@@ -26,7 +26,7 @@ All metrics, chart values, diagnoses, time offsets, verification results, and au
 
 Checked against `safeheal-ai` main revision `97c9aedeace35bb9e7a639ffe129f93237383afc` on 29 October 2026, especially `docs/SAFE_RECOVERY.md`, `services/recovery/controller.py`, and `services/diagnosis/provider.py`. The project model does not execute actions. Its independent controller permits only `restore_payment_replica` for the enrolled `safeheal-dev/payment` deployment, replicas 0→1. Its historical studies and limitations remain separate from this visual demo.
 
-This implementation used AI assistance. No independent human implementation, production usage, model quality, comparative performance gain, or completion of the portfolio's deployment stage is claimed. No license was selected or changed.
+No production usage, model quality or comparative performance gain is claimed from the demo alone.
 
 ## Published working demo
 

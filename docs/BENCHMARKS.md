@@ -8,7 +8,7 @@ cleanup have their own recovery attribution.
 
 This document describes the implemented protocol and how to reproduce it. It does
 not assert that a particular run passed. Use the saved `trial.json`, `summary.json`,
-and `run.json` records, together with [PROJECT_STATUS.md](history/PROJECT_STATUS.md) and
+and `run.json` records, together with
 [EXPERIMENTS.md](../EXPERIMENTS.md), for measured outcomes and retained failures.
 
 ## 1. Run from the existing project

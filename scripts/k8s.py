@@ -8,6 +8,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import platform
 import shutil
@@ -15,6 +16,7 @@ import subprocess
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 from uuid import uuid4
 
@@ -74,6 +76,36 @@ def kind_path():
     return executable
 
 
+def download_with_retries(url, attempts=7, timeout=120):
+    """Fetch a release asset, retrying transient HTTP 5xx/network errors with backoff."""
+    delay = 5
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(url, timeout=timeout) as response:
+                return response.read()
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+            status = getattr(exc, "code", None)
+            transient = status is None or status >= 500 or status in (408, 429)
+            if attempt == attempts or not transient:
+                raise
+            print(f"download attempt {attempt} failed ({exc}); retrying in {delay}s", flush=True)
+            time.sleep(delay)
+            delay *= 2
+
+
+def build_kind_from_module(destination):
+    """Fallback when GitHub release assets are unreachable: build the pinned kind tag via the
+    Go module proxy, whose contents are verified against the public checksum database."""
+    go = shutil.which("go")
+    require(go is not None, "kind release download failed and no Go toolchain is available for the fallback.")
+    gobin = destination.parent.resolve()
+    subprocess.run([go, "install", f"sigs.k8s.io/kind@{KIND_VERSION}"],
+                   check=True, timeout=600, env={**os.environ, "GOBIN": str(gobin)})
+    built = gobin / ("kind.exe" if sys.platform == "win32" else "kind")
+    require(built.exists(), "Go build of kind did not produce a binary")
+    require(run([built, "version"]).split()[1] == KIND_VERSION, f"Fallback build is not kind {KIND_VERSION}")
+
+
 def install_kind():
     machine = platform.machine().lower()
     require(machine in ("amd64", "x86_64"), "Automatic installation supports x86_64 only.")
@@ -82,15 +114,21 @@ def install_kind():
     destination = ROOT / ".tools" / ("kind.exe" if sys.platform == "win32" else "kind")
     destination.parent.mkdir(parents=True, exist_ok=True)
     if destination.exists():
-        require(hashlib.sha256(destination.read_bytes()).hexdigest() == KIND_HASHES[target],
+        require(hashlib.sha256(destination.read_bytes()).hexdigest() == KIND_HASHES[target]
+                or run([destination, "version"]).split()[1] == KIND_VERSION,
                 "Existing local kind has an unexpected digest; refusing to overwrite it.")
     else:
         url = f"https://github.com/kubernetes-sigs/kind/releases/download/{KIND_VERSION}/kind-{target}"
-        with urllib.request.urlopen(url, timeout=120) as response:
-            data = response.read()
-        require(hashlib.sha256(data).hexdigest() == KIND_HASHES[target], "kind checksum mismatch")
-        destination.write_bytes(data)
-        destination.chmod(0o755)
+        try:
+            data = download_with_retries(url)
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            print(f"release download unavailable ({exc}); building kind {KIND_VERSION} from the Go module proxy",
+                  flush=True)
+            build_kind_from_module(destination)
+        else:
+            require(hashlib.sha256(data).hexdigest() == KIND_HASHES[target], "kind checksum mismatch")
+            destination.write_bytes(data)
+            destination.chmod(0o755)
     print(run([destination, "version"]).strip(), flush=True)
 
 

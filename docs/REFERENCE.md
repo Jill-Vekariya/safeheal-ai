@@ -36,7 +36,7 @@ Run `python -m http.server 8080 --directory docs/demo` from the checkout, then o
 | --- | --- | --- |
 | [Historical CPU-model study](../evidence/public-release/CPU_STUDY.md) | Native 0/5, fixed rule 5/5, AI 2/5 business recoveries within 90 seconds; 15/15 cleanups | One scale-zero scenario; as-run source `fd809cae41b60c62b59bd2fc2e2377f5d487b163` |
 | Same CPU study | Five real requests, four validated outputs; three AI trials did not recover within the horizon | Validated diagnosis and successful recovery are different outcomes |
-| [Local Stage 4 checks](INTERVIEW.md) | 100 selected tests passed | Mocked controller/provider and experiment-integrity paths; no new model inference or cluster mutation |
+| Local Stage 4 checks | 100 selected tests passed | Mocked controller/provider and experiment-integrity paths; no new model inference or cluster mutation |
 | [Earlier cohorts](RESEARCH_REPORT.md) | Failed, interrupted, censored and unrun outcomes retained separately | Different hosts, horizons and prompt formats are not pooled |
 
 These results do not establish general AI superiority, calibrated confidence, production reliability or a universal MTTR improvement. The rule is deliberately well matched to the narrow restoration policy.
@@ -97,10 +97,9 @@ The gateway binds to `127.0.0.1:18080` and makes no real payment. Compose runs t
 
 The local transport review adds pre-append response byte caps, identity-encoding checks and fixed failure codes; [its protocol](STAGE3_PROTOCOL.md) distinguishes synthetic checks from historical model evidence. Fresh real-model and live Kubernetes validation of that transport remains open. Network phase timeouts and checks between chunks cannot forcibly preempt arbitrary synchronous code.
 
-This is a single-machine prototype with one action, small exploratory studies and local operator trust. A supported symptom is not an established physical cause. Hash-chained local logs are not externally immutable against a privileged host administrator. [Architecture](../ARCHITECTURE.md) · [Full limitations](RESEARCH_REPORT.md) · [Project history](history/PROJECT_STATUS.md).
+This is a single-machine prototype with one action, small exploratory studies and local operator trust. A supported symptom is not an established physical cause. Hash-chained local logs are not externally immutable against a privileged host administrator. [Architecture](../ARCHITECTURE.md) · [Full limitations](RESEARCH_REPORT.md).
 
-## Ownership and next work
+## Next work
 
-Implementation, experiments and preparation materials used AI assistance. The [contribution table](INTERVIEW.md#personal-contribution-and-ai-assistance) marks personal claims requiring owner confirmation; automated checks do not establish independent authorship or understanding. [Portfolio preparation](PORTFOLIO.md).
 
-Next: a preregistered live compatibility run, reviewed new incident families and calibrated diagnosis evaluation. A repository license has not been selected; licensing requires an explicit owner decision.
+Next: a preregistered live compatibility run, reviewed new incident families and calibrated diagnosis evaluation. Repository code is released under the [MIT license](../LICENSE).

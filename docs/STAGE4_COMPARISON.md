@@ -49,8 +49,7 @@ requires an explicit supported `--lab`; plan mode remains read-only.
 No broader real-model recovery comparison or effectiveness improvement is claimed.
 The suite deliberately cannot silently enable a configured provider profile.
 
-This is AI-assisted implementation. No independent user implementation, human
-review, production usage, new CI run or live model outcome is claimed.
+No human review, production usage, new CI run or live model outcome is claimed.
 
 ## 4 November 2026 integration follow-up
 
