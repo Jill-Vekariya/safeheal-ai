@@ -27,4 +27,4 @@ class JsonLogExporter(SpanExporter):
 def make_tracer(role):
     provider = TracerProvider(resource=Resource.create({"service.name": role}))
     provider.add_span_processor(SimpleSpanProcessor(JsonLogExporter()))
-    return provider, provider.get_tracer("safeheal.manual", "0.1.0")
+    return provider, provider.get_tracer("safeheal.manual", "1.0.0")
