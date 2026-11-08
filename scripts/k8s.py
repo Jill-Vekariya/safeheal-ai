@@ -75,7 +75,7 @@ def kind_path():
     return executable
 
 
-def download_with_retries(url, attempts=4, timeout=120):
+def download_with_retries(url, attempts=7, timeout=120):
     """Fetch a release asset, retrying transient HTTP 5xx/network errors with backoff."""
     delay = 5
     for attempt in range(1, attempts + 1):
