@@ -1,0 +1,51 @@
+name: Publish evidence archive
+
+# Rebuilds the raw-artifact archive described in evidence/ARCHIVE.md from the
+# last commit that held those files, verifies every file against
+# evidence/ARCHIVE-SHA256SUMS, and attaches the result to a release. Nothing is
+# uploaded unless all checksums match.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to attach the archive to
+        required: true
+        default: v1.0.0
+      source_ref:
+        description: Last commit that contained the archived files
+        required: true
+        default: 5d96afb
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore archived files from history
+        run: |
+          set -euo pipefail
+          while read -r _ path; do
+            mkdir -p "$(dirname "$path")"
+            git show "${{ inputs.source_ref }}:$path" > "$path"
+          done < evidence/ARCHIVE-SHA256SUMS
+      - name: Verify checksums before packaging
+        run: sha256sum --check --strict evidence/ARCHIVE-SHA256SUMS
+      - name: Package
+        run: |
+          set -euo pipefail
+          name="safeheal-evidence-archive-${{ inputs.tag }}.tar.gz"
+          awk '{print $2}' evidence/ARCHIVE-SHA256SUMS | tar -czf "$RUNNER_TEMP/$name" -T -
+          cp evidence/ARCHIVE-SHA256SUMS "$RUNNER_TEMP/SHA256SUMS"
+          tar -tzf "$RUNNER_TEMP/$name"
+          echo "NAME=$name" >> "$GITHUB_ENV"
+      - name: Attach to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ inputs.tag }}" "$RUNNER_TEMP/$NAME" "$RUNNER_TEMP/SHA256SUMS" --clobber

@@ -10,6 +10,8 @@ tar -xzf safeheal-evidence-archive-v1.0.0.tar.gz   # recreates the paths listed 
 sha256sum --check evidence/ARCHIVE-SHA256SUMS
 ```
 
+The asset is produced by [`.github/workflows/release-archive.yml`](../.github/workflows/release-archive.yml), which restores the files from the last commit that held them, checks every one against `ARCHIVE-SHA256SUMS`, and only then attaches the archive to the release.
+
 Everything that `scripts/reproduce.py`, the CI replay steps and the per-run `artifact-manifest.json` files depend on remains in the repository. The per-run manifests inside `evidence/final/ci-*/` and `evidence/demo/ci-*/` still record the hashes of the archived `artifacts.zip` files, so the archive can be checked against them as well.
 
 | Archived file | Size | Why it was archived |
