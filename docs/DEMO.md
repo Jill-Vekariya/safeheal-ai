@@ -10,7 +10,7 @@ The live hosted page uses synthetic browser-local scenarios. It makes no live mo
 
 [Open the successful demo](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194) · [Rendered result summary](../evidence/demo/ci-40145365194/summary.md) · [Download artifact](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145365194/artifacts/12580581966) · [Permanent archive](../evidence/demo/ci-40145365194/artifacts.zip)
 
-The run at 9f6e268d2b5daad8caaff87e1c2e6c8b457d74de passed all twelve required stages and both fresh recovery modes. Its downloaded manifest and audit chains verified; raw logs and artifact hashes are retained under evidence/demo/ci-40145365194. Linux tests: 537 passed, 1 opt-in skip. Windows: 536 passed, 2 existing skips. [Full normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797) also passed.
+The run at 9f6e268d2b5daad8caaff87e1c2e6c8b457d74de passed all twelve required stages and both fresh recovery modes. Its downloaded manifest and audit chains verified; raw logs and artifact hashes are retained under evidence/demo/ci-40145365194 (the raw `artifacts.zip` is in the [release archive](../evidence/ARCHIVE.md)). Linux tests: 537 passed, 1 opt-in skip. Windows: 536 passed, 2 existing skips. [Full normal CI](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40145364797) also passed.
 
 The first demo (40145170673) retains its actual successful workflow and delivery verification separately. Explicit inclusion of the selected report paths was then added and verified in the reference run above. No original trial outcome was replaced.
 
