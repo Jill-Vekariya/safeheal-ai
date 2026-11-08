@@ -1,43 +1,40 @@
-# SafeHeal AI
+# SafeHeal AI — Kubernetes incident diagnosis where the model proposes and a controller decides
 
-**Kubernetes diagnosis with a separate controller deciding what may change.**
+[![Tests](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/Jill-Vekariya/safeheal-ai/actions/workflows/tests.yml)
+![Python 3.12](https://img.shields.io/badge/python-3.12-blue)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-SafeHeal observes a synthetic gateway → order → payment application and checks
-diagnosis proposals against telemetry. Recovery authority belongs to a
-deterministic controller with one enrolled action: restore the payment
-Deployment from zero replicas to one. The model has no shell, Kubernetes
-credential or approval authority.
+**[Explore the browser simulation](https://jill-vekariya.github.io/safeheal-ai/)** · [Recorded CPU study](evidence/public-release/CPU_STUDY.md) · [Research report](docs/RESEARCH_REPORT.md) · [Reproduce](docs/REPRODUCIBILITY.md)
 
-[Explore the browser simulation](https://jill-vekariya.github.io/safeheal-ai/) · [Recorded CPU study](evidence/public-release/CPU_STUDY.md) · [Research report](docs/RESEARCH_REPORT.md) · [Reproduce](docs/REPRODUCIBILITY.md)
+![Recovery comparison](evidence/day9/analysis/figures/recovery_comparison.png)
 
-## The useful comparison
+## The problem
 
-In one recorded scale-zero scenario, the fixed rule recovered **5/5** trials,
-AI recovered **2/5**, and native behavior recovered **0/5** within 90 seconds.
-All 15 cleanup checks passed. These small, scenario-specific results support
-examining the controller and baseline choice; they do not establish general
-AI superiority.
+"Self-healing infrastructure with AI" usually means giving a language model kubectl. That is a bad idea: the model can be wrong, can be prompt-injected through logs, and has no concept of blast radius. SafeHeal separates the two jobs. A read-only diagnosis layer (rule-based or model-based) proposes a cause; a deterministic controller with exactly one enrolled action decides whether anything may change, under RBAC, admission control, rate limits and a durable journal. Then I measured whether the AI actually helped.
 
-## Further engineering checks
+## What I built
 
-[Multi-fault comparison](docs/STAGE4_COMPARISON.md) predeclares scenarios, preserves missing AI arms and uses the existing independent recovery controller.
+- **A synthetic three-service application** (gateway → order → payment) on a local kind cluster, with Prometheus telemetry and injected faults.
+- **Evidence validation:** diagnosis proposals are checked against fresh telemetry before they count; stale or unsupported proposals are rejected.
+- **An independent recovery controller** with one action (scale the payment Deployment from 0 back to 1), identity and spec guards, single-flight claims, dry-run by default and operator approval or explicit autonomy.
+- **A controlled experiment** comparing native Kubernetes behaviour, a fixed rule and AI diagnosis across repeated trials, with cleanup verification after every trial and failed or unrun arms retained in the record.
+- **A browser simulation** with six scenarios, dry-run review, approval flow and audit export, no cluster required.
 
-## Live demo
+## Results
 
-Explore the [working SafeHeal AI demo](https://jill-vekariya.github.io/safeheal-ai/): six synthetic scenarios, dry-run review, operator approval, evidence snapshots and audit export. It makes no live model calls or Kubernetes writes and does not reproduce benchmark results.
-
-Run `python -m http.server 8080 --directory docs/demo` from the checkout, then open http://localhost:8080. No API keys or additional dependencies are needed. [Simulation details and local setup](docs/demo/README.md).
-
-## What the evidence shows
-
-| Evidence | Actual result | Scope |
+| Arm | Business recovery within 90 s | Notes |
 | --- | --- | --- |
-| [Historical CPU-model study](evidence/public-release/CPU_STUDY.md) | Native 0/5, fixed rule 5/5, AI 2/5 business recoveries within 90 seconds; 15/15 cleanups | One scale-zero scenario; as-run source `fd809cae41b60c62b59bd2fc2e2377f5d487b163` |
-| Same CPU study | Five real requests, four validated outputs; three AI trials did not recover within the horizon | Validated diagnosis and successful recovery are different outcomes |
-| [Local Stage 4 checks](docs/INTERVIEW.md) | 100 selected tests passed | Mocked controller/provider and experiment-integrity paths; no new model inference or cluster mutation |
-| [Earlier cohorts](docs/RESEARCH_REPORT.md) | Failed, interrupted, censored and unrun outcomes retained separately | Different hosts, horizons and prompt formats are not pooled |
+| Native Kubernetes | **0 / 5** | Scale-to-zero is not something the scheduler repairs |
+| Fixed rule | **5 / 5** | The rule is deliberately well matched to the one enrolled action |
+| AI diagnosis | **2 / 5** | Five real requests, four validated outputs, three did not recover in time |
 
-These results do not establish general AI superiority, calibrated confidence, production reliability or a universal MTTR improvement. The rule is deliberately well matched to the narrow restoration policy.
+15/15 cleanup checks passed. 581 Python tests and 9 browser-engine tests pass in CI; the [Kubernetes CI run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/41883711959) completed 12 native/rule fault trials with successful cleanup for every attempted trial. This is one scenario on one machine. It argues for the controller design and against trusting AI recovery by default; it does not establish general AI superiority or inferiority. [Multi-fault comparison](docs/STAGE4_COMPARISON.md) · [CPU study](evidence/public-release/CPU_STUDY.md)
+
+## Where this applies
+
+- **SRE and platform teams** evaluating AIOps tools: the question is not "can the model diagnose" but "what is it allowed to touch, and did it beat the runbook".
+- **Regulated workloads** where every production change needs an approval trail and an auditable journal.
+- **Anyone building agents that act on infrastructure:** the model-proposes / controller-decides split is reusable far beyond Kubernetes.
 
 ## Architecture
 
@@ -53,11 +50,11 @@ flowchart TD
   K --> V["Readiness and separate business verification"]
 ```
 
-The controller independently checks enrolled identity/spec, live state, approval or explicit operator-enabled autonomy, durable single-flight claims and rate limits. Dry-run is the default. An ambiguous write blocks automatic retry. The notification journal persists diagnosis; it does not dispatch recovery. [Recovery contract](docs/SAFE_RECOVERY.md).
+The model has no shell, no Kubernetes credential and no approval authority. [Architecture](ARCHITECTURE.md) · [Recovery contract](docs/SAFE_RECOVERY.md) · [Kubernetes setup](docs/KUBERNETES.md)
 
-## Quick start: offline inspection
+## Quick start
 
-Requires Git, Python 3.12 and dependency-download access. Linux commands:
+Requires Python 3.12. Default tests use mocks; no cluster or API key needed.
 
 ```bash
 git clone https://github.com/Jill-Vekariya/safeheal-ai.git
@@ -68,37 +65,29 @@ python3.12 -m venv .venv
 .venv/bin/python -m pytest -q
 ```
 
-For Windows, use `py -3.12 -m venv .venv` and `.venv\Scripts\python.exe`; [the reproduction guide](docs/REPRODUCIBILITY.md) supplies complete PowerShell commands. Default tests use mocks; real-provider integration is opt-in.
+Browser simulation locally: `python -m http.server 8080 --directory docs/demo`. Full application with Docker: `docker compose up --build -d --wait` then `.venv/bin/python scripts/smoke.py`. Isolated kind recovery lab: [DEMO.md](docs/DEMO.md). Everything else: [reference guide](docs/REFERENCE.md).
 
-Historical evidence replay must use its recorded source rather than a later modified checkout:
+## What I learned
 
-```bash
-git worktree add --detach ../safeheal-recorded-release a95d0b5c216094052e0c37e7d99d1242dcea03d4
-.venv/bin/python ../safeheal-recorded-release/scripts/reproduce.py --output .local/reviewer-replay-01
-```
+<!-- Rewrite these in your own words before you point a recruiter here. Short, specific, first person. -->
 
-Choose unused worktree/output paths. Replay checks artifact integrity, numerical results and read-only audit chains; it makes no model call and needs no cluster. A source-hash mismatch on newer code must not be hidden by rewriting the historical inventory.
+- A validated diagnosis and a successful recovery are different outcomes, and a study has to count them separately.
+- The rule beat the model because the action space was tiny. That is an argument for small action spaces, not against models.
+- Cleanup verification after every trial is what makes the numbers trustworthy.
 
-## Run the application or recovery lab
+## Limits
 
-With a running Docker Linux engine and Compose v2, from the installed checkout:
+- Single-machine prototype with one enrolled action and small exploratory studies.
+- A supported symptom is not an established physical cause.
+- Hash-chained local logs are not immutable against a privileged host administrator.
+- Fresh real-model and live Kubernetes validation of the hardened transport is still open.
 
-```bash
-docker compose up --build -d --wait
-.venv/bin/python scripts/smoke.py
-docker compose down
-```
+[Full limitations](docs/RESEARCH_REPORT.md) · [Security](SECURITY.md) · [Project history](docs/history/README.md)
 
-The gateway binds to `127.0.0.1:18080` and makes no real payment. Compose runs the application; it is distinct from the Kubernetes recovery experiment. [Kubernetes setup](docs/KUBERNETES.md) and [the local/CI recovery walkthrough](docs/DEMO.md) cover the isolated kind lab, explicit execution guards and cleanup. The [recorded CPU study run](https://github.com/Jill-Vekariya/safeheal-ai/actions/runs/40206671248) is historical CI evidence, not a passing run of later local changes. Running a new workflow creates a new experiment with its own outcomes.
+## How this was built
 
-## Verification and limits
+I used AI coding assistants throughout this project. [HOW_THIS_WAS_BUILT.md](docs/HOW_THIS_WAS_BUILT.md) explains what was assisted, what I verified myself, and what I am still working through. The contribution table is in [INTERVIEW.md](docs/INTERVIEW.md#personal-contribution-and-ai-assistance).
 
-The local transport review adds pre-append response byte caps, identity-encoding checks and fixed failure codes; [its protocol](docs/STAGE3_PROTOCOL.md) distinguishes synthetic checks from historical model evidence. Fresh real-model and live Kubernetes validation of that transport remains open. Network phase timeouts and checks between chunks cannot forcibly preempt arbitrary synchronous code.
+## License
 
-This is a single-machine prototype with one action, small exploratory studies and local operator trust. A supported symptom is not an established physical cause. Hash-chained local logs are not externally immutable against a privileged host administrator. [Architecture](ARCHITECTURE.md) · [Full limitations](docs/RESEARCH_REPORT.md) · [Project history](PROJECT_STATUS.md).
-
-## Ownership and next work
-
-Implementation, experiments and preparation materials used AI assistance. The [contribution table](docs/INTERVIEW.md#personal-contribution-and-ai-assistance) marks personal claims requiring owner confirmation; automated checks do not establish independent authorship or understanding. [Portfolio preparation](docs/PORTFOLIO.md).
-
-Next: a preregistered live compatibility run, reviewed new incident families and calibrated diagnosis evaluation. A repository license has not been selected; licensing requires an explicit owner decision.
+[MIT](LICENSE).
