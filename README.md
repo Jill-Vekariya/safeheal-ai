@@ -50,7 +50,7 @@ flowchart TD
   K --> V["Readiness and separate business verification"]
 ```
 
-The model has no shell, no Kubernetes credential and no approval authority. [Architecture](ARCHITECTURE.md) · [Recovery contract](docs/SAFE_RECOVERY.md) · [Kubernetes setup](docs/KUBERNETES.md)
+The model has no shell, no Kubernetes credential and no approval authority. [Design decisions](docs/DESIGN_DECISIONS.md) · [Architecture](ARCHITECTURE.md) · [Recovery contract](docs/SAFE_RECOVERY.md) · [Kubernetes setup](docs/KUBERNETES.md)
 
 ## Quick start
 

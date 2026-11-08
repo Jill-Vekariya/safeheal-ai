@@ -15,6 +15,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Keep the working tree small (raw bundles belong in the release archive)
+        run: |
+          large=$(git ls-files -z | xargs -0 du -b 2>/dev/null | awk '$1 > 5000000 {print $2" ("$1" bytes)"}')
+          if [ -n "$large" ]; then echo "Files over 5 MB; see evidence/ARCHIVE.md:"; echo "$large"; exit 1; fi
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
