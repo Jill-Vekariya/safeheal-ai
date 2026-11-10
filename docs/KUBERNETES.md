@@ -178,7 +178,7 @@ enforcement. It is an isolated local lab, not production security hardening.
 - Existing recovery lock: check for an active recovery process; only remove the lock
   manually after establishing that the owner is gone and the cluster is healthy.
 
-## Concepts to explain in an interview
+## Kubernetes design questions
 
 1. Which component restarts a container, and which replaces a deleted Pod?
 2. Why should a dependency outage affect readiness but not local liveness?
