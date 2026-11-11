@@ -12,6 +12,10 @@
 
 An incorrect diagnosis must not become an unrestricted infrastructure change. SafeHeal separates read-only diagnosis from recovery authority: rules or a model propose a cause, while a deterministic controller validates evidence and permits one enrolled action under RBAC, admission control, rate limits and a durable journal. Controlled trials compare recovery outcomes with native Kubernetes and a fixed rule.
 
+## My involvement
+
+I have invested sustained personal effort in this project and reviewed it repeatedly throughout development. My focus is the separation of diagnosis from recovery authority, evidence checks, Kubernetes controls and reproducible recovery experiments. See [project ownership and review](docs/OWNER_REVIEW.md) for my current statement, review scope and technical references.
+
 ## Implementation
 
 - **A synthetic three-service application** (gateway → order → payment) on a local kind cluster, with Prometheus telemetry and injected faults.
