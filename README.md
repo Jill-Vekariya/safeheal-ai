@@ -10,9 +10,9 @@
 
 ## The problem
 
-"Self-healing infrastructure with AI" usually means giving a language model kubectl. That is a bad idea: the model can be wrong, can be prompt-injected through logs, and has no concept of blast radius. SafeHeal separates the two jobs. A read-only diagnosis layer (rule-based or model-based) proposes a cause; a deterministic controller with exactly one enrolled action decides whether anything may change, under RBAC, admission control, rate limits and a durable journal. Then I measured whether the AI actually helped.
+An incorrect diagnosis must not become an unrestricted infrastructure change. SafeHeal separates read-only diagnosis from recovery authority: rules or a model propose a cause, while a deterministic controller validates evidence and permits one enrolled action under RBAC, admission control, rate limits and a durable journal. Controlled trials compare recovery outcomes with native Kubernetes and a fixed rule.
 
-## What I built
+## Implementation
 
 - **A synthetic three-service application** (gateway → order → payment) on a local kind cluster, with Prometheus telemetry and injected faults.
 - **Evidence validation:** diagnosis proposals are checked against fresh telemetry before they count; stale or unsupported proposals are rejected.
@@ -67,9 +67,7 @@ python3.12 -m venv .venv
 
 Browser simulation locally: `python -m http.server 8080 --directory docs/demo`. Full application with Docker: `docker compose up --build -d --wait` then `.venv/bin/python scripts/smoke.py`. Isolated kind recovery lab: [DEMO.md](docs/DEMO.md). Everything else: [reference guide](docs/REFERENCE.md).
 
-## What I learned
-
-<!-- Rewrite these in your own words before you point a recruiter here. Short, specific, first person. -->
+## Engineering takeaways
 
 - A validated diagnosis and a successful recovery are different outcomes, and a study has to count them separately.
 - The rule beat the model because the action space was tiny. That is an argument for small action spaces, not against models.
